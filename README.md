@@ -1,8 +1,8 @@
-#Sudoku Teacher
+# Sudoku Teacher
 
 A project for the *Software Design and Documentation* class at Rensselaer Polytechnic Institute.
 
-##Vision Statement
+## Vision Statement
 
 We aim to create a mobile application for iOS devices, which generates Sudoku puzzles and provides user initiated assistance of various degrees.
 
