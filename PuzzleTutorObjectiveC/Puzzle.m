@@ -5,7 +5,7 @@ import "Puzzle.h"
 	*onlyAvail searches through the puzzle for a square with only 1 number that can go in it. 
 	*It then returns the menthod (1), submethod (1), square number, and number to be input.
     */
-- int* onlyAvail 
+- (int *)onlyAvail 
 {
 	for (int i = 0; i < 81; i++)
 	{
@@ -36,7 +36,7 @@ import "Puzzle.h"
  *oneLoc looks for a block, column or row that has only one sqaure a number can appear. It returns
  *an array of 4 values: 2 (method used), [1,2,3] (corresponding to block, column, row), location, and number to be put in.
  */
-- int* oneLoc
+- (int *)oneLoc
 {
 	for (int i = 0; i < 81; i++)
 	{
@@ -91,57 +91,58 @@ import "Puzzle.h"
 				return results;
 			}
 		}
-			for (int i = 0; i < 9; i++)
-	{
-		int holder = 0;
-		for (int k = 0; k < 9; j++)
+		for (int i = 0; i < 9; i++)
 		{
-			for (int j = 0; j < 9; k++)
+			int holder = 0;
+			for (int k = 0; k < 9; j++)
 			{
-				if (avail[k * 81 + j * 9 + i] == 1)
+				for (int j = 0; j < 9; k++)
 				{
-					if (holder != 0)
+					if (avail[k * 81 + j * 9 + i] == 1)
 					{
-						holder = -1;
-					}
-					else if (holder == 0)
-					{
-						holder = k * 81 + j * 9 + i;
+						if (holder != 0)
+						{
+							holder = -1;
+						}
+						else if (holder == 0)
+						{
+							holder = k * 81 + j * 9 + i;
+						}
 					}
 				}
-			}
-			if (holder > 0)
-			{
-				int results[4];
-				results[0] = 2;
-				results[1] = 3;
-				results[2] = holder / 9;
-				results[3] = holder % 9;
-				return results;
+				if (holder > 0)
+				{
+					int results[4];
+					results[0] = 2;
+					results[1] = 3;
+					results[2] = holder / 9;
+					results[3] = holder % 9;
+					return results;
+				}
 			}
 		}
+		int results[4];
+		return results;
 	}
-	int results[4];
-	return results;
 }
 
 /*
- *setPuzzle takes as input an array of 81 integers that make up a puzzle. It sets the puzzle member variable equal to the input, and then
+ *setPuzzle takes as puzzleInput an array of 81 integers that make up a puzzle. It sets the puzzle member variable equal to the puzzleInput, and then
  *fills out the other member variables to match the given puzzle.
  */
-- (void) setPuzzle: int input[81]
+- (void)setPuzzle:(int)puzzleInput[81]
 {
 	for (int i = 0; i < 81; i++)
 	{
-		puzzle[i] = input[i];
-		if (input[i] != 0)
+		puzzle[i] = puzzleInput[i];
+		if (puzzleInput[i] != 0)
 		{
 			locAvail[i] = 0;
 			int numBlock = (i / 27) * 3 + (i / 3) % 3;
 			for (int j = 0; j < 9; j++)
 			{
 				avail[i*9 + j] = NO;
-				blockNums[numBlock * 9 + input[i]] = YES;
+				blockNums[numBlock * 9 + puzzleInput[i]] = YES;
 			}
 		}
 	}
@@ -189,7 +190,7 @@ import "Puzzle.h"
 	}
 }
 
-- (id) init
+- (id)init
 {
 	for (int i = 0; i < 81; i++)
 	{

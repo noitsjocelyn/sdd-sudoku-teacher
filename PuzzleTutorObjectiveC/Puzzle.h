@@ -10,6 +10,7 @@
  *		-blockAvail. Counts the number of times a number is available in a block. Example: If '3' can be put in 4 squares of block 2, blockAvail[11] = 3.
  *The member functions are described in 'Puzzle.m'.
  */ 
+ 
 @interface Puzzle : NSObject 
 {
 	int *puzzle[81];
@@ -19,8 +20,8 @@
 	int *blockAvail[81];
 }
 
-- int* onlyAvail;
-- int* oneLoc;
-- (void) setPuzzle: int input[81];
+- (int *)onlyAvail;
+- (int *)oneLoc;
+- (void)setPuzzle:(int)puzzleInput[81];
 
 @end
