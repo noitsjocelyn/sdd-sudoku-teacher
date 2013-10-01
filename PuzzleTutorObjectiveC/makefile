@@ -1,24 +1,26 @@
-CC    = clang
-WINCC = gcc
+SOURCE = tester.m Puzzle.m
+OUT    = -o test
 
+CC         = clang
 FRAMEWORKS = -framework Foundation
 LIBS       = -lobjc
 CFLAGS     = -Wall
-OUT        = -o test
 
+GNUCC = gcc
 GNUHEADERS  = -I/c/GNUstep/GNUstep/System/Library/Headers
 GNULIBS     = -L/c/GNUstep/GNUstep/System/Library/Libraries -lgnustep-base
 CONSTSTRING = -fconstant-string-class=NSConstantString
-WINCFLAGS  := $(CFLAGS) -std=c99
+GNUCFLAGS  := $(CFLAGS) -std=c99
 WINOUT      = $(OUT).exe
 
-
 FLAGS    := $(CFLAGS) $(FRAMEWORKS) $(LIBRARIES)
-WINFLAGS := $(GNUHEADERS) $(GNULIBS) $(CONSTSTRING) $(WINCFLAGS) $(LIBS)
-SOURCE    = tester.m Puzzle.m
+GNUFLAGS := $(GNUHEADERS) $(GNULIBS) $(CONSTSTRING) $(WINCFLAGS) $(LIBS)
 
 all:
 	$(CC) $(SOURCE) $(OUT) $(FLAGS)
 
 windows:
-	$(WINCC) $(SOURCE) $(WINOUT) $(WINFLAGS)
+	$(GNUCC) $(SOURCE) $(WINOUT) $(GNUFLAGS)
+
+linux:
+	$(GNUCC) $(SOURCE) $(OUT) $(GNUFLAGS)
