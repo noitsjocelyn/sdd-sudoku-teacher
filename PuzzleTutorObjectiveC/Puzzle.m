@@ -1,3 +1,6 @@
+/* Implementation of the Puzzle class
+ */ 
+
 #import "Puzzle.h"
 
 @implementation Puzzle
