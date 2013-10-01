@@ -15,6 +15,8 @@ int main ()
     [aPuzzle onlyAvail];
     [aPuzzle oneLoc];
     
+    NSLog(@"\n%@", [aPuzzle toString]);
+    
     NSLog(@"No methods failed.");
     return 0;
 }

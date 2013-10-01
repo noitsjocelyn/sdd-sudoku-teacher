@@ -33,6 +33,7 @@
     BOOL blockNums[81];
 }
 
+- (NSString *)toString;
 - (short *)onlyAvail;
 - (short *)oneLoc;
 - (void)setPuzzle:(short *)puzzleInput;

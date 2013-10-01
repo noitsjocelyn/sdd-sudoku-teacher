@@ -21,6 +21,35 @@
     return self;
 }
 
+- (NSString *)toString
+{
+    NSString *lineBreak
+        = [[NSString alloc] initWithString:@"-------------------------\n"];
+    NSMutableString *stringBuilder = [[NSMutableString alloc] init];
+    
+    [stringBuilder appendString:lineBreak];
+    for (int i = 0; i < 81; ++i)
+    {
+        if (i % 9 == 0 && i != 0)
+        {
+            [stringBuilder appendString:@"|\n"];
+        }
+        if (i % 27 == 0 && i != 0)
+        {
+            [stringBuilder appendString:lineBreak];
+        }
+        if (i % 3 == 0)
+        {
+            [stringBuilder appendString:@"| "];
+        }
+        [stringBuilder appendFormat:@"%d ", puzzle[i]];
+    }
+    [stringBuilder appendFormat:@"|\n%@", lineBreak];
+    
+    return [NSString stringWithString:stringBuilder];
+}
+
+
 /* Searches through the puzzle for a square with only 1 number that can go in
  * it. It then returns the menthod (1), submethod (1), square number, and
  * number to be input.
@@ -46,7 +75,6 @@
             }
 
         }
-
     }
     short *results = calloc(4, sizeof(short));
     results[0] = 0;
