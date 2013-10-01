@@ -21,11 +21,11 @@
  
 @interface Puzzle : NSObject 
 {
-	short puzzle[81];
-	short locAvail[81];
-	short blockAvail[81];
-	BOOL avail[729];
-	BOOL blockNums[81];
+    short puzzle[81];
+    short locAvail[81];
+    short blockAvail[81];
+    BOOL avail[729];
+    BOOL blockNums[81];
 }
 
 - (short *)onlyAvail;
