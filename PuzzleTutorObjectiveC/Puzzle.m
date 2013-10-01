@@ -31,7 +31,7 @@
         {
             for (short j = 0; j < 9; ++j)
             {
-                if (avail[i * 81 + j] == YES)
+                if (avail[i * 81 + j])
                 {
                     short *results = calloc(4, sizeof(short));
                     results[0] = 1;
@@ -60,7 +60,7 @@
 {
     for (short i = 0; i < 81; ++i)
     {
-        if (blockNums[i] == NO)
+        if (!blockNums[i])
         {
             if (blockAvail[i] == 1)
             {
@@ -71,7 +71,7 @@
                     short preCompute =
                         27 * (numBlock % 3) + 243 * (numBlock / 3) + 9 *
                         (j % 3) + 81 * (j / 3) + numSearch;
-                    if (avail[preCompute] == YES)
+                    if (avail[preCompute])
                     {
                         short *results = calloc(4, sizeof(short));
                         results[0] = 2;
