@@ -18,8 +18,7 @@
     return self;
 }
 
-/*
- * Searches through the puzzle for a square with only 1 number that can go in
+/* Searches through the puzzle for a square with only 1 number that can go in
  * it. It then returns the menthod (1), submethod (1), square number, and
  * number to be input.
  */
@@ -35,9 +34,9 @@
                 {
                     short *results = calloc(4, sizeof(short));
                     results[0] = 1;
-                    results[2] = 1;
-                    results[3] = i;
-                    results[4] = j + 1;
+                    results[1] = 1;
+                    results[2] = i;
+                    results[3] = j + 1;
                     return results;
                 }
 
@@ -51,8 +50,7 @@
     return results;
 }
 
-/*
- * Looks for a block, column or row that has only one sqaure a number can
+/* Looks for a block, column or row that has only one sqaure a number can
  * appear. It returns an array of 4 values: 2 (method used), [1,2,3]
  * (corresponding to block, column, row), location, and number to be put in.
  */
@@ -148,8 +146,7 @@
     return results;
 }
 
-/*
- * Sets up a puzzle given an input array.
+/* Sets up a puzzle given an input array.
  * Params:
  *   - puzzleInput: An array of 81 shorts that contains the puzzle values.
  */
