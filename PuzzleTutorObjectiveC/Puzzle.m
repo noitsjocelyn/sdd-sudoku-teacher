@@ -148,7 +148,8 @@
 
 /* Sets up a puzzle given an input array.
  * Params:
- *   - puzzleInput: An array of 81 shorts that contains the puzzle values.
+ *   puzzleInput:
+ *     An array of 81 shorts that contains the puzzle values.
  */
 - (void)setPuzzle:(short *)puzzleInput
 {
