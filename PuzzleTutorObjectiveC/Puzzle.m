@@ -23,8 +23,7 @@
 
 - (NSString *)toString
 {
-    NSString *lineBreak
-        = [[NSString alloc] initWithString:@"-------------------------\n"];
+    NSString *lineBreak = @"-------------------------\n";
     NSMutableString *stringBuilder = [[NSMutableString alloc] init];
     
     [stringBuilder appendString:lineBreak];
@@ -51,10 +50,10 @@
 
 
 /* Searches through the puzzle for a square with only 1 number that can go in
- * it. It then returns the menthod (1), submethod (1), square number, and
+ * it. It then returns the method (1), submethod (1), square number, and
  * number to be input.
  */
-- (short *)onlyAvail 
+- (short *)onlyAvail
 {
     for (short i = 0; i < 81; ++i)
     {
