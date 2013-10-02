@@ -12,8 +12,8 @@ int main ()
     Puzzle *aPuzzle = [[Puzzle alloc] init];
     short *startPuzzle = calloc(81, sizeof(short));
     [aPuzzle setPuzzle:startPuzzle];
-    [aPuzzle onlyAvail];
-    [aPuzzle oneLoc];
+    [aPuzzle findSquareWithOneAvailableValue];
+    [aPuzzle findSquareInChunkWithRequiredValue];
     
     NSLog(@"\n%@", [aPuzzle toString]);
     

@@ -34,8 +34,8 @@
 }
 
 - (NSString *)toString;
-- (short *)onlyAvail;
-- (short *)oneLoc;
+- (short *)findSquareWithOneAvailableValue;
+- (short *)findSquareInChunkWithRequiredValue;
 - (void)setPuzzle:(short *)puzzleInput;
 
 @end
