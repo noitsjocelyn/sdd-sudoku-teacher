@@ -53,7 +53,11 @@
  * it. It then returns the method (1), submethod (1), square number, and
  * number to be input.
  */
+<<<<<<< HEAD
 - (short *)onlyAvail
+=======
+- (short *)findSquareWithOneAvailableValue
+>>>>>>> 861fe4b7c16ac3f214c9ce7b1bbc9c0e626547f7
 {
     for (short i = 0; i < 81; ++i)
     {
@@ -84,7 +88,7 @@
  * appear. It returns an array of 4 values: 2 (method used), [1,2,3]
  * (corresponding to block, column, row), location, and number to be put in.
  */
-- (short *)oneLoc
+- (short *)findSquareInChunkWithRequiredValue
 {
     for (short i = 0; i < 81; ++i)
     {
