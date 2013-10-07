@@ -7,8 +7,10 @@
 
 int main ()
 {
-    NSLog(@"Testing all methods...");
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	NSLog(@"Testing all methods...");
     
+<<<<<<< HEAD
     Puzzle *aPuzzle = [[Puzzle alloc] init];
     NSLog(@"Puzzle allocation successful");
     short *inputPuzzle = calloc(81, sizeof(short));
@@ -53,9 +55,17 @@ int main ()
     NSLog(@"%d %d %d %d %d %d %d %d %d\n", results2[0], results2[1], results2[2], results2[3], results2[4], results2[5], results2[6], results2[7], results2[8]);
 
     NSLog(@"%d %d\n", [aPuzzle getLocAvail:18], [aPuzzle getLocAvail:16]);
+=======
+	Puzzle *aPuzzle = [[Puzzle alloc] init];
+	short *startPuzzle = calloc(81, sizeof(short));
+	[aPuzzle setPuzzle:startPuzzle];
+	[aPuzzle findSquareWithOneAvailableValue];
+	[aPuzzle findSquareInChunkWithRequiredValue];
+>>>>>>> 5aff7ac1ef10cb9a7c0561c03ca47259926b729a
     
-    NSLog(@"\n%@", [aPuzzle toString]);
+	NSLog(@"\n%@", [aPuzzle toString]);
     
-    NSLog(@"No methods failed.");
+	NSLog(@"No methods failed.");
+	[pool release];
     return 0;
 }

@@ -36,7 +36,6 @@
 - (NSString *)toString;
 - (short *)findSquareWithOneAvailableValue;
 - (short *)findSquareInChunkWithRequiredValue;
-- (void)setPuzzle:(short *)puzzleInput;
 - (short)getLocAvail:(NSUInteger)loc;
 - (short *)getAvail:(NSUInteger)loc;
 - (void)putInValue:(int)valueAndLoc;
