@@ -12,13 +12,31 @@
         puzzle[i] = 0;
         locAvail[i] = 9;
         blockNums[i] = NO;
-        blockAvail[i] = 0;
+        blockAvail[i] = 9;
         for (short j = 0; j < 9; ++j)
         {
             avail[i * 9 + j] = YES;
         }
     }
     return self;
+}
+
+- (short)getLocAvail:(NSUInteger)loc
+{
+    return locAvail[loc];}
+
+- (short *)getAvail:(NSUInteger)loc
+{
+    short *results = calloc(9, sizeof(short));
+    NSUInteger count = 0;
+    for (int i = 0; i < 9; i++)
+    {
+        if (avail[loc * 9 + i] == YES)
+        {
+            results[count++] = i + 1;
+        }
+    }
+    return results;
 }
 
 - (NSString *)toString
@@ -50,10 +68,64 @@
 }
 
 
+
+- (void)putInValue:(int)valueAndLoc
+{
+    //NSLog(@"Transmission successful");
+    short value = valueAndLoc % 9 - 1;
+    short loc = valueAndLoc / 9;
+    if (value < 0)
+    {
+        value = 8;
+        loc -= 1;
+    }
+    short block = (loc / 27) * 3 + (loc % 9) / 3;
+
+    puzzle[loc] = value + 1;
+    locAvail[loc] = 0;
+    blockAvail[block * 9 + value] = 0;
+    blockNums[block * 9 + value] = YES;
+    for (int i = 0; i < 9; i++)
+    {
+        avail[loc * 9 + i] = NO;
+    }
+    for (int i = 0; i < 9; i++)
+    {
+        short currentLoc = loc % 9 + i * 9;
+        short currentBlock = (currentLoc / 27) * 3 + (loc % 9) / 3;
+        if (avail[currentLoc * 9 + value] == YES)
+        {
+            //NSLog(@"%d", currentLoc);
+            avail[currentLoc * 9 + value] = NO;
+            locAvail[currentLoc] -= 1;
+            blockAvail[currentBlock * 9 + value] -= 1;
+        }
+        currentLoc = (loc / 9) * 9 + i;
+        currentBlock = (currentLoc / 27) * 3 + (loc % 9) / 3;
+        if (avail[currentLoc * 9 + value] == YES)
+        {
+            //NSLog(@"%d", currentLoc);
+            avail[currentLoc * 9 + value] = NO;
+            locAvail[currentLoc] -= 1;
+            blockAvail[currentBlock * 9 + value] -= 1;
+        }
+        currentLoc = (block / 3) * 27 + (block % 3) * 3 + (i / 3) * 9 + i % 3;
+        currentBlock = (currentLoc / 27) * 3 + (loc % 9) / 3;
+        if (avail[currentLoc * 9 + value] == YES)
+        {
+            //NSLog(@"%d", currentLoc);
+            avail[currentLoc * 9 + value] = NO;
+            locAvail[currentLoc] -= 1;
+            blockAvail[currentBlock * 9 + value] -= 1;
+        }
+    }
+}
+
 /* Searches through the puzzle for a square with only 1 number that can go in
  * it. It then returns the menthod (1), submethod (1), square number, and
  * number to be input.
  */
+
 - (short *)findSquareWithOneAvailableValue
 {
     for (short i = 0; i < 81; ++i)
@@ -62,7 +134,7 @@
         {
             for (short j = 0; j < 9; ++j)
             {
-                if (avail[i * 81 + j])
+                if (avail[i * 9 + j])
                 {
                     short *results = calloc(4, sizeof(short));
                     results[0] = 1;
@@ -120,7 +192,7 @@
         {
             for (short k = 0; k < 9; ++k)
             {
-                if (avail[k * 81 + j * 9 + i] == 1)
+                if (avail[k * 81 + j * 9 + i])
                 {
                     if (holder != 0)
                     {
@@ -149,7 +221,7 @@
             {
                 for (short j = 0; j < 9; ++j)
                 {
-                    if (avail[k * 81 + j * 9 + i] == 1)
+                    if (avail[k * 81 + j * 9 + i])
                     {
                         if (holder != 0)
                         {
@@ -175,71 +247,6 @@
     }
     short *results = calloc(4, sizeof(short));
     return results;
-}
-
-/* Sets up a puzzle given an input array.
- * Params:
- *   puzzleInput:
- *     An array of 81 shorts that contains the puzzle values.
- */
-- (void)setPuzzle:(short *)puzzleInput
-{
-    for (short i = 0; i < 81; ++i)
-    {
-        puzzle[i] = puzzleInput[i];
-        if (puzzleInput[i] != 0)
-        {
-            locAvail[i] = 0;
-            short numBlock = (i / 27) * 3 + (i / 3) % 3;
-            for (short j = 0; j < 9; j++)
-            {
-                avail[i * 9 + j] = NO;
-                blockNums[numBlock * 9 + puzzleInput[i]] = YES;
-            }
-        }
-    }
-    for (short i = 0; i < 81; ++i)
-    {
-        if (puzzle[i] == 0)
-        {
-            short numBlock = (i / 27) * 3 + (i / 3) % 3;
-            bool found[9];
-            for (short j = 0; j < 9; ++j)
-            {
-                found[j] = YES;
-            }
-            short loc;
-            for (short j = 0; j < 9; ++j)
-            {
-                loc = (i / 9) * 9 + j;
-                if (puzzle[loc] != 0)
-                {
-                    found[puzzle[loc] - 1] = NO;
-                }
-                loc = (i % 9) + 9 * j;
-                if (puzzle[loc] != 0)
-                {
-                    found[puzzle[loc] - 1] = NO;
-                }
-                loc = (numBlock % 3) * 3 + (numBlock / 3) * 27 + j % 3 + j / 3;
-                if (puzzle[loc] != 0)
-                {
-                    found[puzzle[loc] - 1] = NO;
-                }
-            }
-            for (short j = 0; j < 9; ++j)
-            {
-                short sum = 0;
-                avail[i * 9 + j] = found[j];
-                if (found[j] == YES)
-                {
-                    ++sum;
-                    blockAvail[numBlock * 9 + j] += 1;
-                }
-                locAvail[i] = sum;
-            }
-        }
-    }
 }
 
 @end
