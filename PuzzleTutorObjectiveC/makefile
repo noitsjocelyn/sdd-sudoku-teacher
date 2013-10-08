@@ -1,26 +1,26 @@
-SOURCE     = tester.m Puzzle.m
-OUT        = -o test
+SOURCES    = tester.m Puzzle.m
+OUTFILE    = test
 
 CC         = clang
 FRAMEWORKS = -framework Foundation
 LIBS       = -lobjc
 CFLAGS     = -Wall
+OUT        = -o $(OUTFILE)
 
 GNUCC      = gcc
 GNUHEADS   = -I/c/GNUstep/GNUstep/System/Library/Headers
 GNULIBS    = -L/c/GNUstep/GNUstep/System/Library/Libraries -lgnustep-base
-GNUCFLAGS := $(CFLAGS) -fconstant-string-class=NSConstantString -std=c99
-WINOUT    := $(OUT).exe
-# OBJCFLAGS := $(OBJCFLAGS) -fno-objc-arc
+GNUCFLAGS  = $(CFLAGS) -fconstant-string-class=NSConstantString -std=c99
+WINOUT     = $(OUT).exe
 
-FLAGS     := $(CFLAGS) $(FRAMEWORKS) $(LIBS)
-GNUFLAGS  := $(GNUHEADS) $(GNULIBS) $(GNUFRAMES) $(GNUCFLAGS) $(LIBS)
+FLAGS      = $(CFLAGS) $(FRAMEWORKS) $(LIBS)
+GNUFLAGS   = $(GNUHEADS) $(GNULIBS) $(GNUFRAMES) $(GNUCFLAGS) $(LIBS)
 
 all:
-	$(CC) $(SOURCE) $(OUT) $(FLAGS)
+	$(CC) $(SOURCES) $(OUT) $(FLAGS)
 
 windows:
-	$(GNUCC) $(SOURCE) $(WINOUT) $(GNUFLAGS)
+	$(GNUCC) $(SOURCES) $(WINOUT) $(GNUFLAGS)
 
 linux:
-	$(GNUCC) $(SOURCE) $(OUT) $(GNUFLAGS)
+	$(GNUCC) $(SOURCES) $(OUT) $(GNUFLAGS)
