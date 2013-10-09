@@ -10,7 +10,7 @@ int main ()
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	NSLog(@"Testing all methods...");
     
-<<<<<<< HEAD
+//<<<<<<< HEAD
     Puzzle *aPuzzle = [[Puzzle alloc] init];
     NSLog(@"Puzzle allocation successful");
     short *inputPuzzle = calloc(81, sizeof(short));
@@ -40,6 +40,7 @@ int main ()
     NSLog(@"Initilization successful");
     NSLog(@"First tutor successful");
     [aPuzzle findSquareInChunkWithRequiredValue];
+    [aPuzzle putInValue:7];
     NSLog(@"Second tutor successful");
     //[aPuzzle putInValue:72];
     short *results = [aPuzzle findSquareWithOneAvailableValue];
@@ -50,18 +51,18 @@ int main ()
 
     NSLog(@"%d %d %d %d\n", results[0], results[1], results[2], results[3]);
 
-    short *results2 = [aPuzzle getAvail:26];
+    short *results2 = [aPuzzle getAvail:4];
 
     NSLog(@"%d %d %d %d %d %d %d %d %d\n", results2[0], results2[1], results2[2], results2[3], results2[4], results2[5], results2[6], results2[7], results2[8]);
 
-    NSLog(@"%d %d\n", [aPuzzle getLocAvail:18], [aPuzzle getLocAvail:16]);
-=======
+    NSLog(@"%d %d\n", [aPuzzle getLocAvail:4], [aPuzzle getLocAvail:16]);
+/*
 	Puzzle *aPuzzle = [[Puzzle alloc] init];
 	short *startPuzzle = calloc(81, sizeof(short));
 	[aPuzzle setPuzzle:startPuzzle];
 	[aPuzzle findSquareWithOneAvailableValue];
 	[aPuzzle findSquareInChunkWithRequiredValue];
->>>>>>> 5aff7ac1ef10cb9a7c0561c03ca47259926b729a
+>>>>>>> 5aff7ac1ef10cb9a7c0561c03ca47259926b729a */
     
 	NSLog(@"\n%@", [aPuzzle toString]);
     

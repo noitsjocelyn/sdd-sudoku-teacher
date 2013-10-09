@@ -82,16 +82,19 @@
 
     puzzle[loc] = value + 1;
     locAvail[loc] = 0;
-    blockAvail[block * 9 + value] = 0;
+    for (int i = 0; i < 9; i++)
+    {
+        if (avail[loc * 9 + i] == YES)
+        {
+            avail[loc * 9 + i] = NO;
+            blockAvail[block * 9 + i] -= 1;
+        }
+    }
     blockNums[block * 9 + value] = YES;
     for (int i = 0; i < 9; i++)
     {
-        avail[loc * 9 + i] = NO;
-    }
-    for (int i = 0; i < 9; i++)
-    {
         short currentLoc = loc % 9 + i * 9;
-        short currentBlock = (currentLoc / 27) * 3 + (loc % 9) / 3;
+        short currentBlock = (currentLoc / 27) * 3 + (currentLoc % 9) / 3;
         if (avail[currentLoc * 9 + value] == YES)
         {
             //NSLog(@"%d", currentLoc);
@@ -100,7 +103,7 @@
             blockAvail[currentBlock * 9 + value] -= 1;
         }
         currentLoc = (loc / 9) * 9 + i;
-        currentBlock = (currentLoc / 27) * 3 + (loc % 9) / 3;
+        currentBlock = (currentLoc / 27) * 3 + (currentLoc % 9) / 3;
         if (avail[currentLoc * 9 + value] == YES)
         {
             //NSLog(@"%d", currentLoc);
@@ -109,7 +112,7 @@
             blockAvail[currentBlock * 9 + value] -= 1;
         }
         currentLoc = (block / 3) * 27 + (block % 3) * 3 + (i / 3) * 9 + i % 3;
-        currentBlock = (currentLoc / 27) * 3 + (loc % 9) / 3;
+        currentBlock = (currentLoc / 27) * 3 + (currentLoc % 9) / 3;
         if (avail[currentLoc * 9 + value] == YES)
         {
             //NSLog(@"%d", currentLoc);
@@ -160,8 +163,10 @@
 {
     for (short i = 0; i < 81; ++i)
     {
+        NSLog(@"%i %d", i, blockAvail[i]);
         if (!blockNums[i])
         {
+            //NSLog(@"%i %d", i, blockAvail[i]);
             if (blockAvail[i] == 1)
             {
                 short numBlock = i / 9;
@@ -177,7 +182,7 @@
                         results[0] = 2;
                         results[1] = 1;
                         results[2] = preCompute / 9;
-                        results[3] = preCompute % 9;
+                        results[3] = preCompute % 9 + 1;
                         return results;
                     }
                 }
@@ -209,38 +214,38 @@
                 results[0] = 2;
                 results[1] = 2;
                 results[2] = holder / 9;
-                results[3] = holder % 9;
+                results[3] = holder % 9 + 1;
                 return results;
             }
         }
-        for (short i = 0; i < 9; ++i)
+    }
+    for (short i = 0; i < 9; ++i)
+    {
+        short holder = 0;
+        for (short k = 0; k < 9; ++k)
         {
-            short holder = 0;
-            for (short k = 0; k < 9; ++k)
+            for (short j = 0; j < 9; ++j)
             {
-                for (short j = 0; j < 9; ++j)
+                if (avail[k * 81 + j * 9 + i])
                 {
-                    if (avail[k * 81 + j * 9 + i])
+                    if (holder != 0)
+                {
+                        holder = -1;
+                    }
+                    else if (holder == 0)
                     {
-                        if (holder != 0)
-                        {
-                            holder = -1;
-                        }
-                        else if (holder == 0)
-                        {
-                            holder = k * 81 + j * 9 + i;
-                        }
+                        holder = k * 81 + j * 9 + i;
                     }
                 }
-                if (holder > 0)
-                {
-                    short *results = calloc(4, sizeof(short));
-                    results[0] = 2;
-                    results[1] = 3;
-                    results[2] = holder / 9;
-                    results[3] = holder % 9;
-                    return results;
-                }
+            }
+            if (holder > 0)
+            {
+                short *results = calloc(4, sizeof(short));
+                results[0] = 2;
+                results[1] = 3;
+                results[2] = holder / 9;
+                results[3] = holder % 9 + 1;
+                return results;
             }
         }
     }
