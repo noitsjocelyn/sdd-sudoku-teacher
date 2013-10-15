@@ -21,24 +21,9 @@
     return self;
 }
 
-- (short)getLocAvail:(NSUInteger)loc
-{
-    return locAvail[loc];}
-
-- (short *)getAvail:(NSUInteger)loc
-{
-    short *results = calloc(9, sizeof(short));
-    NSUInteger count = 0;
-    for (int i = 0; i < 9; i++)
-    {
-        if (avail[loc * 9 + i] == YES)
-        {
-            results[count++] = i + 1;
-        }
-    }
-    return results;
-}
-
+/*
+ *The toString function simply creates a string representation of the puzzle, for later printing.
+ */
 - (NSString *)toString
 {
     NSString *lineBreak = @"-------------------------\n";
@@ -67,10 +52,13 @@
 }
 
 
-
+/* 
+ *The putInValue function takes in a single int that contains both the location and number needed to put in the puzzle, and
+ *changes the puzzle arrays to match the new number input.
+ *It is called repeatedly during the initilization of the puzzle.
+ */
 - (void)putInValue:(int)valueAndLoc
 {
-    //NSLog(@"Transmission successful");
     short value = valueAndLoc % 9 - 1;
     short loc = valueAndLoc / 9;
     if (value < 0)
@@ -163,10 +151,8 @@
 {
     for (short i = 0; i < 81; ++i)
     {
-        NSLog(@"%i %d", i, blockAvail[i]);
         if (!blockNums[i])
         {
-            //NSLog(@"%i %d", i, blockAvail[i]);
             if (blockAvail[i] == 1)
             {
                 short numBlock = i / 9;

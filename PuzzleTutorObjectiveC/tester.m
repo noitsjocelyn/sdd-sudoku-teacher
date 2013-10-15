@@ -17,10 +17,8 @@ int main ()
     short *inputPuzzle2 = calloc(81, sizeof(short));
     char *inputString = calloc(81, sizeof(char));
     char *inputString2 = calloc(81, sizeof(char));
-    //inputString2 = "000105000140000670080002400063070010900000003010090520007200080026000035000409000"; //easy test for tutor 1
-    inputString2 = "000004028406000005100030600000301000087000140000709000002010003900000507670400000";
+    inputString2 = "000105000140000670080002400063070010900000003010090520007200080026000035000409000"; 
     inputString = "000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-    NSLog(@"what is going on in here?");
     for (int i = 0; i < 81; i++)
     {
     	char c = inputString[i];
@@ -36,35 +34,27 @@ int main ()
             [aPuzzle putInValue:(i * 9 + inputPuzzle2[i])];
         }
     }
-    //[aPuzzle putInValue:379];
     NSLog(@"Initilization successful");
-    NSLog(@"First tutor successful");
-    [aPuzzle findSquareInChunkWithRequiredValue];
-    [aPuzzle putInValue:7];
-    NSLog(@"Second tutor successful");
-    //[aPuzzle putInValue:72];
     short *results = [aPuzzle findSquareWithOneAvailableValue];
-    if (results[0] == 0)
+    if (results[0] == 1 && results[1] == 1 && results[2] == 7 && results[3] == 9)
     {
+        NSLog(@"First tutor successful");
         results = [aPuzzle findSquareInChunkWithRequiredValue];
+        if (results[0] == 2 && results[1] == 1 && results[2] == 4 && results[3] == 4)
+        {
+            NSLog(@"Second tutor successful");
+        }
+        else
+        {
+            NSLog(@"ERROR WITH SECOND TUTOR");
+            return -1;
+        }
     }
-
-    NSLog(@"%d %d %d %d\n", results[0], results[1], results[2], results[3]);
-
-    short *results2 = [aPuzzle getAvail:4];
-
-    NSLog(@"%d %d %d %d %d %d %d %d %d\n", results2[0], results2[1], results2[2], results2[3], results2[4], results2[5], results2[6], results2[7], results2[8]);
-
-    NSLog(@"%d %d\n", [aPuzzle getLocAvail:4], [aPuzzle getLocAvail:16]);
-/*
-	Puzzle *aPuzzle = [[Puzzle alloc] init];
-	short *startPuzzle = calloc(81, sizeof(short));
-	[aPuzzle setPuzzle:startPuzzle];
-	[aPuzzle findSquareWithOneAvailableValue];
-	[aPuzzle findSquareInChunkWithRequiredValue];
->>>>>>> 5aff7ac1ef10cb9a7c0561c03ca47259926b729a */
-    
-	NSLog(@"\n%@", [aPuzzle toString]);
+    else
+    {
+        NSLog(@"ERROR WITH FIRST TUTOR");
+        return -1;
+    }
     
 	NSLog(@"No methods failed.");
 	[pool release];
