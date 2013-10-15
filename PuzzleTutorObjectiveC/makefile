@@ -1,4 +1,4 @@
-SOURCES    = tester.m Puzzle.m
+SOURCES    = tester.m Puzzle.m PuzzleUnitTests.m
 OUTFILE    = test
 
 CC         = clang
