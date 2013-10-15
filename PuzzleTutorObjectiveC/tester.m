@@ -8,11 +8,9 @@
 int main ()
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	NSLog(@"Testing all methods...");
     
-//<<<<<<< HEAD
     Puzzle *aPuzzle = [[Puzzle alloc] init];
-    NSLog(@"Puzzle allocation successful");
+    NSLog(@"Puzzle allocation successful.");
     short *inputPuzzle = calloc(81, sizeof(short));
     short *inputPuzzle2 = calloc(81, sizeof(short));
     char *inputString = calloc(81, sizeof(char));
@@ -26,7 +24,7 @@ int main ()
     	inputPuzzle[i] = (short)(c - '0');
         inputPuzzle2[i] = (short)(d - '0');
     }
-    NSLog(@"Attempting initilization");
+    NSLog(@"Attempting initialization.");
     for (int i = 0; i < 81; i++)
     {
         if (inputPuzzle2[i] != 0)
@@ -34,25 +32,25 @@ int main ()
             [aPuzzle putInValue:(i * 9 + inputPuzzle2[i])];
         }
     }
-    NSLog(@"Initilization successful");
+    NSLog(@"Initialization successful.");
     short *results = [aPuzzle findSquareWithOneAvailableValue];
     if (results[0] == 1 && results[1] == 1 && results[2] == 7 && results[3] == 9)
     {
-        NSLog(@"First tutor successful");
+        NSLog(@"First tutor successful.");
         results = [aPuzzle findSquareInChunkWithRequiredValue];
         if (results[0] == 2 && results[1] == 1 && results[2] == 4 && results[3] == 4)
         {
-            NSLog(@"Second tutor successful");
+            NSLog(@"Second tutor successful.");
         }
         else
         {
-            NSLog(@"ERROR WITH SECOND TUTOR");
+            NSLog(@"ERROR WITH SECOND TUTOR.");
             return -1;
         }
     }
     else
     {
-        NSLog(@"ERROR WITH FIRST TUTOR");
+        NSLog(@"ERROR WITH FIRST TUTOR.");
         return -1;
     }
     
