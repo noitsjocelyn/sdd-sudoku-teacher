@@ -24,3 +24,6 @@ windows:
 
 linux:
 	$(GNUCC) $(SOURCES) $(OUT) $(GNUFLAGS)
+
+clean:
+	rm -f $(OUTFILE) $(OUTFILE).exe
