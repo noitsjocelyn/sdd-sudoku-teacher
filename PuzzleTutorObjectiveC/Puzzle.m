@@ -1,4 +1,4 @@
-/* Implementation of the Puzzle class
+/* Implementation of the Puzzle class.
  */ 
 
 #import "Puzzle.h"
@@ -22,7 +22,8 @@
 }
 
 /*
- *The toString function simply creates a string representation of the puzzle, for later printing.
+ * The toString function simply creates a string representation of the puzzle
+ * for later printing.
  */
 - (NSString *)toString
 {
@@ -53,9 +54,10 @@
 
 
 /* 
- *The putInValue function takes in a single int that contains both the location and number needed to put in the puzzle, and
- *changes the puzzle arrays to match the new number input.
- *It is called repeatedly during the initilization of the puzzle.
+ * The putInValue function takes in a single int that contains both the location
+ * and number needed to put in the puzzle, and changes the puzzle arrays to
+ * match the new number input. It is called repeatedly during the initilization
+ * of the puzzle.
  */
 - (void)putInValue:(int)valueAndLoc
 {
