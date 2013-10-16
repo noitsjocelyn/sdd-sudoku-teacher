@@ -7,11 +7,11 @@
 
 int main (int argc, char *argv[])
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     PuzzleUnitTests *unitTests = [[PuzzleUnitTests alloc] init];
-	int returnValue = [unitTests runAllTests];
-	
-	[pool release];
+    int returnValue = [unitTests runAllTests];
+    
+    [pool release];
     return returnValue;
 }
