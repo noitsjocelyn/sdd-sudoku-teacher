@@ -7,6 +7,12 @@
 
 @implementation GeneratorTests
 
+- (void)dealloc
+{
+    [testBoard release];
+    [super dealloc];
+}
+
 /* Method which runs all of the tests. If any fail, it returns a failure
  * constant. Otherwise, returns a success constant.
  */
@@ -20,7 +26,6 @@
     {
         return EXIT_FAILURE;
     }
-    [testBoard release];
     
     NSLog(@"All methods successful.");
     return EXIT_SUCCESS;
@@ -45,7 +50,7 @@
 }
 
 /* Test correctness of the puzzle.
- * We may have this run it multiple times in the future, just for certainty.
+ * We may have this run multiple times in the future, just for certainty.
  */
 - (BOOL)testCorrectness
 {

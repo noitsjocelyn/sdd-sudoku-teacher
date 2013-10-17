@@ -8,5 +8,7 @@ int main()
 {
     GeneratorTests *unitTests = [[GeneratorTests alloc] init];
     int returnValue = [unitTests runAllTests];
+    
+    [unitTests release];
     return returnValue;
 }
