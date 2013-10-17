@@ -9,8 +9,10 @@
 
 - (void)dealloc
 {
+    #if !(__has_feature(objc_arc))
     [testBoard release];
     [super dealloc];
+    #endif
 }
 
 /* Method which runs all of the tests. If any fail, it returns a failure

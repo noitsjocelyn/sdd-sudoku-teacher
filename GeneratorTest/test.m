@@ -9,6 +9,9 @@ int main()
     GeneratorTests *unitTests = [[GeneratorTests alloc] init];
     int returnValue = [unitTests runAllTests];
     
+    #if !(__has_feature(objc_arc))
     [unitTests release];
+    #endif
+    
     return returnValue;
 }
