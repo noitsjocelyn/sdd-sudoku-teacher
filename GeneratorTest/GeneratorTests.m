@@ -20,6 +20,7 @@
     {
         return EXIT_FAILURE;
     }
+    [testBoard release];
     
     NSLog(@"All methods successful.");
     return EXIT_SUCCESS;
@@ -68,6 +69,7 @@
 {
     short *testBoard = [aBoard boardAsShortArray];
     BOOL *validityArray = calloc(9, sizeof(BOOL));
+    BOOL boardIsValid = YES;
     
     // Test rows for all numbers 1 to 9
     NSLog(@"    Testing rows of board...");
@@ -80,9 +82,9 @@
         }
         if (!allBoolArrayValuesTrue(validityArray, 9))
         {
-            free(validityArray);
             NSLog(@"    Rows failed.");
-            return NO;
+            boardIsValid = NO;
+            break;
         }
     }
     NSLog(@"    Rows succeeded.");
@@ -98,9 +100,9 @@
         }
         if (!allBoolArrayValuesTrue(validityArray, 9))
         {
-            free(validityArray);
             NSLog(@"    Columns failed.");
-            return NO;
+            boardIsValid = NO;
+            break;
         }
     }
     NSLog(@"    Columns succeeded.");
@@ -128,16 +130,16 @@
         }
         if (!allBoolArrayValuesTrue(validityArray, 9))
         {
-            free(validityArray);
-            NSLog(@"    Columns failed.");
-            return NO;
+            NSLog(@"    Blocks failed.");
+            boardIsValid = NO;
+            break;
         }
     }
     NSLog(@"    Blocks succeeded.");
-    
-    free(validityArray);
+
     free(testBoard);
-    return YES;
+    free(validityArray);
+    return boardIsValid;
 }
 
 /* Function to set all of the values of a boolean array to false.
