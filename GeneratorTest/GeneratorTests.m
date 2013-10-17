@@ -1,7 +1,8 @@
-//
-// GeneratorTests.m so far
-//
+/*
+ * GeneratorTests.m so far
+ */
 
+#import "../PuzzleTutor/Puzzle.m"
 #import "../SudokuGenerator/SudokuGenerator/JFRandom.m"
 #import "../SudokuGenerator/SudokuGenerator/SudokuBoard.m"
 #import "../SudokuGenerator/SudokuGenerator/SudokuBoardGenerator.m"
@@ -10,29 +11,7 @@
 int main()
 {
     SudokuBoard *board = [SudokuBoardGenerator generate];
-    
-    // Prints normally
-    NSLog(@"\n%@", board);
-    
-    /*
-    // Attempted fast enumeration
-    for (id object in board)
-    {
-        NSLog(@"number: %@", object);
-    }
-    
-    // Attempted enumeration by blocks.
-    [board enumerateObjectsUsingBlock:
-         ^(id obj, NSUInteger idx, BOOL *stop)
-         {
-             NSLog (@"%@ at %lu", obj, idx);
-             
-             if (idx == 1)
-             {
-                 NSLog(@"Found index 1, stopping");
-                 *stop = YES;
-             }
-         }
-     ];
-    */
+    short *shortArray = [board boardAsShortArray];
+    Puzzle *aPuzzle = [[Puzzle alloc] initWithShortArray:shortArray];
+    NSLog(@"\n%@", aPuzzle);
 }

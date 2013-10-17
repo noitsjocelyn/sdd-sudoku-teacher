@@ -35,5 +35,6 @@
 
 + (id) sudokuBoard;
 - (SudokuBoardSector *) sectorWithSectorId: (NSUInteger) sectorId;
+- (short *) boardAsShortArray;
 
 @end
