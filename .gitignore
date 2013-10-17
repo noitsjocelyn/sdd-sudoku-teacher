@@ -9,3 +9,7 @@ Thumbs.db
 
 # Windows binaries
 *.exe
+
+# Specific binaries
+GeneratorTest/test
+PuzzleTutor/test
