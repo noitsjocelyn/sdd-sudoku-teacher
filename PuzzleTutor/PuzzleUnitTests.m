@@ -41,25 +41,8 @@
     NSLog(@"Testing Puzzle initialization...");
     @try {
         // Allocation
-        testPuzzle = [[Puzzle alloc] init];
-        
-        // Make the correct array
-        char *inputString = "000105000140000670080002400063070010900000003010090520007200080026000035000409000"; 
-        short *inputPuzzle = calloc(81, sizeof(short));
-        for (int i = 0; i < 81; ++i)
-        {
-            char c = inputString[i];
-            inputPuzzle[i] = (short)(c - '0');
-        }
-        
-        // Put all the values in
-        for (int i = 0; i < 81; ++i)
-        {
-            if (inputPuzzle[i] != 0)
-            {
-                [testPuzzle putInValue:(i * 9 + inputPuzzle[i])];
-            }
-        }
+        NSString *inputString = @"000105000140000670080002400063070010900000003010090520007200080026000035000409000"; 
+        testPuzzle = [[Puzzle alloc] initWithString:inputString];
     }
     @catch (NSException *e)
     {
