@@ -21,7 +21,7 @@
 // limitations under the License.
 
 #import "SudokuBoardSector.h"
-
+#import "SudokuBoard.h"
 
 @implementation SudokuBoardSector
 

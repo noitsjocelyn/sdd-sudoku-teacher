@@ -21,7 +21,9 @@
 // limitations under the License.
 
 #import "SudokuBoardGenerator.h"
-
+#import "SudokuBoard.h"
+#import "SudokuBoardSector.h"
+#import "JFRandom.h"
 
 @interface SudokuBoardGenerator (PrivateMethods)
 

@@ -2,8 +2,8 @@
 # Change the SOURCES variable to a space-separated list of your .m files. Then
 # change the OUTNAME variable to your desired binary file name.
 
-SOURCES = tester.m GeneratorTests.m ../SudokuGenerator/JFRandom.m ../SudokuGenerator/SudokuBoard.m ../SudokuGenerator/SudokuBoardGenerator.m ../SudokuGenerator/SudokuBoardSector.m
-OUTNAME    = test
+SOURCES    = main.m JFRandom.m SudokuBoard.m SudokuBoardSector.m SudokuBoardGenerator.m
+OUTNAME    = main
 
 CC         = clang
 FRAMEWORKS = -framework Foundation

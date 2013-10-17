@@ -13,3 +13,4 @@ Thumbs.db
 # Specific binaries
 GeneratorTest/test
 PuzzleTutor/test
+SudokuGenerator/main

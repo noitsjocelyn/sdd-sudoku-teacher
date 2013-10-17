@@ -2,8 +2,8 @@
  */ 
 
 #import "GeneratorTests.h"
-#import "../SudokuGenerator/SudokuGenerator/SudokuBoard.h"
-#import "../SudokuGenerator/SudokuGenerator/SudokuBoardGenerator.h"
+#import "../SudokuGenerator/SudokuBoard.h"
+#import "../SudokuGenerator/SudokuBoardGenerator.h"
 
 @implementation GeneratorTests
 
