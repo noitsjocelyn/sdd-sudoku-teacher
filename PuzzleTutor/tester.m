@@ -6,12 +6,13 @@
 #import "PuzzleUnitTests.h"
 
 int main (int argc, char *argv[])
-{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
+{   
     PuzzleUnitTests *unitTests = [[PuzzleUnitTests alloc] init];
     int returnValue = [unitTests runAllTests];
     
-    [pool release];
+    #if !(__has_feature(objc_arc))
+    [unitTests release];
+    #endif
+    
     return returnValue;
 }

@@ -12,6 +12,14 @@
     return self;
 }
 
+- (void)dealloc
+{
+    #if !(__has_feature(objc_arc))
+    [testPuzzle release];
+    [super dealloc];
+    #endif
+}
+
 /* Method which runs all of the tests. If any fail, it returns a failure
  * constant. Otherwise, returns a success constant.
  */
@@ -39,18 +47,26 @@
 - (BOOL)testInitialization
 {
     NSLog(@"Testing Puzzle initialization...");
+    NSString *inputString = nil;
+    BOOL didTestPass = YES;
     @try {
         // Allocation
-        NSString *inputString = @"000105000140000670080002400063070010900000003010090520007200080026000035000409000"; 
+        inputString = @"000105000140000670080002400063070010900000003010090520007200080026000035000409000"; 
         testPuzzle = [[Puzzle alloc] initWithString:inputString];
     }
     @catch (NSException *e)
     {
         NSLog(@"Failure:\n%@", e);
-        return NO;
+        didTestPass = NO;
+    }
+    @finally
+    {
+        #if !(__has_feature(objc_arc))
+        [inputString release];
+        #endif
     }
     NSLog(@"Success.");
-    return YES;
+    return didTestPass;
 }
 
 /* Tests the first tutor method.
@@ -59,16 +75,18 @@
 {
     NSLog(@"Testing findSquareWithOneAvailableValue...");
     short *results = [testPuzzle findSquareWithOneAvailableValue];
+    BOOL didTestPass = YES;
     if (results[0] == 1 && results[1] == 1 && results[2] == 7 && results[3] == 9)
     {
         NSLog(@"Success.");
-        return YES;
     }
     else
     {
         NSLog(@"Failure.");
-        return NO;
+        didTestPass = NO;
     }
+    free(results);
+    return didTestPass;
 }
 
 /* Tests the second tutor method.
@@ -77,16 +95,18 @@
 {
     NSLog(@"Testing findSquareInChunkWithRequiredValue...");
     short *results = [testPuzzle findSquareInChunkWithRequiredValue];
+    BOOL didTestPass = YES;
     if (results[0] == 2 && results[1] == 1 && results[2] == 4 && results[3] == 4)
     {
         NSLog(@"Success.");
-        return YES;
     }
     else
     {
         NSLog(@"Failure.");
-        return NO;
+        didTestPass = NO;
     }
+    free(results);
+    return didTestPass;
 }
 
 @end

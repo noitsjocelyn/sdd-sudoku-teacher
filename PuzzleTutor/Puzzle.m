@@ -25,7 +25,7 @@
  */
 - (id)initWithShortArray:(short *)shortArray
 {
-    [self init];
+    self = [self init];
     [self putInShortArray:shortArray];
     return self;
 }
@@ -34,7 +34,7 @@
  */
 - (id)initWithString:(NSString *)stringRepresentation
 {
-    [self init];
+    self = [self init];
     [self putInString:stringRepresentation];
     return self;
 }
@@ -68,8 +68,14 @@
         }
     }
     [stringBuilder appendString:lineBreak];
+    NSString *returnString = [NSString stringWithString:stringBuilder];
     
-    return [NSString stringWithString:stringBuilder];
+    #if !(__has_feature(objc_arc))
+    [lineBreak release];
+    [stringBuilder release];
+    #endif
+    
+    return returnString;
 }
 
 
@@ -175,6 +181,7 @@
         if (numValue < 0 || numValue > 9)
         {
             [NSException raise:@"Invalid string representation" format:@"String must only contain characters '0' through '9'. '%c' is invalid.", cString[i]];
+            free(shortArray);
             return;
         }
         shortArray[i] = numValue;
