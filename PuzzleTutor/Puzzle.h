@@ -33,9 +33,14 @@
     BOOL blockNums[81];
 }
 
-- (NSString *)toString;
+- (id)init;
+- (id)initWithShortArray:(short *)shortArray;
+- (id)initWithString:(NSString *)stringRepresentation;
+
 - (short *)findSquareWithOneAvailableValue;
 - (short *)findSquareInChunkWithRequiredValue;
 - (void)putInValue:(int)valueAndLoc;
+- (void)putInShortArray:(short *)shortArray;
+- (void)putInString:(NSString *)stringRepresentation;
 
 @end
