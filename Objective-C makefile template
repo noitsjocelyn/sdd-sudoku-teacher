@@ -30,4 +30,4 @@ linux:
 	$(GNUCC) $(SOURCES) $(OUT) $(GNUFLAGS)
 
 clean:
-	rm -f $(OUTFILE) $(OUTFILE).exe
+	rm -f $(OUTNAME) $(OUTNAME).exe
