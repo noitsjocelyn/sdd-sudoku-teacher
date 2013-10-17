@@ -2,11 +2,11 @@
  * GeneratorTests.m so far
  */
 
-#import "../PuzzleTutor/Puzzle.m"
-#import "../SudokuGenerator/SudokuGenerator/JFRandom.m"
-#import "../SudokuGenerator/SudokuGenerator/SudokuBoard.m"
-#import "../SudokuGenerator/SudokuGenerator/SudokuBoardGenerator.m"
-#import "../SudokuGenerator/SudokuGenerator/SudokuBoardSector.m"
+#import "../PuzzleTutor/Puzzle.h"
+#import "../SudokuGenerator/SudokuGenerator/JFRandom.h"
+#import "../SudokuGenerator/SudokuGenerator/SudokuBoard.h"
+#import "../SudokuGenerator/SudokuGenerator/SudokuBoardGenerator.h"
+#import "../SudokuGenerator/SudokuGenerator/SudokuBoardSector.h"
 
 int main()
 {

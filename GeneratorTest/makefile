@@ -2,7 +2,7 @@
 # Change the SOURCES variable to a space-separated list of your .m files. Then
 # change the OUTNAME variable to your desired binary file name.
 
-SOURCES    = GeneratorTests.m
+SOURCES = GeneratorTests.m ../PuzzleTutor/Puzzle.m ../SudokuGenerator/SudokuGenerator/JFRandom.m ../SudokuGenerator/SudokuGenerator/SudokuBoard.m ../SudokuGenerator/SudokuGenerator/SudokuBoardGenerator.m ../SudokuGenerator/SudokuGenerator/SudokuBoardSector.m
 OUTNAME    = test
 
 CC         = clang
@@ -30,4 +30,4 @@ linux:
 	$(GNUCC) $(SOURCES) $(OUT) $(GNUFLAGS)
 
 clean:
-	rm -f $(OUTFILE) $(OUTFILE).exe
+	rm -f $(OUTNAME) $(OUTNAME).exe
