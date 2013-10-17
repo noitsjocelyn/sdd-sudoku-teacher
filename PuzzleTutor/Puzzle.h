@@ -4,7 +4,7 @@
  *     An array of 81 numbers that represent the puzzle.
  *   avail:
  *     An array of 729 bools that represent the numbers available to be put in
- *     any square. Example: Square 13's available numbers are contained in
+ *     any square. Example: Square 13's available numbers are contained between
  *     spaces 13 * 9 = 107, which corresponds to 1, and 13 * 9 + 8 = 115, which
  *     corresponds to 9.
  *   locAvail:

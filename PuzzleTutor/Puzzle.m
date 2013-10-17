@@ -21,6 +21,8 @@
     return self;
 }
 
+/* Method to initialize the Puzzle with a C-style array of 81 shorts.
+ */
 - (id)initWithShortArray:(short *)shortArray
 {
     [self init];
@@ -28,6 +30,8 @@
     return self;
 }
 
+/* Method to initialize the Puzzle with an NSString of length 81.
+ */
 - (id)initWithString:(NSString *)stringRepresentation
 {
     [self init];
@@ -69,23 +73,28 @@
 }
 
 
-/* 
- * The putInValue function takes in a single int that contains both the location
+/* The putInValue function takes in a single int that contains both the location
  * and number needed to put in the puzzle, and changes the puzzle arrays to
  * match the new number input. It is called repeatedly during the initilization
  * of the puzzle.
  * The formula is as follows:
- *   1-d array location = loc = 9 * x + y
- *   valueAndLoc = 9 * loc + value
+ *   1dArrayLoc = 9 * x + y
+ *   valueAndLoc = 9 * 1dArrayLoc + value
  */
 - (void)putInValue:(int)valueAndLoc
 {
-    short value = valueAndLoc % 9 - 1;
+    // The following location calculation works unless value == 9. In that case,
+    // the loc is one greater than it should be.
     short loc = valueAndLoc / 9;
-    if (value < 0)
+    // Therefore, we subtract one from value. If value == 9, the modulus will
+    // give us 0, and subtracting gives us -1.
+    short value = valueAndLoc % 9 - 1;
+    // If we're -1 here, we know that our location needs to be decremented.
+    // Additionally, set value to 8, so when we add 1 later, it becomes 9.
+    if (value == -1)
     {
         value = 8;
-        loc -= 1;
+        --loc;
     }
     short block = (loc / 27) * 3 + (loc % 9) / 3;
 
@@ -132,6 +141,8 @@
     }
 }
 
+/* Method to put a C-style array of 81 shorts into the Puzzle.
+ */
 - (void)putInShortArray:(short *)shortArray
 {
     for (int i = 0; i < 81; ++i)
@@ -143,14 +154,30 @@
     }
 }
 
+/* Method to put an NSString of length 81 into the Puzzle.
+ */
 - (void)putInString:(NSString *)stringRepresentation
 {
+    // Fail if our string isn't 81 characters.
+    if ([stringRepresentation length] < 81)
+    {
+        [NSException raise:@"Invalid string length" format:@"String must be of at least length 81. %ld is invalid.", [stringRepresentation length]];
+        return;
+    }
     const char *cString = [stringRepresentation UTF8String];
     short *shortArray = calloc(81, sizeof(short));
     for (int i = 0; i < 81; ++i)
     {
-        char c = cString[i];
-        shortArray[i] = (short)(c - '0');
+        // Subtracting the char '0' and casting to a short will give the
+        // numeric value from the char.
+        short numValue = (short)(cString[i] - '0');
+        // Fail if it's outside of 0-9.
+        if (numValue < 0 || numValue > 9)
+        {
+            [NSException raise:@"Invalid string representation" format:@"String must only contain characters '0' through '9'. '%c' is invalid.", cString[i]];
+            return;
+        }
+        shortArray[i] = numValue;
     }
     [self putInShortArray:shortArray];
     free(shortArray);
@@ -160,7 +187,6 @@
  * it. It then returns the method (1), submethod (1), square number, and
  * number to be input.
  */
-
 - (short *)findSquareWithOneAvailableValue
 {
     short *results = calloc(4, sizeof(short));
