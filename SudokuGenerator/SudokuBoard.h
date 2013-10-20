@@ -1,5 +1,5 @@
 //
-// SudokuBoardGenerator.h
+// SudokuBoard.h
 // Clean room implementation of Sudoku board generator.
 //
 // Created by Jason Fuerstenberg on 12/06/03.
@@ -22,13 +22,19 @@
 
 #import <Foundation/Foundation.h>
 
-#import "JFRandom.h" // Available at:   https://github.com/jayfuerstenberg/JFCommon
+@class SudokuBoardSector;
 
-#import "SudokuBoard.h"
-#import "SudokuBoardSector.h"
+/*
+ * A sudoku board is a collection of 9 sectors in a 3x3 grid, each section itself containing 9 numbers in a 3x3 grid.
+ */
+@interface SudokuBoard : NSObject {
 
-@interface SudokuBoardGenerator : NSObject
+@private
+	NSArray *_sectors; // SudokuBoardSector instances
+}
 
-+ (SudokuBoard *) generate;
++ (id) sudokuBoard;
+- (SudokuBoardSector *) sectorWithSectorId: (NSUInteger) sectorId;
+- (short *) boardAsShortArray;
 
 @end

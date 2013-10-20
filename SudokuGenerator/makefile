@@ -2,7 +2,7 @@
 # Change the SOURCES variable to a space-separated list of your .m files. Then
 # change the OUTNAME variable to your desired binary file name.
 
-SOURCES    = main.m
+SOURCES    = main.m JFRandom.m SudokuBoard.m SudokuBoardSector.m SudokuBoardGenerator.m
 OUTNAME    = main
 
 CC         = clang

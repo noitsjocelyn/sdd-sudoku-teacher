@@ -21,7 +21,7 @@
 // limitations under the License.
 
 #import "SudokuBoardSector.h"
-
+#import "SudokuBoard.h"
 
 @implementation SudokuBoardSector
 
@@ -95,7 +95,7 @@
 	NSUInteger number1 = [self numberAtX: 0 y: lineNo];
 	NSUInteger number2 = [self numberAtX: 1 y: lineNo];
 	NSUInteger number3 = [self numberAtX: 2 y: lineNo];
-	NSMutableString *desc = [NSMutableString stringWithFormat: @"%d %d %d ", number1, number2, number3];
+	NSMutableString *desc = [NSMutableString stringWithFormat: @"%lu %lu %lu ", (unsigned long)number1, (unsigned long)number2, (unsigned long)number3];
 	
 	return desc;
 }
