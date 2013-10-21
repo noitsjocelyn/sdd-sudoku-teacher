@@ -14,23 +14,26 @@
     return self;
 }
 
-/*
- *The givePuzzle function. When given a short array representation of a puzzle, it sets the givenPuzzle member to the given puzzle.
+/* The givePuzzle function. When given a short array representation of a puzzle,
+ * it sets the givenPuzzle member to the given puzzle.
  */
 - (void)givePuzzle:(short *)thePuzzle
 {
-	for (short i = 0; i < 81; i++)
+	for (short i = 0; i < 81; ++i)
 	{
 		givenPuzzle[i] = thePuzzle[i];
 	}
 }
 
-/*
- *The buildMediumPuzzle function. It uses count to track how many locations have been filled, either by deduciton or by displaying the value.
- *Inside of a loop, it first looks to deduce a location's value by the findSquareWithOneAvaiableValue algorithm.
- *Failing that, it moves on to the findSquareInChunkWithRequiredValue algorithm.
- *If that fails, it generates random numbers between 0 and 40 until it finds one such that 
- *that location and 80 minus that location are both unfilled. It then makes those squares' values part of the initial puzzle displayed to the user.
+/* The buildMediumPuzzle function. It uses count to track how many locations
+ * have been filled, either by deduciton or by displaying the value. Inside of
+ * a loop, it first looks to deduce a location's value by the
+ * findSquareWithOneAvaiableValue algorithm.
+ * Failing that, it moves on to the findSquareInChunkWithRequiredValue
+ * algorithm. If that fails, it generates random numbers between 0 and 40 until
+ * it finds one such that that location and 80 minus that location are both
+ * unfilled. It then makes those squares' values part of the initial puzzle
+ * displayed to the user.
  */
 - (short *)buildMediumPuzzle
 {
@@ -75,13 +78,14 @@
 	return workingPuzzle;
 }
 
-/*
- *The buildEasyPuzzle function. It uses count to track how many locations have been filled, either by deduciton or by displaying the value.
- *Inside of a loop, it first looks to deduce a location's value by the findSquareWithOneAvaiableValue algorithm.
- *If that fails, it generates random numbers between 0 and 40 until it finds one such that 
- *that location and 80 minus that location are both unfilled. It then makes those squares' values part of the initial puzzle displayed to the user.
+/* The buildEasyPuzzle function. It uses count to track how many locations have
+ * been filled, either by deduciton or by displaying the value. Inside of a
+ * loop, it first looks to deduce a location's value by the
+ * findSquareWithOneAvaiableValue algorithm. If that fails, it generates random
+ * numbers between 0 and 40 until it finds one such that that location and 80
+ * minus that location are both unfilled. It then makes those squares' values
+ * part of the initial puzzle displayed to the user.
  */
-
 - (short *) buildEasyPuzzle
 {
 	short count = 0;
