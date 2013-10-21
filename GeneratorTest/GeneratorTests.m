@@ -69,6 +69,9 @@
     }
 }
 
+void makeBoolArrayFalse (BOOL *array, NSUInteger size);
+BOOL allBoolArrayValuesTrue(BOOL *array, NSUInteger size);
+
 /* Checks if the rows, columns, and blocks of a SudokuBoard contain the numbers
  * 1 through 9.
  */
