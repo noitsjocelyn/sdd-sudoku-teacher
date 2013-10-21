@@ -13,8 +13,8 @@ OUT        = -o $(OUTNAME)
 
 GNUCC      = gcc
 GNUHEADS   = -I/c/GNUstep/GNUstep/System/Library/Headers
-GNULIBS    = -L/c/GNUstep/GNUstep/System/Library/Libraries -lgnustep-base
-GNUCFLAGS  = $(CFLAGS) -fconstant-string-class=NSConstantString -std=c99
+GNULIBS    = -L/c/GNUstep/GNUstep/System/Library/Libraries -fobjc-exceptions -lgnustep-base
+GNUCFLAGS  = -fconstant-string-class=NSConstantString -std=c99 -Wno-unknown-pragmas -Wno-implicit-function-declaration
 WINOUT     = $(OUT).exe
 
 FLAGS      = $(CFLAGS) $(FRAMEWORKS) $(LIBS)
@@ -24,7 +24,9 @@ all:
 	$(CC) $(SOURCES) $(OUT) $(FLAGS)
 
 windows:
-	$(GNUCC) $(SOURCES) $(WINOUT) $(GNUFLAGS)
+	# Unfortunately, JFRandom.m will not compile under GNUStep. Run these tests on OS X.
+	# If you wish to attempt with GNUStep, run the command below:
+	# $(GNUCC) $(SOURCES) $(WINOUT) $(GNUFLAGS)
 
 linux:
 	$(GNUCC) $(SOURCES) $(OUT) $(GNUFLAGS)
