@@ -9,13 +9,14 @@ CC         = clang
 FRAMEWORKS = -framework Foundation
 LIBS       = -lobjc
 CFLAGS     = -Wall
+
 OUT        = -o $(OUTNAME)
+WINOUT     = $(OUT).exe
 
 GNUCC      = gcc
 GNUHEADS   = -I/c/GNUstep/GNUstep/System/Library/Headers
 GNULIBS    = -L/c/GNUstep/GNUstep/System/Library/Libraries -lgnustep-base
 GNUCFLAGS  = $(CFLAGS) -fconstant-string-class=NSConstantString -std=c99
-WINOUT     = $(OUT).exe
 
 FLAGS      = $(CFLAGS) $(FRAMEWORKS) $(LIBS)
 GNUFLAGS   = $(GNUHEADS) $(GNULIBS) $(GNUFRAMES) $(GNUCFLAGS) $(LIBS)
@@ -27,7 +28,7 @@ windows:
 	$(GNUCC) $(SOURCES) $(WINOUT) $(GNUFLAGS)
 
 linux:
-	$(GNUCC) $(SOURCES) $(OUT) $(GNUFLAGS)
+	$(CC) $(SOURCES) $(OUT) $(GNUFLAGS)
 
 clean:
 	rm -f $(OUTNAME) $(OUTNAME).exe
