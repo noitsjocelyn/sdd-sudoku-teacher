@@ -23,7 +23,7 @@ windows:
 	$(GNUCC) $(SOURCES) $(WINOUT) $(GNUFLAGS)
 
 linux:
-	$(GNUCC) $(SOURCES) $(OUT) $(GNUFLAGS)
+	$(CC) $(SOURCES) $(OUT) $(GNUFLAGS)
 
 clean:
 	rm -f $(OUTFILE) $(OUTFILE).exe
