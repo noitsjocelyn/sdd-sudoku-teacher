@@ -1,6 +1,6 @@
+#import <stdlib.h>
 #import "PuzzleMaker.h"
 #import "Puzzle.h"
-#import <stdlib.h>
 
 @implementation PuzzleMaker
 
@@ -119,3 +119,5 @@
 	}
 	return workingPuzzle;
 }
+
+@end

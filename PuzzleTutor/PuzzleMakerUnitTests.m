@@ -53,8 +53,8 @@
     @try {
         // Allocation
         inputString = @"672145398145983672389762451263574819958621743714398526597236184426817935831459267"; 
-        testPuzzle = [[PuzzleMaker alloc] init];
-        [testPuzzle givePuzzle:inputString]
+        Puzzle *testPuzzle = [[PuzzleMaker alloc] init];
+        [testPuzzle givePuzzle:inputString];
     }
     @catch (NSException *e)
     {
@@ -71,9 +71,11 @@
     return didTestPass;
 }
 
-/* Tests the buildEasyPuzzle method. It does this by creating an easy puzzle, and feeding the workingPuzzle member
- * to a new Puzzle object for initilization. From there, the easy tutor algorithm is run, and the test is successful
- * as long as the tutor algorithm doesn't fail. A more strict test may be written later.
+/* Tests the buildEasyPuzzle method. It does this by creating an easy puzzle,
+ * and feeding the workingPuzzle member to a new Puzzle object for
+ * initilization. From there, the easy tutor algorithm is run, and the test is
+ * successful as long as the tutor algorithm doesn't fail. A more strict test
+ * may be written later.
  */
 - (BOOL)testBuildEasyPuzzle
 {
@@ -125,3 +127,5 @@
     free(testHelper);
     return didTestPass;
 }
+
+@end

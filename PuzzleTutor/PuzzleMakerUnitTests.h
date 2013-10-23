@@ -10,10 +10,10 @@
 
 #import <Foundation/Foundation.h>
 
-@class PuzzleMaker;
 @class Puzzle;
+@class PuzzleMaker;
  
-@interface PuzzleUnitTests : NSObject 
+@interface PuzzleMakerUnitTests : NSObject 
 {
     PuzzleMaker *testPuzzleMaker;
     Puzzle *testHelper;

@@ -4,14 +4,19 @@
 #import <Foundation/Foundation.h>
 #import "Puzzle.h"
 #import "PuzzleUnitTests.h"
+#import "PuzzleMakerUnitTests.h"
 
 int main (int argc, char *argv[])
 {   
-    PuzzleUnitTests *unitTests = [[PuzzleUnitTests alloc] init];
-    int returnValue = [unitTests runAllTests];
+    PuzzleUnitTests *puzzleUnitTests = [[PuzzleUnitTests alloc] init];
+    int returnValue = [puzzleUnitTests runAllTests];
+    
+    PuzzleMakerUnitTests *makerUnitTests = [[PuzzleMakerUnitTests alloc] init];
+    returnValue = returnValue & [makerUnitTests runAllTests];
     
     #if !(__has_feature(objc_arc))
-    [unitTests release];
+    [puzzleUnitTests release];
+    [makerUnitTests release];
     #endif
     
     return returnValue;
