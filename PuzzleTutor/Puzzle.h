@@ -39,6 +39,7 @@
 
 - (short *)findSquareWithOneAvailableValue;
 - (short *)findSquareInChunkWithRequiredValue;
+- (BOOL)checkIfSquareIsFilled:(short)loc;
 - (void)putInValue:(int)valueAndLoc;
 - (void)putInShortArray:(short *)shortArray;
 - (void)putInString:(NSString *)stringRepresentation;

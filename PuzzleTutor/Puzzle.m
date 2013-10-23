@@ -21,6 +21,13 @@
     return self;
 }
 
+- (BOOL)checkIfSquareIsFilled:(short)loc
+{
+    if (puzzle[loc] != 0)
+        return YES;
+    return NO;
+}
+
 /* Method to initialize the Puzzle with a C-style array of 81 shorts.
  */
 - (id)initWithShortArray:(short *)shortArray
