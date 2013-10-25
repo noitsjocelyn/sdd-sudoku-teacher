@@ -14,11 +14,11 @@
 
 @interface Game : NSObject
 {
-@public
-	NSMutableArray *puzzle;
-	NSMutableArray *fullGrid;
-	NSMutableArray *startGrid;
 }
+
+@property (assign) NSMutableArray *puzzle;
+@property (assign) NSMutableArray *fullGrid;
+@property (assign) NSMutableArray *startGrid;
 
 - (id)init;
 - (BOOL)checkPuzzle;

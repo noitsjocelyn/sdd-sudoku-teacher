@@ -2,6 +2,8 @@
 
 @implementation Game
 
+@synthesize puzzle, fullGrid, startGrid;
+
 - (id)init
 {
 	puzzle = [NSMutableArray arrayWithCapacity:81];
