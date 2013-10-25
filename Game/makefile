@@ -1,0 +1,34 @@
+# Copy this file into the folder you want to build and rename it "makefile".
+# Change the SOURCES variable to a space-separated list of your .m files. Then
+# change the OUTNAME variable to your desired binary file name.
+
+SOURCES    = main.m Player.m Game.m
+OUTNAME    = main
+
+CC         = clang
+FRAMEWORKS = -framework Foundation
+LIBS       = -lobjc
+CFLAGS     = -Wall
+
+OUT        = -o $(OUTNAME)
+WINOUT     = $(OUT).exe
+
+GNUCC      = gcc
+GNUHEADS   = -I/c/GNUstep/GNUstep/System/Library/Headers
+GNULIBS    = -L/c/GNUstep/GNUstep/System/Library/Libraries -lgnustep-base
+GNUCFLAGS  = $(CFLAGS) -fconstant-string-class=NSConstantString -std=c99
+
+FLAGS      = $(CFLAGS) $(FRAMEWORKS) $(LIBS)
+GNUFLAGS   = $(GNUHEADS) $(GNULIBS) $(GNUFRAMES) $(GNUCFLAGS) $(LIBS)
+
+all:
+	$(CC) $(SOURCES) $(OUT) $(FLAGS)
+
+windows:
+	$(GNUCC) $(SOURCES) $(WINOUT) $(GNUFLAGS)
+
+linux:
+	$(CC) $(SOURCES) $(OUT) $(GNUFLAGS)
+
+clean:
+	rm -f $(OUTNAME) $(OUTNAME).exe
