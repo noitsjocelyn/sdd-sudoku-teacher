@@ -17,9 +17,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ES4-Du-ty6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4" y="49"/>
+            <point key="canvasLocation" x="-141" y="49"/>
         </scene>
-        <!--Main Menu Controller - Start Menu-->
+        <!--Main Menu Controller - Menu-->
         <scene sceneID="eYa-Z6-gJI">
             <objects>
                 <viewController id="ale-YP-mpf" customClass="PPMainMenuController" sceneMemberID="viewController">
@@ -28,16 +28,19 @@
                         <viewControllerLayoutGuide type="bottom" id="FXf-rU-Qep"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KXG-1J-jiC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VC-bM-p7M">
-                                <rect key="frame" x="20" y="91" width="280" height="39"/>
+                                <rect key="frame" x="20" y="91" width="280" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="New Game">
+                                <state key="normal" title="Play Sudoku">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="vrX-YD-l6G" kind="push" id="R1b-B0-cqi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIx-YK-zDX">
                                 <rect key="frame" x="20" y="221" width="280" height="46"/>
@@ -46,6 +49,9 @@
                                 <state key="normal" title="Learn to Play">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="S29-cR-XJ4" kind="push" id="5wQ-eG-Hb1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a30-7u-56g">
                                 <rect key="frame" x="161" y="135" width="85" height="32"/>
@@ -88,7 +94,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Start Menu" id="Uhd-tm-5zj"/>
+                    <navigationItem key="navigationItem" title="Menu" id="Uhd-tm-5zj"/>
                     <connections>
                         <outlet property="easyModeButton" destination="6BS-S7-1Rn" id="2zU-sU-7qM"/>
                         <outlet property="learnToPlayButton" destination="uIx-YK-zDX" id="voJ-mE-HEz"/>
@@ -99,12 +105,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pct-Vx-Hd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="49"/>
+            <point key="canvasLocation" x="350" y="49"/>
+        </scene>
+        <!--View Controller - Sudoku-->
+        <scene sceneID="FBj-J8-Zpx">
+            <objects>
+                <viewController id="vrX-YD-l6G" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="usJ-G0-aQ1"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZF0-eq-3q5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EFt-wm-ppE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sudoku" id="lG3-oB-bV1">
+                        <barButtonItem key="backBarButtonItem" title="Menu" id="AHE-8y-is4"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DkS-r5-JBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="49"/>
+        </scene>
+        <!--View Controller - Learn to Play-->
+        <scene sceneID="sRU-rD-TlW">
+            <objects>
+                <viewController id="S29-cR-XJ4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b3L-Fk-ufG"/>
+                        <viewControllerLayoutGuide type="bottom" id="saY-jS-6Xi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mbP-Ag-PQV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Learn to Play" id="vE5-vq-xVk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t0Y-Ht-MyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="669"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>
