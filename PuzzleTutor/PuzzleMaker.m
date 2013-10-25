@@ -17,6 +17,11 @@
 /* The givePuzzle function. When given a short array representation of a puzzle,
  * it sets the givenPuzzle member to the given puzzle.
  */
+- (short *)getWorkingPuzzle
+{
+	return workingPuzzle;
+}
+
 - (void)givePuzzle:(short *)thePuzzle
 {
 	for (short i = 0; i < 81; ++i)

@@ -48,13 +48,17 @@
 - (BOOL)testGivePuzzle
 {
     NSLog(@"Testing givePuzzle...");
-    NSString *inputString = nil;
+    short *inputPuz = calloc(81, sizeof(short));
+    const char *cString = @"672145398145983672389762451263574819958621743714398526597236184426817935831459267";
     BOOL didTestPass = YES;
     @try {
-        // Allocation
-        inputString = @"672145398145983672389762451263574819958621743714398526597236184426817935831459267"; 
+        for (short i = 0; i < 81; i++)
+        {
+            short numValue = (short)(cString[i] - '0');
+            inputPuz[i] = numValue;
+        }
         Puzzle *testPuzzle = [[PuzzleMaker alloc] init];
-        [testPuzzle givePuzzle:inputString];
+        [testPuzzle givePuzzle:inputPuz];
     }
     @catch (NSException *e)
     {
@@ -64,7 +68,7 @@
     @finally
     {
         #if !(__has_feature(objc_arc))
-        [inputString release];
+        [inputPuz release];
         #endif
     }
     NSLog(@"Success.");
@@ -81,7 +85,7 @@
 {
     NSLog(@"Testing buildEasyPuzzle...");
     [testPuzzleMaker buildEasyPuzzle];
-	testHelper = [[Puzzle alloc] initWithShortArray:[testPuzzleMaker workingPuzzle]];
+	testHelper = [[Puzzle alloc] initWithShortArray:[testPuzzleMaker getWorkingPuzzle]];
     short *results = [testHelper findSquareWithOneAvailableValue];
     BOOL didTestPass = YES;
     if (results[0] != 0)
@@ -107,7 +111,7 @@
 {
     NSLog(@"Testing buildMediumPuzzle...");
     [testPuzzleMaker buildEasyPuzzle];
-	testHelper = [[Puzzle alloc] initWithShortArray:[testPuzzleMaker workingPuzzle]];
+	testHelper = [[Puzzle alloc] initWithShortArray:[testPuzzleMaker getWorkingPuzzle]];
     short *results = [testHelper findSquareInChunkWithRequiredValue];
     if (results[0] == 0)
     {
