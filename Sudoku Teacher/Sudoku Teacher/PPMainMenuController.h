@@ -24,5 +24,4 @@
 - (IBAction)toggleEasyMode:(id)sender;
 - (IBAction)toggleModerateMode:(id)sender;
 
-
 @end

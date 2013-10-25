@@ -20,7 +20,7 @@
 		AB2A8AA217EA1CED00A49B0B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB2A8AA017EA1CED00A49B0B /* InfoPlist.strings */; };
 		AB2A8AA417EA1CED00A49B0B /* Sudoku_TeacherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A8AA317EA1CED00A49B0B /* Sudoku_TeacherTests.m */; };
 		AB5C626A181AB55700F722DD /* PPMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5C6268181AB55700F722DD /* PPMainMenuController.m */; };
-		AB5C626B181AB55700F722DD /* PPMainMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5C6269181AB55700F722DD /* PPMainMenuController.xib */; };
+		AB5C626D181AF8AE00F722DD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5C626C181AF8AE00F722DD /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 		AB2A8AA317EA1CED00A49B0B /* Sudoku_TeacherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sudoku_TeacherTests.m; sourceTree = "<group>"; };
 		AB5C6267181AB55700F722DD /* PPMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMainMenuController.h; sourceTree = "<group>"; };
 		AB5C6268181AB55700F722DD /* PPMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMainMenuController.m; sourceTree = "<group>"; };
-		AB5C6269181AB55700F722DD /* PPMainMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPMainMenuController.xib; sourceTree = "<group>"; };
+		AB5C626C181AF8AE00F722DD /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,7 @@
 				AB2A8A8E17EA1CED00A49B0B /* PPAppDelegate.m */,
 				AB5C6267181AB55700F722DD /* PPMainMenuController.h */,
 				AB5C6268181AB55700F722DD /* PPMainMenuController.m */,
-				AB5C6269181AB55700F722DD /* PPMainMenuController.xib */,
+				AB5C626C181AF8AE00F722DD /* Storyboard.storyboard */,
 				AB2A8A9017EA1CED00A49B0B /* Images.xcassets */,
 				AB2A8A8517EA1CED00A49B0B /* Supporting Files */,
 			);
@@ -229,7 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2A8A8917EA1CED00A49B0B /* InfoPlist.strings in Resources */,
-				AB5C626B181AB55700F722DD /* PPMainMenuController.xib in Resources */,
+				AB5C626D181AF8AE00F722DD /* Storyboard.storyboard in Resources */,
 				AB2A8A9117EA1CED00A49B0B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,6 +374,7 @@
 				GCC_PREFIX_HEADER = "Sudoku Teacher/Sudoku Teacher-Prefix.pch";
 				INFOPLIST_FILE = "Sudoku Teacher/Sudoku Teacher-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0273C950-2F8F-4876-BAD5-E2779920621E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -387,6 +388,7 @@
 				GCC_PREFIX_HEADER = "Sudoku Teacher/Sudoku Teacher-Prefix.pch";
 				INFOPLIST_FILE = "Sudoku Teacher/Sudoku Teacher-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0273C950-2F8F-4876-BAD5-E2779920621E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
