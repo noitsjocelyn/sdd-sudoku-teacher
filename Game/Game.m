@@ -12,6 +12,16 @@
 	return self;
 }
 
+- (void)dealloc
+{
+    #if !(__has_feature(objc_arc))
+    [super dealloc];
+    [puzzle release];
+    [fullGrid release];
+    [startGrid release];
+    #endif
+}
+
 /* Method to check puzzle correctness against solution grid.  
  * If incorrect entries are encountered, they are reset to 0.
  */
@@ -53,6 +63,10 @@
 	{
 		NSLog(@"ERROR: Square value set in initial Puzzle.");
 	}
+    
+    #if !(__has_feature(objc_arc))
+    [toReplace release];
+    #endif
 }
 
 
