@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class PPMainMenuController;
+
 @interface PPAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) PPMainMenuController *viewController;
 
 @end

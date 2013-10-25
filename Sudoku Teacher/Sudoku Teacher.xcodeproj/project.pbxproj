@@ -19,6 +19,8 @@
 		AB2A8A9A17EA1CED00A49B0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2A8A8217EA1CED00A49B0B /* UIKit.framework */; };
 		AB2A8AA217EA1CED00A49B0B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB2A8AA017EA1CED00A49B0B /* InfoPlist.strings */; };
 		AB2A8AA417EA1CED00A49B0B /* Sudoku_TeacherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A8AA317EA1CED00A49B0B /* Sudoku_TeacherTests.m */; };
+		AB5C626A181AB55700F722DD /* PPMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5C6268181AB55700F722DD /* PPMainMenuController.m */; };
+		AB5C626B181AB55700F722DD /* PPMainMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5C6269181AB55700F722DD /* PPMainMenuController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,9 @@
 		AB2A8A9F17EA1CED00A49B0B /* Sudoku TeacherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sudoku TeacherTests-Info.plist"; sourceTree = "<group>"; };
 		AB2A8AA117EA1CED00A49B0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB2A8AA317EA1CED00A49B0B /* Sudoku_TeacherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sudoku_TeacherTests.m; sourceTree = "<group>"; };
+		AB5C6267181AB55700F722DD /* PPMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMainMenuController.h; sourceTree = "<group>"; };
+		AB5C6268181AB55700F722DD /* PPMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMainMenuController.m; sourceTree = "<group>"; };
+		AB5C6269181AB55700F722DD /* PPMainMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPMainMenuController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +114,9 @@
 			children = (
 				AB2A8A8D17EA1CED00A49B0B /* PPAppDelegate.h */,
 				AB2A8A8E17EA1CED00A49B0B /* PPAppDelegate.m */,
+				AB5C6267181AB55700F722DD /* PPMainMenuController.h */,
+				AB5C6268181AB55700F722DD /* PPMainMenuController.m */,
+				AB5C6269181AB55700F722DD /* PPMainMenuController.xib */,
 				AB2A8A9017EA1CED00A49B0B /* Images.xcassets */,
 				AB2A8A8517EA1CED00A49B0B /* Supporting Files */,
 			);
@@ -221,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2A8A8917EA1CED00A49B0B /* InfoPlist.strings in Resources */,
+				AB5C626B181AB55700F722DD /* PPMainMenuController.xib in Resources */,
 				AB2A8A9117EA1CED00A49B0B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2A8A8F17EA1CED00A49B0B /* PPAppDelegate.m in Sources */,
+				AB5C626A181AB55700F722DD /* PPMainMenuController.m in Sources */,
 				AB2A8A8B17EA1CED00A49B0B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +452,7 @@
 				AB2A8AA917EA1CED00A49B0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB2A8AAA17EA1CED00A49B0B /* Build configuration list for PBXNativeTarget "Sudoku TeacherTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +461,7 @@
 				AB2A8AAC17EA1CED00A49B0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
