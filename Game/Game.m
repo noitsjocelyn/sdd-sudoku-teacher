@@ -69,14 +69,28 @@
     #endif
 }
 
-
 - (void)displayPuzzle
 {
+    NSMutableString *builder = [[NSMutableString alloc] init];
+    [builder appendString:@"\n"];
 	for (int i = 0; i < 9; ++i)
 	{
-		NSLog(@"%@ %@ %@ %@ %@ %@ %@ %@ %@", [puzzle objectAtIndex:(0 + (9 * i))], [puzzle objectAtIndex:(1 + (9 * i))], [puzzle objectAtIndex:(2 + (9 * i))], [puzzle objectAtIndex:(3 + (9 * i))], [puzzle objectAtIndex:(4 + (9 * i))], [puzzle objectAtIndex:(5 + (9 * i))], [puzzle objectAtIndex:(6 + (9 * i))], [puzzle objectAtIndex:(7 + (9 * i))], [puzzle objectAtIndex:(8 + (9 * i))]);
-
+        [builder appendFormat:@"%@ ", [puzzle objectAtIndex:(0 + (9 * i))]];
+        [builder appendFormat:@"%@ ", [puzzle objectAtIndex:(1 + (9 * i))]];
+        [builder appendFormat:@"%@ ", [puzzle objectAtIndex:(2 + (9 * i))]];
+        [builder appendFormat:@"%@ ", [puzzle objectAtIndex:(3 + (9 * i))]];
+        [builder appendFormat:@"%@ ", [puzzle objectAtIndex:(4 + (9 * i))]];
+        [builder appendFormat:@"%@ ", [puzzle objectAtIndex:(5 + (9 * i))]];
+        [builder appendFormat:@"%@ ", [puzzle objectAtIndex:(6 + (9 * i))]];
+        [builder appendFormat:@"%@ ", [puzzle objectAtIndex:(7 + (9 * i))]];
+        [builder appendFormat:@"%@ ", [puzzle objectAtIndex:(8 + (9 * i))]];
+        [builder appendString:@"\n"];
 	}
+    NSLog(@"%@", builder);
+    
+    #if !(__has_feature(objc_arc))
+    [builder release];
+    #endif
 }
 
 @end
