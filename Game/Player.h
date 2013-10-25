@@ -11,6 +11,6 @@
 {
 }
 
-- (void) getPlayerInput: (Game*) Board;
+- (void)getPlayerInput:(Game *)Board;
 
 @end

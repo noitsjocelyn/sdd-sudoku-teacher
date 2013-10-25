@@ -12,7 +12,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface Game : NSObject
 {
 @public
@@ -20,10 +19,10 @@
 	NSMutableArray *fullGrid;
 	NSMutableArray *startGrid;
 }
-- (id) init;
-- (BOOL) checkPuzzle;
-- (void) setValue: (int) x: (int) y;
-- (void) displayPuzzle;
 
+- (id)init;
+- (BOOL)checkPuzzle;
+- (void)setValueX:(int)x y:(int)y;
+- (void)displayPuzzle;
 
 @end
