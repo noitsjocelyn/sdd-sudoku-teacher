@@ -22,6 +22,7 @@
 		AB5C626A181AB55700F722DD /* PPMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5C6268181AB55700F722DD /* PPMainMenuController.m */; };
 		AB5C626D181AF8AE00F722DD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5C626C181AF8AE00F722DD /* Storyboard.storyboard */; };
 		AB9BC8BE181B3F80008E8987 /* PPSudokuView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */; };
+		AB9BC8C1181B5875008E8987 /* PPSudokuGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		AB5C626C181AF8AE00F722DD /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		AB9BC8BC181B3F80008E8987 /* PPSudokuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSudokuView.h; sourceTree = "<group>"; };
 		AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSudokuView.m; sourceTree = "<group>"; };
+		AB9BC8BF181B5875008E8987 /* PPSudokuGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSudokuGameViewController.h; sourceTree = "<group>"; };
+		AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSudokuGameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				AB5C6268181AB55700F722DD /* PPMainMenuController.m */,
 				AB9BC8BC181B3F80008E8987 /* PPSudokuView.h */,
 				AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */,
+				AB9BC8BF181B5875008E8987 /* PPSudokuGameViewController.h */,
+				AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */,
 				AB5C626C181AF8AE00F722DD /* Storyboard.storyboard */,
 				AB2A8A9017EA1CED00A49B0B /* Images.xcassets */,
 				AB2A8A8517EA1CED00A49B0B /* Supporting Files */,
@@ -256,6 +261,7 @@
 			files = (
 				AB2A8A8F17EA1CED00A49B0B /* PPAppDelegate.m in Sources */,
 				AB5C626A181AB55700F722DD /* PPMainMenuController.m in Sources */,
+				AB9BC8C1181B5875008E8987 /* PPSudokuGameViewController.m in Sources */,
 				AB2A8A8B17EA1CED00A49B0B /* main.m in Sources */,
 				AB9BC8BE181B3F80008E8987 /* PPSudokuView.m in Sources */,
 			);

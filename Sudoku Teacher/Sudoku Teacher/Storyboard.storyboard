@@ -107,10 +107,10 @@
             </objects>
             <point key="canvasLocation" x="350" y="49"/>
         </scene>
-        <!--View Controller - Sudoku-->
+        <!--Sudoku Game View Controller - Sudoku-->
         <scene sceneID="FBj-J8-Zpx">
             <objects>
-                <viewController id="vrX-YD-l6G" sceneMemberID="viewController">
+                <viewController id="vrX-YD-l6G" customClass="PPSudokuGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="usJ-G0-aQ1"/>
                         <viewControllerLayoutGuide type="bottom" id="ZF0-eq-3q5"/>
@@ -130,6 +130,9 @@
                     <navigationItem key="navigationItem" title="Sudoku" id="lG3-oB-bV1">
                         <barButtonItem key="backBarButtonItem" title="Menu" id="AHE-8y-is4"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="boardBackground" destination="aa1-68-vYE" id="Ezs-24-TmY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DkS-r5-JBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
