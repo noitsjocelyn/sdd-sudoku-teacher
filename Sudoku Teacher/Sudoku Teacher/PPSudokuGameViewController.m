@@ -92,7 +92,7 @@
 			{
 				yPos -= 0.5;
 			}
-			// Set up the label
+			// Set up the value buttons
 			float buttonSize = 31.0;
 			UIButton *aValueButton = [[UIButton alloc] initWithFrame:CGRectMake(xPos, yPos, buttonSize, buttonSize)];
 			[aValueButton setBackgroundColor:[UIColor clearColor]];
