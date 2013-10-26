@@ -36,8 +36,23 @@
 	{
 		[self.view addSubview:valueLabels[i]];
 	}
-	SudokuBoard *aBoard = [SudokuBoardGenerator generate];
-	[self setValues:[aBoard boardAsShortArray]];
+	// Make the processing view components
+	processingView = [[UIView alloc] init];
+	// Note: The navigation bar is 64 px tall
+	[processingView setFrame:CGRectMake(0.0, 64.0, self.view.frame.size.width, self.view.frame.size.height - 64.0)];
+	[processingView setBackgroundColor:[UIColor blackColor]];
+	[processingView setAlpha:0.6];
+	// Place the spinner in the middle
+	// Note: This frame is relative to processingView, not to self.view
+	// Also, standard spinner size is 37 by 37
+	processingIndicator = [[UIActivityIndicatorView alloc] init];
+	[processingIndicator setFrame:CGRectMake(142.5, 142.5, 37.0, 37.0)];
+	[processingView addSubview:processingIndicator];
+	[processingIndicator startAnimating];
+	// Add the view
+	[self.view addSubview:processingView];
+	// Spin off the process generation to its own thread
+	[NSThread detachNewThreadSelector:@selector(generateAndDisplayBoardWithDifficulty:) toTarget:self withObject:[NSNumber numberWithInt:0]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,29 +99,52 @@
 			[aLabel setTextAlignment:NSTextAlignmentCenter];
 			[aLabel setFont:[UIFont fontWithName:@"Helvetica Neu" size:35.0]];
 			[aLabel setBackgroundColor:[UIColor clearColor]];
-			[aLabel setText:@"0"];
+			[aLabel setText:@""];
 			valueLabels[i] = aLabel;
 		}
 	}
 }
 
-- (void)setValues:(short *)valuesArray
+- (void)setValuesFromShortArray:(short *)valuesArray
 {
 	for (short i = 0; i < 81; ++i)
 	{
+		// Grab the value
 		short val = valuesArray[i];
-		
 		NSString *valString;
+		// If it's non-zero, set the string up
 		if (val != 0)
 		{
 			valString = [NSString stringWithFormat:@"%d", val];
 		}
+		// If it's zero, make the string blank
 		else
 		{
 			valString = @"";
 		}
 		[valueLabels[i] setText:valString];
 	}
+}
+
+- (void)generateAndDisplayBoardWithDifficulty:(NSNumber *)difficulty
+{
+	// Generate the puzzle
+	SudokuBoard *aBoard = [SudokuBoardGenerator generate];
+	[self setValuesFromShortArray:[aBoard boardAsShortArray]];
+	aBoard = Nil;
+	// Animate removing the processing view
+	[UIView animateWithDuration:0.4
+					 animations:^(void)
+	 {
+		 [processingView setAlpha:0.0];
+	 }
+					 completion:^(BOOL finished)
+	 {
+		 [processingView removeFromSuperview];
+	 }
+	 ];
+	// Since we're running this in its own thread, exit it
+	[NSThread exit];
 }
 
 @end

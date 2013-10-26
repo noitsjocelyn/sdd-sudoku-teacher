@@ -13,8 +13,14 @@
 @interface PPSudokuGameViewController : UIViewController
 {
 	UILabel *valueLabels[81];
+	UIView *processingView;
+	UIActivityIndicatorView *processingIndicator;
 }
 
 @property (weak, nonatomic) IBOutlet PPSudokuView *boardBackground;
+
+- (void)setupLabels;
+- (void)setValuesFromShortArray:(short *)valuesArray;
+- (void)generateAndDisplayBoardWithDifficulty:(NSNumber *)difficulty;
 
 @end
