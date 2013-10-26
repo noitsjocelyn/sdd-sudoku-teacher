@@ -21,6 +21,10 @@
 		AB2A8AA417EA1CED00A49B0B /* Sudoku_TeacherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A8AA317EA1CED00A49B0B /* Sudoku_TeacherTests.m */; };
 		AB5C626A181AB55700F722DD /* PPMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5C6268181AB55700F722DD /* PPMainMenuController.m */; };
 		AB5C626D181AF8AE00F722DD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5C626C181AF8AE00F722DD /* Storyboard.storyboard */; };
+		AB914418181C335E00272D10 /* JFRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = AB91440E181C335E00272D10 /* JFRandom.m */; };
+		AB91441B181C335E00272D10 /* SudokuBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = AB914412181C335E00272D10 /* SudokuBoard.m */; };
+		AB91441C181C335E00272D10 /* SudokuBoardGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AB914414181C335E00272D10 /* SudokuBoardGenerator.m */; };
+		AB91441D181C335E00272D10 /* SudokuBoardSector.m in Sources */ = {isa = PBXBuildFile; fileRef = AB914416181C335E00272D10 /* SudokuBoardSector.m */; };
 		AB9BC8BE181B3F80008E8987 /* PPSudokuView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */; };
 		AB9BC8C1181B5875008E8987 /* PPSudokuGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */; };
 /* End PBXBuildFile section */
@@ -55,6 +59,14 @@
 		AB5C6267181AB55700F722DD /* PPMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMainMenuController.h; sourceTree = "<group>"; };
 		AB5C6268181AB55700F722DD /* PPMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMainMenuController.m; sourceTree = "<group>"; };
 		AB5C626C181AF8AE00F722DD /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		AB91440D181C335E00272D10 /* JFRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFRandom.h; sourceTree = "<group>"; };
+		AB91440E181C335E00272D10 /* JFRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFRandom.m; sourceTree = "<group>"; };
+		AB914411181C335E00272D10 /* SudokuBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuBoard.h; sourceTree = "<group>"; };
+		AB914412181C335E00272D10 /* SudokuBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuBoard.m; sourceTree = "<group>"; };
+		AB914413181C335E00272D10 /* SudokuBoardGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuBoardGenerator.h; sourceTree = "<group>"; };
+		AB914414181C335E00272D10 /* SudokuBoardGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuBoardGenerator.m; sourceTree = "<group>"; };
+		AB914415181C335E00272D10 /* SudokuBoardSector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuBoardSector.h; sourceTree = "<group>"; };
+		AB914416181C335E00272D10 /* SudokuBoardSector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuBoardSector.m; sourceTree = "<group>"; };
 		AB9BC8BC181B3F80008E8987 /* PPSudokuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSudokuView.h; sourceTree = "<group>"; };
 		AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSudokuView.m; sourceTree = "<group>"; };
 		AB9BC8BF181B5875008E8987 /* PPSudokuGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSudokuGameViewController.h; sourceTree = "<group>"; };
@@ -118,6 +130,7 @@
 		AB2A8A8417EA1CED00A49B0B /* Sudoku Teacher */ = {
 			isa = PBXGroup;
 			children = (
+				AB91440B181C335E00272D10 /* SudokuGenerator */,
 				AB2A8A8D17EA1CED00A49B0B /* PPAppDelegate.h */,
 				AB2A8A8E17EA1CED00A49B0B /* PPAppDelegate.m */,
 				AB5C6267181AB55700F722DD /* PPMainMenuController.h */,
@@ -160,6 +173,22 @@
 				AB2A8AA017EA1CED00A49B0B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AB91440B181C335E00272D10 /* SudokuGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				AB91440D181C335E00272D10 /* JFRandom.h */,
+				AB91440E181C335E00272D10 /* JFRandom.m */,
+				AB914411181C335E00272D10 /* SudokuBoard.h */,
+				AB914412181C335E00272D10 /* SudokuBoard.m */,
+				AB914413181C335E00272D10 /* SudokuBoardGenerator.h */,
+				AB914414181C335E00272D10 /* SudokuBoardGenerator.m */,
+				AB914415181C335E00272D10 /* SudokuBoardSector.h */,
+				AB914416181C335E00272D10 /* SudokuBoardSector.m */,
+			);
+			name = SudokuGenerator;
+			path = ../../SudokuGenerator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,11 +288,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB914418181C335E00272D10 /* JFRandom.m in Sources */,
 				AB2A8A8F17EA1CED00A49B0B /* PPAppDelegate.m in Sources */,
+				AB91441D181C335E00272D10 /* SudokuBoardSector.m in Sources */,
 				AB5C626A181AB55700F722DD /* PPMainMenuController.m in Sources */,
 				AB9BC8C1181B5875008E8987 /* PPSudokuGameViewController.m in Sources */,
 				AB2A8A8B17EA1CED00A49B0B /* main.m in Sources */,
+				AB91441C181C335E00272D10 /* SudokuBoardGenerator.m in Sources */,
 				AB9BC8BE181B3F80008E8987 /* PPSudokuView.m in Sources */,
+				AB91441B181C335E00272D10 /* SudokuBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

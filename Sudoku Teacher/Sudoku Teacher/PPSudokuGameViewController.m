@@ -8,6 +8,8 @@
 
 #import "PPSudokuGameViewController.h"
 #import "PPSudokuView.h"
+#import "SudokuBoardGenerator.h"
+#import "SudokuBoard.h"
 
 @interface PPSudokuGameViewController ()
 
@@ -34,6 +36,8 @@
 	{
 		[self.view addSubview:valueLabels[i]];
 	}
+	SudokuBoard *aBoard = [SudokuBoardGenerator generate];
+	[self setValues:[aBoard boardAsShortArray]];
 }
 
 - (void)didReceiveMemoryWarning

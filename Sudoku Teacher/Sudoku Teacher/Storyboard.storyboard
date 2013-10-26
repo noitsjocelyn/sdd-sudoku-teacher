@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ES4-Du-ty6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-141" y="49"/>
+            <point key="canvasLocation" x="-118" y="49"/>
         </scene>
         <!--Main Menu Controller - Start Menu-->
         <scene sceneID="eYa-Z6-gJI">
@@ -105,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pct-Vx-Hd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="350" y="49"/>
+            <point key="canvasLocation" x="353" y="49"/>
         </scene>
         <!--Sudoku Game View Controller - Sudoku-->
         <scene sceneID="FBj-J8-Zpx">
@@ -155,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0Y-Ht-MyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894" y="669"/>
+            <point key="canvasLocation" x="894" y="667"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
