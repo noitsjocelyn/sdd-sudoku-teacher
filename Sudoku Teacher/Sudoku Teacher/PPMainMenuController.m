@@ -58,27 +58,27 @@
 // Set the difficulty to easy and modify the interface to reflect this
 - (IBAction)toggleEasyMode:(id)sender
 {
-	[self.easyModeButton setSelected:YES];
-	[self.moderateModeButton setSelected:NO];
-	// If we're changin our selection, move the check with fade
+	// If if it wasn't already set to easy, change stuff
 	if (difficulty != 0)
 	{
+		difficulty = 0;
+		[self.easyModeButton setSelected:YES];
+		[self.moderateModeButton setSelected:NO];
 		[self moveElement:self.toggleCheck toFrame:easyCheckPosition withFadeTime:CHECK_FADE_TIME];
 	}
-	difficulty = 0;
 }
 
 // Like above, set the difficulty to moderate
 - (IBAction)toggleModerateMode:(id)sender
 {
-	[self.easyModeButton setSelected:NO];
-	[self.moderateModeButton setSelected:YES];
-	// If we're changin our selection, move the check with fade
+	// If if it wasn't already set to moderate, change stuff
 	if (difficulty != 1)
 	{
+		difficulty = 1;
+		[self.easyModeButton setSelected:NO];
+		[self.moderateModeButton setSelected:YES];
 		[self moveElement:self.toggleCheck toFrame:moderateCheckPosition withFadeTime:CHECK_FADE_TIME];
 	}
-	difficulty = 1;
 }
 
 // Make a UI element invisible, move it to a given frame, then fade it in
