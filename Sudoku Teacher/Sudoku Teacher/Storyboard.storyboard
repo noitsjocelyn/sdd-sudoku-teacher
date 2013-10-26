@@ -19,7 +19,7 @@
             </objects>
             <point key="canvasLocation" x="-141" y="49"/>
         </scene>
-        <!--Main Menu Controller - Menu-->
+        <!--Main Menu Controller - Start Menu-->
         <scene sceneID="eYa-Z6-gJI">
             <objects>
                 <viewController id="ale-YP-mpf" customClass="PPMainMenuController" sceneMemberID="viewController">
@@ -94,7 +94,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Menu" id="Uhd-tm-5zj"/>
+                    <navigationItem key="navigationItem" title="Start Menu" id="Uhd-tm-5zj"/>
                     <connections>
                         <outlet property="easyModeButton" destination="6BS-S7-1Rn" id="2zU-sU-7qM"/>
                         <outlet property="learnToPlayButton" destination="uIx-YK-zDX" id="voJ-mE-HEz"/>
@@ -120,7 +120,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aa1-68-vYE" customClass="PPSudokuView">
-                                <rect key="frame" x="0.0" y="65" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
