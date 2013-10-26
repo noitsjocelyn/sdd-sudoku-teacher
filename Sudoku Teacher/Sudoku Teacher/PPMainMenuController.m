@@ -8,6 +8,8 @@
 
 #import "PPMainMenuController.h"
 
+#define CHECK_FADE_TIME 0.4
+
 @interface PPMainMenuController ()
 
 @end
@@ -56,19 +58,38 @@
 // Set the difficulty to easy and modify the interface to reflect this
 - (IBAction)toggleEasyMode:(id)sender
 {
-	difficulty = 0;
 	[self.easyModeButton setSelected:YES];
 	[self.moderateModeButton setSelected:NO];
-	[self.toggleCheck setFrame:easyCheckPosition];
+	// If we're changin our selection, move the check with fade
+	if (difficulty != 0)
+	{
+		[self moveElement:self.toggleCheck toFrame:easyCheckPosition withFadeTime:CHECK_FADE_TIME];
+	}
+	difficulty = 0;
 }
 
 // Like above, set the difficulty to moderate
 - (IBAction)toggleModerateMode:(id)sender
 {
-	difficulty = 1;
 	[self.easyModeButton setSelected:NO];
 	[self.moderateModeButton setSelected:YES];
-	[self.toggleCheck setFrame:moderateCheckPosition];
+	// If we're changin our selection, move the check with fade
+	if (difficulty != 1)
+	{
+		[self moveElement:self.toggleCheck toFrame:moderateCheckPosition withFadeTime:CHECK_FADE_TIME];
+	}
+	difficulty = 1;
+}
+
+// Make a UI element invisible, move it to a given frame, then fade it in
+- (void)moveElement:(id)anElement toFrame:(CGRect)aFrame withFadeTime:(NSTimeInterval)anInterval
+{
+	[anElement setAlpha:0.0];
+	[anElement setFrame:aFrame];
+	[UIView animateWithDuration:anInterval animations:^(void)
+	 {
+		 [anElement setAlpha:1.0];
+	 }];
 }
 
 @end
