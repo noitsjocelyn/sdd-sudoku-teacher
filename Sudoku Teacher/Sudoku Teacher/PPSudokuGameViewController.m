@@ -133,17 +133,13 @@
 	aBoard = Nil;
 	// Animate removing the processing view
 	[UIView animateWithDuration:0.4
-					 animations:^(void)
-	 {
-		 [processingView setAlpha:0.0];
-	 }
-					 completion:^(BOOL finished)
-	 {
-		 [processingView removeFromSuperview];
-	 }
-	 ];
-	// Since we're running this in its own thread, exit it
-	[NSThread exit];
+					 animations:^(void){ [processingView setAlpha:0.0]; }
+					 completion:^(BOOL finished){ [processingView removeFromSuperview]; }];
+	// Exit the thread
+	if (![NSThread isMainThread])
+	{
+		[NSThread exit];
+	}
 }
 
 @end

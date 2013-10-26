@@ -86,10 +86,8 @@
 {
 	[anElement setAlpha:0.0];
 	[anElement setFrame:aFrame];
-	[UIView animateWithDuration:anInterval animations:^(void)
-	 {
-		 [anElement setAlpha:1.0];
-	 }];
+	[UIView animateWithDuration:anInterval
+					 animations:^(void){ [anElement setAlpha:1.0]; }];
 }
 
 @end
