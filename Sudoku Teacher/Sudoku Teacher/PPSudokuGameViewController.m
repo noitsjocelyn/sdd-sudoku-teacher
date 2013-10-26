@@ -93,14 +93,13 @@
 				yPos -= 0.5;
 			}
 			// Set up the label
-			float labelSize = 31.0;
-			UILabel *aLabel = [[UILabel alloc] initWithFrame:CGRectMake(xPos, yPos, labelSize, labelSize)];
-			[aLabel setTextColor:[UIColor blackColor]];
-			[aLabel setTextAlignment:NSTextAlignmentCenter];
-			[aLabel setFont:[UIFont fontWithName:@"Helvetica Neu" size:35.0]];
-			[aLabel setBackgroundColor:[UIColor clearColor]];
-			[aLabel setText:@""];
-			valueLabels[i] = aLabel;
+			float buttonSize = 31.0;
+			UIButton *aValueButton = [[UIButton alloc] initWithFrame:CGRectMake(xPos, yPos, buttonSize, buttonSize)];
+			[aValueButton setBackgroundColor:[UIColor clearColor]];
+			[aValueButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+			[aValueButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+			[aValueButton setTitle:@"" forState:UIControlStateNormal];
+			valueLabels[i] = aValueButton;
 		}
 	}
 }
@@ -122,7 +121,7 @@
 		{
 			valString = @"";
 		}
-		[valueLabels[i] setText:valString];
+		[valueLabels[i] setTitle:valString forState:UIControlStateNormal];
 	}
 }
 

@@ -12,7 +12,7 @@
 
 @interface PPSudokuGameViewController : UIViewController
 {
-	UILabel *valueLabels[81];
+	UIButton *valueLabels[81];
 	UIView *processingView;
 	UIActivityIndicatorView *processingIndicator;
 }
