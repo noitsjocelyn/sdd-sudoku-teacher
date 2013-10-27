@@ -106,11 +106,6 @@
 		{
 			int r = arc4random() % 41;
 			int r2 = 80 - r;
-			while ([basePuzzle checkIfSquareIsFilled:r] == YES || [basePuzzle checkIfSquareIsFilled:r2] == YES)
-			{
-				r = arc4random() % 41;
-				r2 = 80 - r;
-			}
 			[basePuzzle putInValue: (givenPuzzle[r] + r * 9)];
 			workingPuzzle[r] = givenPuzzle[r];
 			count += 1;
