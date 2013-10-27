@@ -49,7 +49,7 @@
 {
     NSLog(@"Testing givePuzzle...");
     short *inputPuz = calloc(81, sizeof(short));
-    const char *cString = @"672145398145983672389762451263574819958621743714398526597236184426817935831459267";
+    const char *cString = "672145398145983672389762451263574819958621743714398526597236184426817935831459267";
     BOOL didTestPass = YES;
     @try {
         for (short i = 0; i < 81; i++)
@@ -57,7 +57,7 @@
             short numValue = (short)(cString[i] - '0');
             inputPuz[i] = numValue;
         }
-        Puzzle *testPuzzle = [[PuzzleMaker alloc] init];
+        PuzzleMaker *testPuzzle = [[PuzzleMaker alloc] init];
         [testPuzzle givePuzzle:inputPuz];
     }
     @catch (NSException *e)
@@ -68,8 +68,9 @@
     @finally
     {
         #if !(__has_feature(objc_arc))
-        [inputPuz release];
+        [PuzzleMaker release];
         #endif
+        free(inputPuz);
     }
     NSLog(@"Success.");
     return didTestPass;
