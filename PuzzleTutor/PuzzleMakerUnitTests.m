@@ -57,8 +57,8 @@
             short numValue = (short)(cString[i] - '0');
             inputPuz[i] = numValue;
         }
-        PuzzleMaker *testPuzzleMaker = [[PuzzleMaker alloc] init];
-        [testPuzzle givePuzzle:inputPuz];
+        testPuzzleMaker = [[PuzzleMaker alloc] init];
+        [testPuzzleMaker givePuzzle:inputPuz];
     }
     @catch (NSException *e)
     {
@@ -67,9 +67,6 @@
     }
     @finally
     {
-        #if !(__has_feature(objc_arc))
-        [PuzzleMaker release];
-        #endif
         free(inputPuz);
     }
     NSLog(@"Success.");
