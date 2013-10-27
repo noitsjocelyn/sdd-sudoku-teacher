@@ -10,6 +10,7 @@
 #import "PPSudokuView.h"
 #import "SudokuBoardGenerator.h"
 #import "SudokuBoard.h"
+#import "PuzzleMaker.h"
 
 @interface PPSudokuGameViewController ()
 
@@ -129,8 +130,23 @@
 {
 	// Generate the puzzle
 	SudokuBoard *aBoard = [SudokuBoardGenerator generate];
-	[self setValuesFromShortArray:[aBoard boardAsShortArray]];
+	PuzzleMaker *aMaker = [[PuzzleMaker alloc] init];
+	[aMaker givePuzzle:[aBoard boardAsShortArray]];
+	short *puzzleArray;// = calloc(81, sizeof(short));
+	if ([difficulty intValue] == 0)
+	{
+		puzzleArray = [aMaker buildEasyPuzzle];
+	}
+	else
+	{
+		puzzleArray = [aMaker buildMediumPuzzle];
+	}
+	[self setValuesFromShortArray:puzzleArray];
 	aBoard = Nil;
+	aMaker = Nil;
+	// I think this needs to be freed, but I'm getting warnings when I do, so leaving it for now
+	//free(puzzleArray);
+	
 	// Animate removing the processing view
 	[UIView animateWithDuration:0.4
 					 animations:^(void){ [processingView setAlpha:0.0]; }

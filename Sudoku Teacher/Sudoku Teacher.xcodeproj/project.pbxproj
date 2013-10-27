@@ -25,6 +25,8 @@
 		AB91441B181C335E00272D10 /* SudokuBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = AB914412181C335E00272D10 /* SudokuBoard.m */; };
 		AB91441C181C335E00272D10 /* SudokuBoardGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AB914414181C335E00272D10 /* SudokuBoardGenerator.m */; };
 		AB91441D181C335E00272D10 /* SudokuBoardSector.m in Sources */ = {isa = PBXBuildFile; fileRef = AB914416181C335E00272D10 /* SudokuBoardSector.m */; };
+		AB914429181DCA9700272D10 /* Puzzle.m in Sources */ = {isa = PBXBuildFile; fileRef = AB914426181DCA9700272D10 /* Puzzle.m */; };
+		AB91442A181DCA9700272D10 /* PuzzleMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = AB914428181DCA9700272D10 /* PuzzleMaker.m */; };
 		AB9BC8BE181B3F80008E8987 /* PPSudokuView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */; };
 		AB9BC8C1181B5875008E8987 /* PPSudokuGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */; };
 /* End PBXBuildFile section */
@@ -67,6 +69,10 @@
 		AB914414181C335E00272D10 /* SudokuBoardGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuBoardGenerator.m; sourceTree = "<group>"; };
 		AB914415181C335E00272D10 /* SudokuBoardSector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuBoardSector.h; sourceTree = "<group>"; };
 		AB914416181C335E00272D10 /* SudokuBoardSector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuBoardSector.m; sourceTree = "<group>"; };
+		AB914425181DCA9700272D10 /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Puzzle.h; path = ../../PuzzleTutor/Puzzle.h; sourceTree = "<group>"; };
+		AB914426181DCA9700272D10 /* Puzzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Puzzle.m; path = ../../PuzzleTutor/Puzzle.m; sourceTree = "<group>"; };
+		AB914427181DCA9700272D10 /* PuzzleMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PuzzleMaker.h; path = ../../PuzzleTutor/PuzzleMaker.h; sourceTree = "<group>"; };
+		AB914428181DCA9700272D10 /* PuzzleMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PuzzleMaker.m; path = ../../PuzzleTutor/PuzzleMaker.m; sourceTree = "<group>"; };
 		AB9BC8BC181B3F80008E8987 /* PPSudokuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSudokuView.h; sourceTree = "<group>"; };
 		AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSudokuView.m; sourceTree = "<group>"; };
 		AB9BC8BF181B5875008E8987 /* PPSudokuGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSudokuGameViewController.h; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 				AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */,
 				AB5C626C181AF8AE00F722DD /* Storyboard.storyboard */,
 				AB2A8A9017EA1CED00A49B0B /* Images.xcassets */,
+				AB914424181DCA8700272D10 /* PuzzleTutor */,
 				AB91440B181C335E00272D10 /* SudokuGenerator */,
 				AB2A8A8517EA1CED00A49B0B /* Supporting Files */,
 			);
@@ -189,6 +196,17 @@
 			);
 			name = SudokuGenerator;
 			path = ../../SudokuGenerator;
+			sourceTree = "<group>";
+		};
+		AB914424181DCA8700272D10 /* PuzzleTutor */ = {
+			isa = PBXGroup;
+			children = (
+				AB914425181DCA9700272D10 /* Puzzle.h */,
+				AB914426181DCA9700272D10 /* Puzzle.m */,
+				AB914427181DCA9700272D10 /* PuzzleMaker.h */,
+				AB914428181DCA9700272D10 /* PuzzleMaker.m */,
+			);
+			name = PuzzleTutor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,8 +313,10 @@
 				AB9BC8C1181B5875008E8987 /* PPSudokuGameViewController.m in Sources */,
 				AB2A8A8B17EA1CED00A49B0B /* main.m in Sources */,
 				AB91441C181C335E00272D10 /* SudokuBoardGenerator.m in Sources */,
+				AB914429181DCA9700272D10 /* Puzzle.m in Sources */,
 				AB9BC8BE181B3F80008E8987 /* PPSudokuView.m in Sources */,
 				AB91441B181C335E00272D10 /* SudokuBoard.m in Sources */,
+				AB91442A181DCA9700272D10 /* PuzzleMaker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
