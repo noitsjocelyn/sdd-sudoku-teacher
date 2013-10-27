@@ -174,7 +174,7 @@
     // Fail if our string isn't 81 characters.
     if ([stringRepresentation length] < 81)
     {
-        [NSException raise:@"Invalid string length" format:@"String must be of at least length 81. %ld is invalid.", [stringRepresentation length]];
+        [NSException raise:@"Invalid string length" format:@"String must be of at least length 81. %ld is invalid.", (unsigned long)[stringRepresentation length]];
         return;
     }
     const char *cString = [stringRepresentation UTF8String];
