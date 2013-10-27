@@ -57,7 +57,7 @@
             short numValue = (short)(cString[i] - '0');
             inputPuz[i] = numValue;
         }
-        PuzzleMaker *testPuzzle = [[PuzzleMaker alloc] init];
+        PuzzleMaker *testPuzzleMaker = [[PuzzleMaker alloc] init];
         [testPuzzle givePuzzle:inputPuz];
     }
     @catch (NSException *e)
