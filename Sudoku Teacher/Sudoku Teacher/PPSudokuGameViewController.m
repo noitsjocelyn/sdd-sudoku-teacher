@@ -24,11 +24,6 @@
     if (self)
     {
         // Custom initialization
-        // Default buttons to disabled
-        for (UIButton *aButton in self.setValueButtons)
-        {
-            [aButton setEnabled:NO];
-        }
     }
     return self;
 }
@@ -41,6 +36,11 @@
     for (short i = 0; i < 81; ++i)
     {
         [self.view addSubview:valueLabels[i]];
+    }
+    // Default buttons to disabled
+    for (UIButton *aButton in self.setValueButtons)
+    {
+        [aButton setEnabled:NO];
     }
     [self setupProcessingView];
     [self.view addSubview:processingView];
@@ -58,13 +58,18 @@
 
 - (IBAction)setValue:(id)sender
 {
+    // Don't allow anything for original values
     if (!valueModifiable[self.buttonSelected])
     {
         return;
     }
+    // Grab the value we want to set it to
     NSUInteger value = [sender tag];
+    // Grab the button that is selected
     UIButton *buttonToChange = valueLabels[self.buttonSelected];
+    // Default the new value to blank
     NSString *newTitle = @"";
+    // If we aren't clearing it, set the new value
     if (value != 0)
     {
         newTitle = [NSString stringWithFormat:@"%d", value];
@@ -73,16 +78,19 @@
             [aButton setEnabled:YES];
         }
     }
+    // Otherwise, clear it
     else
     {
         for (UIButton *aButton in self.setValueButtons)
         {
+            // Disable the clear button
             if ([aButton tag] == 0)
             {
                 [aButton setEnabled:NO];
             }
         }
     }
+    // Set the new title
     [buttonToChange setTitle:newTitle forState:UIControlStateNormal];
 }
 
@@ -239,6 +247,7 @@
             if ([valueLabels[i] isSelected])
             {
                 [valueLabels[i] setSelected:NO];
+                self.buttonSelected = -1;
                 // Also disable the setters
                 for (UIButton *aButton in self.setValueButtons)
                 {
