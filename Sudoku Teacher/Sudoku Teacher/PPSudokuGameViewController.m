@@ -99,7 +99,8 @@
 			[aValueButton setBackgroundColor:[UIColor clearColor]];
 			[aValueButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 			[aValueButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-			[aValueButton setTitle:@"" forState:UIControlStateNormal];
+			[aValueButton setTitle:@" " forState:UIControlStateNormal];
+			[aValueButton addTarget:self action:@selector(printButtonNumber) forControlEvents:UIControlEventTouchUpInside];
 			valueLabels[i] = aValueButton;
 		}
 	}
@@ -120,7 +121,7 @@
 		// If it's zero, make the string blank
 		else
 		{
-			valString = @"";
+			valString = @" ";
 		}
 		[valueLabels[i] setTitle:valString forState:UIControlStateNormal];
 	}
@@ -156,6 +157,11 @@
 	{
 		[NSThread exit];
 	}
+}
+
+- (void)printButtonNumber
+{
+	NSLog(@"Button pressed!");
 }
 
 @end
