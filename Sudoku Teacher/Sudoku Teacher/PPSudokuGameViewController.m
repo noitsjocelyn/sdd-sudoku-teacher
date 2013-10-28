@@ -215,7 +215,7 @@
     short value = 0;
     if (![title isEqualToString:@""])
     {
-        // Gotta subtract '0' from the char value of the number
+        // Need to subtract '0' from the char value of the number
         char valueChar = [title characterAtIndex:0] - '0';
         value = [[NSNumber numberWithChar:valueChar] shortValue];
     }
@@ -227,8 +227,13 @@
 {
     for (short i = 0; i < 81; ++i)
     {
-        // We need to do stuff if we're on the button that is pressed
-        if (i == buttonTag)
+        // Deselect all the buttons that were not pressed
+        if (i != buttonTag)
+        {
+            [valueLabels[i] setSelected:NO];
+        }
+        // We need to do stuff if we're on the button that IS pressed
+        else
         {
             // If it was already selected, deselect it
             if ([valueLabels[i] isSelected])
@@ -269,11 +274,6 @@
                     }
                 }
             }
-        }
-        // Deselect all the other buttons
-        else
-        {
-            [valueLabels[i] setSelected:NO];
         }
     }
 }
