@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class PPMainMenuController;
+
+@class Puzzle;
 
 @interface PPAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) PPMainMenuController *viewController;
+@property (assign) Puzzle *gameBoard;
+@property (assign) NSNumber *difficulty;
 
 @end
