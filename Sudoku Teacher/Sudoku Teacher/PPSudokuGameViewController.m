@@ -71,8 +71,8 @@
 			// Get the index out of 81
 			short i = 9 * x + y;
 			// Get the position offsets
-			float xPos = 4 + 1.5 * x + 34 * x;
-			float yPos = 4 + 1.5 * y + 34 * y;
+			float xPos = 4 + 35.5 * x;
+			float yPos = 4 + 35.5 * y;
 			// Offset by the position of the board background
 			xPos += self.boardBackground.frame.origin.x;
 			yPos += self.boardBackground.frame.origin.y;
@@ -164,9 +164,19 @@
 
 - (void)printButtonNumber:(id)sender
 {
+	// Get the X and Y of the button from its tag
 	short x = [sender tag] / 9;
 	short y = [sender tag] % 9;
-	NSLog(@"Button at (%d,%d) pressed!", x, y);
+	// Get value of the title
+	NSString *title = [sender titleForState:UIControlStateNormal];
+	short val = 0;
+	if (![title isEqualToString:@""])
+	{
+		// Gotta subtract '0' from the char value of the number
+		val = [[NSNumber numberWithChar:[title characterAtIndex:0] - '0'] shortValue];
+	}
+	// Log the stuff
+	NSLog(@"Button at (%d,%d) pressed! Value: %d", x, y, val);
 }
 
 @end
