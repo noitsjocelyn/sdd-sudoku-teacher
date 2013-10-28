@@ -64,7 +64,9 @@
 		difficulty = 0;
 		[self.easyModeButton setSelected:YES];
 		[self.moderateModeButton setSelected:NO];
-		[self moveElement:self.toggleCheck toFrame:easyCheckPosition withFadeTime:CHECK_FADE_TIME];
+		[self moveElement:self.toggleCheck
+				  toFrame:easyCheckPosition
+			 withFadeTime:CHECK_FADE_TIME];
 	}
 }
 
@@ -77,7 +79,9 @@
 		difficulty = 1;
 		[self.easyModeButton setSelected:NO];
 		[self.moderateModeButton setSelected:YES];
-		[self moveElement:self.toggleCheck toFrame:moderateCheckPosition withFadeTime:CHECK_FADE_TIME];
+		[self moveElement:self.toggleCheck
+				  toFrame:moderateCheckPosition
+			 withFadeTime:CHECK_FADE_TIME];
 	}
 }
 

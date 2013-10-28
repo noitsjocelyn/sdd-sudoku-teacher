@@ -40,20 +40,24 @@
 	// Make the processing view components
 	processingView = [[UIView alloc] init];
 	// Note: The navigation bar is 64 px tall
-	[processingView setFrame:CGRectMake(0.0, 64.0, self.view.frame.size.width, self.view.frame.size.height - 64.0)];
+	CGRect processingFrame = CGRectMake(0.0, 64.0, self.view.frame.size.width, self.view.frame.size.height - 64.0);
+	[processingView setFrame:processingFrame];
 	[processingView setBackgroundColor:[UIColor blackColor]];
 	[processingView setAlpha:0.6];
 	// Place the spinner in the middle
 	// Note: This frame is relative to processingView, not to self.view
 	// Also, standard spinner size is 37 by 37
 	processingIndicator = [[UIActivityIndicatorView alloc] init];
-	[processingIndicator setFrame:CGRectMake(142.5, 142.5, 37.0, 37.0)];
+	CGRect spinnerFrame = CGRectMake(142.5, 142.5, 37.0, 37.0);
+	[processingIndicator setFrame:spinnerFrame];
 	[processingView addSubview:processingIndicator];
 	[processingIndicator startAnimating];
 	// Add the view
 	[self.view addSubview:processingView];
 	// Spin off the process generation to its own thread
-	[NSThread detachNewThreadSelector:@selector(generateAndDisplayBoardWithDifficulty:) toTarget:self withObject:[NSNumber numberWithInt:0]];
+	[NSThread detachNewThreadSelector:@selector(generateAndDisplayBoardWithDifficulty:)
+							 toTarget:self
+						   withObject:[NSNumber numberWithInt:0]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,25 +81,14 @@
 			xPos += self.boardBackground.frame.origin.x;
 			yPos += self.boardBackground.frame.origin.y;
 			// Slight position adjustments for the last two rows/columns
-			if (x == 8)
-			{
-				xPos -= 1.5;
-			}
-			if (y == 8)
-			{
-				yPos -= 1.5;
-			}
-			if (x == 7)
-			{
-				xPos -= 0.5;
-			}
-			if (y == 7)
-			{
-				yPos -= 0.5;
-			}
+			if (x == 7) xPos -= 0.5;
+			if (y == 7) yPos -= 0.5;
+			if (x == 8) xPos -= 1.5;
+			if (y == 8) yPos -= 1.5;
 			// Set up the value buttons
 			float buttonSize = 31.0;
-			UIButton *aValueButton = [[UIButton alloc] initWithFrame:CGRectMake(xPos, yPos, buttonSize, buttonSize)];
+			CGRect buttonFrame = CGRectMake(xPos, yPos, buttonSize, buttonSize);
+			UIButton *aValueButton = [[UIButton alloc] initWithFrame:buttonFrame];
 			[aValueButton setBackgroundColor:[UIColor clearColor]];
 			[aValueButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 			[aValueButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
@@ -103,7 +96,9 @@
 			// Set the tag so we can figure out which is pressed later
 			[aValueButton setTag:i];
 			// Call the printButtonNumber: method when they are pressed
-			[aValueButton addTarget:self action:@selector(printButtonNumber:) forControlEvents:UIControlEventTouchUpInside];
+			[aValueButton addTarget:self
+							 action:@selector(printButtonNumber:)
+				   forControlEvents:UIControlEventTouchUpInside];
 			valueLabels[i] = aValueButton;
 		}
 	}
