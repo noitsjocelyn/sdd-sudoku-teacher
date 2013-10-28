@@ -21,9 +21,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Default to Easy mode, make interface reflect this
-		difficulty = 0;
-		[self.easyModeButton setSelected:YES];
-		[self.moderateModeButton setSelected:NO];
+        difficulty = 0;
+        [self.easyModeButton setSelected:YES];
+        [self.moderateModeButton setSelected:NO];
     }
     return self;
 }
@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-	[self setupCheckPositions];
+    [self setupCheckPositions];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,54 +44,54 @@
 // Set up the various positions of the check mark
 - (void)setupCheckPositions
 {
-	// Get the starting position of the check, ie. next to the easy button
-	easyCheckPosition = self.toggleCheck.frame;
-	// Determine how far it is from the easy button
-	float xDiff = self.easyModeButton.frame.origin.x - easyCheckPosition.origin.x;
-	// Determine the X needed to position the check next to the moderate button
-	float moderateX = self.moderateModeButton.frame.origin.x - xDiff;
-	// Set up the check position for next to the moderate button
-	moderateCheckPosition = easyCheckPosition;
-	moderateCheckPosition.origin.x = moderateX;
+    // Get the starting position of the check, ie. next to the easy button
+    easyCheckPosition = self.toggleCheck.frame;
+    // Determine how far it is from the easy button
+    float xDiff = self.easyModeButton.frame.origin.x - easyCheckPosition.origin.x;
+    // Determine the X needed to position the check next to the moderate button
+    float moderateX = self.moderateModeButton.frame.origin.x - xDiff;
+    // Set up the check position for next to the moderate button
+    moderateCheckPosition = easyCheckPosition;
+    moderateCheckPosition.origin.x = moderateX;
 }
 
 // Set the difficulty to easy and modify the interface to reflect this
 - (IBAction)toggleEasyMode:(id)sender
 {
-	// If if it wasn't already set to easy, change stuff
-	if (difficulty != 0)
-	{
-		difficulty = 0;
-		[self.easyModeButton setSelected:YES];
-		[self.moderateModeButton setSelected:NO];
-		[self moveElement:self.toggleCheck
-				  toFrame:easyCheckPosition
-			 withFadeTime:CHECK_FADE_TIME];
-	}
+    // If if it wasn't already set to easy, change stuff
+    if (difficulty != 0)
+    {
+        difficulty = 0;
+        [self.easyModeButton setSelected:YES];
+        [self.moderateModeButton setSelected:NO];
+        [self moveElement:self.toggleCheck
+                  toFrame:easyCheckPosition
+             withFadeTime:CHECK_FADE_TIME];
+    }
 }
 
 // Like above, set the difficulty to moderate
 - (IBAction)toggleModerateMode:(id)sender
 {
-	// If if it wasn't already set to moderate, change stuff
-	if (difficulty != 1)
-	{
-		difficulty = 1;
-		[self.easyModeButton setSelected:NO];
-		[self.moderateModeButton setSelected:YES];
-		[self moveElement:self.toggleCheck
-				  toFrame:moderateCheckPosition
-			 withFadeTime:CHECK_FADE_TIME];
-	}
+    // If if it wasn't already set to moderate, change stuff
+    if (difficulty != 1)
+    {
+        difficulty = 1;
+        [self.easyModeButton setSelected:NO];
+        [self.moderateModeButton setSelected:YES];
+        [self moveElement:self.toggleCheck
+                  toFrame:moderateCheckPosition
+             withFadeTime:CHECK_FADE_TIME];
+    }
 }
 
 // Make a UI element invisible, move it to a given frame, then fade it in
 - (void)moveElement:(id)anElement toFrame:(CGRect)aFrame withFadeTime:(NSTimeInterval)anInterval
 {
-	[anElement setAlpha:0.0];
-	[anElement setFrame:aFrame];
-	[UIView animateWithDuration:anInterval
-					 animations:^(void){ [anElement setAlpha:1.0]; }];
+    [anElement setAlpha:0.0];
+    [anElement setFrame:aFrame];
+    [UIView animateWithDuration:anInterval
+                     animations:^(void){ [anElement setAlpha:1.0]; }];
 }
 
 @end

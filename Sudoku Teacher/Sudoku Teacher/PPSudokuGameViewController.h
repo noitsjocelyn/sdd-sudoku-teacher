@@ -12,9 +12,9 @@
 
 @interface PPSudokuGameViewController : UIViewController
 {
-	UIButton *valueLabels[81];
-	UIView *processingView;
-	UIActivityIndicatorView *processingIndicator;
+    UIButton *valueLabels[81];
+    UIView *processingView;
+    UIActivityIndicatorView *processingIndicator;
 }
 
 @property (weak, nonatomic) IBOutlet PPSudokuView *boardBackground;

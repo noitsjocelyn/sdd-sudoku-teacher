@@ -10,9 +10,9 @@
 
 @interface PPMainMenuController : UIViewController
 {
-	unsigned short difficulty; // 0 = easy, 1 = moderate
-	CGRect easyCheckPosition;
-	CGRect moderateCheckPosition;
+    unsigned short difficulty; // 0 = easy, 1 = moderate
+    CGRect easyCheckPosition;
+    CGRect moderateCheckPosition;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
