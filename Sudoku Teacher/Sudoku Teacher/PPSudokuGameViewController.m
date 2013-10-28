@@ -97,7 +97,7 @@
 			[aValueButton setTag:i];
 			// Call the printButtonNumber: method when they are pressed
 			[aValueButton addTarget:self
-							 action:@selector(printButtonNumber:)
+							 action:@selector(numberButtonPressed:)
 				   forControlEvents:UIControlEventTouchUpInside];
 			valueLabels[i] = aValueButton;
 		}
