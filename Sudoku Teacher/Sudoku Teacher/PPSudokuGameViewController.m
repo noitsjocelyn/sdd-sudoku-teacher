@@ -172,7 +172,7 @@
         value = [[NSNumber numberWithChar:valueChar] shortValue];
     }
     // Log the stuff
-    NSLog(@"Button at (%d,%d) pressed! Its value is %d.", x, y, value);
+    NSLog(@"Button at (%d,%d) pressed. Its value is %d.", x, y, value);
 }
 
 @end
