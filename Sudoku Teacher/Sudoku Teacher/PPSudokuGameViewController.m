@@ -148,8 +148,14 @@
     
     // Animate removing the processing view
     [UIView animateWithDuration:0.4
-                     animations:^(void){ [processingView setAlpha:0.0]; }
-                     completion:^(BOOL finished){ [processingView removeFromSuperview]; }];
+                     animations:^(void)
+                     {
+                         [processingView setAlpha:0.0];
+                     }
+                     completion:^(BOOL finished)
+                     {
+                         [processingView removeFromSuperview];
+                     }];
     // Exit the thread
     if (![NSThread isMainThread])
     {
@@ -164,14 +170,15 @@
     short y = [sender tag] % 9;
     // Get value of the title
     NSString *title = [sender titleForState:UIControlStateNormal];
-    short val = 0;
+    short value = 0;
     if (![title isEqualToString:@""])
     {
         // Gotta subtract '0' from the char value of the number
-        val = [[NSNumber numberWithChar:[title characterAtIndex:0] - '0'] shortValue];
+        char valueChar = [title characterAtIndex:0] - '0';
+        value = [[NSNumber numberWithChar:valueChar] shortValue];
     }
     // Log the stuff
-    NSLog(@"Button at (%d,%d) pressed! Its value is %d.", x, y, val);
+    NSLog(@"Button at (%d,%d) pressed! Its value is %d.", x, y, value);
 }
 
 @end
