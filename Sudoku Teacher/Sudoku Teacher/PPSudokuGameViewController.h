@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPMainMenuController.h"
 
 @class PPSudokuView;
 
@@ -21,6 +22,7 @@
 @property (assign) NSUInteger difficulty;
 @property (assign) BOOL shouldResumeGame;
 @property (assign) NSUInteger buttonSelected;
+@property (nonatomic, weak) id<MainMenuProtocol> delegate;
 
 @property (weak, nonatomic) IBOutlet PPSudokuView *boardBackground;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *setValueButtons;

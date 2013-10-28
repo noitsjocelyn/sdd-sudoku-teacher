@@ -11,6 +11,7 @@
 #import "SudokuBoardGenerator.h"
 #import "SudokuBoard.h"
 #import "PuzzleMaker.h"
+#import "PPMainMenuController.h"
 
 @interface PPSudokuGameViewController ()
 
@@ -32,10 +33,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setupLabels];
-    for (short i = 0; i < 81; ++i)
+    if (!self.shouldResumeGame)
     {
-        [self.view addSubview:valueLabels[i]];
+        [self setupLabels];
+        for (short i = 0; i < 81; ++i)
+        {
+            [self.view addSubview:valueLabels[i]];
+        }
+        // Spin off the process generation to its own thread
+        [NSThread detachNewThreadSelector:@selector(generateAndDisplayBoard:)
+                                 toTarget:self
+                               withObject:Nil];
     }
     // Default buttons to disabled
     for (UIButton *aButton in self.setValueButtons)
@@ -44,16 +52,17 @@
     }
     [self setupProcessingView];
     [self.view addSubview:processingView];
-    // Spin off the process generation to its own thread
-    [NSThread detachNewThreadSelector:@selector(generateAndDisplayBoard:)
-                             toTarget:self
-                           withObject:Nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.delegate setGameInProgress:YES];
 }
 
 - (IBAction)setValue:(id)sender

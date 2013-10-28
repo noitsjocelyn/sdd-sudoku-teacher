@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PPMainMenuController : UIViewController
+@protocol MainMenuProtocol
+
+- (void)setGameInProgress:(BOOL)data;
+
+@end
+
+@interface PPMainMenuController : UIViewController <MainMenuProtocol>
 {
     CGRect easyCheckPosition;
     CGRect moderateCheckPosition;
@@ -18,9 +24,10 @@
 @property (assign) BOOL hasGameInProgress;
 
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
+@property (weak, nonatomic) IBOutlet UIButton *resumeGameButton;
+@property (weak, nonatomic) IBOutlet UIButton *learnToPlayButton;
 @property (weak, nonatomic) IBOutlet UIButton *easyModeButton;
 @property (weak, nonatomic) IBOutlet UIButton *moderateModeButton;
-@property (weak, nonatomic) IBOutlet UIButton *learnToPlayButton;
 @property (weak, nonatomic) IBOutlet UILabel *toggleCheck;
 
 - (IBAction)toggleEasyMode:(id)sender;

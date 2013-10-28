@@ -32,10 +32,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VC-bM-p7M">
-                                <rect key="frame" x="20" y="91" width="280" height="41"/>
+                                <rect key="frame" x="20" y="92" width="280" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Play Sudoku">
+                                <state key="normal" title="Start New Game">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIx-YK-zDX">
-                                <rect key="frame" x="20" y="221" width="280" height="46"/>
+                                <rect key="frame" x="20" y="348" width="280" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Learn to Play">
@@ -54,7 +54,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a30-7u-56g">
-                                <rect key="frame" x="161" y="135" width="85" height="32"/>
+                                <rect key="frame" x="161" y="136" width="85" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -70,7 +70,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BS-S7-1Rn">
-                                <rect key="frame" x="80" y="135" width="43" height="32"/>
+                                <rect key="frame" x="80" y="136" width="43" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -86,15 +86,15 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="✓" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfE-Ro-xsk">
-                                <rect key="frame" x="58" y="135" width="17" height="32"/>
+                                <rect key="frame" x="58" y="136" width="17" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSV-2I-0Kk">
-                                <rect key="frame" x="20" y="308" width="280" height="41"/>
+                                <rect key="frame" x="20" y="220" width="280" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Resume Game">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -110,6 +110,7 @@
                         <outlet property="easyModeButton" destination="6BS-S7-1Rn" id="2zU-sU-7qM"/>
                         <outlet property="learnToPlayButton" destination="uIx-YK-zDX" id="voJ-mE-HEz"/>
                         <outlet property="moderateModeButton" destination="a30-7u-56g" id="e1o-OZ-Ujg"/>
+                        <outlet property="resumeGameButton" destination="ZSV-2I-0Kk" id="3Ge-VW-v7H"/>
                         <outlet property="startGameButton" destination="8VC-bM-p7M" id="biC-Hi-hBK"/>
                         <outlet property="toggleCheck" destination="qfE-Ro-xsk" id="urT-Cd-Zgd"/>
                     </connections>

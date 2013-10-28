@@ -54,6 +54,14 @@
     {
         [self.toggleCheck setFrame:moderateCheckPosition];
     }
+    if (self.hasGameInProgress)
+    {
+        [self.resumeGameButton setEnabled:YES];
+    }
+    else
+    {
+        [self.resumeGameButton setEnabled:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,7 +77,21 @@
     {
         PPSudokuGameViewController *controller = [segue destinationViewController];
         [controller setDifficulty:self.difficulty];
+        controller.delegate = self;
+        if (sender == self.startGameButton)
+        {
+            [controller setShouldResumeGame:NO];
+        }
+        else
+        {
+            [controller setShouldResumeGame:YES];
+        }
     }
+}
+
+- (void)setGameInProgress:(BOOL)data
+{
+    self.hasGameInProgress = data;
 }
 
 // Set up the positions of the check mark
