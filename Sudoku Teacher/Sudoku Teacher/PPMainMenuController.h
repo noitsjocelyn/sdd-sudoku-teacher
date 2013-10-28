@@ -10,7 +10,6 @@
 
 @interface PPMainMenuController : UIViewController
 {
-    unsigned short difficulty; // 0 = easy, 1 = moderate
     CGRect easyCheckPosition;
     CGRect moderateCheckPosition;
 }
@@ -20,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *moderateModeButton;
 @property (weak, nonatomic) IBOutlet UIButton *learnToPlayButton;
 @property (weak, nonatomic) IBOutlet UILabel *toggleCheck;
+@property (assign) NSUInteger difficulty;
 
 - (IBAction)toggleEasyMode:(id)sender;
 - (IBAction)toggleModerateMode:(id)sender;

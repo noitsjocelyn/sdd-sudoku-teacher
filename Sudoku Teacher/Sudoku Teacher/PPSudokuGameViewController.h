@@ -18,9 +18,11 @@
 }
 
 @property (weak, nonatomic) IBOutlet PPSudokuView *boardBackground;
+@property (assign) NSUInteger difficulty;
 
 - (void)setupLabels;
+- (void)setupProcessingView;
 - (void)setValuesFromShortArray:(short *)valuesArray;
-- (void)generateAndDisplayBoardWithDifficulty:(NSNumber *)difficulty;
+- (void)generateAndDisplayBoard:(id)sender;
 
 @end

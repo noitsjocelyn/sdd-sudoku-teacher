@@ -37,27 +37,12 @@
     {
         [self.view addSubview:valueLabels[i]];
     }
-    // Make the processing view components
-    processingView = [[UIView alloc] init];
-    // Note: The navigation bar is 64 px tall
-    CGRect processingFrame = CGRectMake(0.0, 64.0, self.view.frame.size.width, self.view.frame.size.height - 64.0);
-    [processingView setFrame:processingFrame];
-    [processingView setBackgroundColor:[UIColor blackColor]];
-    [processingView setAlpha:0.6];
-    // Place the spinner in the middle
-    // Note: This frame is relative to processingView, not to self.view
-    // Also, standard spinner size is 37 by 37
-    processingIndicator = [[UIActivityIndicatorView alloc] init];
-    CGRect spinnerFrame = CGRectMake(142.5, 142.5, 37.0, 37.0);
-    [processingIndicator setFrame:spinnerFrame];
-    [processingView addSubview:processingIndicator];
-    [processingIndicator startAnimating];
-    // Add the view
+    [self setupProcessingView];
     [self.view addSubview:processingView];
     // Spin off the process generation to its own thread
-    [NSThread detachNewThreadSelector:@selector(generateAndDisplayBoardWithDifficulty:)
+    [NSThread detachNewThreadSelector:@selector(generateAndDisplayBoard:)
                              toTarget:self
-                           withObject:[NSNumber numberWithInt:0]];
+                           withObject:Nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,6 +89,25 @@
     }
 }
 
+- (void)setupProcessingView
+{
+    // Make the processing view components
+    processingView = [[UIView alloc] init];
+    // Note: The navigation bar is 64 px tall
+    CGRect processingFrame = CGRectMake(0.0, 64.0, self.view.frame.size.width, self.view.frame.size.height - 64.0);
+    [processingView setFrame:processingFrame];
+    [processingView setBackgroundColor:[UIColor blackColor]];
+    [processingView setAlpha:0.6];
+    // Place the spinner in the middle
+    // Note: This frame is relative to processingView, not to self.view
+    // Also, standard spinner size is 37 by 37
+    processingIndicator = [[UIActivityIndicatorView alloc] init];
+    CGRect spinnerFrame = CGRectMake(142.5, 142.5, 37.0, 37.0);
+    [processingIndicator setFrame:spinnerFrame];
+    [processingView addSubview:processingIndicator];
+    [processingIndicator startAnimating];
+}
+
 - (void)setValuesFromShortArray:(short *)valuesArray
 {
     for (short i = 0; i < 81; ++i)
@@ -125,19 +129,21 @@
     }
 }
 
-- (void)generateAndDisplayBoardWithDifficulty:(NSNumber *)difficulty
+- (void)generateAndDisplayBoard:(id)sender
 {
     // Generate the puzzle
     SudokuBoard *aBoard = [SudokuBoardGenerator generate];
     PuzzleMaker *aMaker = [[PuzzleMaker alloc] init];
     [aMaker givePuzzle:[aBoard boardAsShortArray]];
     short *puzzleArray;
-    if ([difficulty intValue] == 0)
+    if (self.difficulty == 0)
     {
+        NSLog(@"Generating easy board");
         puzzleArray = [aMaker buildEasyPuzzle];
     }
     else
     {
+        NSLog(@"Generating moderate board");
         puzzleArray = [aMaker buildMediumPuzzle];
     }
     [self setValuesFromShortArray:puzzleArray];

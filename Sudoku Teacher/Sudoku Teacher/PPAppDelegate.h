@@ -8,13 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-
-@class Puzzle;
-
 @interface PPAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (assign) Puzzle *gameBoard;
-@property (assign) NSNumber *difficulty;
 
 @end
