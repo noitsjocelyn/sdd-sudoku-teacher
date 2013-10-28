@@ -17,8 +17,6 @@
 
 @implementation PPMainMenuController
 
-@synthesize difficulty;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,6 +26,9 @@
         self.difficulty = 0;
         [self.easyModeButton setSelected:YES];
         [self.moderateModeButton setSelected:NO];
+        // Default to no game in progress
+        // This may change with resuming from closed later; should be good for now
+        self.hasGameInProgress = NO;
     }
     return self;
 }
