@@ -99,8 +99,11 @@
 			[aValueButton setBackgroundColor:[UIColor clearColor]];
 			[aValueButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 			[aValueButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-			[aValueButton setTitle:@" " forState:UIControlStateNormal];
-			[aValueButton addTarget:self action:@selector(printButtonNumber) forControlEvents:UIControlEventTouchUpInside];
+			[aValueButton setTitle:@"" forState:UIControlStateNormal];
+			// Set the tag so we can figure out which is pressed later
+			[aValueButton setTag:i];
+			// Call the printButtonNumber: method when they are pressed
+			[aValueButton addTarget:self action:@selector(printButtonNumber:) forControlEvents:UIControlEventTouchUpInside];
 			valueLabels[i] = aValueButton;
 		}
 	}
@@ -121,7 +124,7 @@
 		// If it's zero, make the string blank
 		else
 		{
-			valString = @" ";
+			valString = @"";
 		}
 		[valueLabels[i] setTitle:valString forState:UIControlStateNormal];
 	}
@@ -133,7 +136,7 @@
 	SudokuBoard *aBoard = [SudokuBoardGenerator generate];
 	PuzzleMaker *aMaker = [[PuzzleMaker alloc] init];
 	[aMaker givePuzzle:[aBoard boardAsShortArray]];
-	short *puzzleArray;// = calloc(81, sizeof(short));
+	short *puzzleArray;
 	if ([difficulty intValue] == 0)
 	{
 		puzzleArray = [aMaker buildEasyPuzzle];
@@ -159,9 +162,11 @@
 	}
 }
 
-- (void)printButtonNumber
+- (void)printButtonNumber:(id)sender
 {
-	NSLog(@"Button pressed!");
+	short x = [sender tag] / 9;
+	short y = [sender tag] % 9;
+	NSLog(@"Button at (%d,%d) pressed!", x, y);
 }
 
 @end
