@@ -13,13 +13,17 @@
 @interface PPSudokuGameViewController : UIViewController
 {
     UIButton *valueLabels[81];
+    BOOL valueModifiable[81];
     UIView *processingView;
     UIActivityIndicatorView *processingIndicator;
 }
 
 @property (weak, nonatomic) IBOutlet PPSudokuView *boardBackground;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *setValueButtons;
 @property (assign) NSUInteger difficulty;
+@property (assign) NSUInteger buttonSelected;
 
+- (IBAction)setValue:(id)sender;
 - (void)setupLabels;
 - (void)setupProcessingView;
 - (void)setValuesFromShortArray:(short *)valuesArray;

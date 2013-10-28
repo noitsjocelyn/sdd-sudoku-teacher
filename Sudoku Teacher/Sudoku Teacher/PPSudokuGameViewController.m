@@ -51,6 +51,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)setValue:(id)sender
+{
+    NSUInteger value = [sender tag];
+    UIButton *buttonToChange = valueLabels[self.buttonSelected];
+    if (valueModifiable[self.buttonSelected])
+    {
+        [buttonToChange setTitle:[NSString stringWithFormat:@"%d", value]
+                        forState:UIControlStateNormal];
+    }
+}
+
 - (void)setupLabels
 {
     for (short x = 0; x < 9; ++x)
@@ -76,7 +87,9 @@
             UIButton *aValueButton = [[UIButton alloc] initWithFrame:buttonFrame];
             [aValueButton setBackgroundColor:[UIColor clearColor]];
             [aValueButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [aValueButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
             [aValueButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+//            [aValueButton setBackgroundImage:(UIImage *) forState:UIControlStateHighlighted];
             [aValueButton setTitle:@"" forState:UIControlStateNormal];
             // Set the tag so we can figure out which is pressed later
             [aValueButton setTag:i];
@@ -118,11 +131,14 @@
         // If it's non-zero, set the string up
         if (val != 0)
         {
+            valueModifiable[i] = NO;
             valString = [NSString stringWithFormat:@"%d", val];
         }
         // If it's zero, make the string blank
         else
         {
+            valueModifiable[i] = YES;
+            [valueLabels[i] setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             valString = @"";
         }
         [valueLabels[i] setTitle:valString forState:UIControlStateNormal];
@@ -166,6 +182,8 @@
 
 - (void)numberButtonPressed:(id)sender
 {
+    [self setSelectedValueButton:[sender tag]];
+    self.buttonSelected = [sender tag];
     // Get the X and Y of the button from its tag
     short x = [sender tag] / 9;
     short y = [sender tag] % 9;
@@ -180,6 +198,21 @@
     }
     // Log the stuff
     NSLog(@"Button at (%d,%d) pressed. Its value is %d.", x, y, value);
+}
+
+- (void)setSelectedValueButton:(NSUInteger)buttonTag
+{
+    for (short i = 0; i < 81; ++i)
+    {
+        if (i == buttonTag)
+        {
+            [valueLabels[i] setSelected:YES];
+        }
+        else
+        {
+            [valueLabels[i] setSelected:NO];
+        }
+    }
 }
 
 @end
