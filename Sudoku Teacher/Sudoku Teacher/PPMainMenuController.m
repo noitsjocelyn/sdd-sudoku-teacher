@@ -54,6 +54,8 @@
 }
 
 // Set up the various positions of the check mark
+// TODO: There's a bug here when we jump back from the puzzle. It always puts
+//       the check next to "easy," so we need to fix that.
 - (void)setupCheckPositions
 {
     // Get the starting position of the check, ie. next to the easy button
