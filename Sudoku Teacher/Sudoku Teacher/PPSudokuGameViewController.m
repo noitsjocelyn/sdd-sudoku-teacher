@@ -225,34 +225,52 @@
 
 - (void)setSelectedValueButton:(NSUInteger)buttonTag
 {
-    if (!valueModifiable[buttonTag])
+    for (short i = 0; i < 81; ++i)
     {
-        for (UIButton *aButton in self.setValueButtons)
+        // We need to do stuff if we're on the button that is pressed
+        if (i == buttonTag)
         {
-            [aButton setEnabled:NO];
-        }
-    }
-    else
-    {
-        for (UIButton *aButton in self.setValueButtons)
-        {
-            if ([aButton tag] == 0)
+            // If it was already selected, deselect it
+            if ([valueLabels[i] isSelected])
             {
-                BOOL valueIsBlank = [[valueLabels[buttonTag] titleForState:UIControlStateNormal] isEqualToString:@""];
-                [aButton setEnabled:!valueIsBlank];
+                [valueLabels[i] setSelected:NO];
+                // Also disable the setters
+                for (UIButton *aButton in self.setValueButtons)
+                {
+                    [aButton setEnabled:NO];
+                }
             }
             else
             {
-                [aButton setEnabled:YES];
+                [valueLabels[i] setSelected:YES];
+                // If it's an original value, we can't change it
+                if (!valueModifiable[buttonTag])
+                {
+                    for (UIButton *aButton in self.setValueButtons)
+                    {
+                        [aButton setEnabled:NO];
+                    }
+                }
+                else
+                {
+                    for (UIButton *aButton in self.setValueButtons)
+                    {
+                        // Disable the "Clear" button if the square is blank
+                        if ([aButton tag] == 0)
+                        {
+                            BOOL valueIsBlank = [[valueLabels[buttonTag] titleForState:UIControlStateNormal] isEqualToString:@""];
+                            [aButton setEnabled:!valueIsBlank];
+                        }
+                        // Otherwise, enable the setter
+                        else
+                        {
+                            [aButton setEnabled:YES];
+                        }
+                    }
+                }
             }
         }
-    }
-    for (short i = 0; i < 81; ++i)
-    {
-        if (i == buttonTag)
-        {
-            [valueLabels[i] setSelected:YES];
-        }
+        // Deselect all the other buttons
         else
         {
             [valueLabels[i] setSelected:NO];
