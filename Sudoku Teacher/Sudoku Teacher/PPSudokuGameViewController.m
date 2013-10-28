@@ -132,18 +132,19 @@
 - (void)generateAndDisplayBoard:(id)sender
 {
     // Generate the puzzle
+    NSLog(@"Generating full puzzle");
     SudokuBoard *aBoard = [SudokuBoardGenerator generate];
     PuzzleMaker *aMaker = [[PuzzleMaker alloc] init];
     [aMaker givePuzzle:[aBoard boardAsShortArray]];
     short *puzzleArray;
     if (self.difficulty == 0)
     {
-        NSLog(@"Generating easy board");
+        NSLog(@"Making easy board");
         puzzleArray = [aMaker buildEasyPuzzle];
     }
     else
     {
-        NSLog(@"Generating moderate board");
+        NSLog(@"Making moderate board");
         puzzleArray = [aMaker buildMediumPuzzle];
     }
     [self setValuesFromShortArray:puzzleArray];

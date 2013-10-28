@@ -22,8 +22,10 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Default to Easy mode, make interface reflect this
+        self.difficulty = 0;
         [self.easyModeButton setSelected:YES];
         [self.moderateModeButton setSelected:NO];
     }
@@ -35,6 +37,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupCheckPositions];
+}
+
+// Move the check to its correct place before displaying UI elements
+// viewDidLayoutSubviews is the last place to do this before elements appear
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (self.difficulty == 0)
+    {
+        [self.toggleCheck setFrame:easyCheckPosition];
+    }
+    else
+    {
+        [self.toggleCheck setFrame:moderateCheckPosition];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,20 +71,16 @@
     }
 }
 
-// Set up the various positions of the check mark
-// TODO: There's a bug here when we jump back from the puzzle. It always puts
-//       the check next to "easy," so we need to fix that.
+// Set up the positions of the check mark
 - (void)setupCheckPositions
 {
-    // Get the starting position of the check, ie. next to the easy button
-    easyCheckPosition = self.toggleCheck.frame;
-    // Determine how far it is from the easy button
-    float xDiff = self.easyModeButton.frame.origin.x - easyCheckPosition.origin.x;
-    // Determine the X needed to position the check next to the moderate button
-    float moderateX = self.moderateModeButton.frame.origin.x - xDiff;
-    // Set up the check position for next to the moderate button
-    moderateCheckPosition = easyCheckPosition;
-    moderateCheckPosition.origin.x = moderateX;
+    CGFloat xDiff = 22.0;
+    CGFloat easyCheckX = self.easyModeButton.frame.origin.x - xDiff;
+    CGFloat moderateCheckX = self.moderateModeButton.frame.origin.x - xDiff;
+    CGFloat checkY = self.easyModeButton.frame.origin.y;
+    CGSize checkSize = self.toggleCheck.frame.size;
+    easyCheckPosition = CGRectMake(easyCheckX, checkY, checkSize.width, checkSize.height);
+    moderateCheckPosition = CGRectMake(moderateCheckX, checkY, checkSize.width, checkSize.height);
 }
 
 // Set the difficulty to easy and modify the interface to reflect this
@@ -82,7 +96,7 @@
                   toFrame:easyCheckPosition
              withFadeTime:CHECK_FADE_TIME];
     }
-    NSLog(@"%d", [self difficulty]);
+    NSLog(@"Changed difficulty to %lu", (unsigned long)self.difficulty);
 }
 
 // Like above, set the difficulty to moderate
@@ -98,7 +112,7 @@
                   toFrame:moderateCheckPosition
              withFadeTime:CHECK_FADE_TIME];
     }
-    NSLog(@"%d", [self difficulty]);
+    NSLog(@"Changed difficulty to %lu", (unsigned long)self.difficulty);
 }
 
 // Make a UI element invisible, move it to a given frame, then fade it in
