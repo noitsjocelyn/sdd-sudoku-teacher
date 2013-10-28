@@ -157,7 +157,7 @@
 	}
 }
 
-- (void)printButtonNumber:(id)sender
+- (void)numberButtonPressed:(id)sender
 {
 	// Get the X and Y of the button from its tag
 	short x = [sender tag] / 9;
@@ -171,7 +171,7 @@
 		val = [[NSNumber numberWithChar:[title characterAtIndex:0] - '0'] shortValue];
 	}
 	// Log the stuff
-	NSLog(@"Button at (%d,%d) pressed! Value: %d", x, y, val);
+	NSLog(@"Button at (%d,%d) pressed! Its value is %d.", x, y, val);
 }
 
 @end
