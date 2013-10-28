@@ -24,6 +24,11 @@
     if (self)
     {
         // Custom initialization
+        // Default buttons to disabled
+        for (UIButton *aButton in self.setValueButtons)
+        {
+            [aButton setEnabled:NO];
+        }
     }
     return self;
 }
@@ -53,13 +58,32 @@
 
 - (IBAction)setValue:(id)sender
 {
+    if (!valueModifiable[self.buttonSelected])
+    {
+        return;
+    }
     NSUInteger value = [sender tag];
     UIButton *buttonToChange = valueLabels[self.buttonSelected];
-    if (valueModifiable[self.buttonSelected])
+    NSString *newTitle = @"";
+    if (value != 0)
     {
-        [buttonToChange setTitle:[NSString stringWithFormat:@"%d", value]
-                        forState:UIControlStateNormal];
+        newTitle = [NSString stringWithFormat:@"%d", value];
+        for (UIButton *aButton in self.setValueButtons)
+        {
+            [aButton setEnabled:YES];
+        }
     }
+    else
+    {
+        for (UIButton *aButton in self.setValueButtons)
+        {
+            if ([aButton tag] == 0)
+            {
+                [aButton setEnabled:NO];
+            }
+        }
+    }
+    [buttonToChange setTitle:newTitle forState:UIControlStateNormal];
 }
 
 - (void)setupLabels
@@ -201,6 +225,28 @@
 
 - (void)setSelectedValueButton:(NSUInteger)buttonTag
 {
+    if (!valueModifiable[buttonTag])
+    {
+        for (UIButton *aButton in self.setValueButtons)
+        {
+            [aButton setEnabled:NO];
+        }
+    }
+    else
+    {
+        for (UIButton *aButton in self.setValueButtons)
+        {
+            if ([aButton tag] == 0)
+            {
+                BOOL valueIsBlank = [[valueLabels[buttonTag] titleForState:UIControlStateNormal] isEqualToString:@""];
+                [aButton setEnabled:!valueIsBlank];
+            }
+            else
+            {
+                [aButton setEnabled:YES];
+            }
+        }
+    }
     for (short i = 0; i < 81; ++i)
     {
         if (i == buttonTag)
