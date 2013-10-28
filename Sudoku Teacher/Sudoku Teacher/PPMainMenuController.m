@@ -43,10 +43,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+//
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    PPSudokuGameViewController *controller = [segue destinationViewController];
-    [controller setDifficulty:self.difficulty];
+    if ([[segue destinationViewController] class] == [PPSudokuGameViewController class])
+    {
+        PPSudokuGameViewController *controller = [segue destinationViewController];
+        [controller setDifficulty:self.difficulty];
+    }
 }
 
 // Set up the various positions of the check mark
