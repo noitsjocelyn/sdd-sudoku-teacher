@@ -148,14 +148,8 @@
     
     // Animate removing the processing view
     [UIView animateWithDuration:0.4
-                     animations:^(void)
-                     {
-                         [processingView setAlpha:0.0];
-                     }
-                     completion:^(BOOL finished)
-                     {
-                         [processingView removeFromSuperview];
-                     }];
+                     animations:^(void){ [processingView setAlpha:0.0]; }
+                     completion:^(BOOL finished){ [processingView removeFromSuperview]; }];
     // Exit the thread
     if (![NSThread isMainThread])
     {
