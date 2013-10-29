@@ -111,7 +111,7 @@
                         <outlet property="learnToPlayButton" destination="uIx-YK-zDX" id="voJ-mE-HEz"/>
                         <outlet property="moderateModeButton" destination="a30-7u-56g" id="e1o-OZ-Ujg"/>
                         <outlet property="resumeGameButton" destination="ZSV-2I-0Kk" id="3Ge-VW-v7H"/>
-                        <outlet property="startGameButton" destination="8VC-bM-p7M" id="biC-Hi-hBK"/>
+                        <outlet property="startNewGameButton" destination="8VC-bM-p7M" id="XVp-AE-rls"/>
                         <outlet property="toggleCheck" destination="qfE-Ro-xsk" id="urT-Cd-Zgd"/>
                     </connections>
                 </viewController>

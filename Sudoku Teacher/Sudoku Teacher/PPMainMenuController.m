@@ -82,7 +82,7 @@
         PPSudokuGameViewController *controller = [segue destinationViewController];
         [controller setDifficulty:self.difficulty];
         controller.delegate = self;
-        if (sender == self.startGameButton)
+        if (sender == self.startNewGameButton)
         {
             [controller setPuzzleData:Nil];
             self.puzzleInProgress = Nil;
@@ -100,7 +100,7 @@
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     // If they want to start a new game, we need to do some checks
-    if (sender == self.startGameButton)
+    if (sender == self.startNewGameButton)
     {
         // If we don't have a game in progress, start without question
         if (self.puzzleInProgress == Nil)
@@ -146,7 +146,7 @@
             // Say that they confirmed the new game
             newGameConfirmed = YES;
             // Redo the segue
-            [self performSegueWithIdentifier:@"NewGame" sender:self.startGameButton];
+            [self performSegueWithIdentifier:@"NewGame" sender:self.startNewGameButton];
         }
     }
 }
