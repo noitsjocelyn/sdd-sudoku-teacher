@@ -41,6 +41,7 @@
 
 - (short)getPuzzleValueAtIndex:(short)index;
 - (BOOL)isOriginalValueAtIndex:(short)index;
+- (void)resetSquareAtIndex:(short)index;
 - (short *)findSquareWithOneAvailableValue;
 - (short *)findSquareInChunkWithRequiredValue;
 - (BOOL)checkIfSquareIsFilled:(short)loc;

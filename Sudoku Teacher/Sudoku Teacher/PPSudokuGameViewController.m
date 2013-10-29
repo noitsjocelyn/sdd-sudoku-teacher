@@ -75,25 +75,28 @@
 
 - (IBAction)setValue:(id)sender
 {
+    short location = self.buttonSelected;
     // Don't allow modification of original values
-    if ([self.puzzleData isOriginalValueAtIndex:self.buttonSelected])
+    if ([self.puzzleData isOriginalValueAtIndex:location])
     {
         return;
     }
     // Grab the value we want to set it to
-    NSUInteger value = [sender tag];
+    short value = (short)[sender tag];
     // Grab the button that is selected
-    UIButton *buttonToChange = squareButtons[self.buttonSelected];
+    UIButton *buttonToChange = squareButtons[location];
     // Default the new value to blank
     NSString *newTitle = @"";
     // If we aren't clearing it, set the new value
     if (value != 0)
     {
-        newTitle = [NSString stringWithFormat:@"%d", (short)value];
+        newTitle = [NSString stringWithFormat:@"%d", value];
         for (UIButton *aButton in self.setValueButtons)
         {
             [aButton setEnabled:YES];
         }
+        // Change the Puzzle data
+        [self.puzzleData putInValue:(location * 9 + value)];
     }
     // Otherwise, clear it
     else
@@ -106,11 +109,11 @@
                 [aButton setEnabled:NO];
             }
         }
+        // Reset the square in Puzzle data
+        [self.puzzleData resetSquareAtIndex:location];
     }
     // Set the new title
     [buttonToChange setTitle:newTitle forState:UIControlStateNormal];
-    // Change the Puzzle data
-    [self.puzzleData putInValue:((short)self.buttonSelected * 9 + (short)value)];
 }
 
 - (void)setupLabels

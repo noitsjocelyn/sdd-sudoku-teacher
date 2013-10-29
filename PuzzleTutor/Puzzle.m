@@ -7,16 +7,10 @@
 
 - (id)init
 {
+    self = [super init];
     for (short i = 0; i < 81; ++i)
     {
-        puzzle[i] = 0;
-        locAvail[i] = 9;
-        blockNums[i] = NO;
-        blockAvail[i] = 9;
-        for (short j = 0; j < 9; ++j)
-        {
-            avail[i * 9 + j] = YES;
-        }
+        [self resetSquareAtIndex:i];
     }
     return self;
 }
@@ -95,6 +89,17 @@
     return isOriginalValue[index];
 }
 
+- (void)resetSquareAtIndex:(short)index
+{
+    puzzle[index] = 0;
+    locAvail[index] = 9;
+    blockNums[index] = NO;
+    blockAvail[index] = 9;
+    for (short j = 0; j < 9; ++j)
+    {
+        avail[index * 9 + j] = YES;
+    }
+}
 
 /* The putInValue function takes in a single int that contains both the location
  * and number needed to put in the puzzle, and changes the puzzle arrays to
