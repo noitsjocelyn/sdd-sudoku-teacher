@@ -82,7 +82,7 @@
     // If we aren't clearing it, set the new value
     if (value != 0)
     {
-        newTitle = [NSString stringWithFormat:@"%d", value];
+        newTitle = [NSString stringWithFormat:@"%d", (short)value];
         for (UIButton *aButton in self.setValueButtons)
         {
             [aButton setEnabled:YES];
@@ -294,6 +294,36 @@
                 }
             }
         }
+    }
+}
+
+- (void)setupFromPuzzleData
+{
+    for (short i = 0; i < 81; ++i)
+    {
+        // Grab the value
+        short val = [self.puzzleData getPuzzleValueAtIndex:i];
+        BOOL isOriginal = [self.puzzleData isValueAtIndexOriginal:i];
+        NSString *valString;
+        // If it's non-zero, set the string up
+        if (val != 0)
+        {
+            valString = [NSString stringWithFormat:@"%d", val];
+        }
+        // If it's zero, make the string blank
+        else
+        {
+            valString = @"";
+        }
+        // Say if we can modify the value or not
+        valueModifiable[i] = !isOriginal;
+        // Change the text collor accordingly
+        if (!isOriginal)
+        {
+            [valueLabels[i] setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        }
+        
+        [valueLabels[i] setTitle:valString forState:UIControlStateNormal];
     }
 }
 

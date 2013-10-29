@@ -85,6 +85,16 @@
     return returnString;
 }
 
+- (short)getPuzzleValueAtIndex:(short)index
+{
+    return puzzle[index];
+}
+
+- (BOOL)isValueAtIndexOriginal:(short)index
+{
+    return isOriginalValue[index];
+}
+
 
 /* The putInValue function takes in a single int that contains both the location
  * and number needed to put in the puzzle, and changes the puzzle arrays to
@@ -154,7 +164,8 @@
     }
 }
 
-/* Method to put a C-style array of 81 shorts into the Puzzle.
+/* Method to put a C-style array of 81 shorts into the Puzzle. This assumes that
+ * non-zero values are original values.
  */
 - (void)putInShortArray:(short *)shortArray
 {
@@ -163,6 +174,11 @@
         if (shortArray[i] != 0)
         {
             [self putInValue:(i * 9 + shortArray[i])];
+            isOriginalValue[i] = YES;
+        }
+        else
+        {
+            isOriginalValue[i] = NO;
         }
     }
 }
@@ -173,13 +189,15 @@
 - (void)putInShortArray:(short *)shortArray withOriginals:(BOOL *)boolArray
 {
     [self putInShortArray:shortArray];
+    // Overwrite the isOriginalValue array
     for (int i = 0; i < 81; ++i)
     {
-        originalVal[i] = boolArray[i];
+        isOriginalValue[i] = boolArray[i];
     }
 }
 
-/* Method to put an NSString of length 81 into the Puzzle.
+/* Method to put an NSString of length 81 into the Puzzle. Since it uses
+ * putInShortArray: it assumes that non-zero values are original values.
  */
 - (void)putInString:(NSString *)stringRepresentation
 {

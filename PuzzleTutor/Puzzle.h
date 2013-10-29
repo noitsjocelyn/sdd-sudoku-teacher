@@ -32,13 +32,15 @@
     short blockAvail[81];
     BOOL avail[729];
     BOOL blockNums[81];
-    BOOL originalVal[81];
+    BOOL isOriginalValue[81];
 }
 
 - (id)init;
 - (id)initWithShortArray:(short *)shortArray;
 - (id)initWithString:(NSString *)stringRepresentation;
 
+- (short)getPuzzleValueAtIndex:(short)index;
+- (BOOL)isValueAtIndexOriginal:(short)index;
 - (short *)findSquareWithOneAvailableValue;
 - (short *)findSquareInChunkWithRequiredValue;
 - (BOOL)checkIfSquareIsFilled:(short)loc;

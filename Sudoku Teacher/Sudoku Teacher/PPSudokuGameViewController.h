@@ -34,5 +34,6 @@
 - (void)setupProcessingView;
 - (void)setValuesFromShortArray:(short *)valuesArray;
 - (void)generateAndDisplayBoard:(id)sender;
+- (void)setupFromPuzzleData;
 
 @end
