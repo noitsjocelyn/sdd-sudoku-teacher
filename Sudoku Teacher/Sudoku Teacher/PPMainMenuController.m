@@ -27,9 +27,9 @@
         self.difficulty = 0;
         [self.easyModeButton setSelected:YES];
         [self.moderateModeButton setSelected:NO];
-        // Default to no game in progress
-        // This may change with resuming from closed later; should be good for now
-        self.hasGameInProgress = NO;
+        // Default to no game in progress. This may change with resuming from
+        // the closed app later, but should be good for now.
+        self.puzzleInProgress = Nil;
     }
     return self;
 }
@@ -41,12 +41,11 @@
     [self setupCheckPositions];
 }
 
-// Move the check to its correct place before displaying UI elements
-// viewDidLayoutSubviews is the last place to do this before elements appear
+// viewDidLayoutSubviews is the last place to modify UI elements before they appear
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
+    // Move the check to its correct place before displaying UI elements
     if (self.difficulty == 0)
     {
         [self.toggleCheck setFrame:easyCheckPosition];
@@ -55,13 +54,14 @@
     {
         [self.toggleCheck setFrame:moderateCheckPosition];
     }
-    if (self.hasGameInProgress)
+    // Enable "Resume" if we have a puzzle we can resume
+    if (!self.puzzleInProgress)
     {
-        [self.resumeGameButton setEnabled:YES];
+        [self.resumeGameButton setEnabled:NO];
     }
     else
     {
-        [self.resumeGameButton setEnabled:NO];
+        [self.resumeGameButton setEnabled:YES];
     }
 }
 
@@ -81,13 +81,11 @@
         controller.delegate = self;
         if (sender == self.startGameButton)
         {
-            [controller setShouldResumeGame:NO];
             [controller setPuzzleData:Nil];
             self.puzzleInProgress = Nil;
         }
         else
         {
-            [controller setShouldResumeGame:YES];
             [controller setPuzzleData:self.puzzleInProgress];
             self.puzzleInProgress = Nil;
         }
@@ -96,7 +94,6 @@
 
 - (void)setGameInProgress:(Puzzle *)thePuzzle
 {
-    self.hasGameInProgress = YES;
     self.puzzleInProgress = thePuzzle;
 }
 
@@ -125,7 +122,6 @@
                   toFrame:easyCheckPosition
              withFadeTime:CHECK_FADE_TIME];
     }
-    NSLog(@"Changed difficulty to %lu", (unsigned long)self.difficulty);
 }
 
 // Like above, set the difficulty to moderate
@@ -141,7 +137,6 @@
                   toFrame:moderateCheckPosition
              withFadeTime:CHECK_FADE_TIME];
     }
-    NSLog(@"Changed difficulty to %lu", (unsigned long)self.difficulty);
 }
 
 // Make a UI element invisible, move it to a given frame, then fade it in

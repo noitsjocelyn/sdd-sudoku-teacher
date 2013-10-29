@@ -23,7 +23,6 @@
 }
 
 @property (assign) NSUInteger difficulty;
-@property (assign) BOOL hasGameInProgress;
 @property (assign) Puzzle *puzzleInProgress;
 
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;

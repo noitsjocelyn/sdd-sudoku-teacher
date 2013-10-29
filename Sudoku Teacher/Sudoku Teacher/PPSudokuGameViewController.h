@@ -20,7 +20,6 @@
 }
 
 @property (assign) NSUInteger difficulty;
-@property (assign) BOOL shouldResumeGame;
 @property (assign) NSUInteger buttonSelected;
 @property (assign) Puzzle *puzzleData;
 

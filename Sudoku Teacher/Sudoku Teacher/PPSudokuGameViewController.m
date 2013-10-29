@@ -45,7 +45,7 @@
         [aButton setEnabled:NO];
     }
     // Either make a new board...
-    if (!self.shouldResumeGame)
+    if (!self.puzzleData)
     {
         // Start the processing spinner
         [self setupProcessingView];
