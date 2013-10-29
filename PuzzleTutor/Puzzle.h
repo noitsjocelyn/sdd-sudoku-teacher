@@ -40,7 +40,7 @@
 - (id)initWithString:(NSString *)stringRepresentation;
 
 - (short)getPuzzleValueAtIndex:(short)index;
-- (BOOL)isValueAtIndexOriginal:(short)index;
+- (BOOL)isOriginalValueAtIndex:(short)index;
 - (short *)findSquareWithOneAvailableValue;
 - (short *)findSquareInChunkWithRequiredValue;
 - (BOOL)checkIfSquareIsFilled:(short)loc;

@@ -204,7 +204,9 @@
         NSLog(@"Making moderate board");
         puzzleArray = [aMaker buildMediumPuzzle];
     }
-    [self setValuesFromShortArray:puzzleArray];
+    Puzzle *newPuzzleData = [[Puzzle alloc] initWithShortArray:puzzleArray];
+    [self setupFromPuzzleData:newPuzzleData];
+//    [self setValuesFromShortArray:puzzleArray];
     aBoard = Nil;
     aMaker = Nil;
     // I think this needs to be freed, but I'm getting warnings when I do, so leaving it for now
@@ -297,18 +299,19 @@
     }
 }
 
-- (void)setupFromPuzzleData
+- (void)setupFromPuzzleData:(Puzzle *)aPuzzle
 {
+    self.puzzleData = aPuzzle;
     for (short i = 0; i < 81; ++i)
     {
         // Grab the value
-        short val = [self.puzzleData getPuzzleValueAtIndex:i];
-        BOOL isOriginal = [self.puzzleData isValueAtIndexOriginal:i];
+        short value = [self.puzzleData getPuzzleValueAtIndex:i];
+        BOOL isOriginal = [self.puzzleData isOriginalValueAtIndex:i];
         NSString *valString;
         // If it's non-zero, set the string up
-        if (val != 0)
+        if (value != 0)
         {
-            valString = [NSString stringWithFormat:@"%d", val];
+            valString = [NSString stringWithFormat:@"%d", value];
         }
         // If it's zero, make the string blank
         else

@@ -90,7 +90,7 @@
     return puzzle[index];
 }
 
-- (BOOL)isValueAtIndexOriginal:(short)index
+- (BOOL)isOriginalValueAtIndex:(short)index
 {
     return isOriginalValue[index];
 }
