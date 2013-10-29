@@ -33,26 +33,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Setup and add our labels
+    [self setupLabels];
+    for (short i = 0; i < 81; ++i)
+    {
+        [self.view addSubview:valueLabels[i]];
+    }
+    // Default setter buttons to disabled
+    for (UIButton *aButton in self.setValueButtons)
+    {
+        [aButton setEnabled:NO];
+    }
+    // Either make a new board...
     if (!self.shouldResumeGame)
     {
-        [self setupLabels];
-        for (short i = 0; i < 81; ++i)
-        {
-            [self.view addSubview:valueLabels[i]];
-        }
+        // Start the processing spinner
+        [self setupProcessingView];
+        [self.view addSubview:processingView];
         // Spin off the process generation to its own thread
         [NSThread detachNewThreadSelector:@selector(generateAndDisplayBoard:)
                                  toTarget:self
                                withObject:Nil];
     }
-    // Default buttons to disabled
-    for (UIButton *aButton in self.setValueButtons)
+    // ...or resume a previous game
+    else
     {
-        [aButton setEnabled:NO];
+        [self setupFromPuzzleData:self.puzzleData];
     }
-    [self setupProcessingView];
-    [self.view addSubview:processingView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,7 +75,7 @@
 
 - (IBAction)setValue:(id)sender
 {
-    // Don't allow anything for original values
+    // Don't allow modification of original values
     if ([self.puzzleData isOriginalValueAtIndex:self.buttonSelected])
     {
         return;
@@ -102,6 +109,8 @@
     }
     // Set the new title
     [buttonToChange setTitle:newTitle forState:UIControlStateNormal];
+    // Change the Puzzle data
+    [self.puzzleData putInValue:((short)self.buttonSelected * 9 + (short)value)];
 }
 
 - (void)setupLabels
@@ -164,23 +173,23 @@
 
 - (void)generateAndDisplayBoard:(id)sender
 {
-    // Generate the puzzle
-    NSLog(@"Generating full puzzle");
+    // Generate the full puzzle board
     SudokuBoard *aBoard = [SudokuBoardGenerator generate];
+    // Generate the puzzle
     PuzzleMaker *aMaker = [[PuzzleMaker alloc] init];
     [aMaker givePuzzle:[aBoard boardAsShortArray]];
     short *puzzleArray;
     if (self.difficulty == 0)
     {
-        NSLog(@"Making easy board");
         puzzleArray = [aMaker buildEasyPuzzle];
     }
     else
     {
-        NSLog(@"Making moderate board");
         puzzleArray = [aMaker buildMediumPuzzle];
     }
+    // Make our Puzzle data
     Puzzle *newPuzzleData = [[Puzzle alloc] initWithShortArray:puzzleArray];
+    // Setup the board
     [self setupFromPuzzleData:newPuzzleData];
     aBoard = Nil;
     aMaker = Nil;
@@ -201,25 +210,11 @@
 - (void)numberButtonPressed:(id)sender
 {
     [self setSelectedValueButton:[sender tag]];
-    self.buttonSelected = [sender tag];
-    // Get the X and Y of the button from its tag
-    short x = [sender tag] / 9;
-    short y = [sender tag] % 9;
-    // Get value of the title
-    NSString *title = [sender titleForState:UIControlStateNormal];
-    short value = 0;
-    if (![title isEqualToString:@""])
-    {
-        // Need to subtract '0' from the char value of the number
-        char valueChar = [title characterAtIndex:0] - '0';
-        value = [[NSNumber numberWithChar:valueChar] shortValue];
-    }
-    // Log the stuff
-    NSLog(@"Button at (%d,%d) pressed. Its value is %d.", x, y, value);
 }
 
 - (void)setSelectedValueButton:(NSUInteger)buttonTag
 {
+    self.buttonSelected = buttonTag;
     for (short i = 0; i < 81; ++i)
     {
         // Deselect all the buttons that were not pressed
@@ -293,7 +288,7 @@
         {
             valString = @"";
         }
-        // Change the text collor accordingly
+        // Change the text color accordingly
         if (!isOriginal)
         {
             [valueLabels[i] setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
