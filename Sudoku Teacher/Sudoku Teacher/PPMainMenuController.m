@@ -8,6 +8,7 @@
 
 #import "PPMainMenuController.h"
 #import "PPSudokuGameViewController.h"
+#import "Puzzle.h"
 
 #define CHECK_FADE_TIME 0.4
 
@@ -81,17 +82,22 @@
         if (sender == self.startGameButton)
         {
             [controller setShouldResumeGame:NO];
+            [controller setPuzzleData:Nil];
+            self.puzzleInProgress = Nil;
         }
         else
         {
             [controller setShouldResumeGame:YES];
+            [controller setPuzzleData:self.puzzleInProgress];
+            self.puzzleInProgress = Nil;
         }
     }
 }
 
-- (void)setGameInProgress:(BOOL)data
+- (void)setGameInProgress:(Puzzle *)thePuzzle
 {
-    self.hasGameInProgress = data;
+    self.hasGameInProgress = YES;
+    self.puzzleInProgress = thePuzzle;
 }
 
 // Set up the positions of the check mark

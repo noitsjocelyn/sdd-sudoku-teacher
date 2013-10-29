@@ -6,12 +6,13 @@
 //  Copyright (c) 2013 Puzzle Professors. All rights reserved.
 //
 
-#import "PPSudokuGameViewController.h"
-#import "PPSudokuView.h"
-#import "SudokuBoardGenerator.h"
-#import "SudokuBoard.h"
-#import "PuzzleMaker.h"
 #import "PPMainMenuController.h"
+#import "PPSudokuView.h"
+#import "PPSudokuGameViewController.h"
+#import "Puzzle.h"
+#import "PuzzleMaker.h"
+#import "SudokuBoard.h"
+#import "SudokuBoardGenerator.h"
 
 @interface PPSudokuGameViewController ()
 
@@ -62,7 +63,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.delegate setGameInProgress:YES];
+    [self.delegate setGameInProgress:self.puzzleData];
 }
 
 - (IBAction)setValue:(id)sender

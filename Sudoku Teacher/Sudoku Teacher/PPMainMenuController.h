@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol MainMenuProtocol
+@class Puzzle;
 
-- (void)setGameInProgress:(BOOL)data;
+@protocol PPMainMenuProtocol
+
+- (void)setGameInProgress:(Puzzle *)thePuzzle;
 
 @end
 
-@interface PPMainMenuController : UIViewController <MainMenuProtocol>
+@interface PPMainMenuController : UIViewController <PPMainMenuProtocol>
 {
     CGRect easyCheckPosition;
     CGRect moderateCheckPosition;
@@ -22,6 +24,7 @@
 
 @property (assign) NSUInteger difficulty;
 @property (assign) BOOL hasGameInProgress;
+@property (assign) Puzzle *puzzleInProgress;
 
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
 @property (weak, nonatomic) IBOutlet UIButton *resumeGameButton;

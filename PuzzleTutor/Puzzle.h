@@ -18,6 +18,7 @@
  *   blockAvail:
  *     Counts the number of times a number is available in a block. Example: If
  *     '3' can be put in 4 squares of block 2, blockAvail[11] = 3.
+ *   originalVal:
  * Methods:
  *   The methods are described in the impelmentation, Puzzle.m.
  */
@@ -31,6 +32,7 @@
     short blockAvail[81];
     BOOL avail[729];
     BOOL blockNums[81];
+    BOOL originalVal[81];
 }
 
 - (id)init;
@@ -42,6 +44,7 @@
 - (BOOL)checkIfSquareIsFilled:(short)loc;
 - (void)putInValue:(int)valueAndLoc;
 - (void)putInShortArray:(short *)shortArray;
+- (void)putInShortArray:(short *)shortArray withOriginals:(BOOL *)boolArray;
 - (void)putInString:(NSString *)stringRepresentation;
 
 @end

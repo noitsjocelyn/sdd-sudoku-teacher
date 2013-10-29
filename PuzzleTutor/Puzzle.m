@@ -167,6 +167,18 @@
     }
 }
 
+/* Method to put a C-style array of 81 shorts into the Puzzle and mark the
+ * original values.
+ */
+- (void)putInShortArray:(short *)shortArray withOriginals:(BOOL *)boolArray
+{
+    [self putInShortArray:shortArray];
+    for (int i = 0; i < 81; ++i)
+    {
+        originalVal[i] = boolArray[i];
+    }
+}
+
 /* Method to put an NSString of length 81 into the Puzzle.
  */
 - (void)putInString:(NSString *)stringRepresentation
