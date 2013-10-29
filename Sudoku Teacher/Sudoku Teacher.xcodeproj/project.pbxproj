@@ -136,15 +136,15 @@
 		AB2A8A8417EA1CED00A49B0B /* Sudoku Teacher */ = {
 			isa = PBXGroup;
 			children = (
+				AB5C626C181AF8AE00F722DD /* Storyboard.storyboard */,
 				AB2A8A8D17EA1CED00A49B0B /* PPAppDelegate.h */,
 				AB2A8A8E17EA1CED00A49B0B /* PPAppDelegate.m */,
 				AB5C6267181AB55700F722DD /* PPMainMenuController.h */,
 				AB5C6268181AB55700F722DD /* PPMainMenuController.m */,
-				AB9BC8BC181B3F80008E8987 /* PPSudokuView.h */,
-				AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */,
 				AB9BC8BF181B5875008E8987 /* PPSudokuGameViewController.h */,
 				AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */,
-				AB5C626C181AF8AE00F722DD /* Storyboard.storyboard */,
+				AB9BC8BC181B3F80008E8987 /* PPSudokuView.h */,
+				AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */,
 				AB2A8A9017EA1CED00A49B0B /* Images.xcassets */,
 				AB914424181DCA8700272D10 /* PuzzleTutor */,
 				AB91440B181C335E00272D10 /* SudokuGenerator */,
