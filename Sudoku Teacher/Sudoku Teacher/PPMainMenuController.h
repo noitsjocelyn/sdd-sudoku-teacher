@@ -16,10 +16,12 @@
 
 @end
 
-@interface PPMainMenuController : UIViewController <PPMainMenuProtocol>
+@interface PPMainMenuController : UIViewController <PPMainMenuProtocol, UIAlertViewDelegate>
 {
     CGRect easyCheckPosition;
     CGRect moderateCheckPosition;
+    BOOL newGameConfirmed;
+    UIAlertView *newGameAlert;
 }
 
 @property (assign) NSUInteger difficulty;

@@ -63,6 +63,8 @@
     {
         [self.resumeGameButton setEnabled:YES];
     }
+    // Default back to unconfirmed new games
+    newGameConfirmed = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,7 +73,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-//
+// Do stuff that needs to be done before a segue, like sending values ahead.
+// Fires only if shouldPerformSegueWithIdentifier:sender: returned YES.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue destinationViewController] class] == [PPSudokuGameViewController class])
@@ -88,6 +91,62 @@
         {
             [controller setPuzzleData:self.puzzleInProgress];
             self.puzzleInProgress = Nil;
+        }
+    }
+}
+
+// Allows you to cancel segues if needed.
+// Fires before prepareForSegue:sender:
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    // If they want to start a new game, we need to do some checks
+    if (sender == self.startGameButton)
+    {
+        // If we don't have a game in progress, start without question
+        if (self.puzzleInProgress == Nil)
+        {
+            newGameConfirmed = NO;
+            return YES;
+        }
+        // Otherwise, check if we want to overwrite our current game
+        else
+        {
+            // If they already confirmed on a previous press, go ahead
+            if (newGameConfirmed)
+            {
+                newGameConfirmed = NO;
+                return YES;
+            }
+            // Otherwise, pop up an alert
+            else
+            {
+                newGameAlert = [[UIAlertView alloc] initWithTitle:@"You have a game in progress"
+                                                      message:@"Are you sure you want to start a new game? This will overwrite your existing game."
+                                                     delegate:self
+                                            cancelButtonTitle:@"Cancel"
+                                            otherButtonTitles:@"New game", nil];
+                [newGameAlert show];
+                // Cancel the segue until we have a response
+                return NO;
+            }
+        }
+    }
+    // Other segues happen automatically
+    return YES;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // See if we're coming from the new game alert
+    if (alertView == newGameAlert)
+    {
+        // Do stuff if they didn't press Cancel
+        if (buttonIndex != [newGameAlert cancelButtonIndex])
+        {
+            // Say that they confirmed the new game
+            newGameConfirmed = YES;
+            // Redo the segue
+            [self performSegueWithIdentifier:@"NewGame" sender:self.startGameButton];
         }
     }
 }
