@@ -37,7 +37,7 @@
     [self setupLabels];
     for (short i = 0; i < 81; ++i)
     {
-        [self.view addSubview:valueLabels[i]];
+        [self.view addSubview:squareButtons[i]];
     }
     // Default setter buttons to disabled
     for (UIButton *aButton in self.setValueButtons)
@@ -83,7 +83,7 @@
     // Grab the value we want to set it to
     NSUInteger value = [sender tag];
     // Grab the button that is selected
-    UIButton *buttonToChange = valueLabels[self.buttonSelected];
+    UIButton *buttonToChange = squareButtons[self.buttonSelected];
     // Default the new value to blank
     NSString *newTitle = @"";
     // If we aren't clearing it, set the new value
@@ -147,7 +147,7 @@
             [aValueButton addTarget:self
                              action:@selector(numberButtonPressed:)
                    forControlEvents:UIControlEventTouchUpInside];
-            valueLabels[i] = aValueButton;
+            squareButtons[i] = aValueButton;
         }
     }
 }
@@ -220,15 +220,15 @@
         // Deselect all the buttons that were not pressed
         if (i != buttonTag)
         {
-            [valueLabels[i] setSelected:NO];
+            [squareButtons[i] setSelected:NO];
         }
         // We need to do stuff if we're on the button that IS pressed
         else
         {
             // If it was already selected, deselect it
-            if ([valueLabels[i] isSelected])
+            if ([squareButtons[i] isSelected])
             {
-                [valueLabels[i] setSelected:NO];
+                [squareButtons[i] setSelected:NO];
                 self.buttonSelected = -1;
                 // Also disable the setters
                 for (UIButton *aButton in self.setValueButtons)
@@ -238,7 +238,7 @@
             }
             else
             {
-                [valueLabels[i] setSelected:YES];
+                [squareButtons[i] setSelected:YES];
                 // If it's an original value, we can't change it
                 if ([self.puzzleData isOriginalValueAtIndex:buttonTag])
                 {
@@ -254,7 +254,7 @@
                         // Disable the "Clear" button if the square is blank
                         if ([aButton tag] == 0)
                         {
-                            BOOL valueIsBlank = [[valueLabels[buttonTag] titleForState:UIControlStateNormal] isEqualToString:@""];
+                            BOOL valueIsBlank = [[squareButtons[buttonTag] titleForState:UIControlStateNormal] isEqualToString:@""];
                             [aButton setEnabled:!valueIsBlank];
                         }
                         // Otherwise, enable the setter
@@ -291,10 +291,10 @@
         // Change the text color accordingly
         if (!isOriginal)
         {
-            [valueLabels[i] setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+            [squareButtons[i] setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         }
         
-        [valueLabels[i] setTitle:valString forState:UIControlStateNormal];
+        [squareButtons[i] setTitle:valString forState:UIControlStateNormal];
     }
 }
 
