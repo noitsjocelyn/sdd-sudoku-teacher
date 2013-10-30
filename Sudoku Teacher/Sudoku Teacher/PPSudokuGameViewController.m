@@ -33,6 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Setup user chosen value color to Apple button text blue
+    userChosenValueColor = [UIColor colorWithRed:0.055 green:0.471 blue:0.998 alpha:1.000];
     // Setup and add our labels
     [self setupLabels];
     for (short i = 0; i < 81; ++i)
@@ -60,8 +62,6 @@
     {
         [self setupFromPuzzleData:self.puzzleData];
     }
-    // Setup user chosen value color to Apple button text blue
-    userChosenValueColor = [UIColor colorWithRed:0.055 green:0.471 blue:0.998 alpha:1.000];
 }
 
 - (void)didReceiveMemoryWarning
