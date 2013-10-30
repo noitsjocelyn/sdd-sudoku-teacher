@@ -149,7 +149,7 @@
             [aValueButton setTitle:@"" forState:UIControlStateNormal];
             // Set the tag so we can figure out which is pressed later
             [aValueButton setTag:i];
-            // Call the printButtonNumber: method when they are pressed
+            // Call the numberButtonPressed: method when they are pressed
             [aValueButton addTarget:self
                              action:@selector(numberButtonPressed:)
                    forControlEvents:UIControlEventTouchUpInside];
