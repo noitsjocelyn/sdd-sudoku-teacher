@@ -48,7 +48,7 @@
 		short *results = [basePuzzle findSquareWithOneAvailableValue];
 		if (results[0] != 0)
 		{
-			[basePuzzle putInValue: (results[2] * 9 + results[3])];
+			[basePuzzle putInValue:(results[2] * 9 + results[3])];
 			count += 1;
 		}
 		else
@@ -56,24 +56,25 @@
 			results = [basePuzzle findSquareInChunkWithRequiredValue];
 			if (results[0] != 0)
 			{
-				[basePuzzle putInValue: (results[2] * 9 + results[3])];
+				[basePuzzle putInValue:(results[2] * 9 + results[3])];
 				count += 1;
 			}
 			else
 			{
 				int r = arc4random() % 41;
 				int r2 = 80 - r;
-				[basePuzzle putInValue: (givenPuzzle[r] + r * 9)];
+				[basePuzzle putInValue:(givenPuzzle[r] + r * 9)];
 				workingPuzzle[r] = givenPuzzle[r];
 				count += 1;
 				if (r != 40)
 				{
-					[basePuzzle putInValue: (givenPuzzle[r2] + r2 * 9)];
+					[basePuzzle putInValue:(givenPuzzle[r2] + r2 * 9)];
 					workingPuzzle[r2] = givenPuzzle[r2];
 					count += 1;
 				}
 			}
 		}
+        free(results);
 	}
 	return workingPuzzle;
 }
@@ -94,23 +95,24 @@
 		short *results = [basePuzzle findSquareWithOneAvailableValue];
 		if (results[0] != 0)
 		{
-			[basePuzzle putInValue: (results[2] * 9 + results[3])];
+			[basePuzzle putInValue:(results[2] * 9 + results[3])];
 			count += 1;
 		}	
 		else
 		{
 			int r = arc4random() % 41;
 			int r2 = 80 - r;
-			[basePuzzle putInValue: (givenPuzzle[r] + r * 9)];
+			[basePuzzle putInValue:(givenPuzzle[r] + r * 9)];
 			workingPuzzle[r] = givenPuzzle[r];
 			count += 1;
 			if (r != 40)
 			{
-				[basePuzzle putInValue: (givenPuzzle[r2] + r2 * 9)];
+				[basePuzzle putInValue:(givenPuzzle[r2] + r2 * 9)];
 				workingPuzzle[r2] = givenPuzzle[r2];
 				count += 1;
 			}
 		}
+        free(results);
 	}
 	return workingPuzzle;
 }
