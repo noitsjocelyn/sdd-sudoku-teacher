@@ -1,14 +1,14 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "1x",
-      "filename" : "Highlight circle small.png"
+      "filename" : "HighlightCircle.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "Highlight circle.png"
+      "filename" : "HighlightCircle@2x.png"
     }
   ],
   "info" : {

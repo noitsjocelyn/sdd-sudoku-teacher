@@ -145,7 +145,7 @@
             [aValueButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [aValueButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
             [aValueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-            [aValueButton setBackgroundImage:[UIImage imageNamed:@"Highlight circle"] forState:UIControlStateSelected];
+            [aValueButton setBackgroundImage:[UIImage imageNamed:@"HighlightCircle"] forState:UIControlStateSelected];
             [aValueButton setTitle:@"" forState:UIControlStateNormal];
             // Set the tag so we can figure out which is pressed later
             [aValueButton setTag:i];
