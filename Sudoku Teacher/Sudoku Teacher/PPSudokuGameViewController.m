@@ -60,6 +60,8 @@
     {
         [self setupFromPuzzleData:self.puzzleData];
     }
+    // Setup user chosen value color to Apple button text blue
+    userChosenValueColor = [UIColor colorWithRed:0.055 green:0.471 blue:0.998 alpha:1.000];
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,6 +144,7 @@
             [aValueButton setBackgroundColor:[UIColor clearColor]];
             [aValueButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [aValueButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+            [aValueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
             [aValueButton setBackgroundImage:[UIImage imageNamed:@"Highlight circle"] forState:UIControlStateSelected];
             [aValueButton setTitle:@"" forState:UIControlStateNormal];
             // Set the tag so we can figure out which is pressed later
@@ -294,7 +297,7 @@
         // Change the text color accordingly
         if (!isOriginal)
         {
-            [squareButtons[i] setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+            [squareButtons[i] setTitleColor:userChosenValueColor forState:UIControlStateNormal];
         }
         
         [squareButtons[i] setTitle:valString forState:UIControlStateNormal];
