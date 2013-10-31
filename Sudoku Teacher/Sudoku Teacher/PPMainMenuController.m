@@ -121,10 +121,10 @@
             else
             {
                 newGameAlert = [[UIAlertView alloc] initWithTitle:@"You have a game in progress"
-                                                      message:@"Are you sure you want to start a new game? This will overwrite your existing game."
-                                                     delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"New game", nil];
+                                                          message:@"Are you sure you want to start a new game? This will overwrite your existing game."
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel"
+                                                otherButtonTitles:@"New game", nil];
                 [newGameAlert show];
                 // Cancel the segue until we have a response
                 return NO;
