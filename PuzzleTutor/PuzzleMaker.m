@@ -72,7 +72,7 @@
 				if (r != 40)
 				{
 					[basePuzzle putInValue:(givenPuzzle[r2] + r2 * 9)];
-					if (workingPuzzle[r] != givenPuzzle[r])
+					if (workingPuzzle[r2] != givenPuzzle[r2])
 					{
 						workingPuzzle[r2] = givenPuzzle[r2];
 						count += 1;
