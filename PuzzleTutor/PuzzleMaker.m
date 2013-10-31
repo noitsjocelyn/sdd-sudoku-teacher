@@ -63,19 +63,35 @@
 			{
 				int r = arc4random() % 41;
 				int r2 = 80 - r;
+				BOOL alreadyCounted = NO;
+				BOOL alreadyCOunted2 = NO;
+				if ([basePuzzle getPuzzleValueAtIndex: r] != 0)
+				{
+					alreadyCounted = YES;
+				}
 				[basePuzzle putInValue:(givenPuzzle[r] + r * 9)];
 				if (workingPuzzle[r] != givenPuzzle[r])
 				{
 					workingPuzzle[r] = givenPuzzle[r];
-					count += 1;
+					if (alreadyCounted == NO)
+					{
+						count += 1;
+					}
 				}
 				if (r != 40)
 				{
+					if ([basePuzzle getPuzzleValueAtIndex: r2] != 0)
+					{
+						alreadyCounted = YES;
+					}
 					[basePuzzle putInValue:(givenPuzzle[r2] + r2 * 9)];
 					if (workingPuzzle[r2] != givenPuzzle[r2])
 					{
 						workingPuzzle[r2] = givenPuzzle[r2];
-						count += 1;
+						if (alreadyCounted2 == NO)
+						{
+							count += 1;
+						}
 					}
 				}
 			}
@@ -108,19 +124,35 @@
 		{
 			int r = arc4random() % 41;
 			int r2 = 80 - r;
+			BOOL alreadyCounted = NO;
+			BOOL alreadyCounted2 = NO;
+			if ([basePuzzle getPuzzleValueAtIndex: r] != 0)
+			{
+				alreadyCounted = YES;
+			}
 			[basePuzzle putInValue:(givenPuzzle[r] + r * 9)];
 			if (workingPuzzle[r] != givenPuzzle[r])
 			{
 				workingPuzzle[r] = givenPuzzle[r];
-				count += 1;
+				if (alreadyCounted == NO)
+				{
+					count += 1;
+				}
 			}
 			if (r != 40)
 			{
+				if ([basePuzzle getPuzzleValueAtIndex: r2] != 0)
+				{
+					alreadyCounted2 = YES;
+				}
 				[basePuzzle putInValue:(givenPuzzle[r2] + r2 * 9)];
 				if (workingPuzzle[r2] != givenPuzzle[r2])
 				{
 					workingPuzzle[r2] = givenPuzzle[r2];
-					count += 1;
+					if (alreadyCounted == NO)
+					{
+						count += 1;
+					}	
 				}
 			}
 		}
