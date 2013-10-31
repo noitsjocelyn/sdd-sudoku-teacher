@@ -64,13 +64,19 @@
 				int r = arc4random() % 41;
 				int r2 = 80 - r;
 				[basePuzzle putInValue:(givenPuzzle[r] + r * 9)];
-				workingPuzzle[r] = givenPuzzle[r];
-				count += 1;
+				if (workingPuzzle[r] != givenPuzzle[r])
+				{
+					workingPuzzle[r] = givenPuzzle[r];
+					count += 1;
+				}
 				if (r != 40)
 				{
 					[basePuzzle putInValue:(givenPuzzle[r2] + r2 * 9)];
-					workingPuzzle[r2] = givenPuzzle[r2];
-					count += 1;
+					if (workingPuzzle[r] != givenPuzzle[r])
+					{
+						workingPuzzle[r2] = givenPuzzle[r2];
+						count += 1;
+					}
 				}
 			}
 		}
@@ -103,13 +109,19 @@
 			int r = arc4random() % 41;
 			int r2 = 80 - r;
 			[basePuzzle putInValue:(givenPuzzle[r] + r * 9)];
-			workingPuzzle[r] = givenPuzzle[r];
-			count += 1;
+			if (workingPuzzle[r] != givenPuzzle[r])
+			{
+				workingPuzzle[r] = givenPuzzle[r];
+				count += 1;
+			}
 			if (r != 40)
 			{
 				[basePuzzle putInValue:(givenPuzzle[r2] + r2 * 9)];
-				workingPuzzle[r2] = givenPuzzle[r2];
-				count += 1;
+				if (workingPuzzle[r2] != givenPuzzle[r2])
+				{
+					workingPuzzle[r2] = givenPuzzle[r2];
+					count += 1;
+				}
 			}
 		}
         free(results);
