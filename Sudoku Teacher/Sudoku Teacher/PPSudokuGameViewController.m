@@ -180,7 +180,17 @@
 - (void)generateAndDisplayBoard:(id)sender
 {
     // Generate the full puzzle board
-    SudokuBoard *aBoard = [SudokuBoardGenerator generate];
+    SudokuBoard *aBoard = nil;
+    // The generate method returns nil if there is a failure, so loop it
+    NSUInteger attempts = 0;
+    while (!aBoard)
+    {
+        ++attempts;
+        aBoard = [SudokuBoardGenerator generate];
+    }
+    #ifdef DEBUG
+    NSLog(@"Took %d %@ to generate full puzzle.", attempts, attempts == 1 ? @"try" : @"tries");
+    #endif
     // Generate the puzzle
     PuzzleMaker *aMaker = [[PuzzleMaker alloc] init];
     [aMaker givePuzzle:[aBoard boardAsShortArray]];
