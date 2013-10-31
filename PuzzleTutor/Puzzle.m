@@ -253,9 +253,7 @@
                     results[3] = j + 1;
                     return results;
                 }
-
             }
-
         }
     }
     results[0] = 0;
