@@ -64,7 +64,7 @@
 				int r = arc4random() % 41;
 				int r2 = 80 - r;
 				BOOL alreadyCounted = NO;
-				BOOL alreadyCOunted2 = NO;
+				BOOL alreadyCounted2 = NO;
 				if ([basePuzzle getPuzzleValueAtIndex: r] != 0)
 				{
 					alreadyCounted = YES;
