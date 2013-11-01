@@ -59,7 +59,7 @@
 	short count = 0;
 	while (count < 81)
 	{
-        short *results = calloc(81, sizeof(short));
+        short *results = calloc(4, sizeof(short));
 		results = [basePuzzle findSquareWithOneAvailableValue:results];
 		if (results[0] != 0)
 		{
@@ -121,7 +121,7 @@
 	short count = 0;
 	while (count < 81)
 	{
-        short *results = calloc(81, sizeof(short));
+        short *results = calloc(4, sizeof(short));
 		results = [basePuzzle findSquareWithOneAvailableValue:results];
 		if (results[0] != 0)
 		{
