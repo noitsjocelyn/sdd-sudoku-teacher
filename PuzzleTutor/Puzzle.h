@@ -37,14 +37,13 @@
 
 - (id)init;
 - (id)initWithShortArray:(short *)shortArray;
-- (id)initWithNumberArray:(NSArray *)array;
 - (id)initWithString:(NSString *)stringRepresentation;
 
 - (short)getPuzzleValueAtIndex:(short)index;
 - (BOOL)isOriginalValueAtIndex:(short)index;
 - (void)resetSquareAtIndex:(short)index;
-- (short *)findSquareWithOneAvailableValue;
-- (short *)findSquareInChunkWithRequiredValue;
+- (short *)findSquareWithOneAvailableValue:(short *)results;
+- (short *)findSquareInChunkWithRequiredValue:(short *)results;
 - (BOOL)checkIfSquareIsFilled:(short)loc;
 - (void)putInValue:(int)valueAndLoc;
 - (void)putInShortArray:(short *)shortArray;

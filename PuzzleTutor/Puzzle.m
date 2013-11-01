@@ -31,21 +31,6 @@
     return self;
 }
 
-/* Method to initialize the Puzzle with an NSArray of 81 NSNumbers.
- */
-- (id)initWithNumberArray:(NSArray *)array
-{
-    self = [self init];
-    short *shortArray = calloc(81, sizeof(short));
-    for (NSUInteger i = 0; i < 81; ++i)
-    {
-        shortArray[i] = [(NSNumber *)[array objectAtIndex:i] shortValue];
-    }
-    [self putInShortArray:shortArray];
-    free(shortArray);
-    return self;
-}
-
 /* Method to initialize the Puzzle with an NSString of length 81.
  */
 - (id)initWithString:(NSString *)stringRepresentation
@@ -251,9 +236,9 @@
  * it. It then returns the method (1), submethod (1), square number, and
  * number to be input.
  */
-- (short *)findSquareWithOneAvailableValue
+- (short *)findSquareWithOneAvailableValue:(short *)results
 {
-    short *results = calloc(4, sizeof(short));
+//    short *results = calloc(4, sizeof(short));
     for (short i = 0; i < 81; ++i)
     {
         if (locAvail[i] == 1)
@@ -279,9 +264,9 @@
  * appear. It returns an array of 4 values: 2 (method used), [1,2,3]
  * (corresponding to block, column, row), location, and number to be put in.
  */
-- (short *)findSquareInChunkWithRequiredValue
+- (short *)findSquareInChunkWithRequiredValue:(short *)results
 {
-    short *results = calloc(4, sizeof(short));
+//    short *results = calloc(4, sizeof(short));
     for (short i = 0; i < 81; ++i)
     {
         if (!blockNums[i])

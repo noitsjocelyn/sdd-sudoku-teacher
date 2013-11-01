@@ -60,7 +60,8 @@
 	short count = 0;
 	while (count < 81)
 	{
-		short *results = [basePuzzle findSquareWithOneAvailableValue];
+        short *results = calloc(81, sizeof(short));
+		results = [basePuzzle findSquareWithOneAvailableValue:results];
 		if (results[0] != 0)
 		{
 			[basePuzzle putInValue:(results[2] * 9 + results[3])];
@@ -123,7 +124,8 @@
 	short count = 0;
 	while (count < 81)
 	{
-		short *results = [basePuzzle findSquareWithOneAvailableValue];
+        short *results = calloc(81, sizeof(short));
+		results = [basePuzzle findSquareWithOneAvailableValue:results];
 		if (results[0] != 0)
 		{
 			[basePuzzle putInValue:(results[2] * 9 + results[3])];
@@ -131,7 +133,7 @@
 		}
 		else
 		{
-			results = [basePuzzle findSquareInChunkWithRequiredValue];
+			results = [basePuzzle findSquareInChunkWithRequiredValue:results];
 			if (results[0] != 0)
 			{
 				[basePuzzle putInValue:(results[2] * 9 + results[3])];
