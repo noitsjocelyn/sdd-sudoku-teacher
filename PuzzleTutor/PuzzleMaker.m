@@ -2,6 +2,8 @@
 #import "PuzzleMaker.h"
 #import "Puzzle.h"
 
+#define CONSECUTIVE_FAIL_THRESHOLD 500
+
 @implementation PuzzleMaker
 
 - (id)init
@@ -57,18 +59,23 @@
 - (void)makeEasyPuzzle
 {
 	short count = 0;
+    short previousCount = 0;
+    short consecutiveFails = 0;
 	while (count < 81)
 	{
+        previousCount = count;
         short *results = calloc(4, sizeof(short));
 		results = [basePuzzle findSquareWithOneAvailableValue:results];
 		if (results[0] != 0)
 		{
 			[basePuzzle putInValue:(results[2] * 9 + results[3])];
-			count += 1;
+			++count;
 		}
 		else
 		{
+            // Random number from 0-40
 			int r = arc4random() % 41;
+            // That number's mirror
 			int r2 = 80 - r;
 			BOOL alreadyCounted = NO;
 			BOOL alreadyCounted2 = NO;
@@ -82,9 +89,10 @@
 				workingPuzzle[r] = givenPuzzle[r];
 				if (alreadyCounted == NO)
 				{
-					count += 1;
+					++count;
 				}
 			}
+            // The mirror of the 40th square is itself, so don't do this
 			if (r != 40)
 			{
 				if ([basePuzzle getPuzzleValueAtIndex: r2] != 0)
@@ -97,12 +105,20 @@
 					workingPuzzle[r2] = givenPuzzle[r2];
 					if (alreadyCounted == NO)
 					{
-						count += 1;
+						++count;
 					}
 				}
 			}
 		}
         free(results);
+        if (previousCount == count)
+        {
+            ++consecutiveFails;
+        }
+        if (consecutiveFails > CONSECUTIVE_FAIL_THRESHOLD)
+        {
+            break;
+        }
 	}
 }
 
@@ -119,14 +135,17 @@
 - (void)makeMediumPuzzle
 {
 	short count = 0;
+    short previousCount = 0;
+    short consecutiveFails = 0;
 	while (count < 81)
 	{
+        previousCount = count;
         short *results = calloc(4, sizeof(short));
 		results = [basePuzzle findSquareWithOneAvailableValue:results];
 		if (results[0] != 0)
 		{
 			[basePuzzle putInValue:(results[2] * 9 + results[3])];
-			count += 1;
+			++count;
 		}
 		else
 		{
@@ -134,15 +153,17 @@
 			if (results[0] != 0)
 			{
 				[basePuzzle putInValue:(results[2] * 9 + results[3])];
-				count += 1;
+				++count;
 			}
 			else
 			{
+                // Random number from 0-40
 				int r = arc4random() % 41;
+                // That number's mirror
 				int r2 = 80 - r;
 				BOOL alreadyCounted = NO;
 				BOOL alreadyCounted2 = NO;
-				if ([basePuzzle getPuzzleValueAtIndex: r] != 0)
+				if ([basePuzzle getPuzzleValueAtIndex:r] != 0)
 				{
 					alreadyCounted = YES;
 				}
@@ -152,12 +173,13 @@
 					workingPuzzle[r] = givenPuzzle[r];
 					if (alreadyCounted == NO)
 					{
-						count += 1;
+						++count;
 					}
 				}
+                // The mirror of the 40th square is itself, so don't do this
 				if (r != 40)
 				{
-					if ([basePuzzle getPuzzleValueAtIndex: r2] != 0)
+					if ([basePuzzle getPuzzleValueAtIndex:r2] != 0)
 					{
 						alreadyCounted = YES;
 					}
@@ -167,13 +189,21 @@
 						workingPuzzle[r2] = givenPuzzle[r2];
 						if (alreadyCounted2 == NO)
 						{
-							count += 1;
+							++count;
 						}
 					}
 				}
 			}
 		}
         free(results);
+        if (previousCount == count)
+        {
+            ++consecutiveFails;
+        }
+        if (consecutiveFails > CONSECUTIVE_FAIL_THRESHOLD)
+        {
+            break;
+        }
 	}
 }
 
