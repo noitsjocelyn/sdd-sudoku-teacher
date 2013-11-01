@@ -77,7 +77,8 @@ BOOL allBoolArrayValuesTrue(BOOL *array, NSUInteger size);
  */
 + (BOOL)isValidBoard:(SudokuBoard *)aBoard
 {
-    short *testBoard = [aBoard boardAsShortArray];
+    short *testBoard = calloc(81, sizeof(short));
+    testBoard = [aBoard boardAsShortArray:testBoard];
     BOOL *validityArray = calloc(9, sizeof(BOOL));
     BOOL boardIsValid = YES;
     
