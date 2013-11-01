@@ -36,17 +36,17 @@
 
 - (short *)buildEasyPuzzle:(short *)outputArray
 {
-    [self buildEasyPuzzle];
+    [self makeEasyPuzzle];
     return [self getWorkingPuzzle:outputArray];
 }
 
 - (short *)buildMediumPuzzle:(short *)outputArray
 {
-    [self buildMediumPuzzle];
+    [self makeMediumPuzzle];
     return [self getWorkingPuzzle:outputArray];
 }
 
-/* The buildEasyPuzzle function. It uses count to track how many locations have
+/* The makeEasyPuzzle function. It uses count to track how many locations have
  * been filled, either by deduciton or by displaying the value. Inside of a
  * loop, it first looks to deduce a location's value by the
  * findSquareWithOneAvaiableValue algorithm. If that fails, it generates random
@@ -54,8 +54,7 @@
  * minus that location are both unfilled. It then makes those squares' values
  * part of the initial puzzle displayed to the user.
  */
-//- (short *)buildEasyPuzzle
-- (void)buildEasyPuzzle
+- (void)makeEasyPuzzle
 {
 	short count = 0;
 	while (count < 81)
@@ -105,10 +104,9 @@
 		}
         free(results);
 	}
-    //	return workingPuzzle;
 }
 
-/* The buildMediumPuzzle function. It uses count to track how many locations
+/* The makeMediumPuzzle function. It uses count to track how many locations
  * have been filled, either by deduciton or by displaying the value. Inside of
  * a loop, it first looks to deduce a location's value by the
  * findSquareWithOneAvaiableValue algorithm.
@@ -118,8 +116,7 @@
  * unfilled. It then makes those squares' values part of the initial puzzle
  * displayed to the user.
  */
-//- (short *)buildMediumPuzzle
-- (void)buildMediumPuzzle
+- (void)makeMediumPuzzle
 {
 	short count = 0;
 	while (count < 81)
@@ -178,7 +175,6 @@
 		}
         free(results);
 	}
-//	return workingPuzzle;
 }
 
 @end
