@@ -31,6 +31,21 @@
     return self;
 }
 
+/* Method to initialize the Puzzle with an NSArray of 81 NSNumbers.
+ */
+- (id)initWithNumberArray:(NSArray *)array
+{
+    self = [self init];
+    short *shortArray = calloc(81, sizeof(short));
+    for (NSUInteger i = 0; i < 81; ++i)
+    {
+        shortArray[i] = [(NSNumber *)[array objectAtIndex:i] shortValue];
+    }
+    [self putInShortArray:shortArray];
+    free(shortArray);
+    return self;
+}
+
 /* Method to initialize the Puzzle with an NSString of length 81.
  */
 - (id)initWithString:(NSString *)stringRepresentation

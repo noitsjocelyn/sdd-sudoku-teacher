@@ -182,35 +182,42 @@
     // Generate the full puzzle board
     SudokuBoard *aBoard = nil;
     // The generate method returns nil if there is a failure, so loop it
+    #ifdef DEBUG
     NSUInteger attempts = 0;
+    #endif
     while (!aBoard)
     {
+        #ifdef DEBUG
         ++attempts;
+        NSLog(@"Generating puzzle, try %d...", attempts);
+        #endif
         aBoard = [SudokuBoardGenerator generate];
     }
     #ifdef DEBUG
-    NSLog(@"Took %d %@ to generate full puzzle.", attempts, attempts == 1 ? @"try" : @"tries");
+    NSLog(@"Took %d %@ to generate.", attempts, attempts == 1 ? @"try" : @"tries");
     #endif
     // Generate the puzzle
     PuzzleMaker *aMaker = [[PuzzleMaker alloc] init];
-    [aMaker givePuzzle:[aBoard boardAsShortArray]];
-    short *puzzleArray;
+    short *fullPuzzleArray = calloc(81, sizeof(short));
+    fullPuzzleArray = [aBoard boardAsShortArray:fullPuzzleArray];
+    [aMaker givePuzzle:fullPuzzleArray];
+    free(fullPuzzleArray);
+    // Make our Puzzle data
+    short *puzzleArray = calloc(81, sizeof(short));
     if (self.difficulty == 0)
     {
-        puzzleArray = [aMaker buildEasyPuzzle];
+        puzzleArray = [aMaker buildEasyPuzzle:puzzleArray];
     }
     else
     {
-        puzzleArray = [aMaker buildMediumPuzzle];
+        puzzleArray = [aMaker buildMediumPuzzle:puzzleArray];
     }
-    // Make our Puzzle data
     Puzzle *newPuzzleData = [[Puzzle alloc] initWithShortArray:puzzleArray];
     // Setup the board
     [self setupFromPuzzleData:newPuzzleData];
     aBoard = Nil;
     aMaker = Nil;
-    // I think this needs to be freed, but I'm getting warnings when I do, so leaving it for now
-    //free(puzzleArray);
+    free(puzzleArray);
     
     // Animate removing the processing view
     [UIView animateWithDuration:0.4

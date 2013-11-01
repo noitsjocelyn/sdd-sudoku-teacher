@@ -37,6 +37,7 @@
 
 - (id)init;
 - (id)initWithShortArray:(short *)shortArray;
+- (id)initWithNumberArray:(NSArray *)array;
 - (id)initWithString:(NSString *)stringRepresentation;
 
 - (short)getPuzzleValueAtIndex:(short)index;

@@ -9,9 +9,11 @@
 	short workingPuzzle[81];
 }
 
-- (short *)buildEasyPuzzle;
-- (short *)buildMediumPuzzle;
+//- (short *)buildEasyPuzzle;
+//- (short *)buildMediumPuzzle;
 - (void)givePuzzle:(short *)thePuzzle;
-- (short *)getWorkingPuzzle;
+- (short *)getWorkingPuzzle:(short *)outputArray;
+- (short *)buildEasyPuzzle:(short *)outputArray;
+- (short *)buildMediumPuzzle:(short *)outputArray;
 
 @end

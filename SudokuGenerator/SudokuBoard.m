@@ -139,25 +139,24 @@
 	return desc;
 }
 
-- (short *) boardAsShortArray {
-    short *output = calloc(81, sizeof(short));
+- (short *) boardAsShortArray: (short *) outputArray {
     for (NSUInteger s = 0; s < 9; ++s) {
-        SudokuBoardSector *sector = [_sectors objectAtIndex:s];
+        SudokuBoardSector *sector = [_sectors objectAtIndex: s];
         for (NSUInteger x = 0; x < 3; ++x) {
             for (NSUInteger y = 0; y < 3; ++y) {
                 // Note: sectors are positioned as follows:
                 // 0 1 2
                 // 3 4 5
                 // 6 7 8
-                short num = (short)[sector numberAtX:x y:y];
-                short xOffset = 3 * (s % 3);
-                short locX = xOffset + x;
-                short yOffset = 0;
+                short num = (short)[sector numberAtX: x y: y];
+                NSUInteger xOffset = 3 * (s % 3);
+                NSUInteger locX = xOffset + x;
+                NSUInteger yOffset = 0;
                 if (s >= 3 && s < 6) yOffset = 3;
                 if (s >= 6 && s < 9) yOffset = 6;
-                short locY = yOffset + y;
+                NSUInteger locY = yOffset + y;
                 NSUInteger loc = 9 * locX + locY;
-                output[loc] = num;
+                outputArray[loc] = num;
             }
         }
         #if __has_feature(objc_arc)
@@ -166,7 +165,7 @@
             [sector autorelease];
         #endif
     }
-    return output;
+    return outputArray;
 }
 
 @end
