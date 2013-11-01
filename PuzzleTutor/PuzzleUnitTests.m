@@ -74,7 +74,8 @@
 - (BOOL)testFindSquareWithOneAvailableValue
 {
     NSLog(@"Testing findSquareWithOneAvailableValue...");
-    short *results = [testPuzzle findSquareWithOneAvailableValue];
+    short *results = calloc(81, sizeof(short));
+    results = [testPuzzle findSquareWithOneAvailableValue:results];
     BOOL didTestPass = YES;
     if (results[0] == 1 && results[1] == 1 && results[2] == 7 && results[3] == 9)
     {
@@ -94,7 +95,8 @@
 - (BOOL)testFindSquareInChunkWithRequiredValue
 {
     NSLog(@"Testing findSquareInChunkWithRequiredValue...");
-    short *results = [testPuzzle findSquareInChunkWithRequiredValue];
+    short *results = calloc(81, sizeof(short));
+    results = [testPuzzle findSquareInChunkWithRequiredValue:results];
     BOOL didTestPass = YES;
     if (results[0] == 2 && results[1] == 1 && results[2] == 4 && results[3] == 4)
     {

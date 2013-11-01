@@ -82,9 +82,14 @@
 - (BOOL)testBuildEasyPuzzle
 {
     NSLog(@"Testing buildEasyPuzzle...");
-    [testPuzzleMaker buildEasyPuzzle];
-	testHelper = [[Puzzle alloc] initWithShortArray:[testPuzzleMaker getWorkingPuzzle]];
-    short *results = [testHelper findSquareWithOneAvailableValue];
+    short *aPuzzle = calloc(81, sizeof(short));
+    aPuzzle = [testPuzzleMaker buildEasyPuzzle:aPuzzle];
+    NSLog(@"   Puzzle built.");
+	testHelper = [[Puzzle alloc] initWithShortArray:aPuzzle];
+    free(aPuzzle);
+    NSLog(@"   Checking findSquare method on it...");
+    short *results = calloc(4, sizeof(short));
+    results = [testHelper findSquareWithOneAvailableValue:results];
     BOOL didTestPass = YES;
     if (results[0] != 0)
     {
@@ -96,7 +101,6 @@
         didTestPass = NO;
     }
     free(results);
-    free(testHelper);
     return didTestPass;
 }
 
@@ -108,12 +112,17 @@
 - (BOOL)testBuildMediumPuzzle
 {
     NSLog(@"Testing buildMediumPuzzle...");
-    [testPuzzleMaker buildEasyPuzzle];
-	testHelper = [[Puzzle alloc] initWithShortArray:[testPuzzleMaker getWorkingPuzzle]];
-    short *results = [testHelper findSquareInChunkWithRequiredValue];
+    short *aPuzzle = calloc(81, sizeof(short));
+    aPuzzle = [testPuzzleMaker buildMediumPuzzle:aPuzzle];
+    NSLog(@"   Puzzle built.");
+	testHelper = [[Puzzle alloc] initWithShortArray:aPuzzle];
+    free(aPuzzle);
+    NSLog(@"   Checking findSquare methods on it...");
+    short *results = calloc(4, sizeof(short));
+    results = [testHelper findSquareInChunkWithRequiredValue:results];
     if (results[0] == 0)
     {
-    	results = [testHelper findSquareWithOneAvailableValue];
+    	results = [testHelper findSquareWithOneAvailableValue:results];
     }
     BOOL didTestPass = YES;
     if (results[0] != 0)
@@ -126,7 +135,6 @@
         didTestPass = NO;
     }
     free(results);
-    free(testHelper);
     return didTestPass;
 }
 
