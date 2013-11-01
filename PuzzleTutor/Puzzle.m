@@ -18,7 +18,9 @@
 - (BOOL)checkIfSquareIsFilled:(short)loc
 {
     if (puzzle[loc] != 0)
+    {
         return YES;
+    }
     return NO;
 }
 
@@ -235,10 +237,10 @@
 /* Searches through the puzzle for a square with only 1 number that can go in
  * it. It then returns the method (1), submethod (1), square number, and
  * number to be input.
+ * The size of the results array is 4.
  */
 - (short *)findSquareWithOneAvailableValue:(short *)results
 {
-//    short *results = calloc(4, sizeof(short));
     for (short i = 0; i < 81; ++i)
     {
         if (locAvail[i] == 1)
@@ -263,10 +265,10 @@
 /* Looks for a block, column or row that has only one sqaure a number can
  * appear. It returns an array of 4 values: 2 (method used), [1,2,3]
  * (corresponding to block, column, row), location, and number to be put in.
+ * The size of the results array is 4.
  */
 - (short *)findSquareInChunkWithRequiredValue:(short *)results
 {
-//    short *results = calloc(4, sizeof(short));
     for (short i = 0; i < 81; ++i)
     {
         if (!blockNums[i])
