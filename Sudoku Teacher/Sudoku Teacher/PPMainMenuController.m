@@ -84,29 +84,22 @@
 
 - (void)preGeneratePuzzle
 {
-    if (preGeneratedPuzzle != NULL)
-    {
-        free(preGeneratedPuzzle);
-    }
-    SudokuBoard *aBoard = nil;
-    // The generate method returns nil if there is a failure, so loop it
+    preGeneratedPuzzle = nil;
     #ifdef DEBUG
     NSUInteger attempts = 0;
     #endif
-    while (!aBoard)
+    // The generate method returns nil if there is a failure, so loop it
+    while (!preGeneratedPuzzle)
     {
         #ifdef DEBUG
         ++attempts;
         NSLog(@"Pre-generating puzzle, attempt %d...", attempts);
         #endif
-        aBoard = [SudokuBoardGenerator generate];
+        preGeneratedPuzzle = [SudokuBoardGenerator generate];
     }
     #ifdef DEBUG
     NSLog(@"Pre-generated.");
     #endif
-    short *aFullPuzzle = calloc(81, sizeof(short));
-    aFullPuzzle = [aBoard boardAsShortArray:aFullPuzzle];
-    preGeneratedPuzzle = aFullPuzzle;
     // Exit the thread
     if (![NSThread isMainThread])
     {
@@ -125,19 +118,14 @@
         controller.delegate = self;
         if (sender == self.startNewGameButton)
         {
-            [controller setPuzzleData:Nil];
-            self.puzzleInProgress = Nil;
-            if (preGeneratedPuzzle != NULL)
-            {
-                [controller setPreGeneratedPuzzle:preGeneratedPuzzle];
-//                free(preGeneratedPuzzle);
-                preGeneratedPuzzle = NULL;
-            }
+            [controller setPuzzleData:nil];
+            self.puzzleInProgress = nil;
+            [controller setPreGeneratedPuzzle:preGeneratedPuzzle];
         }
         else
         {
             [controller setPuzzleData:self.puzzleInProgress];
-            self.puzzleInProgress = Nil;
+            self.puzzleInProgress = nil;
         }
     }
 }

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class Puzzle;
+@class SudokuBoard;
 
 @protocol PPMainMenuProtocol
 
@@ -22,7 +23,7 @@
     CGRect moderateCheckPosition;
     BOOL newGameConfirmed;
     UIAlertView *newGameAlert;
-    short *preGeneratedPuzzle;
+    SudokuBoard *preGeneratedPuzzle;
 }
 
 @property (assign) NSUInteger difficulty;

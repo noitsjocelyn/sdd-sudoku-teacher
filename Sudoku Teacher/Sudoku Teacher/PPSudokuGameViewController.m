@@ -179,12 +179,18 @@
 
 - (void)generateAndDisplayBoard:(id)sender
 {
-    short *fullPuzzleArray = calloc(81, sizeof(short));
-    // If we don't have a pre-generated, make one now
-    if (!self.preGeneratedPuzzle)
+    SudokuBoard *aBoard;
+    // If we have a pre-generated board, use it
+    if (self.preGeneratedPuzzle)
     {
-        // Generate the full puzzle board
-        SudokuBoard *aBoard = nil;
+        aBoard = self.preGeneratedPuzzle;
+        #ifdef DEBUG
+        NSLog(@"Loaded pre-generated puzzle.");
+        #endif
+    }
+    // Otherwise, make one now
+    else
+    {
         // The generate method returns nil if there is a failure, so loop it
         #ifdef DEBUG
         NSUInteger attempts = 0;
@@ -200,20 +206,9 @@
         #ifdef DEBUG
         NSLog(@"Generated.");
         #endif
-        fullPuzzleArray = [aBoard boardAsShortArray:fullPuzzleArray];
-        aBoard = Nil;
     }
-    // Otherwise, use the pre-generated one
-    else
-    {
-        #ifdef DEBUG
-        NSLog(@"Loading pre-generated puzzle.");
-        #endif
-        for (NSUInteger i = 0; i < 81; ++i)
-        {
-            fullPuzzleArray[i] = self.preGeneratedPuzzle[i];
-        }
-    }
+    short *fullPuzzleArray = calloc(81, sizeof(short));
+    fullPuzzleArray = [aBoard boardAsShortArray:fullPuzzleArray];
     // Generate the puzzle
     PuzzleMaker *aMaker = [[PuzzleMaker alloc] init];
     [aMaker givePuzzle:fullPuzzleArray];
@@ -230,7 +225,6 @@
         [aMaker buildEasyPuzzle];
         puzzleArray = [aMaker getWorkingPuzzle:puzzleArray];
     }
-    aMaker = Nil;
     Puzzle *newPuzzleData = [[Puzzle alloc] initWithShortArray:puzzleArray];
     // Setup the board
     [self setupFromPuzzleData:newPuzzleData];
