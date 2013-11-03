@@ -10,15 +10,23 @@
 - (id)init
 {
     testPuzzleMaker = nil;
+    const char *puzzleString = "672145398145983672389762451263574819958621743714398526597236184426817935831459267";
+    puzzleArray = calloc(81, sizeof(short));
+    for (short i = 0; i < 81; i++)
+    {
+        short numValue = (short)(puzzleString[i] - '0');
+        puzzleArray[i] = numValue;
+    }
     return self;
 }
 
 - (void)dealloc
 {
     #if !(__has_feature(objc_arc))
-    [testPuzzleMaker release];
     [super dealloc];
+    [testPuzzleMaker release];
     #endif
+    free(puzzleArray);
 }
 
 /* Method which runs all of the tests. If any fail, it returns a failure
@@ -48,26 +56,15 @@
 - (BOOL)testGivePuzzle
 {
     NSLog(@"Testing givePuzzle...");
-    short *inputPuz = calloc(81, sizeof(short));
-    const char *cString = "672145398145983672389762451263574819958621743714398526597236184426817935831459267";
     BOOL didTestPass = YES;
     @try {
-        for (short i = 0; i < 81; i++)
-        {
-            short numValue = (short)(cString[i] - '0');
-            inputPuz[i] = numValue;
-        }
         testPuzzleMaker = [[PuzzleMaker alloc] init];
-        [testPuzzleMaker givePuzzle:inputPuz];
+        [testPuzzleMaker givePuzzle:puzzleArray];
     }
     @catch (NSException *e)
     {
         NSLog(@"Failure:\n%@", e);
         didTestPass = NO;
-    }
-    @finally
-    {
-        free(inputPuz);
     }
     NSLog(@"Success.");
     return didTestPass;
@@ -82,8 +79,11 @@
 - (BOOL)testBuildEasyPuzzle
 {
     NSLog(@"Testing buildEasyPuzzle...");
+    testPuzzleMaker = [[PuzzleMaker alloc] init];
+    [testPuzzleMaker givePuzzle:puzzleArray];
+    [testPuzzleMaker buildEasyPuzzle];
     short *aPuzzle = calloc(81, sizeof(short));
-    aPuzzle = [testPuzzleMaker buildEasyPuzzle:aPuzzle];
+    aPuzzle = [testPuzzleMaker getWorkingPuzzle:aPuzzle];
     NSLog(@"   Puzzle built.");
 	testHelper = [[Puzzle alloc] initWithShortArray:aPuzzle];
     free(aPuzzle);
@@ -104,7 +104,7 @@
     return didTestPass;
 }
 
-/* Tests the buildMediumPuzzle method. It does this by creating an medium puzzle, and feeding the workingPuzzle member
+/* Tests the buildMediumPuzzle method. It does this by creating a medium puzzle, and feeding the workingPuzzle member
  * to a new Puzzle object for initilization. From there, the medium tutor algorithm is run. If this algorithm isn't successful,
  * the easy tutor algorithm is run. The test is successful if at least one of the tutor algorithms was successful. 
  * A more strict test may be written in the future.
@@ -112,8 +112,11 @@
 - (BOOL)testBuildMediumPuzzle
 {
     NSLog(@"Testing buildMediumPuzzle...");
+    testPuzzleMaker = [[PuzzleMaker alloc] init];
+    [testPuzzleMaker givePuzzle:puzzleArray];
+    [testPuzzleMaker buildMediumPuzzle];
     short *aPuzzle = calloc(81, sizeof(short));
-    aPuzzle = [testPuzzleMaker buildMediumPuzzle:aPuzzle];
+    aPuzzle = [testPuzzleMaker getWorkingPuzzle:aPuzzle];
     NSLog(@"   Puzzle built.");
 	testHelper = [[Puzzle alloc] initWithShortArray:aPuzzle];
     free(aPuzzle);

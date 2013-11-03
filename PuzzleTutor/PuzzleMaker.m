@@ -36,18 +36,6 @@
 	return outputArray;
 }
 
-- (short *)buildEasyPuzzle:(short *)outputArray
-{
-    [self makeEasyPuzzle];
-    return [self getWorkingPuzzle:outputArray];
-}
-
-- (short *)buildMediumPuzzle:(short *)outputArray
-{
-    [self makeMediumPuzzle];
-    return [self getWorkingPuzzle:outputArray];
-}
-
 /* The makeEasyPuzzle function. It uses count to track how many locations have
  * been filled, either by deduciton or by displaying the value. Inside of a
  * loop, it first looks to deduce a location's value by the
@@ -56,14 +44,11 @@
  * minus that location are both unfilled. It then makes those squares' values
  * part of the initial puzzle displayed to the user.
  */
-- (void)makeEasyPuzzle
+- (void)buildEasyPuzzle
 {
 	short count = 0;
-    short previousCount = 0;
-    short consecutiveFails = 0;
 	while (count < 81)
 	{
-        previousCount = count;
         short *results = calloc(4, sizeof(short));
 		results = [basePuzzle findSquareWithOneAvailableValue:results];
 		if (results[0] != 0)
@@ -74,28 +59,28 @@
 		else
 		{
             // Random number from 0-40
-			int r = arc4random() % 41;
-            // That number's mirror
-			int r2 = 80 - r;
-			BOOL alreadyCounted = NO;
-			BOOL alreadyCounted2 = NO;
-			if ([basePuzzle getPuzzleValueAtIndex: r] != 0)
+			int r1 = arc4random() % 41;
+			BOOL alreadyCounted1 = NO;
+			if ([basePuzzle getPuzzleValueAtIndex:r1] != 0)
 			{
-				alreadyCounted = YES;
+				alreadyCounted1 = YES;
 			}
-			[basePuzzle putInValue:(givenPuzzle[r] + r * 9)];
-			if (workingPuzzle[r] != givenPuzzle[r])
+			[basePuzzle putInValue:(givenPuzzle[r1] + r1 * 9)];
+			if (workingPuzzle[r1] != givenPuzzle[r1])
 			{
-				workingPuzzle[r] = givenPuzzle[r];
-				if (alreadyCounted == NO)
+				workingPuzzle[r1] = givenPuzzle[r1];
+				if (alreadyCounted1 == NO)
 				{
 					++count;
 				}
 			}
             // The mirror of the 40th square is itself, so don't do this
-			if (r != 40)
+			if (r1 != 40)
 			{
-				if ([basePuzzle getPuzzleValueAtIndex: r2] != 0)
+                // r1's mirror
+                int r2 = 80 - r1;
+                BOOL alreadyCounted2 = NO;
+				if ([basePuzzle getPuzzleValueAtIndex:r2] != 0)
 				{
 					alreadyCounted2 = YES;
 				}
@@ -103,7 +88,7 @@
 				if (workingPuzzle[r2] != givenPuzzle[r2])
 				{
 					workingPuzzle[r2] = givenPuzzle[r2];
-					if (alreadyCounted == NO)
+					if (alreadyCounted2 == NO)
 					{
 						++count;
 					}
@@ -111,14 +96,6 @@
 			}
 		}
         free(results);
-        if (previousCount == count)
-        {
-            ++consecutiveFails;
-        }
-        if (consecutiveFails > CONSECUTIVE_FAIL_THRESHOLD)
-        {
-            break;
-        }
 	}
 }
 
@@ -132,14 +109,11 @@
  * unfilled. It then makes those squares' values part of the initial puzzle
  * displayed to the user.
  */
-- (void)makeMediumPuzzle
+- (void)buildMediumPuzzle
 {
 	short count = 0;
-    short previousCount = 0;
-    short consecutiveFails = 0;
 	while (count < 81)
 	{
-        previousCount = count;
         short *results = calloc(4, sizeof(short));
 		results = [basePuzzle findSquareWithOneAvailableValue:results];
 		if (results[0] != 0)
@@ -158,30 +132,30 @@
 			else
 			{
                 // Random number from 0-40
-				int r = arc4random() % 41;
-                // That number's mirror
-				int r2 = 80 - r;
-				BOOL alreadyCounted = NO;
-				BOOL alreadyCounted2 = NO;
-				if ([basePuzzle getPuzzleValueAtIndex:r] != 0)
+				int r1 = arc4random() % 41;
+				BOOL alreadyCounted1 = NO;
+				if ([basePuzzle getPuzzleValueAtIndex:r1] != 0)
 				{
-					alreadyCounted = YES;
+					alreadyCounted1 = YES;
 				}
-				[basePuzzle putInValue:(givenPuzzle[r] + r * 9)];
-				if (workingPuzzle[r] != givenPuzzle[r])
+				[basePuzzle putInValue:(givenPuzzle[r1] + r1 * 9)];
+				if (workingPuzzle[r1] != givenPuzzle[r1])
 				{
-					workingPuzzle[r] = givenPuzzle[r];
-					if (alreadyCounted == NO)
+					workingPuzzle[r1] = givenPuzzle[r1];
+					if (alreadyCounted1 == NO)
 					{
 						++count;
 					}
 				}
                 // The mirror of the 40th square is itself, so don't do this
-				if (r != 40)
+				if (r1 != 40)
 				{
+                    // r1's mirror
+                    int r2 = 80 - r1;
+                    BOOL alreadyCounted2 = NO;
 					if ([basePuzzle getPuzzleValueAtIndex:r2] != 0)
 					{
-						alreadyCounted = YES;
+						alreadyCounted2 = YES;
 					}
 					[basePuzzle putInValue:(givenPuzzle[r2] + r2 * 9)];
 					if (workingPuzzle[r2] != givenPuzzle[r2])
@@ -196,14 +170,6 @@
 			}
 		}
         free(results);
-        if (previousCount == count)
-        {
-            ++consecutiveFails;
-        }
-        if (consecutiveFails > CONSECUTIVE_FAIL_THRESHOLD)
-        {
-            break;
-        }
 	}
 }
 

@@ -206,11 +206,13 @@
     short *puzzleArray = calloc(81, sizeof(short));
     if (self.difficulty == 0)
     {
-        puzzleArray = [aMaker buildEasyPuzzle:puzzleArray];
+        [aMaker buildEasyPuzzle];
+        puzzleArray = [aMaker getWorkingPuzzle:puzzleArray];
     }
     else
     {
-        puzzleArray = [aMaker buildMediumPuzzle:puzzleArray];
+        [aMaker buildEasyPuzzle];
+        puzzleArray = [aMaker getWorkingPuzzle:puzzleArray];
     }
     Puzzle *newPuzzleData = [[Puzzle alloc] initWithShortArray:puzzleArray];
     // Setup the board

@@ -17,6 +17,7 @@
 {
     PuzzleMaker *testPuzzleMaker;
     Puzzle *testHelper;
+    short *puzzleArray;
 }
 
 - (int)runAllTests;

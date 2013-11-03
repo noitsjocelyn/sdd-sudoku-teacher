@@ -11,7 +11,7 @@
 
 - (void)givePuzzle:(short *)thePuzzle;
 - (short *)getWorkingPuzzle:(short *)outputArray;
-- (short *)buildEasyPuzzle:(short *)outputArray;
-- (short *)buildMediumPuzzle:(short *)outputArray;
+- (void)buildEasyPuzzle;
+- (void)buildMediumPuzzle;
 
 @end
