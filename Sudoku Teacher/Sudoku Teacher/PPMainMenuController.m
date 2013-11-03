@@ -9,6 +9,8 @@
 #import "PPMainMenuController.h"
 #import "PPSudokuGameViewController.h"
 #import "Puzzle.h"
+#import "SudokuBoard.h"
+#import "SudokuBoardGenerator.h"
 
 #define CHECK_FADE_TIME 0.4
 
@@ -17,6 +19,8 @@
 @end
 
 @implementation PPMainMenuController
+
+//@synthesize preGeneratedPuzzle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +34,7 @@
         // Default to no game in progress. This may change with resuming from
         // the closed app later, but should be good for now.
         self.puzzleInProgress = Nil;
+        preGeneratedPuzzle = NULL;
     }
     return self;
 }
@@ -44,6 +49,10 @@
 // viewDidLayoutSubviews is the last place to modify UI elements before they appear
 - (void)viewDidLayoutSubviews
 {
+    // Spin off the puzzle pre-generation to its own thread
+    [NSThread detachNewThreadSelector:@selector(preGeneratePuzzle)
+                             toTarget:self
+                           withObject:Nil];
     [super viewDidLayoutSubviews];
     // Move the check to its correct place before displaying UI elements
     if (self.difficulty == 0)
@@ -73,6 +82,38 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)preGeneratePuzzle
+{
+    if (preGeneratedPuzzle != NULL)
+    {
+        free(preGeneratedPuzzle);
+    }
+    SudokuBoard *aBoard = nil;
+    // The generate method returns nil if there is a failure, so loop it
+    #ifdef DEBUG
+    NSUInteger attempts = 0;
+    #endif
+    while (!aBoard)
+    {
+        #ifdef DEBUG
+        ++attempts;
+        NSLog(@"Pre-generating puzzle, attempt %d...", attempts);
+        #endif
+        aBoard = [SudokuBoardGenerator generate];
+    }
+    #ifdef DEBUG
+    NSLog(@"Pre-generated.");
+    #endif
+    short *aFullPuzzle = calloc(81, sizeof(short));
+    aFullPuzzle = [aBoard boardAsShortArray:aFullPuzzle];
+    preGeneratedPuzzle = aFullPuzzle;
+    // Exit the thread
+    if (![NSThread isMainThread])
+    {
+        [NSThread exit];
+    }
+}
+
 // Do stuff that needs to be done before a segue, like sending values ahead.
 // Fires only if shouldPerformSegueWithIdentifier:sender: returned YES.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -86,6 +127,12 @@
         {
             [controller setPuzzleData:Nil];
             self.puzzleInProgress = Nil;
+            if (preGeneratedPuzzle != NULL)
+            {
+                [controller setPreGeneratedPuzzle:preGeneratedPuzzle];
+//                free(preGeneratedPuzzle);
+                preGeneratedPuzzle = NULL;
+            }
         }
         else
         {

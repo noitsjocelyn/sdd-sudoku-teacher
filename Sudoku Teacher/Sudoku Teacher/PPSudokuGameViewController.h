@@ -23,6 +23,7 @@
 @property (assign) NSUInteger difficulty;
 @property (assign) NSUInteger buttonSelected;
 @property (assign) Puzzle *puzzleData;
+@property (assign) short *preGeneratedPuzzle;
 
 @property (weak, nonatomic) id<PPMainMenuProtocol> delegate;
 @property (weak, nonatomic) IBOutlet PPSudokuView *boardBackground;

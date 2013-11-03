@@ -22,6 +22,7 @@
     CGRect moderateCheckPosition;
     BOOL newGameConfirmed;
     UIAlertView *newGameAlert;
+    short *preGeneratedPuzzle;
 }
 
 @property (assign) NSUInteger difficulty;
@@ -36,5 +37,8 @@
 
 - (IBAction)toggleEasyMode:(id)sender;
 - (IBAction)toggleModerateMode:(id)sender;
+
+- (void)preGeneratePuzzle;
+- (void)setupCheckPositions;
 
 @end

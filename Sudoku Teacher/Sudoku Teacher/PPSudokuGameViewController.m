@@ -179,27 +179,43 @@
 
 - (void)generateAndDisplayBoard:(id)sender
 {
-    // Generate the full puzzle board
-    SudokuBoard *aBoard = nil;
-    // The generate method returns nil if there is a failure, so loop it
-    #ifdef DEBUG
-    NSUInteger attempts = 0;
-    #endif
-    while (!aBoard)
+    short *fullPuzzleArray = calloc(81, sizeof(short));
+    // If we don't have a pre-generated, make one now
+    if (!self.preGeneratedPuzzle)
+    {
+        // Generate the full puzzle board
+        SudokuBoard *aBoard = nil;
+        // The generate method returns nil if there is a failure, so loop it
+        #ifdef DEBUG
+        NSUInteger attempts = 0;
+        #endif
+        while (!aBoard)
+        {
+            #ifdef DEBUG
+            ++attempts;
+            NSLog(@"Generating puzzle, attempt %d...", attempts);
+            #endif
+            aBoard = [SudokuBoardGenerator generate];
+        }
+        #ifdef DEBUG
+        NSLog(@"Generated.");
+        #endif
+        fullPuzzleArray = [aBoard boardAsShortArray:fullPuzzleArray];
+        aBoard = Nil;
+    }
+    // Otherwise, use the pre-generated one
+    else
     {
         #ifdef DEBUG
-        ++attempts;
-        NSLog(@"Generating puzzle, try %d...", attempts);
+        NSLog(@"Loading pre-generated puzzle.");
         #endif
-        aBoard = [SudokuBoardGenerator generate];
+        for (NSUInteger i = 0; i < 81; ++i)
+        {
+            fullPuzzleArray[i] = self.preGeneratedPuzzle[i];
+        }
     }
-    #ifdef DEBUG
-    NSLog(@"Took %d %@ to generate.", attempts, attempts == 1 ? @"try" : @"tries");
-    #endif
     // Generate the puzzle
     PuzzleMaker *aMaker = [[PuzzleMaker alloc] init];
-    short *fullPuzzleArray = calloc(81, sizeof(short));
-    fullPuzzleArray = [aBoard boardAsShortArray:fullPuzzleArray];
     [aMaker givePuzzle:fullPuzzleArray];
     free(fullPuzzleArray);
     // Make our Puzzle data
@@ -214,11 +230,10 @@
         [aMaker buildEasyPuzzle];
         puzzleArray = [aMaker getWorkingPuzzle:puzzleArray];
     }
+    aMaker = Nil;
     Puzzle *newPuzzleData = [[Puzzle alloc] initWithShortArray:puzzleArray];
     // Setup the board
     [self setupFromPuzzleData:newPuzzleData];
-    aBoard = Nil;
-    aMaker = Nil;
     free(puzzleArray);
     
     // Animate removing the processing view
