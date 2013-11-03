@@ -2,8 +2,6 @@
 #import "PuzzleMaker.h"
 #import "Puzzle.h"
 
-#define CONSECUTIVE_FAIL_THRESHOLD 500
-
 @implementation PuzzleMaker
 
 - (id)init
