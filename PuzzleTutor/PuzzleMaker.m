@@ -69,7 +69,7 @@
 			if (workingPuzzle[r1] != givenPuzzle[r1])
 			{
 				workingPuzzle[r1] = givenPuzzle[r1];
-				if (alreadyCounted1 == NO)
+				if (!alreadyCounted1)
 				{
 					++count;
 				}
@@ -88,7 +88,7 @@
 				if (workingPuzzle[r2] != givenPuzzle[r2])
 				{
 					workingPuzzle[r2] = givenPuzzle[r2];
-					if (alreadyCounted2 == NO)
+					if (!alreadyCounted2)
 					{
 						++count;
 					}
@@ -142,7 +142,7 @@
 				if (workingPuzzle[r1] != givenPuzzle[r1])
 				{
 					workingPuzzle[r1] = givenPuzzle[r1];
-					if (alreadyCounted1 == NO)
+					if (!alreadyCounted1)
 					{
 						++count;
 					}
@@ -161,7 +161,7 @@
 					if (workingPuzzle[r2] != givenPuzzle[r2])
 					{
 						workingPuzzle[r2] = givenPuzzle[r2];
-						if (alreadyCounted2 == NO)
+						if (!alreadyCounted2)
 						{
 							++count;
 						}
