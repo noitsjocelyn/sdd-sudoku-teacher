@@ -11,8 +11,7 @@
 #import "PPSudokuGameViewController.h"
 #import "Puzzle.h"
 #import "PuzzleMaker.h"
-#import "SudokuBoard.h"
-#import "SudokuBoardGenerator.h"
+#import "PuzzleMakerFactory.h"
 
 @interface PPSudokuGameViewController ()
 
@@ -73,7 +72,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.delegate setGameInProgress:self.puzzleData];
-    [self.delegate preGeneratePuzzle];
 }
 
 - (IBAction)setValue:(id)sender
@@ -180,40 +178,14 @@
 
 - (void)generateAndDisplayBoard:(id)sender
 {
-    SudokuBoard *aBoard;
-    // If we have a pre-generated board, use it
-    if (self.preGeneratedPuzzle)
-    {
-        aBoard = self.preGeneratedPuzzle;
-        #ifdef DEBUG
-        NSLog(@"Loaded pre-generated puzzle.");
-        #endif
-    }
-    // Otherwise, make one now
-    else
-    {
-        // The generate method returns nil if there is a failure, so loop it
-        #ifdef DEBUG
-        NSUInteger attempts = 0;
-        #endif
-        while (!aBoard)
-        {
-            #ifdef DEBUG
-            ++attempts;
-            NSLog(@"Generating puzzle, attempt %d...", attempts);
-            #endif
-            aBoard = [SudokuBoardGenerator generate];
-        }
-        #ifdef DEBUG
-        NSLog(@"Generated.");
-        #endif
-    }
+    // Get an instance of the puzzle factory
+    PuzzleMakerFactory *factory = [PuzzleMakerFactory sharedInstance];
     short *fullPuzzleArray = calloc(81, sizeof(short));
-    fullPuzzleArray = [aBoard boardAsShortArray:fullPuzzleArray];
     // Generate the puzzle
+    [factory getBoard:fullPuzzleArray];
     PuzzleMaker *aMaker = [[PuzzleMaker alloc] init];
     [aMaker givePuzzle:fullPuzzleArray];
-    // Make our Puzzle data
+    // Make our puzzle data
     short *puzzleArray = calloc(81, sizeof(short));
     if (self.difficulty == 0)
     {

@@ -9,8 +9,7 @@
 #import "PPMainMenuController.h"
 #import "PPSudokuGameViewController.h"
 #import "Puzzle.h"
-#import "SudokuBoard.h"
-#import "SudokuBoardGenerator.h"
+#import "PuzzleMakerFactory.h"
 
 #define CHECK_FADE_TIME 0.4
 
@@ -19,8 +18,6 @@
 @end
 
 @implementation PPMainMenuController
-
-//@synthesize preGeneratedPuzzle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,7 +31,6 @@
         // Default to no game in progress. This may change with resuming from
         // the closed app later, but should be good for now.
         self.puzzleInProgress = Nil;
-        preGeneratedPuzzle = NULL;
     }
     return self;
 }
@@ -44,7 +40,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupCheckPositions];
-    [self preGeneratePuzzle];
+    // Get the shared factory so we start generating puzzles
+    [PuzzleMakerFactory sharedInstance];
 }
 
 // viewDidLayoutSubviews is the last place to modify UI elements before they appear
@@ -79,45 +76,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)preGeneratePuzzle
-{
-    // Spin off the puzzle pre-generation to its own thread
-    [NSThread detachNewThreadSelector:@selector(makePuzzle)
-                             toTarget:self
-                           withObject:Nil];
-}
-
-- (void)makePuzzle
-{
-    preGeneratedPuzzle = nil;
-    #ifdef DEBUG
-    NSUInteger attempts = 0;
-    #endif
-    // The generate method returns nil if there is a failure, so loop it
-    while (!preGeneratedPuzzle)
-    {
-        #ifdef DEBUG
-        ++attempts;
-        NSLog(@"Pre-generating puzzle, attempt %d...", attempts);
-        #endif
-        preGeneratedPuzzle = [SudokuBoardGenerator generate];
-    }
-    #ifdef DEBUG
-    NSLog(@"Pre-generated.");
-    #endif
-    UIAlertView *preGenAlert = [[UIAlertView alloc] initWithTitle:@"Pre-generation complete"
-                                                          message:nil
-                                                         delegate:self
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles:nil];
-    [preGenAlert show];
-    // Exit the thread
-    if (![NSThread isMainThread])
-    {
-        [NSThread exit];
-    }
-}
-
 // Do stuff that needs to be done before a segue, like sending values ahead.
 // Fires only if shouldPerformSegueWithIdentifier:sender: returned YES.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -131,7 +89,6 @@
         {
             [controller setPuzzleData:nil];
             self.puzzleInProgress = nil;
-            [controller setPreGeneratedPuzzle:preGeneratedPuzzle];
         }
         else
         {

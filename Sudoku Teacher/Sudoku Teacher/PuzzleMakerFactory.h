@@ -12,8 +12,6 @@
 
 @interface PuzzleMakerFactory : NSObject
 {
-//    dispatch_semaphore_t genSemaphore;
-//    __strong SudokuBoard *currentBoard;
     short *currentBoard;
 }
 

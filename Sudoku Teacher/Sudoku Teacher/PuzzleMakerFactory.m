@@ -7,8 +7,8 @@
 //
 
 #import "PuzzleMakerFactory.h"
-#import "../SudokuGenerator/SudokuBoard.h"
-#import "../SudokuGenerator/SudokuBoardGenerator.h"
+#import "SudokuBoard.h"
+#import "SudokuBoardGenerator.h"
 
 @implementation PuzzleMakerFactory
 
@@ -24,6 +24,7 @@
 
 + (id)sharedInstance
 {
+    // Use the standard singleton creation pattern
     static dispatch_once_t pred;
     static PuzzleMakerFactory *sharedInstance = nil;
     dispatch_once(&pred, ^{
@@ -33,13 +34,17 @@
 }
 
 - (void)getBoard:(short *)outputArray
-{    @synchronized (self)
+{
+    @synchronized (self)
     {
+        // Wait for there to be a puzzle
         dispatch_semaphore_wait(self.genSemaphore, DISPATCH_TIME_FOREVER);
+        // Hand it off
         for (NSUInteger i = 0; i < 81; ++i)
         {
             outputArray[i] = currentBoard[i];
         }
+        // Start the next generation
         [self generateBoard];
     }
 }

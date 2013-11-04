@@ -11,7 +11,6 @@
 
 @class PPSudokuView;
 @class Puzzle;
-@class SudokuBoard;
 
 @interface PPSudokuGameViewController : UIViewController
 {
@@ -24,7 +23,6 @@
 @property (assign) NSUInteger difficulty;
 @property (assign) NSUInteger buttonSelected;
 @property (assign) Puzzle *puzzleData;
-@property (assign) SudokuBoard *preGeneratedPuzzle;
 
 @property (weak, nonatomic) id<PPMainMenuProtocol> delegate;
 @property (weak, nonatomic) IBOutlet PPSudokuView *boardBackground;
