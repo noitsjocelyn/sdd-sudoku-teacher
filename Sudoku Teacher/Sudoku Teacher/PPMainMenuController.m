@@ -44,15 +44,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupCheckPositions];
+    [self preGeneratePuzzle];
 }
 
 // viewDidLayoutSubviews is the last place to modify UI elements before they appear
 - (void)viewDidLayoutSubviews
 {
-    // Spin off the puzzle pre-generation to its own thread
-    [NSThread detachNewThreadSelector:@selector(preGeneratePuzzle)
-                             toTarget:self
-                           withObject:Nil];
     [super viewDidLayoutSubviews];
     // Move the check to its correct place before displaying UI elements
     if (self.difficulty == 0)
@@ -84,6 +81,14 @@
 
 - (void)preGeneratePuzzle
 {
+    // Spin off the puzzle pre-generation to its own thread
+    [NSThread detachNewThreadSelector:@selector(makePuzzle)
+                             toTarget:self
+                           withObject:Nil];
+}
+
+- (void)makePuzzle
+{
     preGeneratedPuzzle = nil;
     #ifdef DEBUG
     NSUInteger attempts = 0;
@@ -100,6 +105,12 @@
     #ifdef DEBUG
     NSLog(@"Pre-generated.");
     #endif
+    UIAlertView *preGenAlert = [[UIAlertView alloc] initWithTitle:@"Pre-generation complete"
+                                                          message:nil
+                                                         delegate:self
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+    [preGenAlert show];
     // Exit the thread
     if (![NSThread isMainThread])
     {

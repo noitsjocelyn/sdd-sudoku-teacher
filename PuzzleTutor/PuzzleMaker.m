@@ -10,7 +10,6 @@
     {
         workingPuzzle[i] = 0;
     }
-    basePuzzle = [[Puzzle alloc] init];
     return self;
 }
 
@@ -44,6 +43,7 @@
  */
 - (void)buildEasyPuzzle
 {
+    Puzzle *basePuzzle = [[Puzzle alloc] init];
 	short count = 0;
 	while (count < 81)
 	{
@@ -95,6 +95,9 @@
 		}
         free(results);
 	}
+    #if !(__has_feature(objc_arc))
+    [basePuzzle release];
+    #endif
 }
 
 /* The makeMediumPuzzle function. It uses count to track how many locations
@@ -109,6 +112,7 @@
  */
 - (void)buildMediumPuzzle
 {
+    Puzzle *basePuzzle = [[Puzzle alloc] init];
 	short count = 0;
 	while (count < 81)
 	{
@@ -169,6 +173,9 @@
 		}
         free(results);
 	}
+    #if !(__has_feature(objc_arc))
+    [basePuzzle release];
+    #endif
 }
 
 @end

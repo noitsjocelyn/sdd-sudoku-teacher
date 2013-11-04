@@ -14,6 +14,7 @@
 @protocol PPMainMenuProtocol
 
 - (void)setGameInProgress:(Puzzle *)thePuzzle;
+- (void)preGeneratePuzzle;
 
 @end
 
@@ -39,7 +40,6 @@
 - (IBAction)toggleEasyMode:(id)sender;
 - (IBAction)toggleModerateMode:(id)sender;
 
-- (void)preGeneratePuzzle;
 - (void)setupCheckPositions;
 
 @end

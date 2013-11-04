@@ -73,6 +73,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.delegate setGameInProgress:self.puzzleData];
+    [self.delegate preGeneratePuzzle];
 }
 
 - (IBAction)setValue:(id)sender
@@ -212,7 +213,6 @@
     // Generate the puzzle
     PuzzleMaker *aMaker = [[PuzzleMaker alloc] init];
     [aMaker givePuzzle:fullPuzzleArray];
-    free(fullPuzzleArray);
     // Make our Puzzle data
     short *puzzleArray = calloc(81, sizeof(short));
     if (self.difficulty == 0)
@@ -228,12 +228,14 @@
     Puzzle *newPuzzleData = [[Puzzle alloc] initWithShortArray:puzzleArray];
     // Setup the board
     [self setupFromPuzzleData:newPuzzleData];
-    free(puzzleArray);
-    
     // Animate removing the processing view
     [UIView animateWithDuration:0.4
                      animations:^(void){ [processingView setAlpha:0.0]; }
                      completion:^(BOOL finished){ [processingView removeFromSuperview]; }];
+    // Free and null things
+    free(fullPuzzleArray);
+    free(puzzleArray);
+    aMaker = nil;
     // Exit the thread
     if (![NSThread isMainThread])
     {
