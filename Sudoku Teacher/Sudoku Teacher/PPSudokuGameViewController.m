@@ -63,6 +63,15 @@
     }
 }
 
+- (void)viewWillLayoutSubviews
+{
+    // Set board size (it was being improperly layed out for R4 displays)
+    CGRect boardFrame = self.boardBackground.frame;
+    boardFrame.size.width = 320.0;
+    boardFrame.size.height = 320.0;
+    self.boardBackground.frame = boardFrame;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
