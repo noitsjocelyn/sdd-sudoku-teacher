@@ -35,15 +35,34 @@
     return self;
 }
 
+// Called at the beginning of the view's first load
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupCheckPositions];
-    // Get the shared factory so we start generating puzzles
-    [PuzzleMakerFactory sharedInstance];
+    // Initialize the shared factory
+    [NSThread detachNewThreadSelector:@selector(initializeGeneratorFactory)
+                             toTarget:self
+                           withObject:nil];
 }
 
+// Called only on first load, after all subviews exist, but before you see anything
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    // Move the check to its correct place before displaying UI elements
+    if (self.difficulty == 0)
+    {
+        [self.toggleCheck setFrame:easyCheckPosition];
+    }
+    else
+    {
+        [self.toggleCheck setFrame:moderateCheckPosition];
+    }
+}
+
+// Called every time the view will appear
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -60,47 +79,10 @@
     newGameConfirmed = NO;
 }
 
-// viewDidLayoutSubviews is the last place to modify UI elements before they appear
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    // Move the check to its correct place before displaying UI elements
-    if (self.difficulty == 0)
-    {
-        [self.toggleCheck setFrame:easyCheckPosition];
-    }
-    else
-    {
-        [self.toggleCheck setFrame:moderateCheckPosition];
-    }
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-// Do stuff that needs to be done before a segue, like sending values ahead.
-// Fires only if shouldPerformSegueWithIdentifier:sender: returned YES.
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue destinationViewController] class] == [PPSudokuGameViewController class])
-    {
-        PPSudokuGameViewController *controller = [segue destinationViewController];
-        [controller setDifficulty:self.difficulty];
-        controller.delegate = self;
-        if (sender == self.startNewGameButton)
-        {
-            [controller setPuzzleData:nil];
-            self.puzzleInProgress = nil;
-        }
-        else
-        {
-            [controller setPuzzleData:self.puzzleInProgress];
-            self.puzzleInProgress = nil;
-        }
-    }
 }
 
 // Allows you to cancel segues if needed.
@@ -143,6 +125,28 @@
     return YES;
 }
 
+// Do stuff that needs to be done before a segue, like sending values ahead.
+// Fires only if shouldPerformSegueWithIdentifier:sender: returned YES.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue destinationViewController] class] == [PPSudokuGameViewController class])
+    {
+        PPSudokuGameViewController *controller = [segue destinationViewController];
+        [controller setDifficulty:self.difficulty];
+        controller.delegate = self;
+        if (sender == self.startNewGameButton)
+        {
+            [controller setPuzzleData:nil];
+            self.puzzleInProgress = nil;
+        }
+        else
+        {
+            [controller setPuzzleData:self.puzzleInProgress];
+            self.puzzleInProgress = nil;
+        }
+    }
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     // See if we're coming from the new game alert
@@ -162,6 +166,16 @@
 - (void)setGameInProgress:(Puzzle *)thePuzzle
 {
     self.puzzleInProgress = thePuzzle;
+}
+
+- (void)initializeGeneratorFactory
+{
+    // Get the shared factory so we start generating puzzles
+    [PuzzleMakerFactory sharedInstance];
+    if (![NSThread isMainThread])
+    {
+        [NSThread exit];
+    }
 }
 
 // Set up the positions of the check mark
