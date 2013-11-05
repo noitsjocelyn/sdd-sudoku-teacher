@@ -44,6 +44,22 @@
     [PuzzleMakerFactory sharedInstance];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // Enable "Resume" if we have a puzzle we can resume
+    if (self.puzzleInProgress)
+    {
+        [self.resumeGameButton setEnabled:YES];
+    }
+    else
+    {
+        [self.resumeGameButton setEnabled:NO];
+    }
+    // Default back to unconfirmed new games
+    newGameConfirmed = NO;
+}
+
 // viewDidLayoutSubviews is the last place to modify UI elements before they appear
 - (void)viewDidLayoutSubviews
 {
@@ -57,17 +73,6 @@
     {
         [self.toggleCheck setFrame:moderateCheckPosition];
     }
-    // Enable "Resume" if we have a puzzle we can resume
-    if (!self.puzzleInProgress)
-    {
-        [self.resumeGameButton setEnabled:NO];
-    }
-    else
-    {
-        [self.resumeGameButton setEnabled:YES];
-    }
-    // Default back to unconfirmed new games
-    newGameConfirmed = NO;
 }
 
 - (void)didReceiveMemoryWarning
