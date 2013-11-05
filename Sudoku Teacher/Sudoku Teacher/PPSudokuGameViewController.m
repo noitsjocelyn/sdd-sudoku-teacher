@@ -34,8 +34,9 @@
     [super viewDidLoad];
     // Setup user chosen value color to Apple button text blue
     userChosenValueColor = [UIColor colorWithRed:0.055 green:0.471 blue:0.998 alpha:1.000];
-    // Setup and add our labels
-    [self setupLabels];
+    // Setup all of our subviews
+    [self setupSubviews];
+    // Add our labels
     for (short i = 0; i < 81; ++i)
     {
         [self.view addSubview:squareButtons[i]];
@@ -48,8 +49,7 @@
     // Either make a new board...
     if (!self.puzzleData)
     {
-        // Start the processing spinner
-        [self setupProcessingView];
+        // Add the processing view
         [self.view addSubview:processingView];
         // Spin off the process generation to its own thread
         [NSThread detachNewThreadSelector:@selector(generateAndDisplayBoard:)
@@ -61,15 +61,6 @@
     {
         [self setupFromPuzzleData:self.puzzleData];
     }
-}
-
-- (void)viewWillLayoutSubviews
-{
-    // Set board size (it was being improperly layed out for R4 displays)
-    CGRect boardFrame = self.boardBackground.frame;
-    boardFrame.size.width = 320.0;
-    boardFrame.size.height = 320.0;
-    self.boardBackground.frame = boardFrame;
 }
 
 - (void)didReceiveMemoryWarning
@@ -126,6 +117,31 @@
     [buttonToChange setTitle:newTitle forState:UIControlStateNormal];
 }
 
+// Setup our subviews in the correct order (since some depend on each other)
+- (void)setupSubviews
+{
+    [self setupLabels];
+    [self setupBoardBackground];
+    if (!self.puzzleData)
+    {
+        [self setupProcessingView];
+    }
+}
+
+- (void)setupBoardBackground
+{
+    // Set board size (it was being improperly layed out for R4 displays)
+    CGRect boardFrame = self.boardBackground.frame;
+    boardFrame.size.width = 320.0;
+    boardFrame.size.height = 320.0;
+    // Need to add 64 to the height under iOS 6.1
+    if ([[[UIDevice currentDevice] systemVersion] intValue] == 6)
+    {
+        boardFrame.size.height = boardFrame.size.height + 64.0;
+    }
+    self.boardBackground.frame = boardFrame;
+}
+
 - (void)setupLabels
 {
     for (short x = 0; x < 9; ++x)
@@ -170,8 +186,9 @@
 {
     // Make the processing view components
     processingView = [[UIView alloc] init];
-    // Note: The navigation bar is 64 px tall
-    CGRect processingFrame = CGRectMake(0.0, 64.0, self.view.frame.size.width, self.view.frame.size.height - 64.0);
+    // Set position and size based on the board -- it's different between iOS 6.1 and 7
+    CGFloat yPos = self.boardBackground.frame.origin.y;
+    CGRect processingFrame = CGRectMake(0.0, yPos, self.view.frame.size.width, self.view.frame.size.height - yPos);
     [processingView setFrame:processingFrame];
     [processingView setBackgroundColor:[UIColor blackColor]];
     [processingView setAlpha:0.6];
