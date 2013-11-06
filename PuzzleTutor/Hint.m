@@ -2,11 +2,18 @@
  */
 
 #import "Hint.h"
+#import "Puzzle.h"
 
 @implementation Hint
 
 - (id)init
 {
+
+}
+
+- (NSMutableArray *)createHints:(Puzzle *)thePuzzle
+{
+
 
 }
 
@@ -29,7 +36,7 @@
 	Hint *newHint = [[Hint alloc] init];
 	if (hintResults[0] == 1)
 	{
-		theHint = @"Remember, a row, column, or box can only have one occurrence of a number. \
+		theHint = @"Remember, a row, column, or block can only have one occurrence of a number. \
 					You can use this fact to eliminate possibilities from other squares. \
 					Once there is only one possibility remaining for a square, you know the number that has to go there!";
 	}
@@ -53,7 +60,7 @@
     	[stringBuilder appendString:theMethod];
     	[stringBuilder appendString:@" must have an occurrence of every number. If you can eliminate a number from the possibilities of every square in a "];
     	[stringBuilder appendString:theMethod];
-    	[stringBuilder appendString:@"except one, the number must go in the final square!"];
+    	[stringBuilder appendString:@" except one, the number must go in the final square!"];
 		theHint = [NSstring stringWithString:stringBuilder];
 		[stringBuilder release];
 		[theMethod release];

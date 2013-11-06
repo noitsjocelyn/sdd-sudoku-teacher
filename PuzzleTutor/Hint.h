@@ -11,6 +11,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "Puzzle.h"
  
 @interface Hint : NSObject 
 {
@@ -21,6 +22,7 @@
 
 - (id) init;
 
+- (NSMutableArray *)createHints:(Puzzle *)thePuzzle;
 - (NSMutableArray *)makeHints:(short *)hintResult;
 - (Hint *)makeHintOne:(short *)hintResult;
 - (Hint *)makeHintTwo:(short *)hintResult;
