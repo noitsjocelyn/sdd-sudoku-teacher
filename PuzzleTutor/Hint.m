@@ -13,8 +13,13 @@
 
 - (NSMutableArray *)createHints:(Puzzle *)thePuzzle
 {
-
-
+    short theResults[4];
+    [thePuzzle findSquareWithOneAvailableValue:theResults];
+    if (theResults[0] == 0)
+    {
+        [thePuzzle findSquareInChunkWithRequiredValue:theResults];
+    }
+    return [self makeHints:theResults];
 }
 
 /* Method that returns an array of three hints when passed the results of a tutor search.
