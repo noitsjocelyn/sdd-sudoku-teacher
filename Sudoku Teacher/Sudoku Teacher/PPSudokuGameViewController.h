@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *setValueButtons;
 
 - (IBAction)setValue:(id)sender;
+- (IBAction)viewHint:(id)sender;
 - (void)setupLabels;
 - (void)setupProcessingView;
 - (void)generateAndDisplayBoard:(id)sender;

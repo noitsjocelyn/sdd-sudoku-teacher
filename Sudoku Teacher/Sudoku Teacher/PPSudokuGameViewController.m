@@ -117,6 +117,11 @@
     [buttonToChange setTitle:newTitle forState:UIControlStateNormal];
 }
 
+- (IBAction)viewHint:(id)sender
+{
+    
+}
+
 // Setup our subviews in the correct order (since some depend on each other)
 - (void)setupSubviews
 {

@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1Dv-A6-MBr">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -271,6 +271,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sudoku" id="lG3-oB-bV1">
                         <barButtonItem key="backBarButtonItem" title="Menu" id="AHE-8y-is4"/>
+                        <barButtonItem key="rightBarButtonItem" title="Hint" id="sPi-ac-X6H">
+                            <connections>
+                                <action selector="viewHint:" destination="vrX-YD-l6G" id="c3I-ZH-5T0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="boardBackground" destination="aa1-68-vYE" id="Ezs-24-TmY"/>
