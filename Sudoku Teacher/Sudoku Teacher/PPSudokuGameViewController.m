@@ -13,6 +13,8 @@
 #import "PuzzleMaker.h"
 #import "PuzzleMakerFactory.h"
 
+#define CLEAR_BUTTON_TAG 0
+
 @interface PPSudokuGameViewController ()
 
 @end
@@ -105,7 +107,7 @@
         for (UIButton *aButton in self.setValueButtons)
         {
             // Disable the clear button
-            if ([aButton tag] == 0)
+            if ([aButton tag] == CLEAR_BUTTON_TAG)
             {
                 [aButton setEnabled:NO];
             }
