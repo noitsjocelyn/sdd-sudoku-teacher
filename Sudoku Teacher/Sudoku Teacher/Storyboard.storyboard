@@ -120,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pct-Vx-Hd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="353" y="49"/>
+            <point key="canvasLocation" x="356" y="49"/>
         </scene>
         <!--Sudoku Game View Controller - Sudoku-->
         <scene sceneID="FBj-J8-Zpx">
@@ -295,10 +295,11 @@
             </objects>
             <point key="canvasLocation" x="894" y="49"/>
         </scene>
-        <!--View Controller - Hints-->
+        <!--Hint View Controller - Hints-->
         <scene sceneID="yby-MZ-qUv">
             <objects>
-                <viewController id="pWo-UA-KJi" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4kM-tS-ldy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="pWo-UA-KJi" customClass="PPHintViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fdt-e2-BSR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -306,9 +307,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Hints" id="1AW-p7-rG0"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4kM-tS-ldy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1415" y="49"/>
+            <point key="canvasLocation" x="1384" y="49"/>
         </scene>
         <!--View Controller - Learn to Play-->
         <scene sceneID="sRU-rD-TlW">

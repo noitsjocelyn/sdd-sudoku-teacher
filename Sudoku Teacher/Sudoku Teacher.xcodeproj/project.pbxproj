@@ -30,6 +30,7 @@
 		AB91442A181DCA9700272D10 /* PuzzleMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = AB914428181DCA9700272D10 /* PuzzleMaker.m */; };
 		AB9BC8BE181B3F80008E8987 /* PPSudokuView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */; };
 		AB9BC8C1181B5875008E8987 /* PPSudokuGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */; };
+		ABCB2E4E183ABEF9001C4C35 /* PPHintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E4D183ABEF9001C4C35 /* PPHintViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSudokuView.m; sourceTree = "<group>"; };
 		AB9BC8BF181B5875008E8987 /* PPSudokuGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSudokuGameViewController.h; sourceTree = "<group>"; };
 		AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSudokuGameViewController.m; sourceTree = "<group>"; };
+		ABCB2E4C183ABEF9001C4C35 /* PPHintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPHintViewController.h; sourceTree = "<group>"; };
+		ABCB2E4D183ABEF9001C4C35 /* PPHintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPHintViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,8 @@
 				AB5C6268181AB55700F722DD /* PPMainMenuController.m */,
 				AB9BC8BF181B5875008E8987 /* PPSudokuGameViewController.h */,
 				AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */,
+				ABCB2E4C183ABEF9001C4C35 /* PPHintViewController.h */,
+				ABCB2E4D183ABEF9001C4C35 /* PPHintViewController.m */,
 				AB9BC8BC181B3F80008E8987 /* PPSudokuView.h */,
 				AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */,
 				AB6E305F182863490042A081 /* PuzzleMakerFactory.h */,
@@ -319,6 +324,7 @@
 				AB2A8A8B17EA1CED00A49B0B /* main.m in Sources */,
 				AB91441C181C335E00272D10 /* SudokuBoardGenerator.m in Sources */,
 				AB914429181DCA9700272D10 /* Puzzle.m in Sources */,
+				ABCB2E4E183ABEF9001C4C35 /* PPHintViewController.m in Sources */,
 				AB9BC8BE181B3F80008E8987 /* PPSudokuView.m in Sources */,
 				AB6E3061182863490042A081 /* PuzzleMakerFactory.m in Sources */,
 				AB91441B181C335E00272D10 /* SudokuBoard.m in Sources */,
