@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class Hint;
+
 @interface PPHintViewController : UIViewController
+{
+    Hint *hint1;
+    Hint *hint2;
+    Hint *hint3;
+}
 
 @end

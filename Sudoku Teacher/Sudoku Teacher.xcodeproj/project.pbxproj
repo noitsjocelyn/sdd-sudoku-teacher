@@ -31,6 +31,8 @@
 		AB9BC8BE181B3F80008E8987 /* PPSudokuView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */; };
 		AB9BC8C1181B5875008E8987 /* PPSudokuGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */; };
 		ABCB2E4E183ABEF9001C4C35 /* PPHintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E4D183ABEF9001C4C35 /* PPHintViewController.m */; };
+		ABCB2E52183ABFAD001C4C35 /* Hint.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E51183ABFAD001C4C35 /* Hint.m */; };
+		ABCB2E55183AC390001C4C35 /* HintsMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E54183AC390001C4C35 /* HintsMaker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,10 @@
 		AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSudokuGameViewController.m; sourceTree = "<group>"; };
 		ABCB2E4C183ABEF9001C4C35 /* PPHintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPHintViewController.h; sourceTree = "<group>"; };
 		ABCB2E4D183ABEF9001C4C35 /* PPHintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPHintViewController.m; sourceTree = "<group>"; };
+		ABCB2E50183ABFAD001C4C35 /* Hint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hint.h; path = ../../PuzzleTutor/Hint.h; sourceTree = "<group>"; };
+		ABCB2E51183ABFAD001C4C35 /* Hint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hint.m; path = ../../PuzzleTutor/Hint.m; sourceTree = "<group>"; };
+		ABCB2E53183AC390001C4C35 /* HintsMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HintsMaker.h; path = ../../PuzzleTutor/HintsMaker.h; sourceTree = "<group>"; };
+		ABCB2E54183AC390001C4C35 /* HintsMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HintsMaker.m; path = ../../PuzzleTutor/HintsMaker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +162,7 @@
 				AB6E305F182863490042A081 /* PuzzleMakerFactory.h */,
 				AB6E3060182863490042A081 /* PuzzleMakerFactory.m */,
 				AB2A8A9017EA1CED00A49B0B /* Images.xcassets */,
+				ABCB2E4F183ABF95001C4C35 /* Hints */,
 				AB914424181DCA8700272D10 /* PuzzleTutor */,
 				AB91440B181C335E00272D10 /* SudokuGenerator */,
 				AB2A8A8517EA1CED00A49B0B /* Supporting Files */,
@@ -217,6 +224,17 @@
 				AB914428181DCA9700272D10 /* PuzzleMaker.m */,
 			);
 			name = PuzzleTutor;
+			sourceTree = "<group>";
+		};
+		ABCB2E4F183ABF95001C4C35 /* Hints */ = {
+			isa = PBXGroup;
+			children = (
+				ABCB2E50183ABFAD001C4C35 /* Hint.h */,
+				ABCB2E51183ABFAD001C4C35 /* Hint.m */,
+				ABCB2E53183AC390001C4C35 /* HintsMaker.h */,
+				ABCB2E54183AC390001C4C35 /* HintsMaker.m */,
+			);
+			name = Hints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABCB2E52183ABFAD001C4C35 /* Hint.m in Sources */,
 				AB914418181C335E00272D10 /* JFRandom.m in Sources */,
 				AB2A8A8F17EA1CED00A49B0B /* PPAppDelegate.m in Sources */,
 				AB91441D181C335E00272D10 /* SudokuBoardSector.m in Sources */,
@@ -326,6 +345,7 @@
 				AB914429181DCA9700272D10 /* Puzzle.m in Sources */,
 				ABCB2E4E183ABEF9001C4C35 /* PPHintViewController.m in Sources */,
 				AB9BC8BE181B3F80008E8987 /* PPSudokuView.m in Sources */,
+				ABCB2E55183AC390001C4C35 /* HintsMaker.m in Sources */,
 				AB6E3061182863490042A081 /* PuzzleMakerFactory.m in Sources */,
 				AB91441B181C335E00272D10 /* SudokuBoard.m in Sources */,
 				AB91442A181DCA9700272D10 /* PuzzleMaker.m in Sources */,

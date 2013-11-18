@@ -7,6 +7,8 @@
 //
 
 #import "PPHintViewController.h"
+#import "Hint.h"
+#import "HintsMaker.h"
 
 @interface PPHintViewController ()
 
