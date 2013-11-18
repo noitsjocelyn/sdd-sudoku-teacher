@@ -11,11 +11,11 @@
  */
 
 #import <Foundation/Foundation.h>
- 
-@interface Hint : NSObject
 
-@property (assign) NSString *hintText;
-@property (assign) NSArray *firstLevelHighlights;
-@property (assign) NSNumber *secondLevelHighlight;
+@class Puzzle;
+ 
+@interface HintsMaker : NSObject
+
++ (NSArray *)createHints:(Puzzle *)thePuzzle;
 
 @end
