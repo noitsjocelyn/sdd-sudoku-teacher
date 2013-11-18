@@ -62,6 +62,7 @@
     else
     {
         [self setupFromPuzzleData:self.puzzleData];
+        [self.hintButton setEnabled:YES];
     }
 }
 
@@ -119,14 +120,10 @@
     [buttonToChange setTitle:newTitle forState:UIControlStateNormal];
 }
 
-- (IBAction)viewHint:(id)sender
-{
-    
-}
-
 // Setup our subviews in the correct order (since some depend on each other)
 - (void)setupSubviews
 {
+    [self.hintButton setEnabled:NO];
     [self setupLabels];
     [self setupBoardBackground];
     if (!self.puzzleData)
@@ -236,7 +233,10 @@
     // Animate removing the processing view
     [UIView animateWithDuration:0.4
                      animations:^(void){ [processingView setAlpha:0.0]; }
-                     completion:^(BOOL finished){ [processingView removeFromSuperview]; }];
+                     completion:^(BOOL finished){
+                         [processingView removeFromSuperview];
+                         [self.hintButton setEnabled:YES];
+                     }];
     // Free and null things
     free(fullPuzzleArray);
     free(puzzleArray);

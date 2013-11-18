@@ -270,16 +270,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sudoku" id="lG3-oB-bV1">
-                        <barButtonItem key="backBarButtonItem" title="Menu" id="AHE-8y-is4"/>
-                        <barButtonItem key="rightBarButtonItem" title="Hint" id="sPi-ac-X6H">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Hint" id="sPi-ac-X6H">
                             <connections>
-                                <action selector="viewHint:" destination="vrX-YD-l6G" id="c3I-ZH-5T0"/>
-                                <segue destination="iBs-sP-toI" kind="modal" id="hX7-Z2-yQC"/>
+                                <segue destination="pWo-UA-KJi" kind="push" id="Vbb-zj-cdu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="boardBackground" destination="aa1-68-vYE" id="Ezs-24-TmY"/>
+                        <outlet property="hintButton" destination="sPi-ac-X6H" id="QoG-A7-Kfu"/>
                         <outletCollection property="setValueButtons" destination="gtQ-5i-sLB" id="LA5-Bt-il0"/>
                         <outletCollection property="setValueButtons" destination="Hnp-gi-hPE" id="glz-rk-Ayw"/>
                         <outletCollection property="setValueButtons" destination="z09-gE-Cmz" id="Rai-eG-QzT"/>
@@ -296,19 +295,20 @@
             </objects>
             <point key="canvasLocation" x="894" y="49"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="gRM-Ug-Nma">
+        <!--View Controller - Hints-->
+        <scene sceneID="yby-MZ-qUv">
             <objects>
-                <viewController id="iBs-sP-toI" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Myi-be-pm1">
+                <viewController id="pWo-UA-KJi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fdt-e2-BSR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Hints" id="1AW-p7-rG0"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YZR-Dt-awH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4kM-tS-ldy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1432" y="49"/>
+            <point key="canvasLocation" x="1415" y="49"/>
         </scene>
         <!--View Controller - Learn to Play-->
         <scene sceneID="sRU-rD-TlW">

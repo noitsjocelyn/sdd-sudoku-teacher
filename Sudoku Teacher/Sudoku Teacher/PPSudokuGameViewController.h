@@ -27,9 +27,9 @@
 @property (weak, nonatomic) id<PPMainMenuProtocol> delegate;
 @property (weak, nonatomic) IBOutlet PPSudokuView *boardBackground;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *setValueButtons;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *hintButton;
 
 - (IBAction)setValue:(id)sender;
-- (IBAction)viewHint:(id)sender;
 - (void)setupLabels;
 - (void)setupProcessingView;
 - (void)generateAndDisplayBoard:(id)sender;
