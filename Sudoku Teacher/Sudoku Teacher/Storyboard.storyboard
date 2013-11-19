@@ -315,6 +315,9 @@
                                         <state key="normal" title="Hint 1">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="showHintOne:" destination="pWo-UA-KJi" eventType="touchUpInside" id="tI7-Hd-rdn"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yC2-CK-xp5">
                                         <rect key="frame" x="20" y="56" width="280" height="136"/>
@@ -333,13 +336,42 @@ Line</string>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
+                            <view contentMode="scaleToFill" id="zJL-gW-4ZS">
+                                <rect key="frame" x="0.0" y="384" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XAZ-0C-spR">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <state key="normal" title="Hint 2">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showHintTwo:" destination="pWo-UA-KJi" eventType="touchUpInside" id="AhA-Zn-mRI"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3ze-os-stb">
+                                        <rect key="frame" x="20" y="56" width="280" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Line
+Line</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.82789222474603397" green="0.83157006869539507" blue="0.84260360054347827" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Hints" id="1AW-p7-rG0"/>
                     <connections>
-                        <outlet property="hintOneButton" destination="ASY-Da-qpu" id="T80-4T-YUK"/>
                         <outlet property="hintOneLabel" destination="yC2-CK-xp5" id="t5y-F6-pI8"/>
+                        <outlet property="hintOneView" destination="seH-7f-Fgm" id="goB-4l-d5G"/>
+                        <outlet property="hintTwoLabel" destination="3ze-os-stb" id="s2P-zm-3xL"/>
+                        <outlet property="hintTwoView" destination="zJL-gW-4ZS" id="Cnj-9o-0lx"/>
                     </connections>
                 </viewController>
             </objects>
