@@ -22,14 +22,17 @@
     CGRect hintThreeShownFrame;
     CGRect hintTwoHiddenFrame;
     CGRect hintThreeHiddenFrame;
+    NSUInteger shownHint;
 }
 
 @property (strong) Puzzle *puzzleData;
 @property (weak, nonatomic) id<PPSudokuGameProtocol> delegate;
 @property (weak, nonatomic) IBOutlet UIView *hintOneView;
 @property (weak, nonatomic) IBOutlet UIView *hintTwoView;
+@property (weak, nonatomic) IBOutlet UIView *hintThreeView;
 @property (weak, nonatomic) IBOutlet UILabel *hintOneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hintTwoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hintThreeLabel;
 
 - (IBAction)showHintOne:(id)sender;
 - (IBAction)showHintTwo:(id)sender;

@@ -41,7 +41,7 @@
     hints = [aHintMaker createHints:self.puzzleData];
     [self.hintOneLabel setText:[[hints objectAtIndex:0] hintText]];
     [self.hintTwoLabel setText:[[hints objectAtIndex:1] hintText]];
-//    [self.hintThreeLabel setText:[[hints objectAtIndex:2] hintText]];
+    [self.hintThreeLabel setText:[[hints objectAtIndex:2] hintText]];
     NSLog(@"%@", hints);
 }
 
@@ -58,6 +58,7 @@
 
 - (void)setUpHintPositions
 {
+    shownHint = 1;
     CGFloat viewW = 320.0;
     CGFloat viewH = 320.0;
     CGFloat titleH = 64.0;
@@ -68,29 +69,59 @@
         titleH = 0.0;
     }
     hintTwoShownFrame = CGRectMake(0.0, titleH + buttonH, viewW, viewH);
-    hintThreeShownFrame = CGRectMake(0.0, titleH + (2 * buttonH), viewW, viewH);
     hintTwoHiddenFrame = CGRectMake(0.0, titleH + viewH, viewW, viewH);
-    hintThreeShownFrame = CGRectMake(0.0, titleH + viewH + buttonH, viewW, viewH);
+    hintThreeShownFrame = CGRectMake(0.0, titleH + (2 * buttonH), viewW, viewH);
+    hintThreeHiddenFrame = CGRectMake(0.0, titleH + viewH + buttonH, viewW, viewH);
 }
 
 - (IBAction)showHintOne:(id)sender {
-    [UIView animateWithDuration:ANIMATE_TIME animations:^(void) {
-        [self.hintTwoView setFrame:hintTwoHiddenFrame];
-//        [self.hintThreeView setFrame:hintThreeHiddenFrame];
-    }];
+    if (shownHint == 2)
+    {
+        [UIView animateWithDuration:ANIMATE_TIME animations:^(void) {
+            [self.hintTwoView setFrame:hintTwoHiddenFrame];
+        }];
+    }
+    else if (shownHint == 3)
+    {
+        [UIView animateWithDuration:ANIMATE_TIME animations:^(void) {
+            [self.hintTwoView setFrame:hintTwoHiddenFrame];
+            [self.hintThreeView setFrame:hintThreeHiddenFrame];
+        }];
+    }
+    shownHint = 1;
 }
 
 - (IBAction)showHintTwo:(id)sender {
-    [UIView animateWithDuration:ANIMATE_TIME animations:^(void) {
-        [self.hintTwoView setFrame:hintTwoShownFrame];
-    } completion:^(BOOL finished) {
-//        [self.hintThreeView setFrame:hintThreeHiddenFrame];
-    }];
+    if (shownHint == 1)
+    {
+        [UIView animateWithDuration:ANIMATE_TIME animations:^(void) {
+            [self.hintTwoView setFrame:hintTwoShownFrame];
+        }];
+    }
+    else if (shownHint == 3)
+    {
+        [UIView animateWithDuration:ANIMATE_TIME animations:^(void) {
+            [self.hintThreeView setFrame:hintThreeHiddenFrame];
+        }];
+    }
+    shownHint = 2;
 }
 
 - (IBAction)showHintThree:(id)sender {
-    [self.hintTwoView setFrame:hintTwoHiddenFrame];
-//    [self.hintThreeView setFrame:hintThreeShownFrame];
+    if (shownHint == 1)
+    {
+        [UIView animateWithDuration:ANIMATE_TIME animations:^(void) {
+            [self.hintTwoView setFrame:hintTwoShownFrame];
+            [self.hintThreeView setFrame:hintThreeShownFrame];
+        }];
+    }
+    else if (shownHint == 2)
+    {
+        [UIView animateWithDuration:ANIMATE_TIME animations:^(void) {
+            [self.hintThreeView setFrame:hintThreeShownFrame];
+        }];
+    }
+    shownHint = 3;
 }
 
 @end

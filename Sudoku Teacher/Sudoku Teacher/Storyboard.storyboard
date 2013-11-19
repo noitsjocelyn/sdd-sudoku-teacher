@@ -320,15 +320,15 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yC2-CK-xp5">
-                                        <rect key="frame" x="20" y="56" width="280" height="136"/>
+                                        <rect key="frame" x="20" y="46" width="280" height="136"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Line
-Line
-Line
-Line
-Line
-Line
-Line</string>
+                                        <string key="text">Line 1
+Line 2
+Line 3
+Line 4
+Line 5
+Line 6
+Line 7</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -352,16 +352,44 @@ Line</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3ze-os-stb">
-                                        <rect key="frame" x="20" y="56" width="280" height="42"/>
+                                        <rect key="frame" x="20" y="46" width="280" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Line
-Line</string>
+                                        <string key="text">Line 1
+Line 2</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.82789222474603397" green="0.83157006869539507" blue="0.84260360054347827" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.86412424274512345" green="0.86796304449090778" blue="0.87947944972826086" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="VoG-y3-wpw">
+                                <rect key="frame" x="0.0" y="432" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="m3F-Nf-zOa">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <state key="normal" title="Hint 3">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showHintThree:" destination="pWo-UA-KJi" eventType="touchUpInside" id="eCf-zp-aKf"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d1Q-kg-KNf">
+                                        <rect key="frame" x="20" y="46" width="280" height="62"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Line 1
+Line 2
+Line 3</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.76569079833654363" green="0.7690923175024077" blue="0.779296875" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -370,6 +398,8 @@ Line</string>
                     <connections>
                         <outlet property="hintOneLabel" destination="yC2-CK-xp5" id="t5y-F6-pI8"/>
                         <outlet property="hintOneView" destination="seH-7f-Fgm" id="goB-4l-d5G"/>
+                        <outlet property="hintThreeLabel" destination="d1Q-kg-KNf" id="ILY-Lu-NFY"/>
+                        <outlet property="hintThreeView" destination="VoG-y3-wpw" id="Oq3-WS-dGm"/>
                         <outlet property="hintTwoLabel" destination="3ze-os-stb" id="s2P-zm-3xL"/>
                         <outlet property="hintTwoView" destination="zJL-gW-4ZS" id="Cnj-9o-0lx"/>
                     </connections>
