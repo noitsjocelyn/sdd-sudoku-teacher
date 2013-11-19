@@ -340,6 +340,11 @@
     }
 }
 
+- (void)setGame:(Puzzle *)thePuzzle
+{
+    self.puzzleData = thePuzzle;
+}
+
 // Do stuff that needs to be done before a segue, like sending values ahead.
 // Fires only if shouldPerformSegueWithIdentifier:sender: returned YES.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -347,7 +352,7 @@
     if ([[segue destinationViewController] class] == [PPHintViewController class])
     {
         PPHintViewController *controller = [segue destinationViewController];
-//        controller.delegate = self;
+        controller.delegate = self;
         [controller setPuzzleData:self.puzzleData];
         self.puzzleData = nil;
     }

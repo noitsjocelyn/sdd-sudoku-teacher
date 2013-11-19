@@ -12,7 +12,13 @@
 @class PPSudokuView;
 @class Puzzle;
 
-@interface PPSudokuGameViewController : UIViewController
+@protocol PPSudokuGameProtocol
+
+- (void)setGame:(Puzzle *)thePuzzle;
+
+@end
+
+@interface PPSudokuGameViewController : UIViewController <PPSudokuGameProtocol>
 {
     UIButton *squareButtons[81];
     UIView *processingView;

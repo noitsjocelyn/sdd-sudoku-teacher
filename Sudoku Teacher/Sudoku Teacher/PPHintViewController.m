@@ -31,8 +31,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    hints = [HintsMaker createHints:self.puzzleData];
+    aHintMaker = [[HintsMaker alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    hints = [aHintMaker createHints:self.puzzleData];
     NSLog(@"%@", hints);
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.delegate setGame:self.puzzleData];
 }
 
 - (void)didReceiveMemoryWarning

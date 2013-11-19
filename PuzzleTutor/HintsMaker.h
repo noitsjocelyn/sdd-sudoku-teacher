@@ -16,6 +16,6 @@
  
 @interface HintsMaker : NSObject
 
-+ (NSArray *)createHints:(Puzzle *)thePuzzle;
+- (NSArray *)createHints:(Puzzle *)thePuzzle;
 
 @end

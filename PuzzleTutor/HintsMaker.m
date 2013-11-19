@@ -8,16 +8,15 @@
 
 @implementation HintsMaker
 
-+ (NSArray *)createHints:(Puzzle *)thePuzzle
+- (NSArray *)createHints:(Puzzle *)thePuzzle
 {
-    HintsMaker *aMaker = [[HintsMaker alloc] init];
     short *theResults = calloc(4, sizeof(short));
     theResults = [thePuzzle findSquareWithOneAvailableValue:theResults];
     if (theResults[0] == 0)
     {
         theResults = [thePuzzle findSquareInChunkWithRequiredValue:theResults];
     }
-    NSArray *hints = [aMaker makeHints:theResults];
+    NSArray *hints = [self makeHints:theResults];
     free(theResults);
     return hints;
 }

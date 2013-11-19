@@ -7,14 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPSudokuGameViewController.h"
 
+@class HintsMaker;
 @class Puzzle;
 
 @interface PPHintViewController : UIViewController
 {
+    HintsMaker *aHintMaker;
     NSArray *hints;
 }
 
 @property (assign) Puzzle *puzzleData;
+@property (weak, nonatomic) id<PPSudokuGameProtocol> delegate;
 
 @end
