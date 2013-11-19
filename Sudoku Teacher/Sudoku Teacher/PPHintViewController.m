@@ -42,7 +42,6 @@
     [self.hintOneLabel setText:[[hints objectAtIndex:0] hintText]];
     [self.hintTwoLabel setText:[[hints objectAtIndex:1] hintText]];
     [self.hintThreeLabel setText:[[hints objectAtIndex:2] hintText]];
-    NSLog(@"%@", hints);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
