@@ -356,7 +356,7 @@ Line 7</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <string key="text">Line 1
 Line 2</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -405,6 +405,8 @@ Line 2</string>
                     </view>
                     <navigationItem key="navigationItem" title="Hints" id="1AW-p7-rG0"/>
                     <connections>
+                        <outlet property="boardBackgroundThree" destination="Pnj-1K-Ihh" id="YjW-kC-ROw"/>
+                        <outlet property="boardBackgroundTwo" destination="bXB-qP-dKd" id="sXO-jl-sZw"/>
                         <outlet property="hintOneLabel" destination="yC2-CK-xp5" id="t5y-F6-pI8"/>
                         <outlet property="hintOneView" destination="seH-7f-Fgm" id="goB-4l-d5G"/>
                         <outlet property="hintThreeLabel" destination="d1Q-kg-KNf" id="ILY-Lu-NFY"/>

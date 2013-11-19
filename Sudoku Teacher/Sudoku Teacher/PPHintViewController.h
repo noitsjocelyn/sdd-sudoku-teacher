@@ -12,6 +12,7 @@
 #define ANIMATE_TIME 0.25
 
 @class HintsMaker;
+@class PPSudokuView;
 @class Puzzle;
 
 @interface PPHintViewController : UIViewController
@@ -23,6 +24,8 @@
     CGRect hintTwoHiddenFrame;
     CGRect hintThreeHiddenFrame;
     NSUInteger shownHint;
+    UIButton *squareButtonsTwo[81];
+    UIButton *squareButtonsThree[81];
 }
 
 @property (strong) Puzzle *puzzleData;
@@ -33,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *hintOneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hintTwoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hintThreeLabel;
+@property (weak, nonatomic) IBOutlet PPSudokuView *boardBackgroundTwo;
+@property (weak, nonatomic) IBOutlet PPSudokuView *boardBackgroundThree;
 
 - (IBAction)showHintOne:(id)sender;
 - (IBAction)showHintTwo:(id)sender;
