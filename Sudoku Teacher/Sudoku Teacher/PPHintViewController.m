@@ -9,6 +9,7 @@
 #import "PPHintViewController.h"
 #import "Hint.h"
 #import "HintsMaker.h"
+#import "Puzzle.h"
 
 @interface PPHintViewController ()
 
@@ -30,6 +31,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    hints = [HintsMaker createHints:self.puzzleData];
+    NSLog(@"%@", hints);
 }
 
 - (void)didReceiveMemoryWarning

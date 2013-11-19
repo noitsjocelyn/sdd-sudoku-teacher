@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Puzzle Professors. All rights reserved.
 //
 
+#import "PPHintViewController.h"
 #import "PPMainMenuController.h"
 #import "PPSudokuView.h"
 #import "PPSudokuGameViewController.h"
@@ -336,6 +337,19 @@
         }
         
         [squareButtons[i] setTitle:valString forState:UIControlStateNormal];
+    }
+}
+
+// Do stuff that needs to be done before a segue, like sending values ahead.
+// Fires only if shouldPerformSegueWithIdentifier:sender: returned YES.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue destinationViewController] class] == [PPHintViewController class])
+    {
+        PPHintViewController *controller = [segue destinationViewController];
+//        controller.delegate = self;
+        [controller setPuzzleData:self.puzzleData];
+        self.puzzleData = nil;
     }
 }
 

@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class Hint;
+@class Puzzle;
 
 @interface PPHintViewController : UIViewController
 {
-    Hint *hint1;
-    Hint *hint2;
-    Hint *hint3;
+    NSArray *hints;
 }
+
+@property (assign) Puzzle *puzzleData;
 
 @end
