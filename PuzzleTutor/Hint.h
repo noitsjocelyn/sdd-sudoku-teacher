@@ -14,8 +14,8 @@
  
 @interface Hint : NSObject
 
-@property (assign) NSString *hintText;
-@property (assign) NSArray *firstLevelHighlights;
-@property (assign) NSNumber *secondLevelHighlight;
+@property (strong) NSString *hintText;
+@property (strong) NSArray *firstLevelHighlights;
+@property (strong) NSNumber *secondLevelHighlight;
 
 @end
