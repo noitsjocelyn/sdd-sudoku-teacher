@@ -5,4 +5,9 @@
 
 @implementation Hint
 
+- (NSString *)description
+{
+    return self.hintText;
+}
+
 @end

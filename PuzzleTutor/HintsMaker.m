@@ -1,8 +1,9 @@
 /* Implementation of the Hint class
  */
 
-#import "Hint.h"
 #import "HintsMaker.h"
+
+#import "Hint.h"
 #import "Puzzle.h"
 
 @implementation HintsMaker
@@ -16,8 +17,9 @@
     {
         theResults = [thePuzzle findSquareInChunkWithRequiredValue:theResults];
     }
+    NSArray *hints = [aMaker makeHints:theResults];
     free(theResults);
-    return [aMaker makeHints:theResults];
+    return hints;
 }
 
 /* Method that returns an array of three hints when passed the results of a
@@ -42,7 +44,7 @@
 	{
 		newHint.hintText = @"Remember, a row, column, or block can only have one occurrence of a number. You can use this fact to eliminate possibilities from other squares. Once there is only one possibility remaining for a square, you know the number that has to go there!";
 	}
-	if (hintResults[0] == 2)
+	else if (hintResults[0] == 2)
 	{
     	NSMutableString *stringBuilder = [[NSMutableString alloc] init];
     	NSString *theMethod;
@@ -65,6 +67,10 @@
     	[stringBuilder appendString:@" except one, the number must go in the final square!"];
 		newHint.hintText = [NSString stringWithString:stringBuilder];
 	}
+    else
+    {
+        newHint.hintText = @"";
+    }
 	return newHint;
 }
 
@@ -88,7 +94,7 @@
 		}
         newHint.firstLevelHighlights = [NSArray arrayWithArray:firstHighlights];
 	}
-	if (hintResults[0] == 2)
+	else if (hintResults[0] == 2)
 	{
         NSMutableArray *firstHighlights = [[NSMutableArray alloc] init];
 		NSMutableString *stringBuilder = [[NSMutableString alloc] init];
@@ -129,6 +135,10 @@
     	newHint.hintText = [NSString stringWithString:stringBuilder];
         newHint.firstLevelHighlights = [NSArray arrayWithArray:firstHighlights];
 	}
+    else
+    {
+        newHint.hintText = @"";
+    }
 	return newHint;
 }
 
@@ -176,7 +186,7 @@
 			}
 		}
 	}
-	if (hintResults[0] == 2)
+	else if (hintResults[0] == 2)
 	{
         NSMutableArray *firstHighlights = [[NSMutableArray alloc] init];
 		if (hintResults[1] == 1)
