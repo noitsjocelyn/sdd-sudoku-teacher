@@ -20,5 +20,7 @@
 
 @property (strong) Puzzle *puzzleData;
 @property (weak, nonatomic) id<PPSudokuGameProtocol> delegate;
+@property (weak, nonatomic) IBOutlet UILabel *hintOneLabel;
+@property (weak, nonatomic) IBOutlet UIButton *hintOneButton;
 
 @end

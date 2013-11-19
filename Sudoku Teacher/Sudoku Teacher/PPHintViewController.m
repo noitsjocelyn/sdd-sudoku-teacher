@@ -38,6 +38,7 @@
 {
     [super viewWillAppear:animated];
     hints = [aHintMaker createHints:self.puzzleData];
+    [self.hintOneLabel setText:[[hints objectAtIndex:0] hintText]];
     NSLog(@"%@", hints);
 }
 
