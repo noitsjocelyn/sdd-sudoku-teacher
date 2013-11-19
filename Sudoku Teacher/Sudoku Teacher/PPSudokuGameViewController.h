@@ -28,12 +28,12 @@
 
 @property (assign) NSUInteger difficulty;
 @property (assign) NSUInteger buttonSelected;
-@property (assign) Puzzle *puzzleData;
+@property (strong) Puzzle *puzzleData;
 
 @property (weak, nonatomic) id<PPMainMenuProtocol> delegate;
 @property (weak, nonatomic) IBOutlet PPSudokuView *boardBackground;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *setValueButtons;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *hintButton;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *setValueButtons;
 
 - (IBAction)setValue:(id)sender;
 - (void)setupLabels;

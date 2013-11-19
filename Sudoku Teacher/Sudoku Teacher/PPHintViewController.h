@@ -18,7 +18,7 @@
     NSArray *hints;
 }
 
-@property (assign) Puzzle *puzzleData;
+@property (strong) Puzzle *puzzleData;
 @property (weak, nonatomic) id<PPSudokuGameProtocol> delegate;
 
 @end
