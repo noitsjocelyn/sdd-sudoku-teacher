@@ -35,8 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Setup user chosen value color to Apple button text blue
-    userChosenValueColor = [UIColor colorWithRed:0.055 green:0.471 blue:0.998 alpha:1.000];
     // Setup all of our subviews
     [self setupSubviews];
     // Add our labels
@@ -333,7 +331,7 @@
         // Change the text color accordingly
         if (!isOriginal)
         {
-            [squareButtons[i] setTitleColor:userChosenValueColor forState:UIControlStateNormal];
+            [squareButtons[i] setTitleColor:[PPSudokuView userValueColor] forState:UIControlStateNormal];
         }
         
         [squareButtons[i] setTitle:valString forState:UIControlStateNormal];

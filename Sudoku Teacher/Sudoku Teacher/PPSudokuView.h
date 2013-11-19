@@ -10,4 +10,6 @@
 
 @interface PPSudokuView : UIView
 
++ (UIColor *)userValueColor;
+
 @end

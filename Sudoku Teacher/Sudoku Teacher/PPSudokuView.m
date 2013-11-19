@@ -20,6 +20,12 @@
     return self;
 }
 
++ (UIColor *)userValueColor
+{
+    UIColor *theColor = [UIColor colorWithRed:0.055 green:0.471 blue:0.998 alpha:1.000];
+    return theColor;
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect

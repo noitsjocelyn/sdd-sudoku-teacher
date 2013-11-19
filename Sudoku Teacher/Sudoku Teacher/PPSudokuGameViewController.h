@@ -23,7 +23,6 @@
     UIButton *squareButtons[81];
     UIView *processingView;
     UIActivityIndicatorView *processingIndicator;
-    UIColor *userChosenValueColor;
 }
 
 @property (assign) NSUInteger difficulty;
