@@ -13,6 +13,7 @@
 @protocol PPMainMenuProtocol
 
 - (void)setGameInProgress:(Puzzle *)thePuzzle;
+- (void)setProgressTime:(NSUInteger)seconds;
 
 @end
 
@@ -22,6 +23,7 @@
     CGRect moderateCheckPosition;
     BOOL newGameConfirmed;
     UIAlertView *newGameAlert;
+    NSUInteger progressSeconds;
 }
 
 @property (assign) NSUInteger difficulty;

@@ -63,7 +63,7 @@
     {
         [self setupFromPuzzleData:self.puzzleData];
         [self.hintButton setEnabled:YES];
-        timer = [[PPGameTimer alloc] init];
+        timer = [[PPGameTimer alloc] initWithSeconds:self.progressSeconds];
         [timer setNavigationBar:self.navigationItem];
         [timer startTimer];
     }
@@ -78,6 +78,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.delegate setGameInProgress:self.puzzleData];
+    [self.delegate setProgressTime:[timer getTime]];
+    [timer stopTimer];
 }
 
 - (IBAction)setValue:(id)sender

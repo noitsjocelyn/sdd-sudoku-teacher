@@ -29,6 +29,7 @@
 
 @property (assign) NSUInteger difficulty;
 @property (assign) NSUInteger buttonSelected;
+@property (assign) NSUInteger progressSeconds;
 @property (strong) Puzzle *puzzleData;
 
 @property (weak, nonatomic) id<PPMainMenuProtocol> delegate;

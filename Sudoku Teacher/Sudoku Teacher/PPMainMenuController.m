@@ -133,6 +133,7 @@
     {
         PPSudokuGameViewController *controller = [segue destinationViewController];
         [controller setDifficulty:self.difficulty];
+        [controller setProgressSeconds:progressSeconds];
         controller.delegate = self;
         if (sender == self.startNewGameButton)
         {
@@ -166,6 +167,11 @@
 - (void)setGameInProgress:(Puzzle *)thePuzzle
 {
     self.puzzleInProgress = thePuzzle;
+}
+
+- (void)setProgressTime:(NSUInteger)seconds
+{
+    progressSeconds = seconds;
 }
 
 - (void)initializeGeneratorFactory
