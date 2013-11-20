@@ -10,7 +10,7 @@
 
 @interface PPGameTimer : NSObject
 {
-    NSTimer *secondTimer;
+    NSTimer *secondsTimer;
     NSUInteger seconds;
     NSUInteger hours;
     NSUInteger minutes;
@@ -23,5 +23,7 @@
 
 - (id)initWithSeconds:(NSUInteger)seconds;
 - (void)startTimer;
+- (void)stopTimer;
+- (NSUInteger)getTime;
 
 @end

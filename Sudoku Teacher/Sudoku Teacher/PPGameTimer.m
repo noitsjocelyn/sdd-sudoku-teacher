@@ -32,12 +32,24 @@
 
 - (void)startTimer
 {
-    NSTimer *secondsTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateSeconds:) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:secondsTimer forMode:NSDefaultRunLoopMode];
-    if (self.navigationBar)
+    if (!secondsTimer)
     {
-        [self.navigationBar setTitle:@"0:00"];
+        secondsTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateSeconds:) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:secondsTimer forMode:NSDefaultRunLoopMode];
+        [self updateNavigationBar];
     }
+}
+
+- (void)stopTimer
+{
+    [secondsTimer invalidate];
+    secondsTimer = nil;
+    seconds = 0;
+}
+
+- (NSUInteger)getTime
+{
+    return seconds;
 }
 
 - (void)updateSeconds:(id)sender
@@ -48,6 +60,14 @@
 
 - (void)updateNavigationBar
 {
+    if (self.navigationBar)
+    {
+        [self.navigationBar setTitle:[self timeStringFromSeconds]];
+    }
+}
+
+- (NSString *)timeStringFromSeconds
+{
     // Calculate our values
     hours = seconds / 3600;
     minutes = seconds / 60;
@@ -57,11 +77,7 @@
     // Make our hour string (if needed)
     hourString = hours > 0 ? [NSString stringWithFormat:@"%d:", hours] : @"";
     // Put it all together
-    NSString *timeString = [NSString stringWithFormat:@"%@%d:%@%d", hourString, minutes, zeroString, shownSeconds];
-    if (self.navigationBar)
-    {
-        [self.navigationBar setTitle:timeString];
-    }
+    return [NSString stringWithFormat:@"%@%d:%@%d", hourString, minutes, zeroString, shownSeconds];
 }
 
 @end
