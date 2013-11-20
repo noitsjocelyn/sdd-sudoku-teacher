@@ -651,10 +651,10 @@ The goal of the game is to fill in these empty squares.</string>
             </objects>
             <point key="canvasLocation" x="1632" y="667"/>
         </scene>
-        <!--View Controller - Second Strategy-->
+        <!--Tutorial Final View Controller - Second Strategy-->
         <scene sceneID="nkx-PE-uzU">
             <objects>
-                <viewController id="KVJ-iJ-7VI" sceneMemberID="viewController">
+                <viewController id="KVJ-iJ-7VI" customClass="PPTutorialFinalViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IAd-gb-CgG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

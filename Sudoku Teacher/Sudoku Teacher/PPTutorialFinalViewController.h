@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface PPTutorialFinalViewController : UIViewController
+{
+    NSString *defaultBasicPuzzle;
+}
 
 @end
