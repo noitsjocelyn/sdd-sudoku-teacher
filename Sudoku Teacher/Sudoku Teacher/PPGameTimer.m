@@ -35,6 +35,10 @@
     NSTimer *secondsTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateSeconds:) userInfo:nil repeats:YES];
 //    [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateSeconds:) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:secondsTimer forMode:NSDefaultRunLoopMode];
+    if (self.navigationBar)
+    {
+        [self.navigationBar setTitle:@"0:00"];
+    }
 }
 
 - (void)updateSeconds:(id)sender
