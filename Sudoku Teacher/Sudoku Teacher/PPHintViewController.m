@@ -47,7 +47,6 @@
 {
     [super viewWillAppear:animated];
     progressSeconds += hintOnePenalty;
-    NSLog(@"%d", progressSeconds);
     [self setupHintInterfaces];
     hintTwoUsed = NO;
     hintThreeUsed = NO;
@@ -65,7 +64,6 @@
 {
     [self.delegate setGameInProgress:puzzleData];
     [self.delegate setGameProgressTime:progressSeconds];
-    NSLog(@"%d", progressSeconds);
     [self.delegate setGameDifficulty:difficulty];
 }
 
