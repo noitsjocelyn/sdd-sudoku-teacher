@@ -22,7 +22,7 @@
 
 + (UIColor *)userValueColor
 {
-    UIColor *theColor = [UIColor colorWithRed:0.055 green:0.471 blue:0.998 alpha:1.000];
+    UIColor *theColor = [UIColor colorWithRed:0.055 green:0.471 blue:0.998 alpha:1.0];
     return theColor;
 }
 
