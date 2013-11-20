@@ -336,6 +336,7 @@ Line 7</string>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                             </view>
                             <view contentMode="scaleToFill" id="zJL-gW-4ZS">
                                 <rect key="frame" x="0.0" y="384" width="320" height="320"/>
@@ -368,6 +369,7 @@ Line 2</string>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86412424274512345" green="0.86796304449090778" blue="0.87947944972826086" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                             </view>
                             <view contentMode="scaleToFill" id="VoG-y3-wpw">
                                 <rect key="frame" x="0.0" y="432" width="320" height="320"/>
@@ -400,6 +402,7 @@ Line 2</string>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.76569079833654363" green="0.7690923175024077" blue="0.779296875" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -427,15 +430,172 @@ Line 2</string>
                     <view key="view" contentMode="scaleToFill" id="mbP-Ag-PQV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z3t-Ac-KZW">
+                                <rect key="frame" x="20" y="79" width="280" height="134"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
+                                <string key="text">At the start of every game you will be given a puzzle. Some squares in this puzzle have numbers, the rest are empty.
+
+The goal of the game is to fill in these empty squares.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="9ST-3r-kHO" customClass="PPSudokuView">
+                                <rect key="frame" x="51" y="233" width="218" height="218"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Learn to Play" id="vE5-vq-xVk"/>
+                    <navigationItem key="navigationItem" title="Learn to Play" id="vE5-vq-xVk">
+                        <barButtonItem key="backBarButtonItem" title="Learn" id="zIc-ge-aC8"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="ubr-Aa-Y15">
+                            <connections>
+                                <segue destination="Mrw-dO-Y69" kind="push" id="ZjC-Jz-V97"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0Y-Ht-MyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="894" y="667"/>
         </scene>
+        <!--View Controller - Basics-->
+        <scene sceneID="twL-jl-cut">
+            <objects>
+                <viewController id="Mrw-dO-Y69" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BuE-YE-E9l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a1W-j2-Eqg">
+                                <rect key="frame" x="20" y="79" width="280" height="134"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
+                                <string key="text">Welcome to Sudoku Teacher. This tutorial will teach you how to play sudoku. 
+
+To complete a sudoku game every row, column, and block must contain the digits 1-9 without repeating. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="VgN-Le-8ZU" customClass="PPSudokuView">
+                                <rect key="frame" x="51" y="233" width="218" height="218"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Basics" id="LWu-on-LZS">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="jwX-JH-nVi">
+                            <connections>
+                                <segue destination="lea-MA-NN9" kind="push" id="KSj-I4-mJR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dj1-yI-wyb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1384" y="667"/>
+        </scene>
+        <!--View Controller - First Strategy-->
+        <scene sceneID="tW3-xE-Fbe">
+            <objects>
+                <viewController id="lea-MA-NN9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iX9-CM-vPV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If there is only one empty square in a row or column, the value is the digit 1-9 that is not already in the row or column." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yep-MH-Mxd">
+                                <rect key="frame" x="20" y="79" width="280" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If there is one empty square in a block, the value is the digit 1-9 that is missing from the block." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DaG-Iz-CaS">
+                                <rect key="frame" x="20" y="235" width="280" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The red square must be a 7." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lRM-rR-V0h">
+                                <rect key="frame" x="20" y="444" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankRow" id="eRa-qK-1SQ">
+                                <rect key="frame" x="0.0" y="175" width="320" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankBlock" id="Ssc-QJ-YfR">
+                                <rect key="frame" x="104" y="312" width="113" height="113"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="First Strategy" id="NSd-BE-Fh7">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="wrb-nn-lYj">
+                            <connections>
+                                <segue destination="KVJ-iJ-7VI" kind="push" id="8hw-Cr-XkE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sbl-X6-tCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1863" y="667"/>
+        </scene>
+        <!--View Controller - Second Strategy-->
+        <scene sceneID="nkx-PE-uzU">
+            <objects>
+                <viewController id="KVJ-iJ-7VI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IAd-gb-CgG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="st0-NE-CCa">
+                                <rect key="frame" x="20" y="74" width="280" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">In a row or a column of three blocks, if a number appears in two of the blocks, the same number is located in a specific row or column of the third block.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 must be in one of the squares in the block row outlined in red." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ji4-au-Cfv">
+                                <rect key="frame" x="20" y="246" width="280" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The red square must be a 4." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="23K-6b-zGD">
+                                <rect key="frame" x="20" y="439" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Second Strategy" id="lE8-4N-crG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l54-XM-oZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2353" y="667"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="BlankBlock" width="111" height="111"/>
+        <image name="BlankRow" width="320" height="41"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
