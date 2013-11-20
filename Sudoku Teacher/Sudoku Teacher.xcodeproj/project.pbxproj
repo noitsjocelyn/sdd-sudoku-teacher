@@ -33,6 +33,7 @@
 		ABCB2E4E183ABEF9001C4C35 /* PPHintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E4D183ABEF9001C4C35 /* PPHintViewController.m */; };
 		ABCB2E52183ABFAD001C4C35 /* Hint.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E51183ABFAD001C4C35 /* Hint.m */; };
 		ABCB2E55183AC390001C4C35 /* HintsMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E54183AC390001C4C35 /* HintsMaker.m */; };
+		ABCB2E58183C7355001C4C35 /* PPGameTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E57183C7355001C4C35 /* PPGameTimer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,8 @@
 		ABCB2E51183ABFAD001C4C35 /* Hint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hint.m; path = ../../PuzzleTutor/Hint.m; sourceTree = "<group>"; };
 		ABCB2E53183AC390001C4C35 /* HintsMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HintsMaker.h; path = ../../PuzzleTutor/HintsMaker.h; sourceTree = "<group>"; };
 		ABCB2E54183AC390001C4C35 /* HintsMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HintsMaker.m; path = ../../PuzzleTutor/HintsMaker.m; sourceTree = "<group>"; };
+		ABCB2E56183C7355001C4C35 /* PPGameTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPGameTimer.h; sourceTree = "<group>"; };
+		ABCB2E57183C7355001C4C35 /* PPGameTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPGameTimer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,8 @@
 				ABCB2E4D183ABEF9001C4C35 /* PPHintViewController.m */,
 				AB9BC8BC181B3F80008E8987 /* PPSudokuView.h */,
 				AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */,
+				ABCB2E56183C7355001C4C35 /* PPGameTimer.h */,
+				ABCB2E57183C7355001C4C35 /* PPGameTimer.m */,
 				AB6E305F182863490042A081 /* PuzzleMakerFactory.h */,
 				AB6E3060182863490042A081 /* PuzzleMakerFactory.m */,
 				AB2A8A9017EA1CED00A49B0B /* Images.xcassets */,
@@ -337,6 +342,7 @@
 				ABCB2E52183ABFAD001C4C35 /* Hint.m in Sources */,
 				AB914418181C335E00272D10 /* JFRandom.m in Sources */,
 				AB2A8A8F17EA1CED00A49B0B /* PPAppDelegate.m in Sources */,
+				ABCB2E58183C7355001C4C35 /* PPGameTimer.m in Sources */,
 				AB91441D181C335E00272D10 /* SudokuBoardSector.m in Sources */,
 				AB5C626A181AB55700F722DD /* PPMainMenuController.m in Sources */,
 				AB9BC8C1181B5875008E8987 /* PPSudokuGameViewController.m in Sources */,

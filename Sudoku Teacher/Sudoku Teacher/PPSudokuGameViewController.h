@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PPMainMenuController.h"
 
+@class PPGameTimer;
 @class PPSudokuView;
 @class Puzzle;
 
@@ -23,6 +24,7 @@
     UIButton *squareButtons[81];
     UIView *processingView;
     UIActivityIndicatorView *processingIndicator;
+    PPGameTimer *timer;
 }
 
 @property (assign) NSUInteger difficulty;

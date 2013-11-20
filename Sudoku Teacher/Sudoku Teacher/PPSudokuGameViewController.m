@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Puzzle Professors. All rights reserved.
 //
 
+#import "PPGameTimer.h"
 #import "PPHintViewController.h"
 #import "PPMainMenuController.h"
 #import "PPSudokuView.h"
@@ -62,6 +63,9 @@
     {
         [self setupFromPuzzleData:self.puzzleData];
         [self.hintButton setEnabled:YES];
+        timer = [[PPGameTimer alloc] init];
+        [timer setNavigationBar:self.navigationItem];
+        [timer startTimer];
     }
 }
 
@@ -207,6 +211,8 @@
 
 - (void)generateAndDisplayBoard:(id)sender
 {
+    timer = [[PPGameTimer alloc] init];
+    [timer setNavigationBar:self.navigationItem];
     // Get an instance of the puzzle factory
     PuzzleMakerFactory *factory = [PuzzleMakerFactory sharedInstance];
     short *fullPuzzleArray = calloc(81, sizeof(short));
@@ -235,6 +241,7 @@
                      completion:^(BOOL finished){
                          [processingView removeFromSuperview];
                          [self.hintButton setEnabled:YES];
+                         [timer startTimer];
                      }];
     // Free and null things
     free(fullPuzzleArray);

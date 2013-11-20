@@ -14,6 +14,7 @@
 
 - (id)init
 {
+    self = [super init];
     if (self)
     {
         currentBoard = calloc(81, sizeof(short));
