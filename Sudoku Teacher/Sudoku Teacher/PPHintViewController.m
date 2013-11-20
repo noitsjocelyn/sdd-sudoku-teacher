@@ -38,6 +38,8 @@
     secondLevelHighlightColor = [UIColor colorWithRed:0.278 green:0.847 blue:0.451 alpha:1.0];
     aHintMaker = [[HintsMaker alloc] init];
     [self makeHintFrames];
+    [self.hintTwoView setFrame:hintTwoHiddenFrame];
+    [self.hintThreeView setFrame:hintThreeHiddenFrame];
     hintOnePenalty = 2;
     hintTwoPenalty = 5;
     hintThreePenalty = 10;
@@ -74,10 +76,10 @@
 {
     // Default to first hint
     shownHint = 1;
-    CGFloat viewW = 320.0;
-    CGFloat viewH = 320.0;
     CGFloat titleH = 64.0;
     CGFloat buttonH = 48.0;
+    CGFloat viewW = self.view.frame.size.width;
+    CGFloat viewH = self.view.frame.size.height - titleH - 2 * buttonH;
     // Title bar has 0 height under iOS 6.1
     if ([[[UIDevice currentDevice] systemVersion] intValue] == 6)
     {
