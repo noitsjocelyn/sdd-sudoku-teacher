@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class Puzzle;
+
 @protocol PPGameDataProtocol <NSObject>
+
+- (void)setGameInProgress:(Puzzle *)thePuzzle;
+- (void)setGameDifficulty:(NSUInteger)difficulty;
+- (void)setGameProgressTime:(NSUInteger)seconds;
 
 @end

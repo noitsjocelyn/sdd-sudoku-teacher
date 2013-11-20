@@ -92,6 +92,7 @@
 		ABCB2E54183AC390001C4C35 /* HintsMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HintsMaker.m; path = ../../PuzzleTutor/HintsMaker.m; sourceTree = "<group>"; };
 		ABCB2E56183C7355001C4C35 /* PPGameTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPGameTimer.h; sourceTree = "<group>"; };
 		ABCB2E57183C7355001C4C35 /* PPGameTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPGameTimer.m; sourceTree = "<group>"; };
+		ABCB2E59183CA300001C4C35 /* PPGameDataProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPGameDataProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +167,7 @@
 				ABCB2E57183C7355001C4C35 /* PPGameTimer.m */,
 				AB6E305F182863490042A081 /* PuzzleMakerFactory.h */,
 				AB6E3060182863490042A081 /* PuzzleMakerFactory.m */,
+				ABCB2E59183CA300001C4C35 /* PPGameDataProtocol.h */,
 				AB2A8A9017EA1CED00A49B0B /* Images.xcassets */,
 				ABCB2E4F183ABF95001C4C35 /* Hints */,
 				AB914424181DCA8700272D10 /* PuzzleTutor */,
