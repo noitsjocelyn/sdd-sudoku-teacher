@@ -296,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DkS-r5-JBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2436" y="49"/>
+            <point key="canvasLocation" x="2476" y="49"/>
         </scene>
         <!--Hint View Controller - Hints-->
         <scene sceneID="yby-MZ-qUv">
@@ -462,7 +462,7 @@ The goal of the game is to fill in these empty squares.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0Y-Ht-MyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="770" y="667"/>
+            <point key="canvasLocation" x="758" y="667"/>
         </scene>
         <!--View Controller - Basics-->
         <scene sceneID="twL-jl-cut">
@@ -500,7 +500,7 @@ To complete a sudoku game every row, column, and block must contain the digits 1
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dj1-yI-wyb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1180" y="1240"/>
+            <point key="canvasLocation" x="1200" y="667"/>
         </scene>
         <!--View Controller - First Strategy-->
         <scene sceneID="tW3-xE-Fbe">
@@ -649,7 +649,7 @@ To complete a sudoku game every row, column, and block must contain the digits 1
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sbl-X6-tCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="1240"/>
+            <point key="canvasLocation" x="1632" y="667"/>
         </scene>
         <!--View Controller - Second Strategy-->
         <scene sceneID="nkx-PE-uzU">
@@ -808,7 +808,7 @@ To complete a sudoku game every row, column, and block must contain the digits 1
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l54-XM-oZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2024" y="667"/>
+            <point key="canvasLocation" x="2080" y="667"/>
         </scene>
     </scenes>
     <resources>
