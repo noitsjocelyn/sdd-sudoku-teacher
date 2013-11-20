@@ -24,13 +24,22 @@
     CGRect hintTwoHiddenFrame;
     CGRect hintThreeShownFrame;
     CGRect hintThreeHiddenFrame;
+    // Our "buttons" for sudoku values
     UIButton *squareButtonsTwo[81];
     UIButton *squareButtonsThree[81];
+    // Colors to highlight squares
     UIColor *firstLevelHighlightColor;
     UIColor *secondLevelHighlightColor;
+    // Data so we can rebuild the puzzle after hints
     Puzzle *puzzleData;
     NSUInteger progressSeconds;
     NSUInteger difficulty;
+    // Values for hint penalties
+    BOOL hintTwoUsed;
+    BOOL hintThreeUsed;
+    NSUInteger hintOnePenalty;
+    NSUInteger hintTwoPenalty;
+    NSUInteger hintThreePenalty;
 }
 
 @property (weak, nonatomic) id<PPGameDataProtocol> delegate;
@@ -47,5 +56,8 @@
 - (IBAction)showHintTwo:(id)sender;
 - (IBAction)showHintThree:(id)sender;
 
+- (void)setGameInProgress:(Puzzle *)thePuzzle;
+- (void)setGameProgressTime:(NSUInteger)seconds;
+- (void)setGameDifficulty:(NSUInteger)gameDifficulty;
 
 @end

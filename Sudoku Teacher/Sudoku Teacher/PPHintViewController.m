@@ -38,12 +38,19 @@
     secondLevelHighlightColor = [UIColor colorWithRed:0.278 green:0.847 blue:0.451 alpha:1.0];
     aHintMaker = [[HintsMaker alloc] init];
     [self makeHintFrames];
+    hintOnePenalty = 2;
+    hintTwoPenalty = 5;
+    hintThreePenalty = 10;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    progressSeconds += hintOnePenalty;
+    NSLog(@"%d", progressSeconds);
     [self setupHintInterfaces];
+    hintTwoUsed = NO;
+    hintThreeUsed = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,6 +65,7 @@
 {
     [self.delegate setGameInProgress:puzzleData];
     [self.delegate setGameProgressTime:progressSeconds];
+    NSLog(@"%d", progressSeconds);
     [self.delegate setGameDifficulty:difficulty];
 }
 
@@ -217,6 +225,11 @@
             [self.hintThreeView setFrame:hintThreeHiddenFrame];
         }];
     }
+    if (!hintTwoUsed)
+    {
+        progressSeconds += hintTwoPenalty;
+        hintTwoUsed = YES;
+    }
     shownHint = 2;
 }
 
@@ -233,6 +246,11 @@
         [UIView animateWithDuration:ANIMATE_TIME animations:^(void) {
             [self.hintThreeView setFrame:hintThreeShownFrame];
         }];
+    }
+    if (!hintThreeUsed)
+    {
+        progressSeconds += hintThreePenalty;
+        hintThreeUsed = YES;
     }
     shownHint = 3;
 }
