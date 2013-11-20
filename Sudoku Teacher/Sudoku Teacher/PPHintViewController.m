@@ -97,27 +97,27 @@
     [self.hintTwoLabel setText:[[hints objectAtIndex:1] hintText]];
     [self.hintThreeLabel setText:[[hints objectAtIndex:2] hintText]];
     // Add our buttons
-    [self setupSquareButtons];
+    [self setupHintPuzzleLabels];
     for (short i = 0; i < 81; ++i)
     {
-        [self.hintTwoView addSubview:squareButtonsTwo[i]];
-        [self.hintThreeView addSubview:squareButtonsThree[i]];
+        [self.hintTwoView addSubview:hintTwoNumberLabels[i]];
+        [self.hintThreeView addSubview:hintThreeNumberLabels[i]];
     }
     // Figure out what we're highlighting
     NSArray *firstHighlights = [[hints objectAtIndex:1] firstLevelHighlights];
     for (int i = 0; i < [firstHighlights count]; ++i)
     {
         short loc = [[firstHighlights objectAtIndex:i] shortValue];
-        [squareButtonsTwo[loc] setBackgroundColor:firstLevelHighlightColor];
-        [squareButtonsThree[loc] setBackgroundColor:firstLevelHighlightColor];
+        [hintTwoNumberLabels[loc] setBackgroundColor:firstLevelHighlightColor];
+        [hintThreeNumberLabels[loc] setBackgroundColor:firstLevelHighlightColor];
     }
     short loc = [[[hints objectAtIndex:2] secondLevelHighlight] shortValue];
-    [squareButtonsThree[loc] setBackgroundColor:secondLevelHighlightColor];
+    [hintThreeNumberLabels[loc] setBackgroundColor:secondLevelHighlightColor];
     // Add all the numbers
     [self setupFromPuzzleData:puzzleData];
 }
 
-- (void)setupSquareButtons
+- (void)setupHintPuzzleLabels
 {
     for (short x = 0; x < 9; ++x)
     {
@@ -137,28 +137,28 @@
             if (x == 8) xPos -= 1.5;
             if (y == 8) yPos -= 1.5;
             // Set up the value buttons
-            float buttonSize = 20.0;
-            CGRect buttonFrame = CGRectMake(xPos, yPos, buttonSize, buttonSize);
-            UIButton *valueButtonTwo = [[UIButton alloc] init];
-            [self setupSingleSquareButton:valueButtonTwo frame:buttonFrame tag:i];
-            UIButton *valueButtonThree = [[UIButton alloc] init];
-            [self setupSingleSquareButton:valueButtonThree frame:buttonFrame tag:i];
-            squareButtonsTwo[i] = valueButtonTwo;
-            squareButtonsThree[i] = valueButtonThree;
+            float labelSize = 20.0;
+            CGRect labelFrame = CGRectMake(xPos, yPos, labelSize, labelSize);
+            // Make the labels and add them
+            UILabel *hintTwoLabel = [[UILabel alloc] init];
+            UILabel *hintThreeLabel = [[UILabel alloc] init];
+            [self setupSinglePuzzleLabel:hintTwoLabel frame:labelFrame tag:i];
+            [self setupSinglePuzzleLabel:hintThreeLabel frame:labelFrame tag:i];
+            hintTwoNumberLabels[i] = hintTwoLabel;
+            hintThreeNumberLabels[i] = hintThreeLabel;
         }
     }
 }
 
-- (void)setupSingleSquareButton:(UIButton *)theButton frame:(CGRect)aFrame tag:(NSUInteger)aTag
+- (void)setupSinglePuzzleLabel:(UILabel *)aLabel frame:(CGRect)aFrame tag:(NSUInteger)aTag
 {
-    [theButton setFrame:aFrame];
-    [theButton setBackgroundColor:[UIColor clearColor]];
-    [theButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [theButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-    [theButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [theButton setTitle:@"" forState:UIControlStateNormal];
+    [aLabel setFrame:aFrame];
+    [aLabel setBackgroundColor:[UIColor clearColor]];
+    [aLabel setTextColor:[UIColor blackColor]];
+    [aLabel setText:@""];
+    [aLabel setTextAlignment:NSTextAlignmentCenter];
     // Set the tag so we can highlight them later
-    [theButton setTag:aTag];
+    [aLabel setTag:aTag];
 }
 
 - (void)setupFromPuzzleData:(Puzzle *)aPuzzle
@@ -183,12 +183,12 @@
         // Change the text color accordingly
         if (!isOriginal)
         {
-            [squareButtonsTwo[i] setTitleColor:[PPSudokuView userValueColor] forState:UIControlStateNormal];
-            [squareButtonsThree[i] setTitleColor:[PPSudokuView userValueColor] forState:UIControlStateNormal];
+            [hintTwoNumberLabels[i] setTextColor:[PPSudokuView userValueColor]];
+            [hintThreeNumberLabels[i] setTextColor:[PPSudokuView userValueColor]];
         }
         
-        [squareButtonsTwo[i] setTitle:valString forState:UIControlStateNormal];
-        [squareButtonsThree[i] setTitle:valString forState:UIControlStateNormal];
+        [hintTwoNumberLabels[i] setText:valString];
+        [hintThreeNumberLabels[i] setText:valString];
     }
 }
 

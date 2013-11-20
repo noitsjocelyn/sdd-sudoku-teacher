@@ -24,9 +24,9 @@
     CGRect hintTwoHiddenFrame;
     CGRect hintThreeShownFrame;
     CGRect hintThreeHiddenFrame;
-    // Our "buttons" for sudoku values
-    UIButton *squareButtonsTwo[81];
-    UIButton *squareButtonsThree[81];
+    // Our labels for sudoku values
+    UILabel *hintTwoNumberLabels[81];
+    UILabel *hintThreeNumberLabels[81];
     // Colors to highlight squares
     UIColor *firstLevelHighlightColor;
     UIColor *secondLevelHighlightColor;
