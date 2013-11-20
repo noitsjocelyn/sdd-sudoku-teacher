@@ -55,7 +55,6 @@
     hourString = hours > 0 ? [NSString stringWithFormat:@"%d:", hours] : @"";
     // Put it all together
     NSString *timeString = [NSString stringWithFormat:@"%@%d:%@%d", hourString, minutes, zeroString, shownSeconds];
-    NSLog(@"%@", timeString);
     if (self.navigationBar)
     {
         [self.navigationBar setTitle:timeString];
