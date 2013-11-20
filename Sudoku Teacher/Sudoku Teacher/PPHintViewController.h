@@ -19,13 +19,15 @@
 {
     HintsMaker *aHintMaker;
     NSArray *hints;
-    CGRect hintTwoShownFrame;
-    CGRect hintThreeShownFrame;
-    CGRect hintTwoHiddenFrame;
-    CGRect hintThreeHiddenFrame;
     NSUInteger shownHint;
+    CGRect hintTwoShownFrame;
+    CGRect hintTwoHiddenFrame;
+    CGRect hintThreeShownFrame;
+    CGRect hintThreeHiddenFrame;
     UIButton *squareButtonsTwo[81];
     UIButton *squareButtonsThree[81];
+    UIColor *firstLevelHighlightColor;
+    UIColor *secondLevelHighlightColor;
 }
 
 @property (strong) Puzzle *puzzleData;

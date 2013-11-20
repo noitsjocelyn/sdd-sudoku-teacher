@@ -32,6 +32,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    firstLevelHighlightColor = [UIColor colorWithRed:0.655 green:0.793 blue:0.999 alpha:1.0];
+    secondLevelHighlightColor = [UIColor colorWithRed:0.278 green:0.847 blue:0.451 alpha:1.0];
     aHintMaker = [[HintsMaker alloc] init];
     [self makeHintFrames];
 }
@@ -91,11 +93,11 @@
     for (int i = 0; i < [firstHighlights count]; ++i)
     {
         short loc = [[firstHighlights objectAtIndex:i] shortValue];
-        [squareButtonsTwo[loc] setBackgroundColor:[UIColor grayColor]];
-        [squareButtonsThree[loc] setBackgroundColor:[UIColor grayColor]];
+        [squareButtonsTwo[loc] setBackgroundColor:firstLevelHighlightColor];
+        [squareButtonsThree[loc] setBackgroundColor:firstLevelHighlightColor];
     }
     short loc = [[[hints objectAtIndex:2] secondLevelHighlight] shortValue];
-    [squareButtonsThree[loc] setBackgroundColor:[UIColor greenColor]];
+    [squareButtonsThree[loc] setBackgroundColor:secondLevelHighlightColor];
     // Add all the numbers
     [self setupFromPuzzleData:self.puzzleData];
 }
