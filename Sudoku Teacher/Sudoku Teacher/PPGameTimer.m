@@ -15,7 +15,7 @@
     self = [super init];
     if (self)
     {
-        seconds = 0;
+        totalSeconds = 0;
     }
     return self;
 }
@@ -25,7 +25,7 @@
     self = [super init];
     if (self)
     {
-        seconds = startSeconds;
+        totalSeconds = startSeconds;
     }
     return self;
 }
@@ -44,17 +44,17 @@
 {
     [secondsTimer invalidate];
     secondsTimer = nil;
-    seconds = 0;
+    totalSeconds = 0;
 }
 
 - (NSUInteger)getTime
 {
-    return seconds;
+    return totalSeconds;
 }
 
 - (void)updateSeconds:(id)sender
 {
-    ++seconds;
+    ++totalSeconds;
     [self updateNavigationBar];
 }
 
@@ -69,15 +69,15 @@
 - (NSString *)timeStringFromSeconds
 {
     // Calculate our values
-    hours = seconds / 3600;
-    minutes = seconds / 60;
-    shownSeconds = seconds % 60;
+    hours = totalSeconds / 3600;
+    minutes = totalSeconds / 60;
+    seconds = totalSeconds % 60;
     // Get our zero for in front of seconds (if needed)
     zeroString = seconds < 10 ? @"0" : @"";
     // Make our hour string (if needed)
     hourString = hours > 0 ? [NSString stringWithFormat:@"%d:", hours] : @"";
     // Put it all together
-    return [NSString stringWithFormat:@"%@%d:%@%d", hourString, minutes, zeroString, shownSeconds];
+    return [NSString stringWithFormat:@"%@%d:%@%d", hourString, minutes, zeroString, seconds];
 }
 
 @end

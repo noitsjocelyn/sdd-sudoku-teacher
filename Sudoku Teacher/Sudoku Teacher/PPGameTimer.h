@@ -11,10 +11,10 @@
 @interface PPGameTimer : NSObject
 {
     NSTimer *secondsTimer;
-    NSUInteger seconds;
+    NSUInteger totalSeconds;
     NSUInteger hours;
     NSUInteger minutes;
-    NSUInteger shownSeconds;
+    NSUInteger seconds;
     NSString *zeroString;
     NSString *hourString;
 }
