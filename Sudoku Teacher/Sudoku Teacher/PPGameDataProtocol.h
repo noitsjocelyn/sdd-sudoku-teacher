@@ -13,7 +13,10 @@
 @protocol PPGameDataProtocol <NSObject>
 
 - (void)setGameInProgress:(Puzzle *)thePuzzle;
-- (void)setGameDifficulty:(NSUInteger)difficulty;
 - (void)setGameProgressTime:(NSUInteger)seconds;
+
+@optional
+
+- (void)setGameDifficulty:(NSUInteger)difficulty;
 
 @end
