@@ -33,12 +33,47 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     aHintMaker = [[HintsMaker alloc] init];
-    [self setupHintPositions];
+    [self makeHintFrames];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self setupHintInterfaces];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.delegate setGame:self.puzzleData];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)makeHintFrames
+{
+    // Default to first hint
+    shownHint = 1;
+    CGFloat viewW = 320.0;
+    CGFloat viewH = 320.0;
+    CGFloat titleH = 64.0;
+    CGFloat buttonH = 48.0;
+    // Title bar has 0 height under iOS 6.1
+    if ([[[UIDevice currentDevice] systemVersion] intValue] == 6)
+    {
+        titleH = 0.0;
+    }
+    hintTwoShownFrame = CGRectMake(0.0, titleH + buttonH, viewW, viewH);
+    hintTwoHiddenFrame = CGRectMake(0.0, titleH + viewH, viewW, viewH);
+    hintThreeShownFrame = CGRectMake(0.0, titleH + (2 * buttonH), viewW, viewH);
+    hintThreeHiddenFrame = CGRectMake(0.0, titleH + viewH + buttonH, viewW, viewH);
+}
+
+- (void)setupHintInterfaces
+{
     hints = [aHintMaker createHints:self.puzzleData];
     // Set hint labels
     [self.hintOneLabel setText:[[hints objectAtIndex:0] hintText]];
@@ -63,35 +98,6 @@
     [squareButtonsThree[loc] setBackgroundColor:[UIColor greenColor]];
     // Add all the numbers
     [self setupFromPuzzleData:self.puzzleData];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.delegate setGame:self.puzzleData];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)setupHintPositions
-{
-    shownHint = 1;
-    CGFloat viewW = 320.0;
-    CGFloat viewH = 320.0;
-    CGFloat titleH = 64.0;
-    CGFloat buttonH = 48.0;
-    // Title bar has 0 height under iOS 6.1
-    if ([[[UIDevice currentDevice] systemVersion] intValue] == 6)
-    {
-        titleH = 0.0;
-    }
-    hintTwoShownFrame = CGRectMake(0.0, titleH + buttonH, viewW, viewH);
-    hintTwoHiddenFrame = CGRectMake(0.0, titleH + viewH, viewW, viewH);
-    hintThreeShownFrame = CGRectMake(0.0, titleH + (2 * buttonH), viewW, viewH);
-    hintThreeHiddenFrame = CGRectMake(0.0, titleH + viewH + buttonH, viewW, viewH);
 }
 
 - (void)setupSquareButtons
