@@ -681,11 +681,11 @@ To complete a sudoku game every row, column, and block must contain the digits 1
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankBigRow" id="duW-PQ-IgL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankBigRowTripleHighlight" id="duW-PQ-IgL">
                                 <rect key="frame" x="0.0" y="164" width="320" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankBigRow" id="bXz-dW-hmL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankBigRowSingleHighlight" id="bXz-dW-hmL">
                                 <rect key="frame" x="0.0" y="330" width="320" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -812,7 +812,8 @@ To complete a sudoku game every row, column, and block must contain the digits 1
         </scene>
     </scenes>
     <resources>
-        <image name="BlankBigRow" width="320" height="111"/>
+        <image name="BlankBigRowSingleHighlight" width="320" height="111"/>
+        <image name="BlankBigRowTripleHighlight" width="320" height="111"/>
         <image name="BlankBlock" width="111" height="111"/>
         <image name="BlankRow" width="320" height="41"/>
     </resources>
