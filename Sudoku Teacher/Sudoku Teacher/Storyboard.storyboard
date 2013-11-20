@@ -373,7 +373,7 @@ Line 2</string>
                                 <rect key="frame" x="0.0" y="432" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="m3F-Nf-zOa">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="m3F-Nf-zOa">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
@@ -410,6 +410,7 @@ Line 2</string>
                         <outlet property="boardBackgroundTwo" destination="bXB-qP-dKd" id="sXO-jl-sZw"/>
                         <outlet property="hintOneLabel" destination="yC2-CK-xp5" id="t5y-F6-pI8"/>
                         <outlet property="hintOneView" destination="seH-7f-Fgm" id="goB-4l-d5G"/>
+                        <outlet property="hintThreeButton" destination="m3F-Nf-zOa" id="3aV-TT-2ML"/>
                         <outlet property="hintThreeLabel" destination="d1Q-kg-KNf" id="ILY-Lu-NFY"/>
                         <outlet property="hintThreeView" destination="VoG-y3-wpw" id="Oq3-WS-dGm"/>
                         <outlet property="hintTwoLabel" destination="3ze-os-stb" id="s2P-zm-3xL"/>

@@ -46,6 +46,7 @@
 @property (weak, nonatomic) IBOutlet UIView *hintOneView;
 @property (weak, nonatomic) IBOutlet UIView *hintTwoView;
 @property (weak, nonatomic) IBOutlet UIView *hintThreeView;
+@property (weak, nonatomic) IBOutlet UIButton *hintThreeButton;
 @property (weak, nonatomic) IBOutlet UILabel *hintOneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hintTwoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hintThreeLabel;

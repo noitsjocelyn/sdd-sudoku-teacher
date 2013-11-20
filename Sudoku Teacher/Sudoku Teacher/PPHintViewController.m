@@ -50,6 +50,7 @@
     [self setupHintInterfaces];
     hintTwoUsed = NO;
     hintThreeUsed = NO;
+    [self.hintThreeButton setEnabled:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -227,6 +228,7 @@
     {
         progressSeconds += hintTwoPenalty;
         hintTwoUsed = YES;
+        [self.hintThreeButton setEnabled:YES];
     }
     shownHint = 2;
 }
