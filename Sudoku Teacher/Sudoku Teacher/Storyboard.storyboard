@@ -108,7 +108,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Start Menu" id="Uhd-tm-5zj"/>
+                    <navigationItem key="navigationItem" title="Start Menu" id="Uhd-tm-5zj">
+                        <barButtonItem key="backBarButtonItem" title="Menu" id="xvN-d0-beX"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="easyModeButton" destination="6BS-S7-1Rn" id="2zU-sU-7qM"/>
                         <outlet property="learnToPlayButton" destination="uIx-YK-zDX" id="voJ-mE-HEz"/>
@@ -561,34 +563,34 @@ To complete a sudoku game every row, column, and block must contain the digits 1
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="st0-NE-CCa">
-                                <rect key="frame" x="20" y="79" width="280" height="96"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="st0-NE-CCa">
+                                <rect key="frame" x="20" y="79" width="280" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">In a row or a column of three blocks, if a number appears in two of the blocks, the same number is located in a specific row or column of the third block.</string>
+                                <string key="text">In a set of three blocks, if a number appears in two of the blocks it must also appear in a specific column or row of the last block.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 must be in one of the squares in the block row outlined in red." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ji4-au-Cfv">
-                                <rect key="frame" x="20" y="290" width="280" height="39"/>
+                                <rect key="frame" x="20" y="283" width="280" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The red square must be a 4." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="23K-6b-zGD">
-                                <rect key="frame" x="20" y="445" width="280" height="21"/>
+                                <rect key="frame" x="20" y="449" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankBigRow" id="duW-PQ-IgL">
-                                <rect key="frame" x="0.0" y="177" width="320" height="111"/>
+                                <rect key="frame" x="0.0" y="164" width="320" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankBigRow" id="bXz-dW-hmL">
-                                <rect key="frame" x="0.0" y="331" width="320" height="111"/>
+                                <rect key="frame" x="0.0" y="330" width="320" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
