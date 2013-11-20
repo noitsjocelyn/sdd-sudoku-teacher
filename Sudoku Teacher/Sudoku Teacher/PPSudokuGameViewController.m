@@ -50,6 +50,14 @@
     {
         [aButton setEnabled:NO];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // Set up the timer
+    timer = [[PPGameTimer alloc] initWithSeconds:progressSeconds];
+    [timer setNavigationBar:self.navigationItem];
     // Either make a new board...
     if (!puzzleData)
     {
@@ -65,8 +73,6 @@
     {
         [self setupFromPuzzleData:puzzleData];
         [self.hintButton setEnabled:YES];
-        timer = [[PPGameTimer alloc] initWithSeconds:progressSeconds];
-        [timer setNavigationBar:self.navigationItem];
         [timer startTimer];
     }
 }
@@ -83,9 +89,10 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.delegate setGameInProgress:puzzleData];
+    puzzleData = nil;
     [self.delegate setGameProgressTime:[timer getTime]];
-    [self.delegate setGameDifficulty:difficulty];
     [timer stopTimer];
+    [self.delegate setGameDifficulty:difficulty];
 }
 
 // Do stuff that needs to be done before a segue, like sending values ahead.
@@ -97,10 +104,10 @@
         PPHintViewController *controller = [segue destinationViewController];
         controller.delegate = self;
         [controller setGameInProgress:puzzleData];
-        [controller setGameProgressTime:[timer getTime]];
-        [controller setGameDifficulty:difficulty];
         puzzleData = nil;
+        [controller setGameProgressTime:[timer getTime]];
         [timer stopTimer];
+        [controller setGameDifficulty:difficulty];
     }
 }
 
@@ -301,8 +308,6 @@
 
 - (void)generateAndDisplayBoard:(id)sender
 {
-    timer = [[PPGameTimer alloc] init];
-    [timer setNavigationBar:self.navigationItem];
     // Get an instance of the puzzle factory
     PuzzleMakerFactory *factory = [PuzzleMakerFactory sharedInstance];
     short *fullPuzzleArray = calloc(81, sizeof(short));

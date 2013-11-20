@@ -136,17 +136,18 @@
     if ([[segue destinationViewController] class] == [PPSudokuGameViewController class])
     {
         PPSudokuGameViewController *controller = [segue destinationViewController];
-        [controller setGameDifficulty:difficulty];
-        [controller setGameProgressTime:progressSeconds];
         controller.delegate = self;
+        [controller setGameDifficulty:difficulty];
         if (sender == self.startNewGameButton)
         {
             [controller setGameInProgress:nil];
+            [controller setGameProgressTime:0];
             puzzleInProgress = nil;
         }
         else
         {
             [controller setGameInProgress:puzzleInProgress];
+            [controller setGameProgressTime:progressSeconds];
             puzzleInProgress = nil;
         }
     }
