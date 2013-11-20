@@ -19,18 +19,20 @@
 
 @implementation PPMainMenuController
 
+#pragma mark UIViewController methods
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
         // Default to Easy mode, make interface reflect this
-        self.difficulty = 0;
+        difficulty = 0;
         [self.easyModeButton setSelected:YES];
         [self.moderateModeButton setSelected:NO];
         // Default to no game in progress. This may change with resuming from
         // the closed app later, but should be good for now.
-        self.puzzleInProgress = Nil;
+        puzzleInProgress = Nil;
     }
     return self;
 }
@@ -52,7 +54,7 @@
 {
     [super viewDidLayoutSubviews];
     // Move the check to its correct place before displaying UI elements
-    if (self.difficulty == 0)
+    if (difficulty == 0)
     {
         [self.toggleCheck setFrame:easyCheckPosition];
     }
@@ -67,7 +69,7 @@
 {
     [super viewWillAppear:animated];
     // Enable "Resume" if we have a puzzle we can resume
-    if (self.puzzleInProgress)
+    if (puzzleInProgress)
     {
         [self.resumeGameButton setEnabled:YES];
     }
@@ -85,6 +87,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark Segue methods
+
 // Allows you to cancel segues if needed.
 // Fires before prepareForSegue:sender:
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
@@ -93,7 +97,7 @@
     if (sender == self.startNewGameButton)
     {
         // If we don't have a game in progress, start without question
-        if (self.puzzleInProgress == Nil)
+        if (puzzleInProgress == Nil)
         {
             newGameConfirmed = NO;
             return YES;
@@ -132,21 +136,23 @@
     if ([[segue destinationViewController] class] == [PPSudokuGameViewController class])
     {
         PPSudokuGameViewController *controller = [segue destinationViewController];
-        [controller setDifficulty:self.difficulty];
-        [controller setProgressSeconds:progressSeconds];
+        [controller setGameDifficulty:difficulty];
+        [controller setGameProgressTime:progressSeconds];
         controller.delegate = self;
         if (sender == self.startNewGameButton)
         {
-            [controller setPuzzleData:nil];
-            self.puzzleInProgress = nil;
+            [controller setGameInProgress:nil];
+            puzzleInProgress = nil;
         }
         else
         {
-            [controller setPuzzleData:self.puzzleInProgress];
-            self.puzzleInProgress = nil;
+            [controller setGameInProgress:puzzleInProgress];
+            puzzleInProgress = nil;
         }
     }
 }
+
+#pragma mark UIAlertViewDelegate methods
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -164,25 +170,56 @@
     }
 }
 
+#pragma mark PPGameDataProtocol methods
+
 - (void)setGameInProgress:(Puzzle *)thePuzzle
 {
-    self.puzzleInProgress = thePuzzle;
+    puzzleInProgress = thePuzzle;
 }
 
-- (void)setProgressTime:(NSUInteger)seconds
+- (void)setGameProgressTime:(NSUInteger)seconds
 {
     progressSeconds = seconds;
 }
 
-- (void)initializeGeneratorFactory
+- (void)setGameDifficulty:(NSUInteger)gameDifficulty
 {
-    // Get the shared factory so we start generating puzzles
-    [PuzzleMakerFactory sharedInstance];
-    if (![NSThread isMainThread])
+    difficulty = gameDifficulty;
+}
+
+#pragma mark IBAction methods
+
+// Set the difficulty to easy and modify the interface to reflect this
+- (IBAction)toggleEasyMode:(id)sender
+{
+    // If if it wasn't already set to easy, change stuff
+    if (difficulty != 0)
     {
-        [NSThread exit];
+        difficulty = 0;
+        [self.easyModeButton setSelected:YES];
+        [self.moderateModeButton setSelected:NO];
+        [self moveElement:self.toggleCheck
+                  toFrame:easyCheckPosition
+             withFadeTime:CHECK_FADE_TIME];
     }
 }
+
+// Like above, set the difficulty to moderate
+- (IBAction)toggleModerateMode:(id)sender
+{
+    // If if it wasn't already set to moderate, change stuff
+    if (difficulty != 1)
+    {
+        difficulty = 1;
+        [self.easyModeButton setSelected:NO];
+        [self.moderateModeButton setSelected:YES];
+        [self moveElement:self.toggleCheck
+                  toFrame:moderateCheckPosition
+             withFadeTime:CHECK_FADE_TIME];
+    }
+}
+
+#pragma mark Setup and helper methods
 
 // Set up the positions of the check mark
 - (void)setupCheckPositions
@@ -196,36 +233,6 @@
     moderateCheckPosition = CGRectMake(moderateCheckX, checkY, checkSize.width, checkSize.height);
 }
 
-// Set the difficulty to easy and modify the interface to reflect this
-- (IBAction)toggleEasyMode:(id)sender
-{
-    // If if it wasn't already set to easy, change stuff
-    if ([self difficulty] != 0)
-    {
-        [self setDifficulty:0];
-        [self.easyModeButton setSelected:YES];
-        [self.moderateModeButton setSelected:NO];
-        [self moveElement:self.toggleCheck
-                  toFrame:easyCheckPosition
-             withFadeTime:CHECK_FADE_TIME];
-    }
-}
-
-// Like above, set the difficulty to moderate
-- (IBAction)toggleModerateMode:(id)sender
-{
-    // If if it wasn't already set to moderate, change stuff
-    if ([self difficulty] != 1)
-    {
-        [self setDifficulty:1];
-        [self.easyModeButton setSelected:NO];
-        [self.moderateModeButton setSelected:YES];
-        [self moveElement:self.toggleCheck
-                  toFrame:moderateCheckPosition
-             withFadeTime:CHECK_FADE_TIME];
-    }
-}
-
 // Make a UI element invisible, move it to a given frame, then fade it in
 - (void)moveElement:(id)anElement toFrame:(CGRect)aFrame withFadeTime:(NSTimeInterval)anInterval
 {
@@ -233,6 +240,16 @@
     [anElement setFrame:aFrame];
     [UIView animateWithDuration:anInterval
                      animations:^(void){ [anElement setAlpha:1.0]; }];
+}
+
+- (void)initializeGeneratorFactory
+{
+    // Get the shared factory so we start generating puzzles
+    [PuzzleMakerFactory sharedInstance];
+    if (![NSThread isMainThread])
+    {
+        [NSThread exit];
+    }
 }
 
 @end

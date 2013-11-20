@@ -18,6 +18,8 @@
 
 @implementation PPHintViewController
 
+#pragma mark UIViewController methods
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -44,16 +46,22 @@
     [self setupHintInterfaces];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.delegate setGame:self.puzzleData];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark Segue methods
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.delegate setGameInProgress:puzzleData];
+    [self.delegate setGameProgressTime:progressSeconds];
+    [self.delegate setGameDifficulty:difficulty];
+}
+
+#pragma mark Setup methods
 
 - (void)makeHintFrames
 {
@@ -76,7 +84,7 @@
 
 - (void)setupHintInterfaces
 {
-    hints = [aHintMaker createHints:self.puzzleData];
+    hints = [aHintMaker createHints:puzzleData];
     // Set hint labels
     [self.hintOneLabel setText:[[hints objectAtIndex:0] hintText]];
     [self.hintTwoLabel setText:[[hints objectAtIndex:1] hintText]];
@@ -99,7 +107,7 @@
     short loc = [[[hints objectAtIndex:2] secondLevelHighlight] shortValue];
     [squareButtonsThree[loc] setBackgroundColor:secondLevelHighlightColor];
     // Add all the numbers
-    [self setupFromPuzzleData:self.puzzleData];
+    [self setupFromPuzzleData:puzzleData];
 }
 
 - (void)setupSquareButtons
@@ -148,12 +156,12 @@
 
 - (void)setupFromPuzzleData:(Puzzle *)aPuzzle
 {
-    self.puzzleData = aPuzzle;
+    puzzleData = aPuzzle;
     for (short i = 0; i < 81; ++i)
     {
         // Grab the value
-        short value = [self.puzzleData getPuzzleValueAtIndex:i];
-        BOOL isOriginal = [self.puzzleData isOriginalValueAtIndex:i];
+        short value = [puzzleData getPuzzleValueAtIndex:i];
+        BOOL isOriginal = [puzzleData isOriginalValueAtIndex:i];
         NSString *valString;
         // If it's non-zero, set the string up
         if (value != 0)
@@ -176,6 +184,8 @@
         [squareButtonsThree[i] setTitle:valString forState:UIControlStateNormal];
     }
 }
+
+#pragma mark IBAction methods
 
 - (IBAction)showHintOne:(id)sender {
     if (shownHint == 2)
@@ -225,6 +235,23 @@
         }];
     }
     shownHint = 3;
+}
+
+#pragma mark PPGameDataProtocol methods
+
+- (void)setGameInProgress:(Puzzle *)thePuzzle
+{
+    puzzleData = thePuzzle;
+}
+
+- (void)setGameProgressTime:(NSUInteger)seconds
+{
+    progressSeconds = seconds;
+}
+
+- (void)setGameDifficulty:(NSUInteger)gameDifficulty
+{
+    difficulty = gameDifficulty;
 }
 
 @end

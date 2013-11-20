@@ -7,27 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPGameDataProtocol.h"
 
 @class Puzzle;
 
-@protocol PPMainMenuProtocol
-
-- (void)setGameInProgress:(Puzzle *)thePuzzle;
-- (void)setProgressTime:(NSUInteger)seconds;
-
-@end
-
-@interface PPMainMenuController : UIViewController <PPMainMenuProtocol, UIAlertViewDelegate>
+@interface PPMainMenuController : UIViewController <PPGameDataProtocol, UIAlertViewDelegate>
 {
     CGRect easyCheckPosition;
     CGRect moderateCheckPosition;
     BOOL newGameConfirmed;
     UIAlertView *newGameAlert;
+    Puzzle *puzzleInProgress;
+    NSUInteger difficulty;
     NSUInteger progressSeconds;
 }
-
-@property (assign) NSUInteger difficulty;
-@property (strong) Puzzle *puzzleInProgress;
 
 @property (weak, nonatomic) IBOutlet UIButton *startNewGameButton;
 @property (weak, nonatomic) IBOutlet UIButton *resumeGameButton;

@@ -23,6 +23,8 @@
 
 @implementation PPSudokuGameViewController
 
+#pragma mark UIViewController methods
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -49,7 +51,7 @@
         [aButton setEnabled:NO];
     }
     // Either make a new board...
-    if (!self.puzzleData)
+    if (!puzzleData)
     {
         // Add the processing view
         [self.view addSubview:processingView];
@@ -61,9 +63,9 @@
     // ...or resume a previous game
     else
     {
-        [self setupFromPuzzleData:self.puzzleData];
+        [self setupFromPuzzleData:puzzleData];
         [self.hintButton setEnabled:YES];
-        timer = [[PPGameTimer alloc] initWithSeconds:self.progressSeconds];
+        timer = [[PPGameTimer alloc] initWithSeconds:progressSeconds];
         [timer setNavigationBar:self.navigationItem];
         [timer startTimer];
     }
@@ -75,18 +77,40 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark Segue methods
+
+// Fires when we are leaving the view, ie. seguing back
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.delegate setGameInProgress:self.puzzleData];
-    [self.delegate setProgressTime:[timer getTime]];
+    [self.delegate setGameInProgress:puzzleData];
+    [self.delegate setGameProgressTime:[timer getTime]];
+    [self.delegate setGameDifficulty:difficulty];
     [timer stopTimer];
 }
+
+// Do stuff that needs to be done before a segue, like sending values ahead.
+// Fires only if shouldPerformSegueWithIdentifier:sender: returned YES.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue destinationViewController] class] == [PPHintViewController class])
+    {
+        PPHintViewController *controller = [segue destinationViewController];
+        controller.delegate = self;
+        [controller setGameInProgress:puzzleData];
+        [controller setGameProgressTime:[timer getTime]];
+        [controller setGameDifficulty:difficulty];
+        puzzleData = nil;
+        [timer stopTimer];
+    }
+}
+
+#pragma mark IBAction methods
 
 - (IBAction)setValue:(id)sender
 {
     short location = self.buttonSelected;
     // Don't allow modification of original values
-    if ([self.puzzleData isOriginalValueAtIndex:location])
+    if ([puzzleData isOriginalValueAtIndex:location])
     {
         return;
     }
@@ -105,7 +129,7 @@
             [aButton setEnabled:YES];
         }
         // Change the Puzzle data
-        [self.puzzleData putInValue:(location * 9 + value)];
+        [puzzleData putInValue:(location * 9 + value)];
     }
     // Otherwise, clear it
     else
@@ -119,11 +143,75 @@
             }
         }
         // Reset the square in Puzzle data
-        [self.puzzleData resetSquareAtIndex:location];
+        [puzzleData resetSquareAtIndex:location];
     }
     // Set the new title
     [buttonToChange setTitle:newTitle forState:UIControlStateNormal];
 }
+
+- (IBAction)numberButtonPressed:(id)sender
+{
+    [self setSelectedValueButton:[sender tag]];
+}
+
+- (void)setSelectedValueButton:(NSUInteger)buttonTag
+{
+    self.buttonSelected = buttonTag;
+    for (short i = 0; i < 81; ++i)
+    {
+        // Deselect all the buttons that were not pressed
+        if (i != buttonTag)
+        {
+            [squareButtons[i] setSelected:NO];
+        }
+        // We need to do stuff if we're on the button that IS pressed
+        else
+        {
+            // If it was already selected, deselect it
+            if ([squareButtons[i] isSelected])
+            {
+                [squareButtons[i] setSelected:NO];
+                self.buttonSelected = -1;
+                // Also disable the setters
+                for (UIButton *aButton in self.setValueButtons)
+                {
+                    [aButton setEnabled:NO];
+                }
+            }
+            else
+            {
+                [squareButtons[i] setSelected:YES];
+                // If it's an original value, we can't change it
+                if ([puzzleData isOriginalValueAtIndex:buttonTag])
+                {
+                    for (UIButton *aButton in self.setValueButtons)
+                    {
+                        [aButton setEnabled:NO];
+                    }
+                }
+                else
+                {
+                    for (UIButton *aButton in self.setValueButtons)
+                    {
+                        // Disable the "Clear" button if the square is blank
+                        if ([aButton tag] == 0)
+                        {
+                            BOOL valueIsBlank = [[squareButtons[buttonTag] titleForState:UIControlStateNormal] isEqualToString:@""];
+                            [aButton setEnabled:!valueIsBlank];
+                        }
+                        // Otherwise, enable the setter
+                        else
+                        {
+                            [aButton setEnabled:YES];
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#pragma mark Setup helper methods
 
 // Setup our subviews in the correct order (since some depend on each other)
 - (void)setupSubviews
@@ -131,7 +219,7 @@
     [self.hintButton setEnabled:NO];
     [self setupLabels];
     [self setupBoardBackground];
-    if (!self.puzzleData)
+    if (!puzzleData)
     {
         [self setupProcessingView];
     }
@@ -224,7 +312,7 @@
     [aMaker givePuzzle:fullPuzzleArray];
     // Make our puzzle data
     short *puzzleArray = calloc(81, sizeof(short));
-    if (self.difficulty == 0)
+    if (difficulty == 0)
     {
         [aMaker buildEasyPuzzle];
         puzzleArray = [aMaker getWorkingPuzzle:puzzleArray];
@@ -256,76 +344,14 @@
     }
 }
 
-- (void)numberButtonPressed:(id)sender
-{
-    [self setSelectedValueButton:[sender tag]];
-}
-
-- (void)setSelectedValueButton:(NSUInteger)buttonTag
-{
-    self.buttonSelected = buttonTag;
-    for (short i = 0; i < 81; ++i)
-    {
-        // Deselect all the buttons that were not pressed
-        if (i != buttonTag)
-        {
-            [squareButtons[i] setSelected:NO];
-        }
-        // We need to do stuff if we're on the button that IS pressed
-        else
-        {
-            // If it was already selected, deselect it
-            if ([squareButtons[i] isSelected])
-            {
-                [squareButtons[i] setSelected:NO];
-                self.buttonSelected = -1;
-                // Also disable the setters
-                for (UIButton *aButton in self.setValueButtons)
-                {
-                    [aButton setEnabled:NO];
-                }
-            }
-            else
-            {
-                [squareButtons[i] setSelected:YES];
-                // If it's an original value, we can't change it
-                if ([self.puzzleData isOriginalValueAtIndex:buttonTag])
-                {
-                    for (UIButton *aButton in self.setValueButtons)
-                    {
-                        [aButton setEnabled:NO];
-                    }
-                }
-                else
-                {
-                    for (UIButton *aButton in self.setValueButtons)
-                    {
-                        // Disable the "Clear" button if the square is blank
-                        if ([aButton tag] == 0)
-                        {
-                            BOOL valueIsBlank = [[squareButtons[buttonTag] titleForState:UIControlStateNormal] isEqualToString:@""];
-                            [aButton setEnabled:!valueIsBlank];
-                        }
-                        // Otherwise, enable the setter
-                        else
-                        {
-                            [aButton setEnabled:YES];
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
 - (void)setupFromPuzzleData:(Puzzle *)aPuzzle
 {
-    self.puzzleData = aPuzzle;
+    puzzleData = aPuzzle;
     for (short i = 0; i < 81; ++i)
     {
         // Grab the value
-        short value = [self.puzzleData getPuzzleValueAtIndex:i];
-        BOOL isOriginal = [self.puzzleData isOriginalValueAtIndex:i];
+        short value = [puzzleData getPuzzleValueAtIndex:i];
+        BOOL isOriginal = [puzzleData isOriginalValueAtIndex:i];
         NSString *valString;
         // If it's non-zero, set the string up
         if (value != 0)
@@ -347,22 +373,21 @@
     }
 }
 
-- (void)setGame:(Puzzle *)thePuzzle
+#pragma mark PPGameDataProtocol methods
+
+- (void)setGameInProgress:(Puzzle *)thePuzzle
 {
-    self.puzzleData = thePuzzle;
+    puzzleData = thePuzzle;
 }
 
-// Do stuff that needs to be done before a segue, like sending values ahead.
-// Fires only if shouldPerformSegueWithIdentifier:sender: returned YES.
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)setGameProgressTime:(NSUInteger)seconds
 {
-    if ([[segue destinationViewController] class] == [PPHintViewController class])
-    {
-        PPHintViewController *controller = [segue destinationViewController];
-        controller.delegate = self;
-        [controller setPuzzleData:self.puzzleData];
-        self.puzzleData = nil;
-    }
+    progressSeconds = seconds;
+}
+
+- (void)setGameDifficulty:(NSUInteger)gameDifficulty
+{
+    difficulty = gameDifficulty;
 }
 
 @end

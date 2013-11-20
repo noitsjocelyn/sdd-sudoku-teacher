@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PPSudokuGameViewController.h"
+#import "PPGameDataProtocol.h"
 
 #define ANIMATE_TIME 0.25
 
@@ -15,7 +15,7 @@
 @class PPSudokuView;
 @class Puzzle;
 
-@interface PPHintViewController : UIViewController
+@interface PPHintViewController : UIViewController <PPGameDataProtocol>
 {
     HintsMaker *aHintMaker;
     NSArray *hints;
@@ -28,10 +28,12 @@
     UIButton *squareButtonsThree[81];
     UIColor *firstLevelHighlightColor;
     UIColor *secondLevelHighlightColor;
+    Puzzle *puzzleData;
+    NSUInteger progressSeconds;
+    NSUInteger difficulty;
 }
 
-@property (strong) Puzzle *puzzleData;
-@property (weak, nonatomic) id<PPSudokuGameProtocol> delegate;
+@property (weak, nonatomic) id<PPGameDataProtocol> delegate;
 @property (weak, nonatomic) IBOutlet UIView *hintOneView;
 @property (weak, nonatomic) IBOutlet UIView *hintTwoView;
 @property (weak, nonatomic) IBOutlet UIView *hintThreeView;
