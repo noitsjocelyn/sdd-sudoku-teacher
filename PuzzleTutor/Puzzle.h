@@ -35,7 +35,6 @@
     BOOL isOriginalValue[81];
 }
 
-- (id)init;
 - (id)initWithShortArray:(short *)shortArray;
 - (id)initWithString:(NSString *)stringRepresentation;
 
@@ -49,5 +48,7 @@
 - (void)putInShortArray:(short *)shortArray;
 - (void)putInShortArray:(short *)shortArray withOriginals:(BOOL *)boolArray;
 - (void)putInString:(NSString *)stringRepresentation;
+- (BOOL)isFinished;
+- (BOOL)isCorrect;
 
 @end

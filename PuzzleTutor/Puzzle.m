@@ -355,4 +355,16 @@
     return results;
 }
 
+- (BOOL)isFinished
+{
+    
+    return YES;
+}
+
+- (BOOL)isCorrect
+{
+    
+    return YES;
+}
+
 @end
