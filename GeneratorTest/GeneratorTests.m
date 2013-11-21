@@ -47,7 +47,7 @@
         NSLog(@"Failure:\n%@", e);
         return NO;
     }
-    NSLog(@"Success.");
+    NSLog(@"Success.\n%@", testBoard);
     return TRUE;
 }
 
