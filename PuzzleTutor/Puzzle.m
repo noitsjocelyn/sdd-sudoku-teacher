@@ -355,15 +355,108 @@
     return results;
 }
 
+/* A method to check if a Puzzle is completed
+ */
 - (BOOL)isFinished
 {
+    // Make sure all of the values are filled
+    for (short i = 0; i < 81; ++i)
+    {
+        if (puzzle[i] == 0)
+        {
+            return NO;
+        }
+    }
+    // Then check that they're all right
+    return [self isCorrect];
+}
+
+/* A method to check if a Puzzle is correct. An incomplete puzzle with no
+ * 'contradictions' is considered correct.
+ */
+- (BOOL)isCorrect
+{
+    BOOL validityArray[9];
+    // Test rows for all numbers 1 to 9
+    for (NSUInteger row = 0; row < 81; row += 9)
+    {
+        makeBoolArrayFalse(validityArray, 9);
+        for (NSUInteger i = 0; i < 9; ++i)
+        {
+            validityArray[puzzle[row + i] - 1] = YES;
+        }
+        if (!allBoolArrayValuesTrue(validityArray, 9))
+        {
+            return NO;
+        }
+    }
+    
+    // Test the columns
+    for (NSUInteger col = 0; col < 9; ++col)
+    {
+        makeBoolArrayFalse(validityArray, 9);
+        for (NSUInteger i = 0; i < 81; i += 9)
+        {
+            validityArray[puzzle[i + col] - 1] = YES;
+        }
+        if (!allBoolArrayValuesTrue(validityArray, 9))
+        {
+            return NO;
+        }
+    }
+    
+    // Test the sectors
+    for (NSUInteger sec = 0; sec < 9; ++sec)
+    {
+        // Note: sectors are positioned as follows:
+        // 0 1 2
+        // 3 4 5
+        // 6 7 8
+        makeBoolArrayFalse(validityArray, 9);
+        for (NSUInteger x = 0; x < 3; ++x)
+        {
+            for (NSUInteger y = 0; y < 3; ++y)
+            {
+                short xOffset = 3 * (sec % 3);
+                short locX = xOffset + x;
+                short yOffset = 0;
+                if (sec >= 3 && sec < 6) yOffset = 3;
+                if (sec >= 6 && sec < 9) yOffset = 6;
+                short locY = yOffset + y;
+                NSUInteger loc = 9 * locX + locY;
+                validityArray[puzzle[loc] - 1] = YES;
+            }
+        }
+        if (!allBoolArrayValuesTrue(validityArray, 9))
+        {
+            return NO;
+        }
+    }
     
     return YES;
 }
 
-- (BOOL)isCorrect
+/* Function to set all of the values of a boolean array to false.
+  */
+void makeBoolArrayFalse (BOOL *array, NSUInteger size)
 {
-    
+    for (NSUInteger i = 0; i < size; ++i)
+    {
+        array[i] = NO;
+    }
+}
+
+/* Function to check if all of the values of a boolean array are true.
+ */
+BOOL allBoolArrayValuesTrue(BOOL *array, NSUInteger size)
+{
+    for (NSUInteger i = 0; i < size; ++i)
+    {
+        if (array[i] == NO)
+        {
+            return NO;
+        }
+    }
     return YES;
 }
 
