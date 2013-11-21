@@ -92,7 +92,10 @@
     puzzleData = nil;
     [self.delegate setGameProgressTime:[timer getTime]];
     [timer stopTimer];
-    [self.delegate setGameDifficulty:difficulty];
+    if ([self.delegate respondsToSelector:@selector(setGameDifficulty:)])
+    {
+        [self.delegate setGameDifficulty:difficulty];
+    }
 }
 
 // Do stuff that needs to be done before a segue, like sending values ahead.
