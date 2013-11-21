@@ -114,7 +114,7 @@
             // Otherwise, pop up an alert
             else
             {
-                newGameAlert = [[UIAlertView alloc] initWithTitle:@"You have a game in progress"
+                newGameAlert = [[UIAlertView alloc] initWithTitle:@"Game in Progress"
                                                           message:@"Are you sure you want to start a new game? This will overwrite your existing game."
                                                          delegate:self
                                                 cancelButtonTitle:@"Cancel"

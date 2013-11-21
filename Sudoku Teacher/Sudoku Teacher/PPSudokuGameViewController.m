@@ -75,7 +75,7 @@
         {
             if ([self isMovingToParentViewController])
             {
-                UIAlertView *tutorialAlert = [[UIAlertView alloc] initWithTitle:@"Complete this puzzle"
+                UIAlertView *tutorialAlert = [[UIAlertView alloc] initWithTitle:@"Complete This Puzzle"
                                                                         message:@"To enter a value, select a square then tap a number at the bottom of the screen. If you get stuck, press the Hint button in the top right."
                                                                        delegate:self
                                                               cancelButtonTitle:@"Start Puzzle"
@@ -242,16 +242,16 @@
         [timer stopTimer];
         if (!isTutorial)
         {
-            completeAlert = [[UIAlertView alloc] initWithTitle:@"Puzzle complete"
+            completeAlert = [[UIAlertView alloc] initWithTitle:@"Puzzle Complete"
                                                        message:[self randomCongratulatoryPhrase]
                                                       delegate:self
-                                             cancelButtonTitle:@"Done"
+                                             cancelButtonTitle:@"OK"
                                              otherButtonTitles:nil];
         }
         else
         {
-            completeAlert = [[UIAlertView alloc] initWithTitle:@"Tutorial complete"
-                                                       message:@"Congratulations! You have completed the Sudoku tutorial. Now try some other puzzles! Don't forget the Hint button if you get stuck."
+            completeAlert = [[UIAlertView alloc] initWithTitle:@"Tutorial Complete"
+                                                       message:@"Congratulations! You have finished the tutorial. Now try some other puzzles! Don't forget the Hint button if you get stuck."
                                                       delegate:self
                                              cancelButtonTitle:@"Go to Start Menu"
                                              otherButtonTitles:nil];
@@ -262,15 +262,17 @@
 
 - (NSString *)randomCongratulatoryPhrase
 {
-    NSArray *phrases = [NSArray arrayWithObjects:@"Way to go!",
+    NSArray *phrases = [NSArray arrayWithObjects:
+                        @"Way to go!",
                         @"You rock!",
                         @"Go you!",
                         @"Excellent!",
                         @"Nicely done!",
                         @"You're the best!",
                         @"Fantastic!",
-                        @"Woo! Awesome!",
-                        @"BOOM!",
+                        @"Awesome!",
+                        @"Wooo!",
+                        @"Gold star!",
                         nil];
     NSUInteger randomIndex = arc4random_uniform((u_int32_t)[phrases count]);
     return [phrases objectAtIndex:randomIndex];
