@@ -40,7 +40,7 @@
     [self makeHintFrames];
     [self.hintTwoView setFrame:hintTwoHiddenFrame];
     [self.hintThreeView setFrame:hintThreeHiddenFrame];
-    hintOnePenalty = 2;
+    hintOnePenalty = 0;
     hintTwoPenalty = 5;
     hintThreePenalty = 10;
 }
