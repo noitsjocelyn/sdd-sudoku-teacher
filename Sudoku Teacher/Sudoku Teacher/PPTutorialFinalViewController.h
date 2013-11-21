@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPGameDataProtocol.h"
 
-@interface PPTutorialFinalViewController : UIViewController
+@class Puzzle;
+
+@interface PPTutorialFinalViewController : UIViewController <PPGameDataProtocol>
 {
     NSString *defaultBasicPuzzle;
+    Puzzle *puzzleData;
 }
 
 @end

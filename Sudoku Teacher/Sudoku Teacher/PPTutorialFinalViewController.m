@@ -60,12 +60,26 @@
     if ([[segue destinationViewController] class] == [PPSudokuGameViewController class])
     {
         PPSudokuGameViewController *controller = [segue destinationViewController];
-        
-        Puzzle *puzzleData = [[Puzzle alloc] initWithString:defaultBasicPuzzle];
+        if (!puzzleData)
+        {
+            puzzleData = [[Puzzle alloc] initWithString:defaultBasicPuzzle];
+        }
+        [controller setDelegate:self];
         [controller setGameInProgress:puzzleData];
         [controller setGameProgressTime:0];
         [controller setGameDifficulty:0];
+        puzzleData = nil;
     }
+}
+
+- (void)setGameInProgress:(Puzzle *)thePuzzle
+{
+    puzzleData = thePuzzle;
+}
+
+- (void)setGameProgressTime:(NSUInteger)seconds
+{
+    // We don't care!
 }
 
 @end
