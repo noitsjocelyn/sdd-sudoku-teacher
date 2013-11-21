@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    puzzleData = [[Puzzle alloc] initWithString:@"654300890902058001103690254860100700031825640005009083327084906500930402096001538"];
 }
 
 - (void)didReceiveMemoryWarning

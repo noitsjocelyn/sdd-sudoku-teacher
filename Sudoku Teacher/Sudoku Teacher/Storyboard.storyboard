@@ -425,10 +425,10 @@ Line 2</string>
             </objects>
             <point key="canvasLocation" x="2911" y="49"/>
         </scene>
-        <!--View Controller - Learn to Play-->
+        <!--Tutorial One View Controller - Learn to Play-->
         <scene sceneID="sRU-rD-TlW">
             <objects>
-                <viewController id="S29-cR-XJ4" sceneMemberID="viewController">
+                <viewController id="S29-cR-XJ4" customClass="PPTutorialOneViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mbP-Ag-PQV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -458,15 +458,18 @@ To complete a sudoku game every row, column, and block must contain the digits 1
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="boardView" destination="fgP-FQ-FFl" id="JY0-fp-b13"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0Y-Ht-MyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="758" y="667"/>
         </scene>
-        <!--View Controller - Basics-->
+        <!--Tutorial Two View Controller - Basics-->
         <scene sceneID="twL-jl-cut">
             <objects>
-                <viewController id="Mrw-dO-Y69" sceneMemberID="viewController">
+                <viewController id="Mrw-dO-Y69" customClass="PPTutorialTwoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BuE-YE-E9l">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -496,6 +499,9 @@ The goal of the game is to fill in these empty squares.</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="boardView" destination="VgN-Le-8ZU" id="vkj-aV-zfD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dj1-yI-wyb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

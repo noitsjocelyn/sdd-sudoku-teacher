@@ -17,7 +17,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -27,6 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    puzzleData = [[Puzzle alloc] initWithString:@"654312897972458361183697254869143725731825649245769183327584916518936472496271538"];
 }
 
 - (void)didReceiveMemoryWarning

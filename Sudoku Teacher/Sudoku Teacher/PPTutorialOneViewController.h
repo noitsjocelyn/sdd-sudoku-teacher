@@ -10,4 +10,6 @@
 
 @interface PPTutorialOneViewController : PPTutorialViewController
 
+@property (weak, nonatomic) IBOutlet UIView *boardView;
+
 @end

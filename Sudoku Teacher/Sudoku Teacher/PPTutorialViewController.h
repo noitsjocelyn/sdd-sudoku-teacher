@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Puzzle.h"
+
 @interface PPTutorialViewController : UIViewController
+{
+    Puzzle *puzzleData;
+    UILabel *labels[81];
+}
+
+@property (weak, nonatomic) IBOutlet UIView *boardView;
 
 @end
