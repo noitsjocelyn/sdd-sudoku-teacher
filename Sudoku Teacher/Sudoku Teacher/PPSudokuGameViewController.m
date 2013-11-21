@@ -76,7 +76,7 @@
             if ([self isMovingToParentViewController])
             {
                 UIAlertView *tutorialAlert = [[UIAlertView alloc] initWithTitle:@"Complete This Puzzle"
-                                                                        message:@"To enter a value, select a square then tap a number at the bottom of the screen. If you get stuck, press the Hint button in the top right."
+                                                                        message:@"To enter a number, tap an empty square, then tap a number at the bottom of the screen. The Hint button in the top right provides help if needed."
                                                                        delegate:self
                                                               cancelButtonTitle:@"Start Puzzle"
                                                               otherButtonTitles:nil];
