@@ -14,9 +14,7 @@
 
 - (void)setGameInProgress:(Puzzle *)thePuzzle;
 - (void)setGameProgressTime:(NSUInteger)seconds;
-
-@optional
-
-- (void)setGameDifficulty:(NSUInteger)difficulty;
+- (void)setGameDifficulty:(NSUInteger)gameDifficulty;
+- (void)setIsGameTutorial:(BOOL)isGameTutorial;
 
 @end

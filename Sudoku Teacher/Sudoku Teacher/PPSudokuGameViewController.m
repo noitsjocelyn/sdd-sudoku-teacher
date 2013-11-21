@@ -92,10 +92,7 @@
     puzzleData = nil;
     [self.delegate setGameProgressTime:[timer getTime]];
     [timer stopTimer];
-    if ([self.delegate respondsToSelector:@selector(setGameDifficulty:)])
-    {
-        [self.delegate setGameDifficulty:difficulty];
-    }
+    [self.delegate setGameDifficulty:difficulty];
 }
 
 // Do stuff that needs to be done before a segue, like sending values ahead.
@@ -111,6 +108,7 @@
         [controller setGameProgressTime:[timer getTime]];
         [timer stopTimer];
         [controller setGameDifficulty:difficulty];
+        [controller setIsGameTutorial:isTutorial];
     }
 }
 
@@ -396,6 +394,11 @@
 - (void)setGameDifficulty:(NSUInteger)gameDifficulty
 {
     difficulty = gameDifficulty;
+}
+
+- (void)setIsGameTutorial:(BOOL)isGameTutorial
+{
+    isTutorial = isGameTutorial;
 }
 
 @end

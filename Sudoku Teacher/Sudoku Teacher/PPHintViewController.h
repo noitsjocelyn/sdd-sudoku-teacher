@@ -40,6 +40,7 @@
     NSUInteger hintOnePenalty;
     NSUInteger hintTwoPenalty;
     NSUInteger hintThreePenalty;
+    BOOL isTutorial;
 }
 
 @property (weak, nonatomic) id<PPGameDataProtocol> delegate;
@@ -60,5 +61,6 @@
 - (void)setGameInProgress:(Puzzle *)thePuzzle;
 - (void)setGameProgressTime:(NSUInteger)seconds;
 - (void)setGameDifficulty:(NSUInteger)gameDifficulty;
+- (void)setIsGameTutorial:(BOOL)isGameTutorial;
 
 @end

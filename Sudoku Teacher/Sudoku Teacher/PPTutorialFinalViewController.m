@@ -68,6 +68,7 @@
         [controller setGameInProgress:puzzleData];
         [controller setGameProgressTime:0];
         [controller setGameDifficulty:0];
+        [controller setIsGameTutorial:YES];
         puzzleData = nil;
     }
 }
@@ -80,6 +81,16 @@
 - (void)setGameProgressTime:(NSUInteger)seconds
 {
     // We don't care!
+}
+
+- (void)setGameDifficulty:(NSUInteger)gameDifficulty
+{
+    // We don't care!
+}
+
+- (void)setIsGameTutorial:(BOOL)isGameTutorial
+{
+    // It is, no matter what
 }
 
 @end

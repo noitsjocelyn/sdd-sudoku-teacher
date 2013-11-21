@@ -68,6 +68,7 @@
     [self.delegate setGameInProgress:puzzleData];
     [self.delegate setGameProgressTime:progressSeconds];
     [self.delegate setGameDifficulty:difficulty];
+    [self.delegate setIsGameTutorial:isTutorial];
 }
 
 #pragma mark Setup methods
@@ -272,6 +273,11 @@
 - (void)setGameDifficulty:(NSUInteger)gameDifficulty
 {
     difficulty = gameDifficulty;
+}
+
+- (void)setIsGameTutorial:(BOOL)isGameTutorial
+{
+    isTutorial = isGameTutorial;
 }
 
 @end

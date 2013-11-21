@@ -22,6 +22,7 @@
     Puzzle *puzzleData;
     NSUInteger difficulty;
     NSUInteger progressSeconds;
+    BOOL isTutorial;
 }
 
 @property (assign) NSUInteger buttonSelected;
@@ -37,5 +38,6 @@
 - (void)setGameInProgress:(Puzzle *)thePuzzle;
 - (void)setGameProgressTime:(NSUInteger)seconds;
 - (void)setGameDifficulty:(NSUInteger)difficulty;
+- (void)setIsGameTutorial:(BOOL)isGameTutorial;
 
 @end

@@ -138,6 +138,7 @@
         PPSudokuGameViewController *controller = [segue destinationViewController];
         controller.delegate = self;
         [controller setGameDifficulty:difficulty];
+        [controller setIsGameTutorial:NO];
         if (sender == self.startNewGameButton)
         {
             [controller setGameInProgress:nil];
@@ -186,6 +187,11 @@
 - (void)setGameDifficulty:(NSUInteger)gameDifficulty
 {
     difficulty = gameDifficulty;
+}
+
+- (void)setIsGameTutorial:(BOOL)isGameTutorial
+{
+    // Don't care!
 }
 
 #pragma mark IBAction methods
