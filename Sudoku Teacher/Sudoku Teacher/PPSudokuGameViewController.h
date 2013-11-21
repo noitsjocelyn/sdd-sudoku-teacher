@@ -23,6 +23,7 @@
     NSUInteger difficulty;
     NSUInteger progressSeconds;
     UIAlertView *completeAlert;
+    UIAlertView *tutorialAlert;
     BOOL isTutorial;
 }
 

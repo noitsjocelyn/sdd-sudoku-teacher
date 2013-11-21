@@ -75,7 +75,7 @@
         {
             if ([self isMovingToParentViewController])
             {
-                UIAlertView *tutorialAlert = [[UIAlertView alloc] initWithTitle:@"Complete This Puzzle"
+                tutorialAlert = [[UIAlertView alloc] initWithTitle:@"Complete This Puzzle"
                                                                         message:@"To enter a number, tap an empty square, then tap a number at the bottom of the screen. The Hint button in the top right provides help if needed."
                                                                        delegate:self
                                                               cancelButtonTitle:@"Start Puzzle"
@@ -83,9 +83,14 @@
                 [tutorialAlert show];
             }
         }
+        else
+        {
+            // Start the timer right away if it's not a tutorial
+            // For the tutorial, we start the timer in the delegate method
+            [timer startTimer];
+        }
         [self setupFromPuzzleData:puzzleData];
         [self.hintButton setEnabled:YES];
-        [timer startTimer];
     }
 }
 
@@ -449,6 +454,11 @@
         {
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
         }
+    }
+    if (alertView == tutorialAlert)
+    {
+        // Start the timer when the user starts the tutorial puzzle
+        [timer startTimer];
     }
 }
 
