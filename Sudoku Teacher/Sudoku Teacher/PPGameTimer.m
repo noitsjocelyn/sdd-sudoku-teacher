@@ -75,9 +75,9 @@
     // Get our zero for in front of seconds (if needed)
     zeroString = seconds < 10 ? @"0" : @"";
     // Make our hour string (if needed)
-    hourString = hours > 0 ? [NSString stringWithFormat:@"%d:", hours] : @"";
+    hourString = hours > 0 ? [NSString stringWithFormat:@"%lu:", hours] : @"";
     // Put it all together
-    return [NSString stringWithFormat:@"%@%d:%@%d", hourString, minutes, zeroString, seconds];
+    return [NSString stringWithFormat:@"%@%lu:%@%lu", hourString, minutes, zeroString, seconds];
 }
 
 @end

@@ -272,7 +272,7 @@
                         @"Woo! Awesome!",
                         @"BOOM!",
                         nil];
-    NSUInteger randomIndex = arc4random_uniform([phrases count]);
+    NSUInteger randomIndex = arc4random_uniform((u_int32_t)[phrases count]);
     return [phrases objectAtIndex:randomIndex];
 }
 
