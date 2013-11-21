@@ -251,9 +251,9 @@
         else
         {
             completeAlert = [[UIAlertView alloc] initWithTitle:@"Tutorial complete"
-                                                       message:@"Congratulations! You have completed the Sudoku tutorial. Now try some harder puzzles! Don't forget the Hint button if you get stuck."
+                                                       message:@"Congratulations! You have completed the Sudoku tutorial. Now try some other puzzles! Don't forget the Hint button if you get stuck."
                                                       delegate:self
-                                             cancelButtonTitle:@"Go to Menu"
+                                             cancelButtonTitle:@"Go to Start Menu"
                                              otherButtonTitles:nil];
         }
         [completeAlert show];
