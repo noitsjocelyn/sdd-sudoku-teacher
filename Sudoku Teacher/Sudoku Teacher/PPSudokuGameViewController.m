@@ -71,6 +71,18 @@
     // ...or resume a previous game
     else
     {
+        if (isTutorial)
+        {
+            if ([self isMovingToParentViewController])
+            {
+                UIAlertView *tutorialAlert = [[UIAlertView alloc] initWithTitle:@"Complete this puzzle"
+                                                                        message:@"To enter a value, select a square then tap a number at the bottom of the screen. If you get stuck, press the Hint button in the top right."
+                                                                       delegate:self
+                                                              cancelButtonTitle:@"Start Puzzle"
+                                                              otherButtonTitles:nil];
+                [tutorialAlert show];
+            }
+        }
         [self setupFromPuzzleData:puzzleData];
         [self.hintButton setEnabled:YES];
         [timer startTimer];
@@ -155,6 +167,8 @@
     }
     // Set the new title
     [buttonToChange setTitle:newTitle forState:UIControlStateNormal];
+    // Check puzzle for completion
+    [self checkPuzzleCompletion];
 }
 
 - (IBAction)numberButtonPressed:(id)sender
@@ -217,6 +231,49 @@
             }
         }
     }
+}
+
+#pragma mark Puzzle completion and correctness
+
+- (void)checkPuzzleCompletion
+{
+    if ([puzzleData isFinished])
+    {
+        [timer stopTimer];
+        if (!isTutorial)
+        {
+            completeAlert = [[UIAlertView alloc] initWithTitle:@"Puzzle complete"
+                                                       message:[self randomCongratulatoryPhrase]
+                                                      delegate:self
+                                             cancelButtonTitle:@"Done"
+                                             otherButtonTitles:nil];
+        }
+        else
+        {
+            completeAlert = [[UIAlertView alloc] initWithTitle:@"Tutorial complete"
+                                                       message:@"Congratulations! You have completed the Sudoku tutorial. Now try some harder puzzles! Don't forget the Hint button if you get stuck."
+                                                      delegate:self
+                                             cancelButtonTitle:@"Go to Menu"
+                                             otherButtonTitles:nil];
+        }
+        [completeAlert show];
+    }
+}
+
+- (NSString *)randomCongratulatoryPhrase
+{
+    NSArray *phrases = [NSArray arrayWithObjects:@"Way to go!",
+                        @"You rock!",
+                        @"Go you!",
+                        @"Excellent!",
+                        @"Nicely done!",
+                        @"You're the best!",
+                        @"Fantastic!",
+                        @"Woo! Awesome!",
+                        @"BOOM!",
+                        nil];
+    NSUInteger randomIndex = arc4random_uniform([phrases count]);
+    return [phrases objectAtIndex:randomIndex];
 }
 
 #pragma mark Setup helper methods
@@ -376,6 +433,20 @@
         }
         
         [squareButtons[i] setTitle:valString forState:UIControlStateNormal];
+    }
+}
+
+#pragma mark UIAlertViewDelegate methods
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // See if we're coming from the new game alert
+    if (alertView == completeAlert)
+    {
+        if (isTutorial)
+        {
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+        }
     }
 }
 

@@ -13,7 +13,7 @@
 @class PPSudokuView;
 @class Puzzle;
 
-@interface PPSudokuGameViewController : UIViewController <PPGameDataProtocol>
+@interface PPSudokuGameViewController : UIViewController <PPGameDataProtocol, UIAlertViewDelegate>
 {
     UIButton *squareButtons[81];
     UIView *processingView;
@@ -22,6 +22,7 @@
     Puzzle *puzzleData;
     NSUInteger difficulty;
     NSUInteger progressSeconds;
+    UIAlertView *completeAlert;
     BOOL isTutorial;
 }
 
