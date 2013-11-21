@@ -849,6 +849,7 @@ The goal of the game is to fill in these empty squares.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Second Strategy" id="lE8-4N-crG">
+                        <barButtonItem key="backBarButtonItem" title="Tutorial" id="kkk-Gi-wo4"/>
                         <barButtonItem key="rightBarButtonItem" title="Play" id="fbR-mv-gIB">
                             <connections>
                                 <segue destination="vrX-YD-l6G" kind="push" id="Fzs-hk-rYp"/>
