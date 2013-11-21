@@ -35,6 +35,9 @@
 		ABCB2E55183AC390001C4C35 /* HintsMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E54183AC390001C4C35 /* HintsMaker.m */; };
 		ABCB2E58183C7355001C4C35 /* PPGameTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E57183C7355001C4C35 /* PPGameTimer.m */; };
 		ABCB2E5C183D724E001C4C35 /* PPTutorialFinalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E5B183D724E001C4C35 /* PPTutorialFinalViewController.m */; };
+		ABCB2E5F183D961E001C4C35 /* PPTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E5E183D961E001C4C35 /* PPTutorialViewController.m */; };
+		ABCB2E62183D982C001C4C35 /* PPTutorialOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E61183D982C001C4C35 /* PPTutorialOneViewController.m */; };
+		ABCB2E65183D9A71001C4C35 /* PPTutorialTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB2E64183D9A71001C4C35 /* PPTutorialTwoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +99,12 @@
 		ABCB2E59183CA300001C4C35 /* PPGameDataProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPGameDataProtocol.h; sourceTree = "<group>"; };
 		ABCB2E5A183D724E001C4C35 /* PPTutorialFinalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTutorialFinalViewController.h; sourceTree = "<group>"; };
 		ABCB2E5B183D724E001C4C35 /* PPTutorialFinalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTutorialFinalViewController.m; sourceTree = "<group>"; };
+		ABCB2E5D183D961E001C4C35 /* PPTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTutorialViewController.h; sourceTree = "<group>"; };
+		ABCB2E5E183D961E001C4C35 /* PPTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTutorialViewController.m; sourceTree = "<group>"; };
+		ABCB2E60183D982C001C4C35 /* PPTutorialOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTutorialOneViewController.h; sourceTree = "<group>"; };
+		ABCB2E61183D982C001C4C35 /* PPTutorialOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTutorialOneViewController.m; sourceTree = "<group>"; };
+		ABCB2E63183D9A71001C4C35 /* PPTutorialTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTutorialTwoViewController.h; sourceTree = "<group>"; };
+		ABCB2E64183D9A71001C4C35 /* PPTutorialTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTutorialTwoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +173,12 @@
 				AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */,
 				ABCB2E4C183ABEF9001C4C35 /* PPHintViewController.h */,
 				ABCB2E4D183ABEF9001C4C35 /* PPHintViewController.m */,
+				ABCB2E5D183D961E001C4C35 /* PPTutorialViewController.h */,
+				ABCB2E5E183D961E001C4C35 /* PPTutorialViewController.m */,
+				ABCB2E60183D982C001C4C35 /* PPTutorialOneViewController.h */,
+				ABCB2E61183D982C001C4C35 /* PPTutorialOneViewController.m */,
+				ABCB2E63183D9A71001C4C35 /* PPTutorialTwoViewController.h */,
+				ABCB2E64183D9A71001C4C35 /* PPTutorialTwoViewController.m */,
 				ABCB2E5A183D724E001C4C35 /* PPTutorialFinalViewController.h */,
 				ABCB2E5B183D724E001C4C35 /* PPTutorialFinalViewController.m */,
 				AB9BC8BC181B3F80008E8987 /* PPSudokuView.h */,
@@ -351,8 +366,10 @@
 				AB2A8A8F17EA1CED00A49B0B /* PPAppDelegate.m in Sources */,
 				ABCB2E58183C7355001C4C35 /* PPGameTimer.m in Sources */,
 				AB91441D181C335E00272D10 /* SudokuBoardSector.m in Sources */,
+				ABCB2E65183D9A71001C4C35 /* PPTutorialTwoViewController.m in Sources */,
 				AB5C626A181AB55700F722DD /* PPMainMenuController.m in Sources */,
 				AB9BC8C1181B5875008E8987 /* PPSudokuGameViewController.m in Sources */,
+				ABCB2E62183D982C001C4C35 /* PPTutorialOneViewController.m in Sources */,
 				AB2A8A8B17EA1CED00A49B0B /* main.m in Sources */,
 				AB91441C181C335E00272D10 /* SudokuBoardGenerator.m in Sources */,
 				AB914429181DCA9700272D10 /* Puzzle.m in Sources */,
@@ -362,6 +379,7 @@
 				ABCB2E55183AC390001C4C35 /* HintsMaker.m in Sources */,
 				AB6E3061182863490042A081 /* PuzzleMakerFactory.m in Sources */,
 				AB91441B181C335E00272D10 /* SudokuBoard.m in Sources */,
+				ABCB2E5F183D961E001C4C35 /* PPTutorialViewController.m in Sources */,
 				AB91442A181DCA9700272D10 /* PuzzleMaker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
