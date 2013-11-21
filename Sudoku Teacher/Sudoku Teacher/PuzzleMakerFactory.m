@@ -58,7 +58,7 @@
     dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         SudokuBoard *newBoard = [[SudokuBoard alloc] init];
         newBoard = [SudokuBoardGenerator generate];
-        NSLog(@"\n%@", newBoard);
+//        NSLog(@"\n%@", newBoard);
         currentBoard = [newBoard boardAsShortArray:currentBoard];
         dispatch_semaphore_signal(_genSemaphore);
     });
