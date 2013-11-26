@@ -279,9 +279,7 @@
                 short numSearch = i % 9;
                 for (short j = 0; j < 9; ++j)
                 {
-                    short preCompute =
-                        27 * (numBlock % 3) + 243 * (numBlock / 3) + 9 *
-                        (j % 3) + 81 * (j / 3) + numSearch;
+                    short preCompute = 27 * (numBlock % 3) + 243 * (numBlock / 3) + 9 * (j % 3) + 81 * (j / 3) + numSearch;
                     if (avail[preCompute])
                     {
                         results[0] = 2;
