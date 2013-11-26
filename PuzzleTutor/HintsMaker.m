@@ -8,6 +8,8 @@
 
 @implementation HintsMaker
 
+/* Method that calls all of the private methods for our app to use.
+ */
 - (NSArray *)createHints:(Puzzle *)thePuzzle
 {
     short theResults[4];
