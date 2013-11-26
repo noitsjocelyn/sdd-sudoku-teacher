@@ -10,14 +10,13 @@
 
 - (NSArray *)createHints:(Puzzle *)thePuzzle
 {
-    short *theResults = calloc(4, sizeof(short));
-    theResults = [thePuzzle findSquareWithOneAvailableValue:theResults];
+    short theResults[4];
+    [thePuzzle findSquareWithOneAvailableValue:theResults];
     if (theResults[0] == 0)
     {
-        theResults = [thePuzzle findSquareInChunkWithRequiredValue:theResults];
+        [thePuzzle findSquareInChunkWithRequiredValue:theResults];
     }
     NSArray *hints = [self makeHints:theResults];
-    free(theResults);
     return hints;
 }
 
