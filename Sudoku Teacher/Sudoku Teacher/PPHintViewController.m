@@ -109,13 +109,19 @@
         [self.hintThreeView addSubview:hintThreeNumberLabels[i]];
     }
     // Figure out what we're highlighting
-    NSArray *firstHighlights = [[hints objectAtIndex:1] firstLevelHighlights];
-    for (int i = 0; i < [firstHighlights count]; ++i)
+    NSArray *firstHighlightsTwo = [[hints objectAtIndex:1] firstLevelHighlights];
+    for (int i = 0; i < [firstHighlightsTwo count]; ++i)
     {
-        short loc = [[firstHighlights objectAtIndex:i] shortValue];
+        short loc = [[firstHighlightsTwo objectAtIndex:i] shortValue];
         [hintTwoNumberLabels[loc] setBackgroundColor:firstLevelHighlightColor];
+    }
+    NSArray *firstHighlightsThree = [[hints objectAtIndex:2] firstLevelHighlights];
+    for (int i = 0; i < [firstHighlightsThree count]; ++i)
+    {
+        short loc = [[firstHighlightsThree objectAtIndex:i] shortValue];
         [hintThreeNumberLabels[loc] setBackgroundColor:firstLevelHighlightColor];
     }
+    
     short loc = [[[hints objectAtIndex:2] secondLevelHighlight] shortValue];
     [hintThreeNumberLabels[loc] setBackgroundColor:secondLevelHighlightColor];
     // Add all the numbers
