@@ -32,6 +32,7 @@
 
 - (void)startTimer
 {
+    // Only start if we don't already have one
     if (!secondsTimer)
     {
         secondsTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateSeconds:) userInfo:nil repeats:YES];
@@ -40,10 +41,22 @@
     }
 }
 
+- (void)pauseTimer
+{
+    // Only do this if we have a timer
+    if (secondsTimer)
+    {
+        // Remove the timer, but don't reset the seconds count
+        [secondsTimer invalidate];
+        secondsTimer = nil;
+    }
+}
+
 - (void)stopTimer
 {
-    [secondsTimer invalidate];
-    secondsTimer = nil;
+    // Pause the timer...
+    [self pauseTimer];
+    // ...then reset the seconds count
     totalSeconds = 0;
 }
 

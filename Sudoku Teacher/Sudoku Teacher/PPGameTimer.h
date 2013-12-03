@@ -23,6 +23,7 @@
 
 - (id)initWithSeconds:(NSUInteger)seconds;
 - (void)startTimer;
+- (void)pauseTimer;
 - (void)stopTimer;
 - (NSUInteger)getTime;
 
