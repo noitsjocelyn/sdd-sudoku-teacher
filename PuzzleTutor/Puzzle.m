@@ -353,9 +353,10 @@
     return results;
 }
 
-/* A method to check if a Puzzle is completed
+/* A method to check if a Puzzle is completed. Note: this does not check that
+ * the values are all correct.
  */
-- (BOOL)isFinished
+- (BOOL)isFull
 {
     // Make sure all of the values are filled
     for (short i = 0; i < 81; ++i)
@@ -365,8 +366,7 @@
             return NO;
         }
     }
-    // Then check that they're all right
-    return [self isCorrect];
+    return YES;
 }
 
 /* A method to check if a Puzzle is correct. An incomplete puzzle with no

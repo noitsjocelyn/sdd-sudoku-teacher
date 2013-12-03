@@ -242,26 +242,37 @@
 
 - (void)checkPuzzleCompletion
 {
-    if ([puzzleData isFinished])
+    if ([puzzleData isFull])
     {
-        [timer stopTimer];
-        if (!isTutorial)
+        // Disable the hint button even if we are incorrect. Pressing hint with
+        // a full puzzle crashes.
+        [self.hintButton setEnabled:NO];
+        if ([puzzleData isCorrect])
         {
-            completeAlert = [[UIAlertView alloc] initWithTitle:@"Puzzle Complete"
-                                                       message:[self randomCongratulatoryPhrase]
-                                                      delegate:self
-                                             cancelButtonTitle:@"OK"
-                                             otherButtonTitles:nil];
+            [timer stopTimer];
+            if (!isTutorial)
+            {
+                completeAlert = [[UIAlertView alloc] initWithTitle:@"Puzzle Complete"
+                                                           message:[self randomCongratulatoryPhrase]
+                                                          delegate:self
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil];
+            }
+            else
+            {
+                completeAlert = [[UIAlertView alloc] initWithTitle:@"Tutorial Complete"
+                                                           message:@"Congratulations! You have finished the tutorial. Now try some other puzzles! Don't forget the Hint button if you get stuck."
+                                                          delegate:self
+                                                 cancelButtonTitle:@"Go to Start Menu"
+                                                 otherButtonTitles:nil];
+            }
+            [completeAlert show];
         }
-        else
-        {
-            completeAlert = [[UIAlertView alloc] initWithTitle:@"Tutorial Complete"
-                                                       message:@"Congratulations! You have finished the tutorial. Now try some other puzzles! Don't forget the Hint button if you get stuck."
-                                                      delegate:self
-                                             cancelButtonTitle:@"Go to Start Menu"
-                                             otherButtonTitles:nil];
-        }
-        [completeAlert show];
+    }
+    else
+    {
+        // Enable the hint button if the puzzle was full, but isn't anymore.
+        [self.hintButton setEnabled:YES];
     }
 }
 

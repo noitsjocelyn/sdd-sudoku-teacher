@@ -48,7 +48,7 @@
 - (void)putInShortArray:(short *)shortArray;
 - (void)putInShortArray:(short *)shortArray withOriginals:(BOOL *)boolArray;
 - (void)putInString:(NSString *)stringRepresentation;
-- (BOOL)isFinished;
+- (BOOL)isFull;
 - (BOOL)isCorrect;
 
 @end
