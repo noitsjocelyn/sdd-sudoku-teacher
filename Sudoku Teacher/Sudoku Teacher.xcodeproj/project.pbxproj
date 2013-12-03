@@ -131,6 +131,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB07C301184E4D2200071D37 /* Tutorial views */ = {
+			isa = PBXGroup;
+			children = (
+				ABCB2E5D183D961E001C4C35 /* PPTutorialViewController.h */,
+				ABCB2E5E183D961E001C4C35 /* PPTutorialViewController.m */,
+				ABCB2E60183D982C001C4C35 /* PPTutorialOneViewController.h */,
+				ABCB2E61183D982C001C4C35 /* PPTutorialOneViewController.m */,
+				ABCB2E63183D9A71001C4C35 /* PPTutorialTwoViewController.h */,
+				ABCB2E64183D9A71001C4C35 /* PPTutorialTwoViewController.m */,
+				ABCB2E5A183D724E001C4C35 /* PPTutorialFinalViewController.h */,
+				ABCB2E5B183D724E001C4C35 /* PPTutorialFinalViewController.m */,
+			);
+			name = "Tutorial views";
+			sourceTree = "<group>";
+		};
 		AB2A8A7217EA1CEC00A49B0B = {
 			isa = PBXGroup;
 			children = (
@@ -173,16 +188,9 @@
 				AB9BC8C0181B5875008E8987 /* PPSudokuGameViewController.m */,
 				ABCB2E4C183ABEF9001C4C35 /* PPHintViewController.h */,
 				ABCB2E4D183ABEF9001C4C35 /* PPHintViewController.m */,
-				ABCB2E5D183D961E001C4C35 /* PPTutorialViewController.h */,
-				ABCB2E5E183D961E001C4C35 /* PPTutorialViewController.m */,
-				ABCB2E60183D982C001C4C35 /* PPTutorialOneViewController.h */,
-				ABCB2E61183D982C001C4C35 /* PPTutorialOneViewController.m */,
-				ABCB2E63183D9A71001C4C35 /* PPTutorialTwoViewController.h */,
-				ABCB2E64183D9A71001C4C35 /* PPTutorialTwoViewController.m */,
-				ABCB2E5A183D724E001C4C35 /* PPTutorialFinalViewController.h */,
-				ABCB2E5B183D724E001C4C35 /* PPTutorialFinalViewController.m */,
 				AB9BC8BC181B3F80008E8987 /* PPSudokuView.h */,
 				AB9BC8BD181B3F80008E8987 /* PPSudokuView.m */,
+				AB07C301184E4D2200071D37 /* Tutorial views */,
 				ABCB2E56183C7355001C4C35 /* PPGameTimer.h */,
 				ABCB2E57183C7355001C4C35 /* PPGameTimer.m */,
 				AB6E305F182863490042A081 /* PuzzleMakerFactory.h */,
