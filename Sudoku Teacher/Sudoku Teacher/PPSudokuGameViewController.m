@@ -105,6 +105,11 @@
 // Fires when we are leaving the view, ie. seguing back
 - (void)viewWillDisappear:(BOOL)animated
 {
+    if ([puzzleData isFull] && [puzzleData isCorrect])
+    {
+        puzzleData = nil;
+        [timer stopTimer];
+    }
     [self.delegate setGameInProgress:puzzleData];
     puzzleData = nil;
     [self.delegate setGameProgressTime:[timer getTime]];
@@ -249,7 +254,7 @@
         [self.hintButton setEnabled:NO];
         if ([puzzleData isCorrect])
         {
-            [timer stopTimer];
+            [timer pauseTimer];
             if (!isTutorial)
             {
                 completeAlert = [[UIAlertView alloc] initWithTitle:@"Puzzle Complete"
