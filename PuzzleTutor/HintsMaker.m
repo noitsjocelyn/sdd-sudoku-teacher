@@ -151,33 +151,41 @@
 	{
         firstHighlights = [[NSMutableArray alloc] init];
         theText = [NSString stringWithFormat:@"Because of numbers in the highlighted areas, the green square can only hold the number %d.", hintResults[3]];
-		short theBase = (hintResults[2] / 27) * 27 + ((hintResults[2] % 9) / 3) * 3;
-		for (short i = 0; i < 9; i++)
-		{
-			NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + (i % 3) + (i / 3) * 9)];
-			if ([toAdd shortValue] != hintResults[2])
-			{
-				[firstHighlights addObject:toAdd];
-			}
-		}
-		theBase = hintResults[2] % 9;
-		for (short i = 0; i < 9; i++)
-		{
-			NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + 9 * i)];
-			if ([toAdd shortValue] % 27 != hintResults[2] % 27)
-			{
-				[firstHighlights addObject:toAdd];
-			}
-		}
-		theBase = hintResults[2] - (hintResults[2] % 9);
-		for (short i = 0; i < 9; i++)
-		{
-			NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + i)];
-			if (([toAdd shortValue] % 9) / 3 != (hintResults[2] % 9) / 3)
-			{
-				[firstHighlights addObject:toAdd];
-			}
-		}
+		short theBase;
+        // Highlight the block
+        theBase = (hintResults[2] / 27) * 27 + ((hintResults[2] % 9) / 3) * 3;
+        for (short i = 0; i < 9; i++)
+        {
+            NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + (i % 3) + (i / 3) * 9)];
+            if ([toAdd shortValue] != hintResults[2])
+            {
+                [firstHighlights addObject:toAdd];
+            }
+        }
+
+        // Highlight the column
+        theBase = hintResults[2] % 9;
+        for (short i = 0; i < 9; i++)
+        {
+            NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + 9 * i)];
+            //if ([toAdd shortValue] % 27 != hintResults[2] % 27)
+            if ([toAdd shortValue] != hintResults[2])
+            {
+                [firstHighlights addObject:toAdd];
+            }
+        }
+
+        // Highlight the row
+        theBase = hintResults[2] - (hintResults[2] % 9);
+        for (short i = 0; i < 9; i++)
+        {
+            NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + i)];
+            //if (([toAdd shortValue] % 9) / 3 != (hintResults[2] % 9) / 3)
+            if ([toAdd shortValue] != hintResults[2])
+            {
+                [firstHighlights addObject:toAdd];
+            }
+        }
 	}
 	else if (hintResults[0] == 2)
 	{
