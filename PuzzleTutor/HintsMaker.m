@@ -31,7 +31,7 @@
     Hint *hint2 = [self makeHintTwo:hintResults];
     Hint *hint3 = [self makeHintThree:hintResults];
     NSArray *theHints = [NSArray arrayWithObjects:hint1, hint2, hint3, nil];
-	return theHints;
+    return theHints;
 }
 
 /* Method that returns the first hint when passed the results of a tutor search.
@@ -39,35 +39,35 @@
  */
 - (Hint *)makeHintOne:(short *)hintResults
 {
-	Hint *newHint = [[Hint alloc] init];
+    Hint *newHint = [[Hint alloc] init];
     NSString *theText;
-	if (hintResults[0] == 1)
-	{
-		theText = @"Remember, a row, column, or block can only have one occurrence of a number. You can use this fact to eliminate possibilities from other squares. Once there is only one possibility remaining for a square, you know the number that has to go there!";
-	}
-	else if (hintResults[0] == 2)
-	{
-    	NSString *theMethod;
-    	if (hintResults[1] == 1)
-    	{
-    		theMethod = @"block";
-    	}
-    	else if (hintResults[1] == 2)
-    	{
-    		theMethod = @"column";
-    	}
-    	else if (hintResults[1] == 3)
-    	{
-    		theMethod = @"row";
-    	}
+    if (hintResults[0] == 1)
+    {
+        theText = @"Remember, a row, column, or block can only have one occurrence of a number. You can use this fact to eliminate possibilities from other squares. Once there is only one possibility remaining for a square, you know the number that has to go there!";
+    }
+    else if (hintResults[0] == 2)
+    {
+        NSString *theMethod;
+        if (hintResults[1] == 1)
+        {
+            theMethod = @"block";
+        }
+        else if (hintResults[1] == 2)
+        {
+            theMethod = @"column";
+        }
+        else if (hintResults[1] == 3)
+        {
+            theMethod = @"row";
+        }
         theText = [NSString stringWithFormat:@"Remember, a %@ must have an occurrence of every number. If you can eliminate a number from the possibilities of every square in a %@ except one, the number must go in the final square!", theMethod, theMethod];
-	}
+    }
     else
     {
         theText = @"";
     }
     newHint.hintText = theText;
-	return newHint;
+    return newHint;
 }
 
 /* The method that generates the second hint when passed tutor results. This
@@ -77,63 +77,63 @@
  */
 - (Hint *)makeHintTwo:(short *)hintResults
 {
-	Hint *newHint = [[Hint alloc] init];
+    Hint *newHint = [[Hint alloc] init];
     NSString *theText;
-	if (hintResults[0] == 1)
-	{
-		theText = @"Examine the highlighted block. One sqaure in it has only one possibility!";
+    if (hintResults[0] == 1)
+    {
+        theText = @"Examine the highlighted block. One sqaure in it has only one possibility!";
         NSMutableArray *firstHighlights = [[NSMutableArray alloc] init];
-		short theBase = (hintResults[2] / 27) * 27 + ((hintResults[2] % 9) / 3) * 3;
-		for (short i = 0; i < 9; ++i)
-		{
+        short theBase = (hintResults[2] / 27) * 27 + ((hintResults[2] % 9) / 3) * 3;
+        for (short i = 0; i < 9; ++i)
+        {
             NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + (i % 3) + (i / 3) * 9)];
-			[firstHighlights addObject:toAdd];
-		}
+            [firstHighlights addObject:toAdd];
+        }
         newHint.firstLevelHighlights = [NSArray arrayWithArray:firstHighlights];
-	}
-	else if (hintResults[0] == 2)
-	{
+    }
+    else if (hintResults[0] == 2)
+    {
         NSMutableArray *firstHighlights = [[NSMutableArray alloc] init];
-    	NSString *theMethod;
-    	if (hintResults[1] == 1)
-    	{
-    		theMethod = @"block";
-    		short theBase = (hintResults[2] / 27) * 27 + ((hintResults[2] %  9) / 3) * 3;
-    		for (short i = 0; i < 9; i++)
-    		{
-    			NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + (i % 3) + (i / 3) * 9)];
-    			[firstHighlights addObject:toAdd];
-    		}
-    	}
-    	else if (hintResults[1] == 2)
-    	{
-    		theMethod = @"column";
-    		short theBase = hintResults[2] % 9;
-    		for (short i = 0; i < 9; i++)
-    		{
-    			NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + 9 * i)];
-    			[firstHighlights addObject:toAdd];
-    		}
-    	}
-    	else if (hintResults[1] == 3)
-    	{
-    		theMethod = @"row";
-    		short theBase = hintResults[2] - (hintResults[2] % 9);
-    		for (short i = 0; i < 9; i++)
-    		{
-    			NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + i)];
-    			[firstHighlights addObject:toAdd];
-    		}
-    	}
+        NSString *theMethod;
+        if (hintResults[1] == 1)
+        {
+            theMethod = @"block";
+            short theBase = (hintResults[2] / 27) * 27 + ((hintResults[2] %  9) / 3) * 3;
+            for (short i = 0; i < 9; i++)
+            {
+                NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + (i % 3) + (i / 3) * 9)];
+                [firstHighlights addObject:toAdd];
+            }
+        }
+        else if (hintResults[1] == 2)
+        {
+            theMethod = @"column";
+            short theBase = hintResults[2] % 9;
+            for (short i = 0; i < 9; i++)
+            {
+                NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + 9 * i)];
+                [firstHighlights addObject:toAdd];
+            }
+        }
+        else if (hintResults[1] == 3)
+        {
+            theMethod = @"row";
+            short theBase = hintResults[2] - (hintResults[2] % 9);
+            for (short i = 0; i < 9; i++)
+            {
+                NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + i)];
+                [firstHighlights addObject:toAdd];
+            }
+        }
         theText = [NSString stringWithFormat:@"Examine the highlighted %@. There is a number that can only fit in one of the squares!", theMethod];
         newHint.firstLevelHighlights = [NSArray arrayWithArray:firstHighlights];
-	}
+    }
     else
     {
         theText = @"";
     }
     newHint.hintText = theText;
-	return newHint;
+    return newHint;
 }
 
 /* The method that creates the third hint when passed tutor results. This hint
@@ -143,15 +143,15 @@
  */
 - (Hint *)makeHintThree:(short *)hintResults
 {
-	Hint *newHint = [[Hint alloc] init];
+    Hint *newHint = [[Hint alloc] init];
     NSString *theText;
     NSString *theMethod;
     NSMutableArray *firstHighlights;
-	if (hintResults[0] == 1)
-	{
+    if (hintResults[0] == 1)
+    {
         firstHighlights = [[NSMutableArray alloc] init];
         theText = [NSString stringWithFormat:@"Because of numbers in the highlighted areas, the green square can only hold the number %d.", hintResults[3]];
-		short theBase;
+        short theBase;
         // Highlight the block
         theBase = (hintResults[2] / 27) * 27 + ((hintResults[2] % 9) / 3) * 3;
         for (short i = 0; i < 9; i++)
@@ -186,55 +186,55 @@
                 [firstHighlights addObject:toAdd];
             }
         }
-	}
-	else if (hintResults[0] == 2)
-	{
+    }
+    else if (hintResults[0] == 2)
+    {
         firstHighlights = [[NSMutableArray alloc] init];
-		if (hintResults[1] == 1)
-    	{
-    		theMethod = @"block";
-    		short theBase = (hintResults[2] / 27) * 27 + ((hintResults[2] %  9) / 3) * 3;
-    		for (short i = 0; i < 9; i++)
-    		{
-    			NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + (i % 3) + (i / 3) * 9)];
-    			if ([toAdd shortValue] != hintResults[2])
-    			{
-    				[firstHighlights addObject:toAdd];
-    			}
-    		}
-    	}
-    	else if (hintResults[1] == 2)
-    	{
-    		theMethod = @"column";
-    		short theBase = hintResults[2] % 9;
-    		for (short i = 0; i < 9; i++)
-    		{
-    			NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + 9 * i)];
-    			if ([toAdd shortValue] != hintResults[2])
-    			{
-    				[firstHighlights addObject:toAdd];
-    			}
-    		}
-    	}
-    	else if (hintResults[1] == 3)
-    	{
-    		theMethod = @"row";
-    		short theBase = hintResults[2] - (hintResults[2] % 9);
-    		for (short i = 0; i < 9; i++)
-    		{
-    			NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + i)];
-    			if ([toAdd shortValue] != hintResults[2])
-    			{
-    				[firstHighlights addObject:toAdd];
-    			}
-    		}
-    	}
+        if (hintResults[1] == 1)
+        {
+            theMethod = @"block";
+            short theBase = (hintResults[2] / 27) * 27 + ((hintResults[2] %  9) / 3) * 3;
+            for (short i = 0; i < 9; i++)
+            {
+                NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + (i % 3) + (i / 3) * 9)];
+                if ([toAdd shortValue] != hintResults[2])
+                {
+                    [firstHighlights addObject:toAdd];
+                }
+            }
+        }
+        else if (hintResults[1] == 2)
+        {
+            theMethod = @"column";
+            short theBase = hintResults[2] % 9;
+            for (short i = 0; i < 9; i++)
+            {
+                NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + 9 * i)];
+                if ([toAdd shortValue] != hintResults[2])
+                {
+                    [firstHighlights addObject:toAdd];
+                }
+            }
+        }
+        else if (hintResults[1] == 3)
+        {
+            theMethod = @"row";
+            short theBase = hintResults[2] - (hintResults[2] % 9);
+            for (short i = 0; i < 9; i++)
+            {
+                NSNumber *toAdd = [NSNumber numberWithInteger:(theBase + i)];
+                if ([toAdd shortValue] != hintResults[2])
+                {
+                    [firstHighlights addObject:toAdd];
+                }
+            }
+        }
         theText = [NSString stringWithFormat:@"As the number %d cannot go in any of the highlighted %@'s sqaures save one, it must go in the green sqaure!", hintResults[3], theMethod];
-	}
+    }
     newHint.hintText = theText;
     newHint.firstLevelHighlights = [NSArray arrayWithArray:firstHighlights];
-	newHint.secondLevelHighlight = [NSNumber numberWithShort:hintResults[2]];
-	return newHint;
+    newHint.secondLevelHighlight = [NSNumber numberWithShort:hintResults[2]];
+    return newHint;
 }
 
 @end

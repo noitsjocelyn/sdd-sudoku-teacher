@@ -2,8 +2,8 @@
 
 @interface PuzzleMaker : NSObject
 {
-	short givenPuzzle[81];
-	short workingPuzzle[81];
+    short givenPuzzle[81];
+    short workingPuzzle[81];
 }
 
 - (void)givePuzzle:(short *)thePuzzle;

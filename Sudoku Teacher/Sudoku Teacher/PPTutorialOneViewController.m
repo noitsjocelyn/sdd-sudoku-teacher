@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     puzzleData = [[Puzzle alloc] initWithString:@"654312897972458361183697254869143725731825649245769183327584916518936472496271538"];
 }
 

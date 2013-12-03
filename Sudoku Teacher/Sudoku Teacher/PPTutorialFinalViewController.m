@@ -30,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     defaultBasicPuzzle = @"261897543874315296395604871149276385752438619638159427910582034427963150583741962";
     // 2 8 3 | 1 7 6 | 9 4 5
     // 6 7 9 | 4 5 3 | 1 2 8

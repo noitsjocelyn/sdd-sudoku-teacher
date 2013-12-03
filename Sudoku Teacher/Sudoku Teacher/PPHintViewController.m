@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     firstLevelHighlightColor = [UIColor colorWithRed:0.655 green:0.793 blue:0.999 alpha:1.0];
     secondLevelHighlightColor = [UIColor colorWithRed:0.278 green:0.847 blue:0.451 alpha:1.0];
     aHintMaker = [[HintsMaker alloc] init];
