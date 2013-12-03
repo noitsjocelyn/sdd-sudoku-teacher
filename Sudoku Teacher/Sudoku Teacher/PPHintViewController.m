@@ -81,11 +81,13 @@
     CGFloat buttonH = 48.0;
     CGFloat viewW = self.view.frame.size.width;
     CGFloat viewH = self.view.frame.size.height - titleH - 2 * buttonH;
+    /*
     // Title bar has 0 height under iOS 6.1
     if ([[[UIDevice currentDevice] systemVersion] intValue] == 6)
     {
         titleH = 0.0;
     }
+     */
     hintTwoShownFrame = CGRectMake(0.0, titleH + buttonH, viewW, viewH);
     hintTwoHiddenFrame = CGRectMake(0.0, titleH + viewH, viewW, viewH);
     hintThreeShownFrame = CGRectMake(0.0, titleH + (2 * buttonH), viewW, viewH);

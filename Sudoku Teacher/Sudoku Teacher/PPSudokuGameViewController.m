@@ -303,11 +303,13 @@
     CGRect boardFrame = self.boardBackground.frame;
     boardFrame.size.width = 320.0;
     boardFrame.size.height = 320.0;
+    /*
     // Need to add 64 to the height under iOS 6.1
     if ([[[UIDevice currentDevice] systemVersion] intValue] == 6)
     {
         boardFrame.size.height = boardFrame.size.height + 64.0;
     }
+     */
     self.boardBackground.frame = boardFrame;
 }
 
