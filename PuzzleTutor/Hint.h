@@ -1,13 +1,13 @@
 /* The Hint class.
  * Members:
- *   theHint:
+ *   hintText:
  *     The string containing the text of the hint.
- *   highlightOne:
- *        An array containing the squares that should be highlighted blue (color may change).
- *     highlightTwo:
- *        A short that contains the location to be highlighted green, if any.
+ *   firstLevelHighlights:
+ *     An array containing the squares "in the area" that should be highlighted.
+ *   secondLevelHighlight:
+ *     The location of a specific square to be highlighted.
  * Methods:
- *   The methods are described in the impelmentation, Hint.m.
+ *   No public methods.
  */
 
 #import <Foundation/Foundation.h>

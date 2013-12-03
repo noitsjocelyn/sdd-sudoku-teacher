@@ -1,8 +1,7 @@
-/* Implementation of the Hint class
+/* Implementation of the HintsMaker class
  */
 
 #import "HintsMaker.h"
-
 #import "Hint.h"
 #import "Puzzle.h"
 
