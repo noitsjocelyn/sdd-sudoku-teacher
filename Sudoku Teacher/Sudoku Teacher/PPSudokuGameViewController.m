@@ -307,6 +307,7 @@
     [self.hintButton setEnabled:NO];
     [self setupLabels];
     [self setupBoardBackground];
+    [self positionSetValueButtons];
     if (!puzzleData)
     {
         [self setupProcessingView];
@@ -366,6 +367,39 @@
                    forControlEvents:UIControlEventTouchUpInside];
             squareButtons[i] = aValueButton;
         }
+    }
+}
+
+/* Layout the setValueButtons so they look good on both @2x and @R4 displays
+ */
+- (void)positionSetValueButtons
+{
+    // The top of the "frame" where the buttons go
+    CGFloat baseY = self.boardBackground.frame.origin.y + self.boardBackground.frame.size.height;
+    // The size of the "frame" where they go
+    CGFloat heightAvailible = self.view.frame.size.height - baseY;
+    // Loop through the buttons
+    for (UIButton *aButton in self.setValueButtons)
+    {
+        // Get the frame components we aren't changing
+        CGFloat buttonH = aButton.frame.size.height;
+        CGFloat buttonW = aButton.frame.size.width;
+        CGFloat buttonX = aButton.frame.origin.x;
+        // Basic format for Y is thirds down the frame, minus a fraction of the button height
+        CGFloat newY;
+        // Layout the top row's Y
+        if ([aButton tag] >= 1 && [aButton tag] <= 5)
+        {
+            newY = baseY + (heightAvailible * 1 / 3) - (buttonH * 3 / 5);
+        }
+        // Layout the bottom row's Y
+        else
+        {
+            newY = baseY + (heightAvailible * 2 / 3) - (buttonH * 2 / 5);
+        }
+        // Set the frame
+        CGRect newButtonFrame = CGRectMake(buttonX, newY, buttonW, buttonH);
+        [aButton setFrame:newButtonFrame];
     }
 }
 
