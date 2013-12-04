@@ -52,6 +52,15 @@
     }
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    // Change the board background and setValueButtons when we layoutSubviews
+    // This makes it so they change when we toggle in in-call status bar
+    [self setupBoardBackground];
+    [self positionSetValueButtons];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
