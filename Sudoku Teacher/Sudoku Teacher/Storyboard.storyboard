@@ -437,9 +437,9 @@ Line 2</string>
                                 <rect key="frame" x="20" y="79" width="280" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
-                                <string key="text">Welcome to Sudoku Teacher. This tutorial will teach you how to play sudoku. 
+                                <string key="text">Welcome to Sudoku Teacher. This tutorial will teach you how to play Sudoku. 
 
-To complete a sudoku game every row, column, and block must contain the digits 1-9 without repeating. </string>
+To complete a game of Sudoku, every row, column, and block must contain the digits 1-9 without repeating. </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
